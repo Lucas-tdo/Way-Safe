@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+:root {
+  --Amarelo: #FFD11B;
+  --Verde-Escuro: #083D2A;
+  --Verde-claro: #07DA76;
+  --Marrom: #3B3934;
+}
+
+body {
+    background-image: url(../Imagens/Login.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logo_login {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+    padding-block: 3rem;
+    margin-top: 3rem;
+}
+
+.cor_safe {
+    color: var(--Verde-claro);
+}
+
+.div_login {
+    width: 39%;
+    height: 100vh;
+}
+/* 
+.text_login{
+    
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+.div_input_login{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text_input {
+    font-size: 0.9rem;
+    color: white;
+    margin-right: 14rem;
+}
+.input_login {
+    border: 2px solid #07da76;
+    background-color: #ffffff2b;
+    border-radius: 1rem;
+    width: 18rem;
+    height: 2.3rem;
+} */
