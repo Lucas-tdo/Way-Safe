@@ -12,14 +12,14 @@
 }
 
 * {
-  grid-column: 12;
+  margin: 0;
+  padding: 0;
 }
 
-
-html {
+body {
+  grid-column: 12;
   margin: 0;
 }
 
-#primeiro_background {
-  height: 100%;
-}
+
+#primeiro_background {}
