@@ -1,0 +1,25 @@
+:root {
+  /* Variáveis de cores! Ao invés de copiar o rgb todas as vezes que for necessária utilizar, você só precisa chamar por: elementinho {
+  background-color: var(--verde-medio[nome da variável de cor]);
+} */
+  --verde-claro: rgb(#07DA76);
+  --verde-medio: rgb(#008D4A);
+  --verde-escuro: rgb(#083D2A);
+  --amarelo: rgb(#FFD11B);
+  --cinza: rgb(#3B3934);
+
+
+}
+
+* {
+  grid-column: 12;
+}
+
+
+html {
+  margin: 0;
+}
+
+#primeiro_background {
+  height: 100%;
+}
