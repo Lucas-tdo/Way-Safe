@@ -41,42 +41,18 @@
       <a href="" class="btns_secundario cor_btns">Saiba mais</a>
     </div>
   </section>
-  <section class="sections_divisoes" id="section_informacoes">
-    <h2>Informações</h2>
-    <span>
-      Acompanhe os principais dados sobre acidentes nas rodovias filtrados por características em comum.
-    </span>
-  </section>
-  <section class="sections_divisoes" id="section_relatorios">
-    <h2>Relatórios</h2>
-    <span>
-      Visualize em dashboards as principais filtragens de acidentes em rodovias para criar soluções a partir delas.
-    </span>
-  </section>
-  <section class="sections_divisoes" id="section_solucoes">
-    <h2>Soluções</h2>
-    <span>
-      Após a visualização e análise dos dados relatados, iniciam-se as propostas de soluções para esses acidentes em rodovias.
-    </span>
-  </section>
-  <section id="section_proposito">
-    <h3>Valores</h3>
-    <h2>Qual o nosso <span class="cor_safe">propósito</span></h2>
-    <span>
-      Disponibilizar informações qualificadas e estruturadas sobre acidentes em rodovias concedidas do Estado de São Paulo, oferecendo às concessionárias subsídios para ações preventivas, otimização do monitoramento e fortalecimento da segurança viária.
-    </span>
-    <a href="" id="btn_contato">Contate-nos</a>
-  </section>
   <section id="section_valores">
-    <h3>Valores</h3>
-    <h2>Nossos princípios</h2>
+    <div>
+      <h3>Valores</h3>
+      <h2>Nossos princípios</h2>
+    </div>
     <div class="cards_principios">
       <div class="card">
         <img src="./Imagens/inovação 1.svg">
         <h3>INOVAÇÃO</h3>
         <span>transformar dados em soluções.</span>
       </div>
-      <div class="card">
+      <div class="card" id="card_colaboracao">
         <img src="./Imagens/Colaboração 1.svg">
         <h3>COLABORAÇÃO</h3>
         <span>construindo resultados junto às concessionárias.</span>
@@ -88,17 +64,59 @@
       </div>
     </div>
   </section>
+  <section id="section_proposito">
+    <h3>Valores</h3>
+    <h2>Qual o nosso <span class="cor_safe">propósito</span></h2>
+    <span>
+      Disponibilizar informações qualificadas e estruturadas sobre acidentes em rodovias concedidas do Estado de São Paulo, oferecendo às concessionárias subsídios para ações preventivas, otimização do monitoramento e fortalecimento da segurança viária.
+    </span>
+    <a href="" id="btn_contato">Contate-nos</a>
+  </section>
+  <section class="sections_divisoes" id="section_informacoes">
+    <h3>Solução</h3>
+    <h2><span id="cor_safe">Redução</span> de acidentes</h2>
+    <span id="span_light">
+      Acompanhe os principais dados sobre acidentes nas rodovias filtrados por características em comum.
+    </span>
+  </section>
+  <section class="sections_divisoes" id="section_solucoes">
+    <div>
+      <img src="./Imagens/solucoes.svg" alt="">
+    </div>
+    <div>
+      <h2>Soluções</h2>
+      <span>
+        Após a visualização e análise dos dados relatados, iniciam-se as propostas de soluções para esses acidentes em rodovias.
+      </span>
+    </div>
+  </section>
+  <section class="sections_divisoes" id="section_relatorios">
+    <div>
+      <h2>Relatórios</h2>
+      <span>
+        Visualize em dashboards as principais filtragens de acidentes em rodovias para criar soluções a partir delas.
+      </span>
+    </div>
+    <div>
+      <img src="./Imagens/relatorios.png">
+    </div>
+  </section>
   <section id="section_contato">
     <div>
       <img src="./Imagens/img_contate.svg">
     </div>
     <div>
       <h2>Contate-nos</h2>
-      <label for="">Nome Completo<input type="text" id=""></label>
-      <label for="">E-mail<input type="text"></label>
-      <label for="">Assunto<input type="text"></label>
+      <form>
+        <label for="input_nome_contato">Nome Completo</label>
+        <input type="text" id="input_nome_contato">
+        <label for="input_email_contato">E-mail</label>
+        <input type="text" id="input_email_contato">
+        <label for="input_assunto_contato">Assunto</label>
+        <textarea id="input_assunto_contato" rows="10"></textarea>
+        <a href="" id="btn_enviar">Enviar</a>
+      </form>
 
-      <a href="" id="btn_enviar">Enviar</a>
     </div>
   </section>
   <footer>

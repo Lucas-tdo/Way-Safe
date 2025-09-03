@@ -51,6 +51,7 @@ section nav {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding-right: 10%;
   gap: 1.5rem;
 
 }
@@ -124,23 +125,38 @@ h1 {
 
 }
 
-#section_informacoes,
 #section_solucoes {
+  display: grid;
+  grid-template-columns: auto 1fr;
   background-color: var(--verde-escuro);
   color: white;
 
 }
 
+#section_solucoes,
+#section_relatorios {
+  justify-content: center;
+  align-items: center;
+  font-size: 2.1rem;
+  padding: 6rem 0;
+}
+
 #section_relatorios {
   background-color: white;
-  color: var(--verde-escuro);
+  color: white;
+  background-color: var(--verde-medio);
+  display: grid;
+  grid-template-columns: 1fr auto;
 
 }
 
 #section_proposito {
+  display: grid;
+  grid-template-columns: auto;
   background: url(../Imagens/bg2.png);
   width: 100%;
   height: 100vh;
+  font-size: 2.1rem;
 
 }
 
@@ -148,15 +164,66 @@ h1 {
   background-color: var(--cinza);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   padding: 7rem 0;
 
 }
+
+#section_contato h2 {
+  font-size: 3.7rem;
+  color: white;
+  padding: 3rem 0;
+}
+
+#section_contato form {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: white;
+
+}
+
+#section_contato form input {
+  height: 3.7rem;
+
+}
+
+
 
 #section_valores {
   background-color: white;
   color: var(--verde-escuro);
   text-align: center;
   padding: 4rem 2rem;
+  display: grid;
+
+}
+
+#section_informacoes {
+  display: grid;
+  justify-content: center;
+  padding: 8.6rem 0;
+
+}
+
+#section_informacoes {
+  font-size: 3rem;
+  font-weight: 600;
+
+}
+
+#span_light {
+  font-size: 2.5rem;
+  font-weight: 300;
+
+}
+
+.card {
+  font-size: 1.8rem;
+  min-width: 20rem;
+  min-height: auto;
+  padding: 0 2rem;
 
 }
 
@@ -172,7 +239,7 @@ h1 {
   background-color: var(--verde-escuro);
   color: white;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   text-align: center;
 
 }
@@ -181,6 +248,10 @@ h1 {
   width: 50px;
   margin-bottom: 1rem;
 
+}
+
+#card_colaboracao {
+  background-color: var(--verde-medio);
 }
 
 #section_contato {
@@ -193,13 +264,15 @@ h1 {
 
 #btn_contato,
 #btn_enviar {
-  text-decoration-line: none;
-  color: var(--preto);
-  padding: 1rem 2.5rem;
-  border-radius: 0.5rem;
   background-color: var(--amarelo);
+  color: var(--preto);
+  padding: 1rem 3.5rem;
+  border-radius: 0.5rem;
   font-weight: 700;
-  font-size: 1.875rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  align-self: flex-end;
+  text-decoration-line: none;
 
 }
 
