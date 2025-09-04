@@ -28,13 +28,17 @@ section {
   position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-column: 2/11;
+  grid-column: 1/-1;
 
 }
 
-nav {
-  grid-column: 2 / 11;
+section nav {
+  grid-column: 1 / -1;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  position: fixed;
 
 }
 
@@ -64,7 +68,6 @@ nav ul li a {
   background: url(../Imagens/bg1.png) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
-  grid-column: 1/-1;
 
 }
 
@@ -73,9 +76,16 @@ nav ul li a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
 }
-
 
 .btns-selecao {
   border: 3px solid white;
@@ -94,27 +104,15 @@ h1 {
 
 }
 
+.cor_amarela {
+  color: var(--amarelo);
+  font-size: 4.5rem;
+
+}
+
 #centro p {
   font-size: 2.125rem;
   color: white;
-
-}
-
-#centro a {
-  text-decoration-line: none;
-  color: white;
-  font-size: 1.875rem;
-  font-weight: 550;
-  background-color: var(--verde-medio);
-  padding: 1rem 2.5rem;
-  border-radius: 0.5;
-
-}
-
-.btns_secundario {
-  padding: 0.3rem 1.25rem;
-  border-radius: 0.5rem;
-  border: 0.188rem;
 
 }
 
@@ -128,38 +126,47 @@ h1 {
 
 #section_solucoes {
   display: grid;
-  grid-template-columns: auto 1fr;
-  background-color: var(--verde-escuro);
+  grid-template-columns: 1fr;
+  background-color: var(--verde-medio);
   color: white;
 
 }
 
 #section_solucoes,
 #section_relatorios {
-  justify-content: center;
-  align-items: center;
   font-size: 2.1rem;
   padding: 6rem 0;
 }
 
 #section_relatorios {
   background-color: white;
-  color: white;
-  background-color: var(--verde-medio);
+  color: var(--preto);
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
 
 }
 
 #section_proposito {
+  background-size: cover;
   display: grid;
-  grid-column: 1 / -1;
   grid-template-columns: auto;
-  background: url(../Imagens/bg2.png) no-repeat center center / cover;
+  background: url(../Imagens/rodovia.png) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
   font-size: 2.1rem;
-  color: white;
+  color: #ffffff;
+
+}
+
+.proposito {
+  width: 100%;
+  height: 100vh;
+  align-items: flex-start;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: start;
+  gap: 5rem;
 
 }
 
@@ -202,29 +209,20 @@ h1 {
   display: grid;
   grid-template-columns: auto;
   color: var(--preto);
-
-}
-
-#section_valores h2 {
-  font-size: 3.7rem;
-
-}
-
-#section_valores {
   font-size: 2.5rem;
 
 }
 
-#section_informacoes {
-  display: grid;
+#section_divisoes {
+  display: flex;
   justify-content: center;
-  padding: 8.6rem 0;
-
+  align-items: center;
 }
 
 #section_informacoes {
   font-size: 3rem;
   font-weight: 600;
+  padding: 8.6rem 0;
 
 }
 
@@ -270,7 +268,7 @@ h1 {
 }
 
 #btn_contato,
-#btn_enviar {
+.btn_enviar {
   background-color: var(--amarelo);
   color: var(--preto);
   padding: 1rem 3.5rem;
@@ -282,6 +280,8 @@ h1 {
   text-decoration-line: none;
 
 }
+
+/* FOOTER */
 
 footer {
   display: grid;
