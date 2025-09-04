@@ -28,21 +28,43 @@ section {
   position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-column: 1/-1;
+  grid-column: 2/11;
 
 }
 
-section nav {
+nav {
   grid-column: 2 / 11;
+  justify-content: center;
+
+}
+
+nav ul {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+
+}
+
+nav ul li {
+  list-style-type: none;
+  font-size: 30px;
+  padding: 0px 20px;
+
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 0.3rem 1.25rem;
+  white-space: nowrap;
+
 }
 
 #section_apresentacao {
   background: url(../Imagens/bg1.png) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
+  grid-column: 1/-1;
 
 }
 
@@ -50,32 +72,10 @@ section nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding-right: 10%;
-  gap: 1.5rem;
-
-}
-
-section nav ul {
-  display: flex;
-  justify-content: center;
   align-items: center;
 
 }
 
-section nav ul li {
-  list-style-type: none;
-  font-size: 30px;
-  padding: 0px 20px;
-
-}
-
-section nav ul li a {
-  text-decoration: none;
-  color: white;
-  padding: 0.3rem 1.25rem;
-  white-space: nowrap;
-}
 
 .btns-selecao {
   border: 3px solid white;
@@ -120,6 +120,7 @@ h1 {
 
 .sections_divisoes {
   display: grid;
+  grid-column: 1 / -1;
   grid-template-columns: 1fr;
   padding: 3rem 2rem;
 
@@ -152,11 +153,13 @@ h1 {
 
 #section_proposito {
   display: grid;
+  grid-column: 1 / -1;
   grid-template-columns: auto;
-  background: url(../Imagens/bg2.png);
+  background: url(../Imagens/bg2.png) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
   font-size: 2.1rem;
+  color: white;
 
 }
 
@@ -164,6 +167,7 @@ h1 {
   background-color: var(--cinza);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-column: 1 / -1;
   align-items: center;
   padding: 7rem 0;
 
@@ -173,15 +177,17 @@ h1 {
   font-size: 3.7rem;
   color: white;
   padding: 3rem 0;
+  text-align: center;
+
 }
 
 #section_contato form {
   font-size: 1.8rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto;
   gap: 1.5rem;
   color: white;
-
+  grid-column-end: 10;
 }
 
 #section_contato form input {
@@ -189,14 +195,23 @@ h1 {
 
 }
 
-
-
 #section_valores {
   background-color: white;
-  color: var(--verde-escuro);
   text-align: center;
   padding: 4rem 2rem;
   display: grid;
+  grid-template-columns: auto;
+  color: var(--preto);
+
+}
+
+#section_valores h2 {
+  font-size: 3.7rem;
+
+}
+
+#section_valores {
+  font-size: 2.5rem;
 
 }
 
@@ -254,14 +269,6 @@ h1 {
   background-color: var(--verde-medio);
 }
 
-#section_contato {
-  background-color: var(--cinza);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 7rem 0;
-
-}
-
 #btn_contato,
 #btn_enviar {
   background-color: var(--amarelo);
@@ -271,7 +278,7 @@ h1 {
   font-weight: 700;
   font-size: 1.8rem;
   cursor: pointer;
-  align-self: flex-end;
+  text-align: center;
   text-decoration-line: none;
 
 }
