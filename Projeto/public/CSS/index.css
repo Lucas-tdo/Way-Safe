@@ -1,59 +1,65 @@
 :root {
-  /* Variáveis de cores! Ao invés de copiar o rgb todas as vezes que for necessária utilizar, você só precisa chamar por: elementinho {
-  background-color: var(--verde-medio[nome da variável de cor]);
-} */
+  /* Variáveis de cores */
   --verde-claro: #07DA76;
   --verde-medio: #008D4A;
   --verde-escuro: #083D2A;
   --amarelo: #FFD11B;
   --cinza: #3B3934;
   --preto: #0D0D0D;
-
 }
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
-
+  box-sizing: border-box;
+  /* 🔹 Garante que paddings não quebrem layout */
 }
 
 body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-
 }
 
+/* SEÇÕES */
 section {
   position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column: 1/-1;
-
 }
 
+/* NAVBAR */
 section nav {
-  grid-column: 1 / -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Ocupa toda a largura */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
-  position: fixed;
-
+  background-color: transparent;
+  /* 🔹 Remove a cor de fundo */
+  backdrop-filter: none;
+  /* 🔹 Nenhum efeito de desfoque */
+  z-index: 999;
+  /* Mantém acima de tudo */
 }
 
 nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li {
   list-style-type: none;
   font-size: 30px;
-  padding: 0px 20px;
-
 }
 
 nav ul li a {
@@ -61,14 +67,18 @@ nav ul li a {
   color: white;
   padding: 0.3rem 1.25rem;
   white-space: nowrap;
-
+  transition: color 0.3s ease;
 }
 
+nav ul li a:hover {
+  color: var(--verde-claro);
+}
+
+/* APRESENTAÇÃO */
 #section_apresentacao {
   background: url(../Imagens/bg1.png) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
-
 }
 
 #centro {
@@ -84,44 +94,38 @@ nav ul li a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 .btns-selecao {
   border: 3px solid white;
   border-radius: 8px;
-
 }
 
 h1 {
   font-size: 6.875rem;
   color: white;
-
 }
 
 .cor_safe {
   color: var(--verde-claro);
-
 }
 
 .cor_amarela {
   color: var(--amarelo);
   font-size: 4.5rem;
-
 }
 
 #centro p {
   font-size: 2.125rem;
   color: white;
-
 }
 
+/* SEÇÕES DE CONTEÚDO */
 .sections_divisoes {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: 1fr;
   padding: 3rem 2rem;
-
 }
 
 #section_solucoes {
@@ -129,7 +133,6 @@ h1 {
   grid-template-columns: 1fr;
   background-color: var(--verde-medio);
   color: white;
-
 }
 
 #section_solucoes,
@@ -143,7 +146,6 @@ h1 {
   color: var(--preto);
   display: grid;
   grid-template-columns: 1fr;
-
 }
 
 #section_proposito {
@@ -155,7 +157,6 @@ h1 {
   height: 100vh;
   font-size: 2.1rem;
   color: #ffffff;
-
 }
 
 .proposito {
@@ -167,7 +168,6 @@ h1 {
   align-content: center;
   justify-items: start;
   gap: 5rem;
-
 }
 
 #section_contato {
@@ -177,7 +177,6 @@ h1 {
   grid-column: 1 / -1;
   align-items: center;
   padding: 7rem 0;
-
 }
 
 #section_contato h2 {
@@ -185,7 +184,6 @@ h1 {
   color: white;
   padding: 3rem 0;
   text-align: center;
-
 }
 
 #section_contato form {
@@ -199,7 +197,6 @@ h1 {
 
 #section_contato form input {
   height: 3.7rem;
-
 }
 
 #section_valores {
@@ -210,7 +207,6 @@ h1 {
   grid-template-columns: auto;
   color: var(--preto);
   font-size: 2.5rem;
-
 }
 
 #section_divisoes {
@@ -223,50 +219,56 @@ h1 {
   font-size: 3rem;
   font-weight: 600;
   padding: 8.6rem 0;
-
 }
 
 #span_light {
   font-size: 2.5rem;
   font-weight: 300;
-
 }
 
+/* CARDS */
 .card {
   font-size: 1.8rem;
   min-width: 20rem;
-  min-height: auto;
+  min-height: 16rem;
   padding: 0 2rem;
-
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .cards_principios {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 6rem;
   margin-top: 2rem;
-
 }
 
 .cards_principios .card {
-  background-color: var(--verde-escuro);
+  background-color: #3B3934;
   color: white;
-  padding: 2rem;
+  padding: 2rem 0.6rem;
   border-radius: 0.5rem;
   text-align: center;
+  line-height: 140%;
+  font-size: 1.5rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
+.cards_principios .card:hover {
+  background-color: var(--verde-medio);
+  transform: translateY(-5px);
 }
 
 .cards_principios .card img {
-  width: 50px;
-  margin-bottom: 1rem;
-
+  width: 6rem;
+  height: 8rem;
 }
 
-#card_colaboracao {
-  background-color: var(--verde-medio);
-}
-
+/* BOTÕES */
 #btn_contato,
 .btn_enviar {
   background-color: var(--amarelo);
@@ -278,11 +280,9 @@ h1 {
   cursor: pointer;
   text-align: center;
   text-decoration-line: none;
-
 }
 
 /* FOOTER */
-
 footer {
   display: grid;
   grid-column: 1 / -1;
@@ -292,12 +292,10 @@ footer {
   color: white;
   padding: 2rem;
   gap: 2rem;
-
 }
 
 #footer-logo {
   max-width: 100%;
-
 }
 
 #footer_nav ul {
@@ -305,29 +303,24 @@ footer {
   justify-content: center;
   list-style: none;
   gap: 2rem;
-
 }
 
 footer a {
   text-decoration-line: none;
   color: white;
   font-size: 1.875rem;
-
 }
 
 #footer_contatos p,
 #footer_contatos a {
   font-size: 1rem;
   padding: 0.2rem 0;
-
 }
 
 #footer_contatos h3 {
   font-size: 2rem;
-
 }
 
 #footer_contatos {
   padding: 1rem 2.5rem;
-
 }

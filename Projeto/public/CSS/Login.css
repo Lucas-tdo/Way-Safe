@@ -9,10 +9,10 @@
 }
 
 :root {
-  --Amarelo: #FFD11B;
-  --Verde-Escuro: #083D2A;
-  --Verde-claro: #07DA76;
-  --Marrom: #3B3934;
+    --Amarelo: #FFD11B;
+    --Verde-Escuro: #083D2A;
+    --Verde-claro: #07DA76;
+    --Marrom: #3B3934;
 }
 
 body {
@@ -37,14 +37,15 @@ body {
     width: 39%;
     height: 100vh;
 }
-/* 
-.text_login{
-    
+
+.text_login {
+
     text-align: center;
     font-size: 1.5rem;
     color: white;
 }
-.div_input_login{
+
+.div_input_login {
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -56,10 +57,11 @@ body {
     color: white;
     margin-right: 14rem;
 }
+
 .input_login {
     border: 2px solid #07da76;
     background-color: #ffffff2b;
     border-radius: 1rem;
     width: 18rem;
     height: 2.3rem;
-} */
+}
