@@ -16,52 +16,128 @@
 }
 
 body {
-    background-image: url(../Imagens/Login.png);
+    background-image: url(../Imagens/fundo\ login.png);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+
+.div_login {
+    z-index: 1; 
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    width: 350px;
 }
 
 .logo_login {
     color: white;
-    font-size: 4rem;
-    text-align: center;
-    padding-block: 3rem;
-    margin-top: 3rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .cor_safe {
     color: var(--Verde-claro);
 }
 
-.div_login {
-    width: 39%;
-    height: 100vh;
-}
-
 .text_login {
-
-    text-align: center;
     font-size: 1.5rem;
     color: white;
+    margin-bottom: 1.5rem;
 }
 
 .div_input_login {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .text_input {
-    font-size: 0.9rem;
-    color: white;
-    margin-right: 14rem;
+    font-size: 1rem;
+    align-self: flex-start;
+    margin-left: 1rem;
 }
 
 .input_login {
-    border: 2px solid #07da76;
-    background-color: #ffffff2b;
+    border: 2px solid var(--Verde-claro);
+    background-color: rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
-    width: 18rem;
-    height: 2.3rem;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 1rem;
+    color: white;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.input_login::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    margin-top: 1rem;
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--Verde-claro);
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #05b85f;
+}
+
+.conta {
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.conta:hover {
+    color: var(--Verde-claro);
+}
+
+
+/* Botão de voltar */
+.btn_voltar {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Alterado para o lado direito */
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid  white;
+    color: var white;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+ 
+.btn_voltar:hover {
+       background-color: rgba(0, 0, 0, 0.219); /* Apenas um leve escurecimento */
 }
