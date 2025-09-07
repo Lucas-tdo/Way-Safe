@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/cadastro.css">
+    <title>Tela de Cadastro</title>
 </head>
 
 <body>
-  <label for="input_nome">Nome: <input type="text" id="input_nome"></label>
-  <label for="input_email">E-mail: <input type="text" id="input_email"></label>
-  <label for="input_senha">Senha: <input type="text" id="input_senha"></label>
-  <button>Cadastrar</button>
-</body>
 
+    <a href="index.html" class="btn_voltar">Voltar</a>
+
+    <div class="div_cadastro">
+        <h3 class="logo_cadastro">Way<a class="cor_safe">Safe</a></h3>
+        <h1 class="text_cadastro">Cadastro</h1>
+
+        <div class="div_input_cadastro">
+            <h3 class="text_input">Nome:</h3>
+            <input type="text" class="input_cadastro" placeholder="Digite seu nome">
+
+            <h3 class="text_input">Email:</h3>
+            <input type="email" class="input_cadastro" placeholder="Digite seu email">
+
+            <h3 class="text_input">Telefone:</h3>
+            <input type="number" class="input_cadastro" placeholder="Digite seu telefone">
+
+            <h3 class="text_input">Senha:</h3>
+            <input type="password" class="input_cadastro" placeholder="Crie uma senha">
+
+            <button>Cadastrar</button>
+
+            <a class="conta" href="login.html">Já tenho uma conta</a>
+        </div>
+    </div>
+
+</body>
 </html>

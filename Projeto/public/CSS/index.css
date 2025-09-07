@@ -35,15 +35,10 @@ section nav {
   top: 0;
   left: 0;
   width: 100%;
-  /* Ocupa toda a largura */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
-  background-color: transparent;
-  /* 🔹 Remove a cor de fundo */
-  backdrop-filter: none;
-  /* 🔹 Nenhum efeito de desfoque */
+  background-color: rgba(0, 0, 0, 0.219);
   z-index: 999;
   /* Mantém acima de tudo */
 }
@@ -59,27 +54,33 @@ nav ul {
 
 nav ul li {
   list-style-type: none;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 nav ul li a {
+  display: inline-block;
   text-decoration: none;
   color: white;
   padding: 0.3rem 1.25rem;
   white-space: nowrap;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+
 nav ul li a:hover {
-  color: var(--verde-claro);
+   transform: scale(1.04); 
+
+
 }
 
 /* APRESENTAÇÃO */
 #section_apresentacao {
-  background: url(../Imagens/bg1.png) no-repeat center center / cover;
+  background: url(../Imagens/bg2.png) no-repeat center center / cover;
   width: 100%;
   height: 100vh;
 }
+
+
 
 #centro {
   display: flex;
@@ -101,8 +102,12 @@ nav ul li a:hover {
   border-radius: 8px;
 }
 
+.btns-selecao:hover {
+   background-color: rgba(0, 0, 0, 0.219);
+}
+
 h1 {
-  font-size: 6.875rem;
+  font-size: 5rem;
   color: white;
 }
 
@@ -116,8 +121,10 @@ h1 {
 }
 
 #centro p {
-  font-size: 2.125rem;
+  font-size: 2rem;
   color: white;
+  font-weight: 100 ;
+   font-stretch: condensed;
 }
 
 /* SEÇÕES DE CONTEÚDO */
@@ -269,7 +276,7 @@ h1 {
 }
 
 /* BOTÕES */
-#btn_contato,
+
 .btn_enviar {
   background-color: var(--amarelo);
   color: var(--preto);
@@ -281,7 +288,33 @@ h1 {
   text-align: center;
   text-decoration-line: none;
    cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+.btn_enviar:hover {
+   transform: scale(1.04); 
+}
+
+
+#btn_contato {
+  background-color: var(--amarelo);
+  color: var(--preto);
+  padding: 1rem 3.5rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+#btn_contato:hover {
+  transform: scale(1.04);
+}
+
+
 
 /* FOOTER */
 footer {

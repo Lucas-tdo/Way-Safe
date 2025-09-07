@@ -30,7 +30,7 @@ body {
 
 
 
-.div_login {
+.div_cadastro {
     z-index: 1; 
     background-color: rgba(0, 0, 0, 0.4);
     padding: 2rem;
@@ -40,7 +40,7 @@ body {
     width: 350px;
 }
 
-.logo_login {
+.logo_cadastro {
     color: white;
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -50,13 +50,13 @@ body {
     color: var(--Verde-claro);
 }
 
-.text_login {
+.text_cadastro {
     font-size: 1.5rem;
     color: white;
     margin-bottom: 1.5rem;
 }
 
-.div_input_login {
+.div_input_cadastro {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +69,7 @@ body {
     margin-left: 1rem;
 }
 
-.input_login {
+.input_cadastro {
     border: 2px solid white;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
@@ -81,11 +81,11 @@ body {
     outline: none;
 }
 
-.input_login::placeholder {
+.input_cadastro::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.input_login:hover {
+.input_cadastro:hover {
     border: 2px solid var(--Verde-claro);
 }
 
