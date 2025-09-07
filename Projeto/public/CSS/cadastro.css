@@ -31,8 +31,7 @@ body {
 
 
 .div_cadastro {
-    z-index: 1; 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);

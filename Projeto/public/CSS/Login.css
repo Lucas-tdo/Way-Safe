@@ -31,8 +31,8 @@ body {
 
 
 .div_login {
-    z-index: 1; 
-    background-color: rgba(0, 0, 0, 0.4);
+
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -121,10 +121,10 @@ button:hover {
 .btn_voltar {
     position: absolute;
     top: 20px;
-    right: 20px; /* Alterado para o lado direito */
+    right: 20px; 
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid  white;
-    color: var white;
+    color:  white;
     font-size: 0.9rem;
     padding: 0.5rem 1.2rem;
     border-radius: 8px;
@@ -134,5 +134,5 @@ button:hover {
 }
  
 .btn_voltar:hover {
-       background-color: rgba(0, 0, 0, 0.219); /* Apenas um leve escurecimento */
+       background-color: rgba(0, 0, 0, 0.219); 
 }
