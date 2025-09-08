@@ -13,7 +13,6 @@
   padding: 0;
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
-  /* 🔹 Garante que paddings não quebrem layout */
 }
 
 body {
@@ -40,7 +39,6 @@ section nav {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.219);
   z-index: 999;
-  /* Mantém acima de tudo */
 }
 
 nav ul {
@@ -68,8 +66,7 @@ nav ul li a {
 
 
 nav ul li a:hover {
-   transform: scale(1.04); 
-
+  transform: scale(1.04);
 
 }
 
@@ -79,8 +76,6 @@ nav ul li a:hover {
   width: 100%;
   height: 100vh;
 }
-
-
 
 #centro {
   display: flex;
@@ -103,7 +98,7 @@ nav ul li a:hover {
 }
 
 .btns-selecao:hover {
-   background-color: rgba(0, 0, 0, 0.219);
+  background-color: rgba(0, 0, 0, 0.219);
 }
 
 h1 {
@@ -123,38 +118,11 @@ h1 {
 #centro p {
   font-size: 2rem;
   color: white;
-  font-weight: 100 ;
-   font-stretch: condensed;
+  font-weight: 100;
+  font-stretch: condensed;
 }
 
 /* SEÇÕES DE CONTEÚDO */
-.sections_divisoes {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: 1fr;
-  padding: 3rem 2rem;
-}
-
-#section_solucoes {
-  display: grid;
-  grid-template-columns: 1fr;
-  background-color: var(--verde-medio);
-  color: white;
-}
-
-#section_solucoes,
-#section_relatorios {
-  font-size: 2.1rem;
-  padding: 6rem 0;
-}
-
-#section_relatorios {
-  background-color: white;
-  color: var(--preto);
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 #section_proposito {
   background-size: cover;
   display: grid;
@@ -177,6 +145,47 @@ h1 {
   gap: 5rem;
 }
 
+.sessao {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  row-gap: 1.5rem;
+  column-gap: 1.2rem;
+  padding: 6rem 7.5rem;
+}
+
+.semaforo img {
+  width: 4rem;
+  height: auto;
+}
+
+#traco-vermelho img {
+  width: auto;
+  height: 8.7rem;
+}
+
+.sessao h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.sessao p {
+  font-size: 2rem;
+  color: var(--preto);
+  font-weight: 300;
+  line-height: 1.5;
+  grid-column: 1 / -1;
+}
+
+.sessao.clara {
+  background: #fff;
+}
+
+.sessao.cinza {
+  background: #f0f0f0;
+}
+
 #section_contato {
   background-color: var(--cinza);
   display: grid;
@@ -189,7 +198,7 @@ h1 {
 #section_contato h2 {
   font-size: 3.7rem;
   color: white;
-  padding: 3rem 0;
+  padding: 3rem 10rem;
   text-align: center;
 }
 
@@ -199,7 +208,7 @@ h1 {
   grid-template-columns: auto;
   gap: 1.5rem;
   color: white;
-  grid-column-end: 10;
+  padding-right: 6rem;
 }
 
 #section_contato form input {
@@ -287,14 +296,13 @@ h1 {
   cursor: pointer;
   text-align: center;
   text-decoration-line: none;
-   cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn_enviar:hover {
-   transform: scale(1.04); 
+  transform: scale(1.04);
 }
-
 
 #btn_contato {
   background-color: var(--amarelo);
