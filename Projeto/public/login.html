@@ -19,12 +19,12 @@
 
         <div class="div_input_login">
             <h3 class="text_input">Email:</h3>
-            <input type="text" class="input_login" placeholder="Digite seu email">
+            <input type="text" class="input_login" id="input_email" placeholder="Digite seu email">
 
             <h3 class="text_input">Senha:</h3>
-            <input type="password" class="input_login" placeholder="Digite sua senha">
+            <input type="password" class="input_login" id="input_senha" placeholder="Digite sua senha">
 
-            <button>Entrar</button>
+            <button onclick="Validar()">Entrar</button>
 
             <a class="conta" href="cadastro.html">Não tenho uma conta</a>
         </div>
@@ -32,3 +32,114 @@
 
 </body>
 </html>
+<script>
+    function Validar(){
+        var email = input_email.value
+        var senha = input_senha.value
+        var mensagem = ''
+
+        if(email==""||senha==""){
+          mensagem="Todos campos devem estar preenchidos"
+        }
+        else{
+          if(!(email.includes("@"))){
+            mensagem=`O email precisa conter @`
+          }
+          else if(!(email.includes("."))){
+            mensagem=`O email precisa conter .`
+          }
+          else{
+            if(senha.length<7){
+              mensagem="A senha tem que ter pelo menos 8 caracteres"
+            }
+            else{
+              var especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')','-', '_', '=', '+', '[', ']', '{', '}', ';', ':',"'", '"', '\\', '|', ',', '.', '<', '>', '/', '?', '`', '~']
+              var maiusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+              var minusculas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+              var numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+              var senha_especial=false
+              var senha_maiuscula=false
+              var senha_numeros=false
+              var senha_minuscula=false
+              
+              for(i=0;i<especiais.length;i++){
+                if(senha.includes(especiais[i])){
+                  senha_especial=true
+                  break
+                }
+              }
+
+              for(i=0;i<maiusculas.length;i++){
+                if(senha.includes(maiusculas[i])){
+                  senha_maiuscula=true
+                  break
+                }
+              }
+
+              for(i=0;i<minusculas.length;i++){
+                if(senha.includes(minusculas[i])){
+                  senha_minuscula=true
+                  break
+                }
+              }
+
+              for(i=0;i<numeros.length;i++){
+                if(senha.includes(numeros[i])){
+                  senha_numeros=true
+                  break
+                }
+              }
+
+              if(!senha_especial || !senha_maiuscula || !senha_minuscula ||!senha_numeros){
+                if(!senha_especial){
+                  mensagem="A senha precisa de pelo menos um caractere especial"
+                }
+                if(!senha_maiuscula){
+                  mensagem="A senha precisa de pelo uma letra maiúscula"
+                }
+                if(!senha_minuscula){
+                  mensagem="A senha precisa de pelo menos uma letra minúscula "
+                }
+                if(!senha_numeros){
+                  mensagem="A senha precisa de pelo menos um número"
+                }
+              }
+            }
+            
+            
+          }
+
+        }
+
+        
+        if(mensagem==""){
+            
+            fetch(`/usuario/autenticar/${email}/${senha}`,{
+                method:"GET"
+            })
+            .then(resposta=>{resposta.json().then(resposta=>{
+                console.log(resposta)
+                if(resposta.length==1){
+                    alert("Usuário logado")
+                    console.log(resposta)
+                    sessionStorage.ID_USUARIO=resposta[0].id
+                    sessionStorage.EMAIL_USUARIO=resposta[0].email
+                    sessionStorage.NOME_USUARIO=resposta[0].nome
+                }
+                else{
+                    alert("Usuário não localizado")
+                }
+            }
+            )})
+            .catch(erro=>{
+                console.log(erro)
+            })
+
+        }
+        else{
+          alert(mensagem)
+        }        
+    }
+
+    
+</script>

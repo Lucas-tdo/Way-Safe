@@ -1,5 +1,24 @@
 var usuarioModel = require("../models/usuarioModel");
 
+
+function checaremail(req,res){
+    var email = req.params.email
+    if(email==undefined){
+        res.status(400).send('Seu email está undefined!')
+    }
+    else{
+        usuarioModel.checaremail(email)
+        .then(resposta=>{
+            console.log("Analisando se o email já está cadastrado");
+            res.json(resposta)
+        })
+        .catch(erro=>{
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+}
+
 function cadastrar(req,res){
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
@@ -43,27 +62,20 @@ function autenticar(req,res){
             console.log("Vendo se o email já está cadastrado");
             if(resposta.length==1){
                 console.log("Usuário logado");
+                res.json(resposta)
             }
             else{
                 console.log("Usuário não localizado");
+                res.json([])
             }
         })
     }
 }
-// var email ="matheus@gmail.com";
-// var senha = "sougay1";
 
-//       fetch(`/usuario/autenticar/${email}/${senha}`,{
-//         method:"GET"
-//       })
-//       .then(resposta=>{
-//         console.log('foi');
-//       })
-//       .catch(erro=>{
-//         console.log(erro)
-//       })
+
 
 module.exports = {
+    checaremail,
     cadastrar,
     autenticar
 }

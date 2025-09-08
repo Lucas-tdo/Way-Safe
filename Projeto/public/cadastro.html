@@ -18,18 +18,17 @@
 
         <div class="div_input_cadastro">
             <h3 class="text_input">Nome:</h3>
-            <input type="text" class="input_cadastro" placeholder="Digite seu nome">
+            <input type="text" class="input_cadastro" id="input_nome" placeholder="Digite seu nome">
 
             <h3 class="text_input">Email:</h3>
-            <input type="email" class="input_cadastro" placeholder="Digite seu email">
+            <input type="email" class="input_cadastro" id="input_email" placeholder="Digite seu email">
 
-            <h3 class="text_input">Telefone:</h3>
-            <input type="number" class="input_cadastro" placeholder="Digite seu telefone">
+    
 
             <h3 class="text_input">Senha:</h3>
-            <input type="password" class="input_cadastro" placeholder="Crie uma senha">
+            <input type="password" class="input_cadastro" id="input_senha" placeholder="Crie uma senha">
 
-            <button>Cadastrar</button>
+            <button onclick="Validar()">Cadastrar</button>
 
             <a class="conta" href="login.html">Já tenho uma conta</a>
         </div>
@@ -37,3 +36,140 @@
 
 </body>
 </html>
+<script>
+    function Validar(){
+        var nome = input_nome.value
+        var email = input_email.value
+        var senha = input_senha.value
+        var mensagem = ''
+
+        if(nome==""||email==""||senha==""){
+          mensagem="Todos campos devem estar preenchidos"
+        }
+        else{
+          if(!(email.includes("@"))){
+            mensagem=`O email precisa conter @`
+          }
+          else if(!(email.includes("."))){
+            mensagem=`O email precisa conter .`
+          }
+          else{
+            if(senha.length<7){
+              mensagem="A senha tem que ter pelo menos 8 caracteres"
+            }
+            else{
+              var especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')','-', '_', '=', '+', '[', ']', '{', '}', ';', ':',"'", '"', '\\', '|', ',', '.', '<', '>', '/', '?', '`', '~']
+              var maiusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+              var minusculas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+              var numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+              var senha_especial=false
+              var senha_maiuscula=false
+              var senha_numeros=false
+              var senha_minuscula=false
+              
+              for(i=0;i<especiais.length;i++){
+                if(senha.includes(especiais[i])){
+                  senha_especial=true
+                  break
+                }
+              }
+
+              for(i=0;i<maiusculas.length;i++){
+                if(senha.includes(maiusculas[i])){
+                  senha_maiuscula=true
+                  break
+                }
+              }
+
+              for(i=0;i<minusculas.length;i++){
+                if(senha.includes(minusculas[i])){
+                  senha_minuscula=true
+                  break
+                }
+              }
+
+              for(i=0;i<numeros.length;i++){
+                if(senha.includes(numeros[i])){
+                  senha_numeros=true
+                  break
+                }
+              }
+
+              if(!senha_especial || !senha_maiuscula || !senha_minuscula ||!senha_numeros){
+                if(!senha_especial){
+                  mensagem="A senha precisa de pelo menos um caractere especial"
+                }
+                if(!senha_maiuscula){
+                  mensagem="A senha precisa de pelo uma letra maiúscula"
+                }
+                if(!senha_minuscula){
+                  mensagem="A senha precisa de pelo menos uma letra minúscula "
+                }
+                if(!senha_numeros){
+                  mensagem="A senha precisa de pelo menos um número"
+                }
+              }
+            }
+            
+            
+          }
+
+        }
+
+        
+        if(mensagem==""){
+            checaremail()
+        }
+        else{
+          alert(mensagem)
+        }
+    }
+
+    function checaremail(){
+        var email = input_email.value
+        fetch(`/usuario/checaremail/${email}`,{
+        method:"GET"
+      })
+      .then(resposta=>{resposta.json().then(resposta=>{
+        if(resposta.length>0){
+          alert("Email já está em uso!")
+        }
+        else{
+          cadastrar()
+        }
+        })
+      })
+      .catch(erro=>{
+        console.log(erro)
+      })
+    }
+
+    function cadastrar(){
+        var nome = input_nome.value
+        var email = input_email.value
+        var senha = input_senha.value
+      fetch("/usuario/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nome,
+        emailServer: email,
+        senhaServer: senha
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+       alert("Cadastro realizado")
+        setTimeout(() => {
+          window.location.href = '/login.html'
+        },2000);
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+      });
+    }
+
+</script>
