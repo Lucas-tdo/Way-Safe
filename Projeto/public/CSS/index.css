@@ -35,40 +35,62 @@ section nav {
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.8rem 1.5rem;
   background-color: rgba(0, 0, 0, 0.219);
   z-index: 999;
 }
 
-nav ul {
+/* Logo */
+.logo img {
+  width: 150px;
+}
+
+/* Menu padrão */
+.menu {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-nav ul li {
-  list-style-type: none;
-  font-size: 25px;
-}
-
-nav ul li a {
+.menu li a {
   display: inline-block;
   text-decoration: none;
   color: white;
   padding: 0.3rem 1.25rem;
   white-space: nowrap;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease;
+  font-size: 1.4rem;
 }
 
-
-nav ul li a:hover {
+.menu li a:hover {
   transform: scale(1.04);
-
 }
+
+/* Botão hamburguer */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger div {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
 
 /* APRESENTAÇÃO */
 #section_apresentacao {
@@ -365,4 +387,145 @@ footer a {
 
 #footer_contatos {
   padding: 1rem 2.5rem;
+}
+
+@media (max-width: 1300px) {
+
+  #mapa {
+    display: none;
+  }
+  #section_contato {
+    display: flex;
+    justify-content: center;
+  }
+  #section_contato form {
+    padding-right: 0rem;
+  }
+  .proposito{
+    padding: 1rem;
+  } 
+
+}
+
+
+@media (max-width: 1205px) {
+
+  .cards_principios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cards_principios .card {
+    width: 25rem;
+  }
+
+  #text_proposito {
+    font-size: 1.5rem;
+  }
+  #footer_nav ul, #footer_contatos h3{
+    display: none;
+  }
+  footer,#footer_contatos p, #footer_contatos a {
+    gap: 0rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+
+/* Responsivo */
+@media (max-width: 1140px) {
+  /* Esconde o menu padrão */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: left 0.3s ease-in-out;
+  }
+
+  /* Exibe o botão hamburguer */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Quando o checkbox está marcado, mostra o menu */
+  #nav_check:checked ~ .menu {
+    left: 0;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .menu li a {
+    border: 0px;
+  }
+
+  /* Animação para o "X" */
+  #nav_check:checked + .hamburger div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #nav_check:checked + .hamburger div:nth-child(2) {
+    opacity: 0;
+  }
+
+  #nav_check:checked + .hamburger div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+
+  
+}
+
+@media (max-width: 800px) {
+  
+  #section_contato h2, .sessao h2 {
+    font-size: 2.5rem;
+  }
+
+  #btn_contato{
+    font-size: 1.3rem;
+  }
+  h1{
+    font-size: 3rem;
+  } #centro p{
+    font-size: 1.5rem;
+  } .btn_enviar {
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+  } #info {
+    font-size: 1.7rem;
+  } #way {
+    font-size: 3rem;
+  } #nosso {
+    font-size: 2rem;
+  } .cor_amarela {
+    font-size: 3.5rem;
+  } .sessao {
+    padding: 6rem 1.5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  
+  h1, #way,#section_contato h2, .sessao h2 {
+    font-size: 2rem;
+  } #centro p, #info, #text_proposito, .sessao p, label {
+    font-size: 1.1rem;
+  } .cards_principios .card {
+    width: 15rem;
+  } .semaforo img {
+    width: 3rem;
+  } #section_contato h2 {
+    padding: 3rem 4rem;
+  } 
 }
