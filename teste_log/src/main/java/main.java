@@ -22,7 +22,7 @@ public class main {
 
             }
             if(i==203){
-                DateTimeFormatter erro = DateTimeFormatter.ofPattern("hh:mm:ss.SSS");
+                DateTimeFormatter erro = DateTimeFormatter.ofPattern("hh:mm:ss.SSS a  d/MM/yyyy '('EEEE')'");
                 LocalDateTime dataHora = LocalDateTime.now();
 
                 String horaerro = dataHora.format(erro);
