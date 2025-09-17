@@ -6,6 +6,7 @@
   --amarelo: #FFD11B;
   --cinza: #3B3934;
   --preto: #0D0D0D;
+  --branco: #ffff;
 }
 
 * {
@@ -37,35 +38,48 @@ section nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1.5rem;
-  background-color: rgba(0, 0, 0, 0.219);
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  /*background: rgba(0, 0, 0, 0.116); /* cor translúcida */
+/*  backdrop-filter: blur(10px); /* o efeito de blur */
+  /*-webkit-backdrop-filter: blur(10px); /* suporte Safari */
   z-index: 999;
 }
 
 /* Logo */
+.logo{
+  padding-left: 20px;
+  padding-right: 100px;
+}
 .logo img {
-  width: 150px;
+  width: 80px;
+  
 }
 
 /* Menu padrão */
-.menu {
+.menu, .canto_inferior_menu  {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.8rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.menu li a {
+.menu li a, .canto_inferior_menu li a {
   display: inline-block;
   text-decoration: none;
-  color: white;
-  padding: 0.3rem 1.25rem;
+  color: rgb(43, 43, 43);
+  padding: 0.4rem 0.8rem;
   white-space: nowrap;
   transition: transform 0.3s ease;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+}
+
+.canto_inferior_menu li a{
+  background-color: #008D4A;
+  color: #fff;
 }
 
 .menu li a:hover {
@@ -86,7 +100,7 @@ section nav {
 .hamburger div {
   width: 100%;
   height: 3px;
-  background-color: white;
+  background-color: rgb(37, 37, 37);
   transition: all 0.3s ease;
   border-radius: 5px;
 }
@@ -105,7 +119,6 @@ section nav {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
   width: 100%;
   padding: 0;
   position: absolute;
@@ -123,9 +136,11 @@ section nav {
   background-color: rgba(0, 0, 0, 0.219);
 }
 
-h1 {
-  font-size: 5rem;
+#centro h1 {
+  font-size: 3.8rem;
   color: white;
+  padding-bottom: 1rem;
+
 }
 
 .cor_safe {
@@ -138,10 +153,10 @@ h1 {
 }
 
 #centro p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white;
-  font-weight: 100;
-  font-stretch: condensed;
+  padding-bottom: 2rem;
+  line-height: 40px;
 }
 
 /* SEÇÕES DE CONTEÚDO */
@@ -309,12 +324,12 @@ h1 {
 /* BOTÕES */
 
 .btn_enviar {
-  background-color: var(--amarelo);
-  color: var(--preto);
-  padding: 1rem 3.5rem;
+  background-color: var(--verde-medio);
+  color: var(--branco);
+  padding: 1rem 1.8rem;
   border-radius: 0.5rem;
-  font-weight: 700;
-  font-size: 1.8rem;
+  font-weight: 400;
+  font-size: 1.5rem;
   cursor: pointer;
   text-align: center;
   text-decoration-line: none;
