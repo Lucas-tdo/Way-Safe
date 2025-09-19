@@ -48,7 +48,7 @@
   <div id="centro">
     <h1>Tenha maior <br> controle de rodovias</h1>
     <p>Acompanhe em tempo real os principais dados <br> sobre acidentes nas rodovias.</p>
-    <a href="" class="btn_enviar btns_secundario">Saiba mais<i class="fi fi-sr-play"></i></a>
+    <a href="" class="btns_secundario">Saiba mais<i class="fi fi-sr-play"></i></a>
   </div>
 </section>
 
@@ -114,24 +114,47 @@
     </h2>
     <p>Transforme suas estradas ao analisar padrões em busca de melhorias.</p>
   </section>
+
   <section id="section_contato">
+    <h2>Você precisa de <br>
+    mais informações sobre o nosso serviço?</h2>
+    <p>Preencha seus dados e marque uma reunião.  Juntos, vamos impulsionar o gerenciamento de TI da sua organização.</p>
     <div>
-      <img id="mapa" src="./Imagens/img_contate.svg">
-    </div>
-    <div>
-      <h2>Contate-nos</h2>
-      <form>
-        <label for="input_nome_contato">Nome Completo</label>
-        <input type="text" id="input_nome_contato">
-        <label for="input_email_contato">E-mail</label>
-        <input type="text" id="input_email_contato">
-        <label for="input_assunto_contato">Assunto</label>
-        <textarea id="input_assunto_contato" rows="10"></textarea>
-        <a href="" class="btn_enviar">Enviar</a>
-      </form>
+      
+     <form>
+  <div class="input-group">
+    <input type="text" id="input_nome_contato" required placeholder=" ">
+    <label for="input_nome_contato">Nome <span style="color: red;">*</span></label>
+  </div>
+
+  <div class="input-group">
+    <input type="email" id="input_email_contato" required placeholder=" ">
+    <label for="input_email_contato">E-mail <span style="color: red;">*</span></label>
+  </div>
+
+  <div class="input-group">
+    <input type="tel" id="input_telefone_contato" required placeholder=" ">
+    <label for="input_telefone_contato">Telefone <span style="color: red;">*</span></label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" id="input_sobrenome_contato" required placeholder=" ">
+    <label for="input_sobrenome_contato">Sobrenome <span style="color: red;">*</span></label>
+  </div>
+
+  <div class="input-group" style="grid-column: 1 / 3;">
+    <textarea id="input_assunto_contato" rows="4" required placeholder=" "></textarea>
+    <label for="input_assunto_contato">Assunto <span style="color: red;">*</span></label>
+  </div>
+  
+   <button type="submit" class="btn_limpar">Limpar</button>
+  <button type="reset" class="btn_enviar">Enviar</button> 
+ 
+</form>
 
     </div>
   </section>
+
   <footer>
     <div id="footer_logo">
       <a href="index.html"><img src="./Imagens/waysafe-logo.svg" alt="logo da empresa WaySafe, contendo um sinal de trânsito com suas respectivas cores e o nome da empresa, WaySafe em branco"></a>
