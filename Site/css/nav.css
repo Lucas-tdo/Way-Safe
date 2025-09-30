@@ -1,0 +1,120 @@
+/*  Menu lateral */
+.nav {
+    width: 220px;
+    background: #1e3a2e;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: width .3s;
+    padding: 20px 10px;
+}
+
+.toggle-nav {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+/* Perfil no topo */
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+
+}
+
+
+.nome {
+    font-size: 18px;
+}
+
+/* lista */
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+.menu-list li, ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 10px;
+    position: relative;
+    border-radius: 4px;
+}
+
+.menu-list .icon {
+  
+    width: 25px;
+  
+}
+
+.menu-list .text {
+    white-space: nowrap;
+    text-decoration-line: none;
+    color: white;
+    width: 15rem;
+    font-size: 15px;
+    
+}
+
+/* Hover */
+.menu-list li:hover {
+    background: #2d4b3a;
+}
+
+/* Item ativo */
+.menu-list li.active {
+    background: #2d4b3a;
+}
+
+.menu-list li.active::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: #fff;
+    border-radius: 0 4px 4px 0;
+}
+
+/* botão sair no rodapé */
+.sair {
+    margin-top: auto;
+    padding: 15px 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sair:hover {
+    background: #2d4b3a;
+    border-radius: 4px;
+}
+
+/* Estado minimizado */
+.nav.minimizado {
+    width: 60px;
+}
+
+.nav.minimizado .text,
+.nav.minimizado .nome {
+    display: none;
+}
+
+.nav.minimizado .perfil {
+    justify-content: center;
+}
+
+.nav.minimizado .sair {
+    text-align: center;
+}

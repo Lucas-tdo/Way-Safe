@@ -1,0 +1,56 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .fundo {
+      display: flex;            
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    .container {
+      flex: 1;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+    }
+
+  .analise-bar {
+    background: #d1d1d1;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+    /* OVERVIEW COM 3 CARDS */
+    .graficos {
+      display: grid;
+      grid-template-columns:  1fr ;
+      margin-bottom: 20px;
+      padding: 20px 20px;
+    }
+
+    .graficos .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      min-height: 150px;
+    }
+
+    .rank {
+      display: grid;
+      grid-template-columns: 2fr 2fr; 
+      gap: 20px;
+
+      padding: 0 20px;
+    }
+
+    .rank .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      min-height: 350px;
+    }

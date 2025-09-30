@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previas</title>
+  <link rel="stylesheet" href="css/previas.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+
+  <div class="fundo">
+
+    <aside class="nav">
+      <button class="toggle-nav">☰ </button>
+
+     <div class="perfil">
+
+        <span class="nome">Olá, Roberto</span>
+      </div>
+
+      <ul class="menu-list">
+        <li class="active"> <img src="icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
+
+        <li> <img src="icons/grafico.png" class="icon"></img> <a href="Rodovias.html" class="text">Rodovias</a> </li>
+
+        <li> <img src="icons/alerta.png" class="icon"></img> <a href="acidentes.html" class="text">Acidentes</a> </li>
+        
+        <li> <img src="icons/analise.png" class="icon"></img> <a href="analise.html" class="text">Análise Detalhada</a> </li>
+      </ul>
+
+      <div class="sair">Sair</div>
+    </aside>
+
+    <div class="container">
+
+
+      <div class="previas-bar">
+        <h1>Previas</h1>
+
+      </div>
+
+      <div class="graficos">
+        <div class="card">Total de acidentes</div>
+        <div class="card">Mês com maior acidente</div>
+        <div class="card">Trecho mais crítico</div>
+      </div>
+
+      <div class="rank">
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Alterna a classe "minimizado" no menu + filtro
+    document.querySelector('.toggle-nav')
+      .addEventListener('click', () => {
+        document.querySelector('.nav').classList.toggle('minimizado');
+        document.querySelector('.filtro-box').classList.toggle('ativo');
+      });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodovias</title>
+  <link rel="stylesheet" href="css/rodovias.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+<body>
+  <div class="fundo">
+
+    <!-- MENU LATERAL -->
+    <aside class="nav">
+      <button class="toggle-nav">☰ </button>
+
+      <div class="perfil">
+
+        <span class="nome">Olá, Roberto</span>
+      </div>
+
+ 
+      <ul class="menu-list">
+        <li><img src="icons/home.png" class="icon"></img> <a href="previas.html" class="text"> Previas</a> </li>
+
+        <li class="active"> <img src="icons/grafico.png" class="icon"></img> <a href="#" class="text">Rodovias</a> </li>
+
+        <li> <img src="icons/alerta.png" class="icon"></img> <a href="acidentes.html" class="text">Acidentes</a> </li>
+        
+        <li> <img src="icons/analise.png" class="icon"></img> <a href="analise.html" class="text">Análise Detalhada</a> </li>
+      </ul>
+
+      <div class="sair">Sair</div>
+    </aside>
+    <!--FIM MENU LATERAL-->
+
+    <!--CONTEÚDO-->
+    <main class="container">
+
+      <div class="rodovias-bar">
+        <h1>Rodovias</h1>
+      </div>
+
+      <div class="conteudo-linha">
+        <!-- BLOCO DE FILTRO -->
+        <div class="filtro-box">
+          <h3>Filtro</h3>
+          <label>Município</label>
+          <select>
+            <option>Selecione</option>
+          </select>
+
+          <label>Tipo acidente</label>
+          <select>
+            <option>Selecione</option>
+          </select>
+
+          <label>Rodovia</label>
+          <input type="text">
+
+          <label>Rank</label>
+          <input type="text">
+
+          <button>Buscar</button>
+        </div>
+
+        <!-- CARDS + TABELA -->
+        <div class="conteudo-principal">
+          <div class="cards-rodovias">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+
+          <div class="tabela"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Alterna a classe "minimizado" no menu + filtro
+    document.querySelector('.toggle-nav')
+      .addEventListener('click', () => {
+        document.querySelector('.nav').classList.toggle('minimizado');
+        document.querySelector('.filtro-box').classList.toggle('ativo');
+      });
+  </script>
+</body>
+</html>
