@@ -16,7 +16,7 @@
     <aside class="nav">
       <button class="toggle-nav">☰ </button>
 
-     <div class="perfil">
+      <div class="perfil">
 
         <span class="nome">Olá, Roberto</span>
       </div>
@@ -24,11 +24,12 @@
       <ul class="menu-list">
         <li class="active"> <img src="icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
 
-        <li> <img src="icons/grafico.png" class="icon"></img> <a href="Rodovias.html" class="text">Rodovias</a> </li>
+        <li> <a href="Rodovias.html"> <img src="icons/grafico.png" class="icon"></img></a> <a href="Rodovias.html" class="text">Rodovias</a> </li>
 
-        <li> <img src="icons/alerta.png" class="icon"></img> <a href="acidentes.html" class="text">Acidentes</a> </li>
-        
-        <li> <img src="icons/analise.png" class="icon"></img> <a href="analise.html" class="text">Análise Detalhada</a> </li>
+        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html" class="text">Acidentes</a> </li>
+
+        <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a> <a href="analise.html" class="text">Análise Detalhada</a>
+        </li>
       </ul>
 
       <div class="sair">Sair</div>
@@ -39,18 +40,29 @@
 
       <div class="previas-bar">
         <h1>Previas</h1>
-
       </div>
 
+      <div class="barra">
+        <h1 class="text_over">Overview</h1>
+        <h1 class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</h1>
+      </div>
+
+
       <div class="graficos">
-        <div class="card">Total de acidentes</div>
-        <div class="card">Mês com maior acidente</div>
-        <div class="card">Trecho mais crítico</div>
+        <div class="card_total"> <img src="icons/grafico.png"> <span> Total de acidentes </span> </div>
+        <div class="card"> <img src="icons/calendario.png"> <span>Mês com maior acidente </span></div>
+        <div class="card"> <img src="icons/rodovia.png"> <span>Trecho mais crítico </span> </div>
       </div>
 
       <div class="rank">
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card_2"> 10 Municípios com mais acidentes</div>
+        <div class="card_2"> 
+          <span style="text-align: center; font-weight: 700;">Rank de acidentes </span> 
+          <hr>
+         
+
+
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="css/rodovias.css">
   <link rel="stylesheet" href="css/nav.css">
 </head>
+
 <body>
   <div class="fundo">
 
@@ -19,15 +21,16 @@
         <span class="nome">Olá, Roberto</span>
       </div>
 
- 
+
       <ul class="menu-list">
-        <li><img src="icons/home.png" class="icon"></img> <a href="previas.html" class="text"> Previas</a> </li>
+        <li> <a href="previas.html"> <img src="icons/home.png" class="icon"></img> </a> <a href="previas.html" class="text"> Previas</a> </li>
 
         <li class="active"> <img src="icons/grafico.png" class="icon"></img> <a href="#" class="text">Rodovias</a> </li>
 
-        <li> <img src="icons/alerta.png" class="icon"></img> <a href="acidentes.html" class="text">Acidentes</a> </li>
-        
-        <li> <img src="icons/analise.png" class="icon"></img> <a href="analise.html" class="text">Análise Detalhada</a> </li>
+        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a>  <a href="acidentes.html" class="text">Acidentes</a> </li>
+
+        <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a>  <a href="analise.html" class="text">Análise Detalhada</a>
+        </li>
       </ul>
 
       <div class="sair">Sair</div>
@@ -39,6 +42,11 @@
 
       <div class="rodovias-bar">
         <h1>Rodovias</h1>
+      </div>
+
+      <div class="barra">
+        <h1 class="text_over">#3 Rodovias com maior acidente</h1>
+        <h1 class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</h1>
       </div>
 
       <div class="conteudo-linha">
@@ -67,10 +75,13 @@
         <!-- CARDS + TABELA -->
         <div class="conteudo-principal">
           <div class="cards-rodovias">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+            <div class="card"> <span> <span style="font-weight: 600;">1°</span> Rodovia </span> <img class="icons"src="icons/carro.png"></div>
+            <div class="card"> <span> <span style="font-weight: 600;">2°</span> Rodovia </span> <img class="icons"src="icons/caminhao.png"></div>
+            <div class="card"> <span> <span style="font-weight: 600;">3°</span> Rodovia </span> <img class="icons"src="icons/moto.png"></div>
+
           </div>
+
+          <span class="tipo">Tipo frequente de acidentes nas Rodovias</span>
 
           <div class="tabela"></div>
         </div>
@@ -88,4 +99,5 @@
       });
   </script>
 </body>
+
 </html>
