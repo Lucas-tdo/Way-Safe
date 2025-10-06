@@ -91,9 +91,9 @@
 /* botão sair no rodapé */
 .sair {
     margin-top: auto;
-    padding: 15px 10px;
     cursor: pointer;
     text-align: center;
+    font-size: 13px;
 }
 
 .sair:hover {

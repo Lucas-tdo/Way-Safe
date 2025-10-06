@@ -138,3 +138,41 @@ html, body {
   padding: 20px;
   min-height: 340px;
 }
+
+@media (max-width: 1100px) {
+
+  .graficos .card span, .card_total span {
+    font-size: 14px;
+  } 
+
+}
+@media (max-width: 900px) {
+  
+  .graficos  {
+    display: flex;
+    flex-direction: column;    
+    padding: 10px 20px;
+  } 
+  .rank {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 700px) { 
+  .text_data {
+    font-size: 11px;
+  }
+ }
+
+ @media (max-width: 500px) { 
+  .text_over {
+    display: none;
+  }
+  .card_2 span {
+    font-size: 14px;
+  }
+
+ }
+
