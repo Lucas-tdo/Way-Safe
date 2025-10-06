@@ -1,5 +1,7 @@
-create database waysafe;
+
+create database if not exists waysafe;
 use waysafe;
+
 -- =========================================
 -- CRIAÇÃO DAS TABELAS DO BANCO DE ACIDENTES
 -- =========================================
@@ -7,7 +9,7 @@ use waysafe;
 -- Tabela EMPRESA
 CREATE TABLE EMPRESA (
     idEMPRESA INT AUTO_INCREMENT PRIMARY KEY,
-    CNPJ CHAR(14) NOT NULL,
+    CNPJ CHAR(14),
     CEP CHAR(8),
     complemento VARCHAR(45),
     NOME VARCHAR(45) NOT NULL,
@@ -56,7 +58,7 @@ CREATE TABLE ACIDENTE (
     FOREIGN KEY (fk_classe_acid) REFERENCES classe_acidente(idClasse_acid),
     FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA)
 );
-
+delete  from acidente where idACIDENTE=1;
 -- Tabela VITIMAS
 CREATE TABLE VITIMAS (
     fk_acidente INT PRIMARY KEY,
@@ -67,6 +69,38 @@ CREATE TABLE VITIMAS (
     vitima_fer_grave INT,
     FOREIGN KEY (fk_acidente) REFERENCES ACIDENTE(idACIDENTE)
 );
+select * from acidente;
+-- INSERT INTO ACIDENTE (
+--     fk_rodovias,
+--     fk_classe_acid,
+--     fk_empresa,
+--     data_hora,
+--     tipo_acidente,
+--     metereologia,
+--     visibilidade,
+--    denominacao,
+--     municipio,
+--     reginal_der,
+--     jurisdicao,
+--     latitude,
+--     longitude
+-- ) VALUES
+-- (1, 1, 1, '2024-10-05', 'Colisão Frontal', 'Chuva Leve', 'Boa', 'SP-330 - Km 50', 'Campinas', 'DER-SP', 'Estadual', '-22.9099', '-47.0626'),
+-- (1, 1, 1, '2024-11-10', 'Atropelamento', 'Céu Claro', 'Boa', 'SP-330 - Km 80', 'Limeira', 'DER-SP', 'Estadual', '-22.5611', '-47.4017');
+
+select * from acidente;
+
+-- INSERT INTO VITIMAS (
+--     fk_acidente,
+--     vitima_ilesa,
+--     vitima_fatal,
+--     vitima_fer_leve,
+--     vitima_fer_media,
+--     vitima_fer_grave
+-- ) VALUES
+-- (1, 2, 0, 1, 0, 1),
+-- (2, 0, 1, 0, 0, 0);
+
 
 
 

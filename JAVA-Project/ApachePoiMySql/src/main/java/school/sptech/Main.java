@@ -1,22 +1,16 @@
 package school.sptech;
 
-    import com.mysql.cj.xdevapi.JsonArray;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-    import java.util.Arrays;
-
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // ConexaoBanco cnx = new ConexaoBanco();
-        //ComandosJava comandos = new ComandosJava(cnx.getJdbcTemplate());
-        //comandos.save("Lucas");
-        DadosTratamento tratar = new DadosTratamento();
-        tratar.TratarExcel25();
+        ConexaoBanco cnx = new ConexaoBanco();
+        ComandosJavaBanco comandos = new ComandosJavaBanco(cnx.getJdbcTemplate());
 
+        DadosTratamento tratar = new DadosTratamento();
+        List<RegistroAcidente> teste = tratar.TratarExcelNovaVersao("Acidentes_2025.xlsx",2025);
+        comandos.save(teste.get(0).RetornarAcidente());
+        comandos.save(teste.get(0).RetornarVitimas());
     }
     }

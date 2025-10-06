@@ -28,7 +28,7 @@ public class RetonarFKs {
             case "VIAOESTE" -> 22;
             case "VIAPAULISTA" -> 23;
             case "VIARONDON" -> 24;
-            default -> null; // ou -1 se quiser indicar "não encontrado"
+            default -> -1;
         };
     }
     public Integer Fk_rodovia(String rodovia) {
@@ -341,7 +341,7 @@ public class RetonarFKs {
             case "SPM332E" -> 306;
             case "SPM360D" -> 307;
             case "SPM360E" -> 308;
-            default -> null;
+            default -> -1;
         };
     }
     public Integer Fk_classeAcidente(String classeAcidente) {
@@ -362,7 +362,7 @@ public class RetonarFKs {
             case "SAÍDA DE PISTA" -> 14;
             case "SEM INFO/NULO/0" -> 15;
             case "TOMBAMENTO" -> 16;
-            default -> null; // Retorna null se não encontrar correspondência
+            default -> -1; // Retorna null se não encontrar correspondência
         };
     }
 
