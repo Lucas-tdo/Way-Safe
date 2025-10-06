@@ -1,56 +1,101 @@
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    .fundo {
-      display: flex;            
-      height: 100vh;
-      font-family: sans-serif;
-    }
-
-    .container {
-      flex: 1;
-      background: #f2f2f2;
-      display: flex;
-      flex-direction: column;
-    }
-
-  .analise-bar {
-    background: #d1d1d1;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-    /* OVERVIEW COM 3 CARDS */
-    .graficos {
-      display: grid;
-      grid-template-columns:  1fr ;
-      margin-bottom: 20px;
-      padding: 20px 20px;
-    }
+body {
+  font-family: sans-serif;
+}
 
-    .graficos .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      min-height: 150px;
-    }
+.fundo {
+  display: flex;
+  min-height: 100vh;
+  background: #f2f2f2;
+}
 
-    .rank {
-      display: grid;
-      grid-template-columns: 2fr 2fr; 
-      gap: 20px;
+/* CONTEÚDO PRINCIPAL */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 20px;
+}
 
-      padding: 0 20px;
-    }
+/* BARRA DE TÍTULO */
+.analise-bar {
+  background: #ffffff;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
 
-    .rank .card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      min-height: 350px;
-    }
+.analise-bar h1 {
+  font-size: 25px;
+}
+
+/* GRÁFICOS (LINHA PRINCIPAL) */
+.graficos {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.graficos .card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.graficos .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* RANK (GRÁFICOS SECUNDÁRIOS) */
+.rank {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.rank .card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.rank .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.text_over {
+  font-size: 15px;
+  padding: 10px 20px
+}
+
+.text_data {
+  font-size: 15px;
+  padding: 10px 20px;
+  color: #818181;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+}
