@@ -35,7 +35,7 @@ public class DadosTratamento {
                 22,//POSIÇÃO CÉLULA REGIONAL_DER
                 23,//POSIÇÃO CÉLULA JURISDICAO
                 25,//POSIÇÃO CÉLULA  LAT_FINAL
-                26 ////POSIÇÃO CÉLULA  LAT_FINAL
+                26 //POSIÇÃO CÉLULA  LAT_FINAL
         };
         try {
             Workbook workbook = new XSSFWorkbook(caminho);
@@ -54,7 +54,7 @@ public class DadosTratamento {
                 }
 
 
-                registros.add(new RegistroAcidente( Integer.parseInt(idPadrão+String.valueOf(Id)),RegistroArray[0],RegistroArray[1],RegistroArray[2],RegistroArray[3],RegistroArray[4],RegistroArray[5],RegistroArray[6],RegistroArray[7],RegistroArray[8],RegistroArray[9],RegistroArray[10],RegistroArray[11],RegistroArray[12],RegistroArray[13],RegistroArray[14],RegistroArray[15],RegistroArray[16],RegistroArray[17],RegistroArray[18],RegistroArray[19]));
+                registros.add(new RegistroAcidente( Integer.parseInt(idPadrão+String.valueOf(Id)),RegistroArray[0],RegistroArray[1],RegistroArray[2] + " "+ RegistroArray[3],RegistroArray[4],RegistroArray[5],RegistroArray[6],RegistroArray[7],RegistroArray[8],RegistroArray[9],RegistroArray[10],RegistroArray[11],RegistroArray[12],RegistroArray[13],RegistroArray[14],RegistroArray[15],RegistroArray[16],RegistroArray[17],RegistroArray[18],RegistroArray[19]));
                 Id++;
             }
 
@@ -85,7 +85,7 @@ public class DadosTratamento {
         return registros;
     }
 
-    public void TratarExcelVersaoAntiga(String caminho, Integer idPadrão){
+    public List<RegistroAcidente> TratarExcelVersaoAntiga(String caminho, Integer idPadrao){
         Integer Id= 1;
         Integer posicaoColunas[]= {
                 0,//POSIÇÃO CÉLULA nomeConcessionaria
@@ -106,7 +106,7 @@ public class DadosTratamento {
                 21,//POSIÇÃO CÉLULA REGIONAL_DER
                 22,//POSIÇÃO CÉLULA JURISDICAO
                 24,//POSIÇÃO CÉLULA  LAT_FINAL
-                25////POSIÇÃO CÉLULA  LAT_FINAL
+                25//POSIÇÃO CÉLULA  LAT_FINAL
         };
         try {
             Workbook workbook = new XSSFWorkbook(caminho);
@@ -125,7 +125,7 @@ public class DadosTratamento {
                 }
 
 
-                registros.add(new RegistroAcidente( Integer.parseInt(idPadrão+String.valueOf(Id)),RegistroArray[0],RegistroArray[1],RegistroArray[2],RegistroArray[3],RegistroArray[4],RegistroArray[5],RegistroArray[6],RegistroArray[7],RegistroArray[8],RegistroArray[9],RegistroArray[10],RegistroArray[11],RegistroArray[12],RegistroArray[13],RegistroArray[14],RegistroArray[15],RegistroArray[16],RegistroArray[17],RegistroArray[18]));
+                registros.add(new RegistroAcidente( Integer.parseInt(idPadrao +String.valueOf(Id)),RegistroArray[0],RegistroArray[1],RegistroArray[2],RegistroArray[3],RegistroArray[4],RegistroArray[5],RegistroArray[6],RegistroArray[7],RegistroArray[8],RegistroArray[9],RegistroArray[10],RegistroArray[11],RegistroArray[12],RegistroArray[13],RegistroArray[14],RegistroArray[15],RegistroArray[16],RegistroArray[17],RegistroArray[18]));
                 Id++;
             }
 
@@ -153,6 +153,6 @@ public class DadosTratamento {
 
         }
         System.out.println(registros.size());
-
+        return registros;
     }
 }

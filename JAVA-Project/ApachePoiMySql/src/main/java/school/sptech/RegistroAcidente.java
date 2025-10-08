@@ -24,29 +24,6 @@ public class RegistroAcidente {
     private String LON_FINAL;
     RetonarFKs retorno = new RetonarFKs();
 
-    //Construtor com data e Hora
-    public RegistroAcidente(Integer ID, String nomeConcessionaria, String rodovia, String data, String hora, String classeAcidente, String tipoAcidente, String meteoro, String VISIB, String ILESA_INT, String VIT_FATAL_INT, String VIT_GRAVE_INT, String VIT_LEVE_INT, String VIT_MODERADA_INT, String VIT_SEMINFO_INT, String DENOMINACAO, String MUNICÍPIO, String REGIONAL_DER, String JURISDICAO, String LAT_FINAL, String LON_FINAL) {
-        this.ID = ID;
-        this.nomeConcessionaria = retorno.FK_Concessionaria(nomeConcessionaria) ;
-        this.rodovia =  retorno.Fk_rodovia(rodovia);
-        this.data = data + " "+hora;
-        this.classeAcidente = retorno.Fk_classeAcidente(classeAcidente);
-        this.tipoAcidente = tipoAcidente;
-        this.meteoro = meteoro;
-        this.VISIB = VISIB;
-        this.ILESA_INT = ILESA_INT;
-        this.VIT_FATAL_INT = VIT_FATAL_INT;
-        this.VIT_GRAVE_INT = VIT_GRAVE_INT;
-        this.VIT_LEVE_INT = VIT_LEVE_INT;
-        this.VIT_MODERADA_INT = VIT_MODERADA_INT;
-        this.VIT_SEMINFO_INT = VIT_SEMINFO_INT;
-        this.DENOMINACAO = DENOMINACAO;
-        this.MUNICÍPIO = MUNICÍPIO;
-        this.REGIONAL_DER = REGIONAL_DER;
-        this.JURISDICAO = JURISDICAO;
-        this.LAT_FINAL = LAT_FINAL;
-        this.LON_FINAL = LON_FINAL;
-    }
 
     public RegistroAcidente(Integer ID, String nomeConcessionaria, String rodovia, String data, String classeAcidente, String tipoAcidente, String meteoro, String VISIB, String ILESA_INT, String VIT_FATAL_INT, String VIT_GRAVE_INT, String VIT_LEVE_INT, String VIT_MODERADA_INT, String VIT_SEMINFO_INT, String DENOMINACAO, String MUNICÍPIO, String REGIONAL_DER, String JURISDICAO, String LAT_FINAL, String LON_FINAL) {
         this.ID = ID;
