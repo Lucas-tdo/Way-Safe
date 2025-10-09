@@ -41,12 +41,12 @@
     <main class="container">
 
       <div class="rodovias-bar">
-        <h1>Rodovias</h1>
+        <h1 style="font-weight: 800;">Rodovias</h1>
       </div>
 
       <div class="barra">
-       
-        <h1 class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</h1>
+        <p class="text_over" style="font-weight: 700;">#3 Rodovias com maior acidente</p>
+        <p class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</p>
       </div>
 
       <div class="conteudo-linha">
@@ -69,23 +69,120 @@
           <label>Rank</label>
           <input type="text">
 
-          <button>Buscar</button>
+          <button style="background-color: rgb(36, 36, 36); color: white; height: 2.5rem;">Buscar</button>
         </div>
 
         <!-- CARDS + TABELA -->
         <div class="conteudo-principal">
-          <h1 class="text_over">#3 Rodovias com maior acidente</h1>
-
           <div class="cards-rodovias">
-            <div class="card"> <span> <span style="font-weight: 600;">1°</span> Rodovia </span> <img class="icons"src="icons/carro.png"></div>
-            <div class="card"> <span> <span style="font-weight: 600;">2°</span> Rodovia </span> <img class="icons"src="icons/caminhao.png"></div>
-            <div class="card"> <span> <span style="font-weight: 600;">3°</span> Rodovia </span> <img class="icons"src="icons/moto.png"></div>
 
+            <div class="card"> 
+              <div id="card-linha1">
+                <span> <span style="font-weight: 600;">1°</span> Rodovia </span> <img class="icons"src="icons/carro.png">
+              </div>
+              <h1 id="nome-rodovia1">SP-150</h1>
+              <div id="card-linha3">
+                <p  id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 30% </b>dos acidentes</p>
+                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+              </div>
+              
+            </div>
+
+            <div class="card"> 
+              <div id="card-linha1">
+                <span> <span style="font-weight: 600;">2°</span> Rodovia </span> <img class="icons"src="icons/caminhao.png">
+              </div>
+              <h1 id="nome-rodovia2">BR-101</h1>
+             <div id="card-linha3">
+                <p  id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 30% </b>dos acidentes</p>
+                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+              </div>
+            </div>
+
+            <div class="card"> 
+              <div id="card-linha1">
+                <span> <span style="font-weight: 600;">3°</span> Rodovia </span> <img class="icons"src="icons/caminhao.png">
+              </div>
+              <h1 id="nome-rodovia3">SP-280</h1>
+              <div id="card-linha3">
+                <p  id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 30% </b>dos acidentes</p>
+                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+              </div>
+            </div>
+            
+          </div>
+          <div class="meio">
+            <button id="btn-relatorio-geral">relatório PDF</button>
+            <span class="tipo">Tipo frequente de acidentes nas Rodovias</span> 
+          </div>
+         
+
+          <div class="tabela-container">
+            <table class="tabela-rodovias">
+              <thead>
+                <tr>
+                  <th style=" border-top-left-radius:7px ;">Rank</th>
+                  <th>Rodovia</th>
+                  <th>Município</th>
+                  <th>Acidente</th>
+                  <th id="th-relatorio" style="border-top-right-radius:7px ;">Relatório</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td >1#</td>
+                  <td>SP-150</td>
+                  <td>Santos</td>
+                  <td>Colisão frontal</td>
+                  <td><button class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>--></td>
+                </tr>
+                <tr>
+                  <td>2#</td>
+                  <td>BR-101</td>
+                  <td>Praia Grande</td>
+                  <td>Capotamento</td>
+                  <div id="botoes-tabela-relatorio">
+                    <td ><button class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>--></td>
+                  </div>
+
+                </tr>
+                <tr>
+                  <td>3#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>--></td>
+
+                </tr>
+                <tr>
+                  <td>4#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>--></td>
+
+                </tr>
+                <tr>
+                  <td>5#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>--></td>
+
+                </tr>
+                 <tr>
+                  <td>5#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>--></td>
+
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <span class="tipo">Tipo frequente de acidentes nas Rodovias</span>
-
-          <div class="tabela"></div>
         </div>
       </div>
 

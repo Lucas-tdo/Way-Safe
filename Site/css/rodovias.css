@@ -1,17 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 
-body {
-    font-family: sans-serif;
+html, body {
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* bloqueia scroll global */
+
+  height: 100%;
+  background: #EEEEEE;
 }
+
 
 .fundo {
     display: flex;
@@ -31,7 +40,7 @@ body {
 
 .text_over {
   font-size: 15px;
-
+  padding: 10px 20px
 }
 
 .text_data {
@@ -47,6 +56,7 @@ body {
 
 /* barra de título */
 .rodovias-bar {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
   background: #ffffff;
   height: 70px;
   display: flex;
@@ -112,14 +122,19 @@ body {
     gap: 20px;
 }
 
+
+
 .cards-rodovias {
+  
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.cards-rodovias .card {
+.cards-rodovias .card{
+       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.059);
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
@@ -127,8 +142,34 @@ body {
   padding: 20px;
   border-radius: 8px;
   min-height: 150px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+
+}
+
+#card-linha1{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#card-linha3{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#card-linha3 button{
+  background-color: #333333;
+  border: none;
+  width: 4.5rem;
+  height: 1.7rem;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.card p{
+  padding-bottom: 5px;
 }
 
 .card span {
@@ -139,18 +180,93 @@ body {
   transform: scale(1.02);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
+.meio{
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+}
 
-.tabela {
+#btn-relatorio-geral{
+  background-color: #ff1212;
+  border: none;
+  color: white;
+  padding: 5.9px;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+
+.tabela-container {
    
     background: #fff;
     border-radius: 8px;
-    padding: 20px;
     min-height: 325px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    max-height: 300px; /* altura máxima antes da rolagem aparecer */
+    overflow-y: auto;  /* ativa a barra de rolagem vertical */
+  
+}
+
+.tabela-rodovias {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.tabela-rodovias th {
+  background-color: #d5d5d5fa;
+  color: #282828;
+  padding-top: 25px;
+  padding-bottom: 15px;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tabela-rodovias td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.tabela-rodovias tr:hover {
+  background-color: #f3f3f3;
+}
+
+.btn-relatorio {
+  background-color: #429050;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-relatorio-pdf{
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+
+
+.btn-relatorio:hover {
+  background-color: #00b85f;
+  transform: scale(1.05);
 }
 
 .tabela:hover {
-  transform: scale(1.02);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -162,31 +278,3 @@ body {
     border-radius: 10px;
     width: 40px;
 }
-
-@media (max-width: 950px) { 
-  .conteudo-linha {
-    display: flex;
-    flex-direction: column;
-  }
-  .filtro-box{
-    width: auto;
-  }
- }
-
- @media (max-width: 700px) { 
-  .cards-rodovias {
-    display: flex;
-    flex-direction: column;
-  }
- }
-  @media (max-width:430px) { 
-    .tipo , .text_data {
-      font-size: 13px;
-    }
- }
-
-   @media (max-width:360px) { 
-    .tipo , .text_data {
-      font-size: 10px;
-    }
- }

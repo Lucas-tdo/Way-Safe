@@ -39,7 +39,7 @@
 
 
       <div class="previas-bar">
-        <h1>Previas</h1>
+        <h1 style="font-weight: 800;">Previas</h1>
       </div>
 
       <div class="barra">
@@ -47,23 +47,148 @@
         <h1 class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</h1>
       </div>
 
-
+      <!--KPI'S-->
       <div class="graficos">
-        <div class="card_total"> <img src="icons/grafico.png"> <span> Total de acidentes </span> </div>
-        <div class="card"> <img src="icons/calendario.png"> <span>Mês crítico </span></div>
-        <div class="card"> <img src="icons/rodovia.png"> <span>Trecho crítico </span> </div>
+        <div class="card_total">
+
+          <div class="conteudo">
+            <div id="linha1-card">
+              <img src="icons/grafico.png"> <span> Total de acidentes </span> </div>
+            </div>
+              <h1 style="font-weight: 700; padding-top: 20px; padding-bottom: 10px;">980 <span style="font-size: smally;">mil</span> </h1>
+              <p style="margin-top: 6px;">Rodovias concessionadas </p>    
+          </div>
+
+            <div class="card">
+              <div id="linha1-card">
+                <img src="icons/calendario.png"> <span>Mês com maior acidente </span>
+              </div>
+              <h1 style="font-weight: 700; margin-top: 11px;">Setembro  </h1>
+              <div id="card-linha3">
+                <p style="color: rgb(173, 173, 173); font-weight: 500; font-size: 2rem;">09</p>
+                <p  id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 20.2% </b></p>
+              </div>
+            </div>
+          
+          <div class="card">
+            <div id="linha1-card">
+              <img src="icons/rodovia.png"> <span>Trecho mais crítico </span>
+            </div>
+            <h1 style="font-weight: 700; margin-top: 10px; margin-bottom: 10px;">150-SP </h1>
+            <div id="card-linha3">
+               <p style="margin-top: 6px;">Rodovia com mais acidentes</p>
+                <span style="color: rgb(16, 147, 95); font-weight: 500; cursor: pointer;">Ver Mais</span>
+            </div>
+          </div>  
+
+    
+
       </div>
+      <!--FIM KPI'S-->
+     
+      <div class="tabelas">
+
+        <!--TABELA DO GRÁFICO-->
 
       <div class="rank">
-        <div class="card_2"> <span> 10 municípios mais acidentados </span></div>
         <div class="card_2"> 
-          <span style="text-align: center; font-weight: 700;">Rank de acidentes </span> 
-          <hr>
-         
+          <p style="font-weight: 600; font-size: 1rem;">10 Municípios com mais acidentes</p>
+        </div>
+        <!--FIM TABELA DO GRÁFICO-->
 
+        <!--TABELA RANK-->
+        <div class="card_2"> 
+          <span style="text-align: left; font-weight: 700; margin-left: 10px;padding: 5px;">Rank de acidentes </span> 
+          <hr>
+
+          <div class="rank-scroll">
+          <div class="coluna-rank">
+            <div class="imagem-acidente">
+              <img src="icons/imagem-carro.png" alt="imagem-acidente-de-carro" width="50px">
+            </div>
+
+            <div class="descricao-acidente">
+              <b style="font-weight: 500; font-size: 0.8rem;">1° Lugar no rank</b>
+              <div class="linha1-card2">
+                
+                 <p style="font-size: 1.2rem; font-weight: 600;">Carro </p>
+                 <p style="color: rgb(16, 147, 95); font-weight: 500; cursor: pointer;">Ver Mais</p>
+              </div>
+              <div>
+                <p style="margin-top: 5px;"><span style="color: red;">+</span> 50%</p>
+              </div>
+              
+            </div>
+          </div>
+          
+
+          <div class="coluna-rank">
+            <div class="imagem-acidente">
+              <img src="icons/3.png" alt="imagem-acidente-de-carro" width="50px">
+            </div>
+
+            <div class="descricao-acidente">
+              <b style="font-weight: 500; font-size: 0.8rem;">2° Lugar no rank</b>
+              <div class="linha1-card2">
+                 <p style="font-size: 1.2rem; font-weight: 600;">Caminhão</p>
+                 <p style="color: rgb(16, 147, 95); font-weight: 500; cursor: pointer;">Ver Mais</p>
+              </div>
+              <p style="margin-top: 5px;"><span style="color: red;">+</span> 30%</p>
+            </div>
+          </div>
+       
+          
+          <div class="coluna-rank">
+            <div class="imagem-acidente">
+              <img src="icons/moto-imagem.png" alt="imagem-acidente-de-uma-moto" width="50px">
+            </div>
+
+            <div class="descricao-acidente">
+              <b style="font-weight: 500; font-size: 0.8rem;">3° Lugar no rank</b>
+              <div class="linha1-card2">
+                 <p style="font-size: 1.2rem; font-weight: 600;">Moto</p>
+                 <p style="color: rgb(16, 147, 95); font-weight: 500;cursor: pointer;">Ver Mais</p>
+              </div>
+              <p style="margin-top: 5px;"><span style="color: red;">+</span> 20%</p>
+            </div>
+          </div>
+       
+          <div class="coluna-rank">
+            <div class="imagem-acidente">
+              <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px">
+            </div>
+
+            <div class="descricao-acidente">
+              <b style="font-weight: 500; font-size: 0.8rem;">4° Lugar no rank</b>
+              <div class="linha1-card2">
+                 <p style="font-size: 1.2rem; font-weight: 600;">Animal</p>
+                 <p style="color: rgb(16, 147, 95); font-weight: 500;cursor: pointer;">Ver Mais</p>
+              </div>
+              <p style="margin-top: 5px;"><span style="color: red;">+</span> 20%</p>
+            </div>
+          </div>
+
+          <div class="coluna-rank">
+            <div class="imagem-acidente">
+              <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px">
+            </div>
+
+            <div class="descricao-acidente">
+              <b style="font-weight: 500; font-size: 0.8rem;">5° Lugar no rank</b>
+              <div class="linha1-card2">
+                 <p style="font-size: 1.2rem; font-weight: 600;">Moto</p>
+                 <p style="color: rgb(16, 147, 95); font-weight: 500;cursor: pointer;">Ver Mais</p>
+              </div>
+              <p style="margin-top: 5px;"><span style="color: red;">+</span> 20%</p>
+            </div>
+          </div>
 
         </div>
+         <!--FIM TABELA RANK-->
+
       </div>
+     
+
     </div>
   </div>
   <script>

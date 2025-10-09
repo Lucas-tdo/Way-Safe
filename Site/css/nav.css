@@ -1,7 +1,7 @@
 /*  Menu lateral */
 .nav {
     width: 220px;
-    background: #1e3a2e;
+    background: #0C4B2D;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -69,12 +69,12 @@
 
 /* Hover */
 .menu-list li:hover {
-    background: #2d4b3a;
+    background: #ffffff24;
 }
 
 /* Item ativo */
 .menu-list li.active {
-    background: #2d4b3a;
+    background: #ffffff0b;
 }
 
 .menu-list li.active::before {
