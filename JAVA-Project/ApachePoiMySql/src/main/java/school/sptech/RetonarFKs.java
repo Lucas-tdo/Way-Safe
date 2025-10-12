@@ -341,6 +341,7 @@ public class RetonarFKs {
             case "SPM332E" -> 306;
             case "SPM360D" -> 307;
             case "SPM360E" -> 308;
+            case "SEM NOME" ->309;
             default -> -1;
         };
     }
