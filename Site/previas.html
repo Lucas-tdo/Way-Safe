@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -92,10 +92,9 @@
 
       <div class="rank">
         <div class="card_2"> 
-          <p style="font-weight: 600; font-size: 1rem;">10 Municípios com mais acidentes</p>
+          <div id="grafico-municipios"></div>
         </div>
         <!--FIM TABELA DO GRÁFICO-->
-
         <!--TABELA RANK-->
         <div class="card_2"> 
           <span style="text-align: left; font-weight: 700; margin-left: 10px;padding: 5px;">Rank de acidentes </span> 
@@ -191,6 +190,60 @@
 
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    var options = {
+      chart: {
+        type: 'bar',
+        height: 300,
+        toolbar: { show: false }
+      },
+      series: [{
+        name: 'Acidentes',
+        data: [120, 90, 80, 75, 60, 55, 50, 45, 40, 30]
+      }],
+      yaxis:{
+        title: {
+        text: 'Quantidade de acidentes',
+        style: {
+        fontSize: '14px',
+        fontWeight: 'bold',
+        color: '#555'
+    }
+  }
+      }
+      ,
+      xaxis: {
+        categories: [
+          'São Paulo', 'Campinas', 'Sorocaba', 'Santos', 
+          'Ribeirão Preto', 'Bauru', 'Jundiaí', 'Marília', 'São José', 'Araraquara'
+        ],
+        labels: {
+          style: { fontSize: '12px' }
+        }
+      },
+      colors: ['#ED7D32'],
+      plotOptions: {
+        bar: {
+          borderRadius: 6,
+          horizontal: false,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      title: {
+        text: '10 Municípios com mais acidentes',
+        align: 'left',
+        style: { fontSize: '20px', fontWeight: '800'},
+        offsety: -10
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#grafico-municipios"), options);
+    chart.render();
+  </script>
+
   <script>
     // Alterna a classe "minimizado" no menu + filtro
     document.querySelector('.toggle-nav')
@@ -199,7 +252,7 @@
         document.querySelector('.filtro-box').classList.toggle('ativo');
       });
   </script>
-
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </body>
 
 </html>
