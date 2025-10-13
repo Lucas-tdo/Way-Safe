@@ -74,12 +74,12 @@ body {
 .cards-acidentes .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  min-height: 150px;
+  min-height: 200px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -101,4 +101,22 @@ body {
 
 .tipo {
   font-weight: 600;
+}
+
+
+@media  (max-width: 900px) {
+  .cards-acidentes{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+}
+
+@media  (max-width: 500px) {
+
+  .tipo {
+    font-size: 12px;
+  }
+
 }
