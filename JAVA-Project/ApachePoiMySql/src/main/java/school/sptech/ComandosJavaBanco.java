@@ -1,7 +1,8 @@
 package school.sptech;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.time.Period;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ComandosJavaBanco {
@@ -11,7 +12,9 @@ public class ComandosJavaBanco {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void saveLote(List<RegistroAcidente> registros){
+
+
+    public void saveLote(List<RegistroAcidente> registros , String arquivoTratar){
         String acidentes = "";
         String vitimas="";
         Integer qtdRegistros=0;
@@ -28,22 +31,28 @@ public class ComandosJavaBanco {
             qtdRegistros++;
 
             if(i==registros.size()-1 ||qtdRegistros==1000){
-                System.out.println("Registro de "+ (ultimaAdicionada)+" a "+ (i+1) + " adicionados");
+                LocalDateTime dataHora = LocalDateTime.now();
+                DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+                String dataFormatada = dataHora.format(dataFormato);
+                String mensagem = "Registro de "+ (ultimaAdicionada)+" a "+ (i+1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
+                System.out.println(dataFormatada+" "+mensagem);
                 save(acidentes,vitimas);
+                saveLog("Sucesso",mensagem,arquivoTratar);
                 qtdRegistros=0;
                 ultimaAdicionada=i;
                 acidentes="";
                 vitimas="";
             }
-
-
-
         }
     }
 
     public void save(String insertAcidente,String insertVitimas) {
         jdbcTemplate.update( "INSERT INTO ACIDENTE (idACIDENTE,fk_rodovias, fk_classe_acid, fk_empresa, data_hora, tipo_acidente, metereologia, visibilidade, denominacao, municipio, regional_der, jurisdicao, latitude, longitude) VALUES ".concat(insertAcidente) );
-        jdbcTemplate.update("INSERT INTO VITIMAS (fk_acidente, vitima_ilesa, vitima_fatal, vitima_fer_leve, vitima_fer_media, vitima_fer_grave) VALUES ".concat(insertVitimas));
+        jdbcTemplate.update("INSERT INTO VITIMAS (fk_acidente, vitima_ilesa, vitima_fatal, vitima_fer_leve, vitima_fer_media, vitima_fer_grave , vitimas_fer_seminfo) VALUES ".concat(insertVitimas));
+    }
+
+    public void saveLog(String status , String mensagem,String arquivo){
+        jdbcTemplate.update("insert into LOG(status,mensagem, arquivo) values (?,?,?)",status,mensagem,arquivo);
     }
 
 

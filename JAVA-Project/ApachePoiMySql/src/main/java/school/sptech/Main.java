@@ -8,10 +8,14 @@ public class Main {
         ConexaoBanco cnx = new ConexaoBanco();
         ComandosJavaBanco comandos = new ComandosJavaBanco(cnx.getJdbcTemplate());
 
-        //ExcelModeloAtual excel = new ExcelModeloAtual("acidentes_2025.xlsx");
-        ExcelModeloAntigo excel = new ExcelModeloAntigo("acidentes_2024.xlsx");
-
-        List<RegistroAcidente> teste = excel.tratarExcel(2024);
-        comandos.saveLote(teste);
+        ExcelModeloAtual excel25 = new ExcelModeloAtual("acidentes_2025.xlsx",2025);
+        ExcelModeloAntigo excel24 = new ExcelModeloAntigo("acidentes_2024.xlsx",2024);
+        ExcelModeloAntigo excel23 = new ExcelModeloAntigo("acidentes_2023.xlsx",2023);
+        List<RegistroAcidente> lote25 = excel25.tratarExcel();
+        List<RegistroAcidente> lote24 = excel24.tratarExcel();
+        List<RegistroAcidente> lote23 = excel23.tratarExcel();
+        comandos.saveLote(lote25,excel25.getArquivoTratar());
+        comandos.saveLote(lote24,excel24.getArquivoTratar());
+        comandos.saveLote(lote23,excel23.getArquivoTratar());
     }
     }

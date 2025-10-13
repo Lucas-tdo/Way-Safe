@@ -5,11 +5,12 @@ import java.util.List;
 public abstract class Excel {
     private String arquivoTratar;
     private Integer[] posicaoCelulasExcel;
+    private Integer idPadrao;
 
-
-    public Excel(String arquivoTratar, Integer[] posicaoCelulasExcel) {
+    public Excel(String arquivoTratar, Integer[] posicaoCelulasExcel, Integer idPadrao) {
         this.arquivoTratar = arquivoTratar;
         this.posicaoCelulasExcel = posicaoCelulasExcel;
+        this.idPadrao=idPadrao;
     }
 
     public String getArquivoTratar() {
@@ -28,7 +29,15 @@ public abstract class Excel {
         this.posicaoCelulasExcel = posicaoCelulasExcel;
     }
 
-    abstract List<RegistroAcidente> tratarExcel(Integer idPadrao);
+    public Integer getIdPadrao() {
+        return idPadrao;
+    }
+
+    public void setIdPadrao(Integer idPadrao) {
+        this.idPadrao = idPadrao;
+    }
+
+    abstract List<RegistroAcidente> tratarExcel();
 }
 
 //excelNovoPosicaoCeulas

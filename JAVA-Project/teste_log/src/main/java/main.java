@@ -11,7 +11,7 @@ public class main {
                 LocalDateTime dataHora = LocalDateTime.now();
 
 
-                DateTimeFormatter chucro = DateTimeFormatter.ofPattern(" d/MM/yyyy '('EEEE')' hh:mm:ss.SSS a");
+                DateTimeFormatter chucro = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss.SSS a");
 
 
                 String datachucra = dataHora.format(chucro);
