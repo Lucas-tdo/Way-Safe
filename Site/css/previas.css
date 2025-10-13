@@ -10,12 +10,11 @@
   font-style: normal;
 }
 
-html, body {
-
+html,
+body {
   width: 100%;
   height: 100%;
-  overflow: hidden; /* bloqueia scroll global */
-
+  overflow: auto;
   height: 100%;
   background: #EEEEEE;
 }
@@ -27,31 +26,28 @@ html, body {
   background: #EEEEEE;
 }
 
-
 /* CONTEÚDO */
 .container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
   background: #EEEEEE;
-
 }
 
 /* BARRA SUPERIOR */
 .previas-bar {
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 20px 20px;
   height: 70px;
   background: #fff;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
 }
 
 .previas-bar h1 {
   font-size: 25px;
   font-weight: 800;
-
 }
 
 .text_over {
@@ -68,7 +64,6 @@ html, body {
 .barra {
   display: flex;
   justify-content: space-between;
-
   align-items: center;
   padding: 10px 20px;
 }
@@ -82,8 +77,6 @@ html, body {
   font-size: 15px;
   color: #818181;
 }
-
-
 
 .graficos .card,
 .card_total {
@@ -107,11 +100,9 @@ html, body {
   padding: 22px;
   border-radius: 8px;
   min-height: 150px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
 }
-
-
 
 .card:hover {
   transform: scale(1.02);
@@ -123,10 +114,8 @@ html, body {
   background: #008D4A;
   padding: 20px;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(33,90,9,0.63);
+  box-shadow: 0 4px 10px rgba(33, 90, 9, 0.63);
 }
-
-
 
 #linha1-card {
   display: flex;
@@ -148,6 +137,7 @@ hr {
   margin: 10px 0;
 }
 
+/* ===== MODIFICAÇÃO AQUI ===== */
 .card_2 {
   display: flex;
   flex-direction: column;
@@ -158,13 +148,12 @@ hr {
   border-radius: 8px;
   min-height: 320px;
   max-height: 100%;
-  overflow: hidden; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  /* A linha 'overflow: hidden;' foi REMOVIDA daqui */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 .rank-scroll {
-  max-height: 250px; /* altura fixa para scroll */
+  max-height: 250px;
   overflow-y: auto;
 }
 
@@ -218,18 +207,84 @@ hr {
   gap: 10px;
 }
 
-
 .rank {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   padding: 0 20px;
-  overflow: hidden;
+  overflow: auto;
+}
+
+.text_card1 {
+  margin-top: 6px;
+}
+
+.text_card3 {
+  margin-top: 6px;
+}
+
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1100px) {
+  .graficos .card span,
+  .card_total span {
+    font-size: 14px;
+  }
+   .rank {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .graficos {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+  .rank {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .text_data {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 500px) {
+  .text_over {
+    display: none;
+  }
+  .card_2 span {
+    font-size: 14px;
+  }
+  .card-linha3 p {
+    font-size: 12px;
+  }
+  .text_card1 {
+    font-size: 12px;
+  }
+  .text_card3 {
+    font-size: 12px;
+  }
 }
 
 
 
+/* Responsividade Grafico */
 
+.grafico-scroll-container {
+  width: 100%;
+  overflow-x: auto; /* Ativa a rolagem horizontal quando necessário */
+  -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos móveis */
+}
 
- 
+/* O elemento do gráfico em si */
+#grafico-municipios {
+  min-width: 800px; /* Força o gráfico a ter no mínimo 800px de largura */
+  height: 320px; /* Garante que ele tenha uma altura consistente */
+}
 
