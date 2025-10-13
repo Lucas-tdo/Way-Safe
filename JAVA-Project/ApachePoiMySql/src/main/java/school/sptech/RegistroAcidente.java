@@ -27,10 +27,10 @@ public class RegistroAcidente {
     public RegistroAcidente(Integer ID, String nomeConcessionaria, String rodovia, String data, String classeAcidente, String tipoAcidente, String meteoro, String VISIB, String ILESA_INT, String VIT_FATAL_INT, String VIT_GRAVE_INT, String VIT_LEVE_INT, String VIT_MODERADA_INT, String VIT_SEMINFO_INT, String DENOMINACAO, String MUNICIPIO, String REGIONAL_DER, String JURISDICAO, String LAT_FINAL, String LON_FINAL) {
         RetonarFKs retorno = new RetonarFKs();
         this.ID = ID;
-        this.nomeConcessionaria = retorno.FK_Concessionaria(nomeConcessionaria) ;
-        this.rodovia =  retorno.Fk_rodovia(rodovia);
+        this.nomeConcessionaria = retorno.fk_Concessionaria(nomeConcessionaria) ;
+        this.rodovia =  retorno.fk_rodovia(rodovia);
         this.data = data;
-        this.classeAcidente = retorno.Fk_classeAcidente(classeAcidente);
+        this.classeAcidente = retorno.fk_classeAcidente(classeAcidente);
         this.tipoAcidente = tipoAcidente;
         this.meteoro = meteoro;
         this.VISIB = VISIB;
@@ -50,7 +50,7 @@ public class RegistroAcidente {
 
 
 
-    public String RetornarVitimas(){
+    public String retornarVitimas(){
         return String.format(
                 " (%d, %s, %s, %s, %s, %s ,%s)",
                         ID,
@@ -64,7 +64,7 @@ public class RegistroAcidente {
         );
     }
 
-    public String RetornarAcidente(){
+    public String retornarAcidente(){
         return String.format(
                         "( %d,%d, %d, %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
                 ID,

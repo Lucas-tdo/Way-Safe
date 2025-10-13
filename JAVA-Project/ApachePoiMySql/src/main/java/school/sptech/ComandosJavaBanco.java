@@ -1,59 +1,59 @@
-package school.sptech;
-import org.springframework.jdbc.core.JdbcTemplate;
+    package school.sptech;
+    import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
+    import java.time.LocalDateTime;
+    import java.time.format.DateTimeFormatter;
+    import java.util.List;
 
-public class ComandosJavaBanco {
-    private final JdbcTemplate jdbcTemplate;
+    public class ComandosJavaBanco {
+        private final JdbcTemplate jdbcTemplate;
 
-    public ComandosJavaBanco(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+        public ComandosJavaBanco(JdbcTemplate jdbcTemplate) {
+            this.jdbcTemplate = jdbcTemplate;
+        }
 
 
 
-    public void saveLote(List<RegistroAcidente> registros , String arquivoTratar){
-        String acidentes = "";
-        String vitimas="";
-        Integer qtdRegistros=0;
-        Integer ultimaAdicionada=0;
+        public void saveLote(List<RegistroAcidente> registros , String arquivoTratar){
+            String acidentes = "";
+            String vitimas="";
+            Integer qtdRegistros=0;
+            Integer ultimaAdicionada=0;
 
-        for (int i = 0; i < registros.size(); i++) {
-            if(!(acidentes.isEmpty()) && !(vitimas.isEmpty())){
-                acidentes+=",";
-                vitimas+=",";
-            }
+            for (int i = 0; i < registros.size(); i++) {
+                if(!(acidentes.isEmpty()) && !(vitimas.isEmpty())){
+                    acidentes+=",";
+                    vitimas+=",";
+                }
 
-            acidentes+=registros.get(i).RetornarAcidente();
-            vitimas+=registros.get(i).RetornarVitimas();
-            qtdRegistros++;
+                acidentes+=registros.get(i).retornarAcidente();
+                vitimas+=registros.get(i).retornarVitimas();
+                qtdRegistros++;
 
-            if(i==registros.size()-1 ||qtdRegistros==1000){
-                LocalDateTime dataHora = LocalDateTime.now();
-                DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
-                String dataFormatada = dataHora.format(dataFormato);
-                String mensagem = "Registro de "+ (ultimaAdicionada)+" a "+ (i+1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
-                System.out.println(dataFormatada+" "+mensagem);
-                save(acidentes,vitimas);
-                saveLog("Sucesso",mensagem,arquivoTratar);
-                qtdRegistros=0;
-                ultimaAdicionada=i;
-                acidentes="";
-                vitimas="";
+                if(i==registros.size()-1 ||qtdRegistros==1000){
+                    LocalDateTime dataHora = LocalDateTime.now();
+                    DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+                    String dataFormatada = dataHora.format(dataFormato);
+                    String mensagem = "Registro de "+ (ultimaAdicionada)+" a "+ (i+1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
+                    System.out.println(dataFormatada+" "+mensagem);
+                    save(acidentes,vitimas);
+                    saveLog("Sucesso",mensagem,arquivoTratar);
+                    qtdRegistros=0;
+                    ultimaAdicionada=i;
+                    acidentes="";
+                    vitimas="";
+                }
             }
         }
+
+        public void save(String insertAcidente,String insertVitimas) {
+            jdbcTemplate.update( "INSERT INTO ACIDENTE (idACIDENTE,fk_rodovias, fk_classe_acid, fk_empresa, data_hora, tipo_acidente, metereologia, visibilidade, denominacao, municipio, regional_der, jurisdicao, latitude, longitude) VALUES ".concat(insertAcidente) );
+            jdbcTemplate.update("INSERT INTO VITIMAS (fk_acidente, vitima_ilesa, vitima_fatal, vitima_fer_leve, vitima_fer_media, vitima_fer_grave , vitimas_fer_seminfo) VALUES ".concat(insertVitimas));
+        }
+
+        public void saveLog(String status , String mensagem,String arquivo){
+            jdbcTemplate.update("insert into LOG(status,mensagem, arquivo) values (?,?,?)",status,mensagem,arquivo);
+        }
+
+
     }
-
-    public void save(String insertAcidente,String insertVitimas) {
-        jdbcTemplate.update( "INSERT INTO ACIDENTE (idACIDENTE,fk_rodovias, fk_classe_acid, fk_empresa, data_hora, tipo_acidente, metereologia, visibilidade, denominacao, municipio, regional_der, jurisdicao, latitude, longitude) VALUES ".concat(insertAcidente) );
-        jdbcTemplate.update("INSERT INTO VITIMAS (fk_acidente, vitima_ilesa, vitima_fatal, vitima_fer_leve, vitima_fer_media, vitima_fer_grave , vitimas_fer_seminfo) VALUES ".concat(insertVitimas));
-    }
-
-    public void saveLog(String status , String mensagem,String arquivo){
-        jdbcTemplate.update("insert into LOG(status,mensagem, arquivo) values (?,?,?)",status,mensagem,arquivo);
-    }
-
-
-}

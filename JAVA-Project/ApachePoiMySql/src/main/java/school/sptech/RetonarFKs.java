@@ -2,7 +2,7 @@ package school.sptech;
 
 public class RetonarFKs {
 
-    public Integer FK_Concessionaria(String nomeConcessionaria) {
+    public Integer fk_Concessionaria(String nomeConcessionaria) {
         return switch (nomeConcessionaria.toUpperCase()) {
             case "AUTOBAN" -> 1;
             case "CART" -> 2;
@@ -31,7 +31,7 @@ public class RetonarFKs {
             default -> -1;
         };
     }
-    public Integer Fk_rodovia(String rodovia) {
+    public Integer fk_rodovia(String rodovia) {
         return switch (rodovia.toUpperCase()) {
             case "AVM030" -> 1;
             case "CTH231" -> 2;
@@ -345,7 +345,7 @@ public class RetonarFKs {
             default -> -1;
         };
     }
-    public Integer Fk_classeAcidente(String classeAcidente) {
+    public Integer fk_classeAcidente(String classeAcidente) {
         return switch (classeAcidente.toUpperCase()) {
             case "ATROPELAMENTO DE ANIMAL" -> 1;
             case "ATROPELAMENTO DE PEDESTRE" -> 2;
