@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SP-150</title>
+  <link rel="stylesheet" href="css/sp150.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+
+  <div class="fundo">
+
+    <aside class="nav">
+      <button class="toggle-nav">☰ </button>
+
+      <div class="perfil">
+
+        <span class="nome">Olá, Roberto</span>
+      </div>
+
+      <ul class="menu-list">
+        <li > <img src="icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
+
+        <li class="active"> <a href="Rodovias.html"> <img src="icons/grafico.png" class="icon"></img></a> <a href="Rodovias.html" class="text">Rodovias</a> </li>
+
+        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html" class="text">Acidentes</a> </li>
+
+        <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a> <a href="analise.html" class="text">Análise Detalhada</a>
+        </li>
+      </ul>
+
+      <div class="sair">Sair</div>
+    </aside>
+
+    <div class="container">
+
+
+      <div class="previas-bar">
+       <a href="Rodovias.html"> <img src="./icons/seta-esquerda.png"> </a>  <h1>  Específicaçães da Rodovia</h1>
+      </div>
+
+      <div class="barra">
+        <h1 class="text_over">Registros da Rodovia SP-150</h1>
+
+      </div>
+
+
+      <div class="graficos">
+        <div class="card_total">  <span> Rodovia SP-150 </span> </div>
+       
+        <div class="card"> <span> Informações </span> </div>
+      </div>
+
+      <div class="rank">
+        <div class="card_2"> <span> Ultimos acidentes da Rodovia SP-150 </span></div>
+        <div class="card_2"> 
+          <span style="text-align: center; font-weight: 700;">Tipos dos acidentes </span> 
+      
+         
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Alterna a classe "minimizado" no menu + filtro
+    document.querySelector('.toggle-nav')
+      .addEventListener('click', () => {
+        document.querySelector('.nav').classList.toggle('minimizado');
+        document.querySelector('.filtro-box').classList.toggle('ativo');
+      });
+  </script>
+
+</body>
+
+</html>

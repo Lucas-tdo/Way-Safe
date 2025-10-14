@@ -188,7 +188,7 @@ html, body {
   align-items: center;
 }
 
-#btn-relatorio-geral{
+/* #btn-relatorio-geral{
   background-color: #ff1212;
   border: none;
   color: white;
@@ -196,7 +196,7 @@ html, body {
   border-radius: 3px;
   cursor: pointer;
 
-}
+} */
 
 .tabela-container {
    
