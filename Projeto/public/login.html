@@ -114,8 +114,13 @@
         
         if(mensagem==""){
             
-            fetch(`/usuario/autenticar/${email}/${senha}`,{
-                method:"GET"
+            fetch(`/usuario/autenticar/`,{
+                method:"POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                email: input_email.value,
+                senha: input_senha.value
+    })
             })
             .then(resposta=>{resposta.json().then(resposta=>{
                 console.log(resposta)
@@ -125,6 +130,7 @@
                     sessionStorage.ID_USUARIO=resposta[0].id
                     sessionStorage.EMAIL_USUARIO=resposta[0].email
                     sessionStorage.NOME_USUARIO=resposta[0].nome
+                    sessionStorage.FK_EMPRESA=resposta[0].fk_empresa
                 }
                 else{
                     alert("Usuário não localizado")

@@ -23,6 +23,7 @@ function cadastrar(req,res){
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fk_empresa = req.body.fk_empresaServer;
     if(nome==undefined){
         res.status(400).send("Seu nome está undefined")
     }
@@ -32,8 +33,11 @@ function cadastrar(req,res){
     else if(senha==undefined){
         res.status(400).send("Sua senha está undefined")
     }
+    else if(fk_empresa==undefined){
+        res.status(400).send("Sua fk_empresa está undefined")
+    }
     else{
-        usuarioModel.cadastrar(nome,email,senha)
+        usuarioModel.cadastrar(nome,email,senha,fk_empresa)
         .then(resposta=>{
             console.log(`Usuário com o email ${email} cadastrado!`);
             res.json(resposta)
@@ -48,8 +52,9 @@ function cadastrar(req,res){
 }
 
 function autenticar(req,res){
-    var email = req.params.email;
-    var senha = req.params.senha;
+    var email = req.body.email;
+    var senha = req.body.senha;
+    var fk_empresa = req.params.fk_empresa;
     if(email==undefined){
         res.status(400).send("Seu email está undefined")
     }
@@ -57,7 +62,7 @@ function autenticar(req,res){
         res.status(400).send("Sua senha está undefined")
     }
     else{
-        usuarioModel.autenticar(email,senha)
+        usuarioModel.autenticar(email,senha,fk_empresa)
         .then(resposta=>{
             console.log("Vendo se o email já está cadastrado");
             if(resposta.length==1){

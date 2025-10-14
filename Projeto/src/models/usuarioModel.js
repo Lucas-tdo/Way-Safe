@@ -9,16 +9,16 @@ function checaremail(email){
 }
 
 
-function cadastrar(nome,email,senha){
+function cadastrar(nome,email,senha,fk_empresa){
     var instrucaoSql = `
-        INSERT INTO usuario (nome,email,senha) VALUES ('${nome}','${email}','${senha}');
+        INSERT INTO USUARIO (nome,email,senha,fk_empresa) VALUES ('${nome}','${email}',SHA2('${senha}',256),${fk_empresa});
     `;
     return database.executar(instrucaoSql);
 }
 
 function autenticar(email,senha){
     var instrucaoSql = `
-        SELECT * FROM usuario WHERE email="${email}" and senha="${senha}";
+        SELECT * FROM usuario WHERE email="${email}" and senha =SHA2('${senha}', 256);
     `;
     return database.executar(instrucaoSql);
 }

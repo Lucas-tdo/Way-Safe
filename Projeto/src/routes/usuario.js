@@ -11,7 +11,7 @@ router.post("/cadastrar",(req,res)=>{
     usuarioController.cadastrar(req,res);
 })
 
-router.get("/autenticar/:email/:senha",(req,res)=>{
+router.post("/autenticar",function(req,res){
     usuarioController.autenticar(req,res);
 })
 
