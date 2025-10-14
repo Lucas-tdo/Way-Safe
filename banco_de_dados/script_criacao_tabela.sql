@@ -21,7 +21,8 @@ CREATE TABLE EMPRESA (
 CREATE TABLE USUARIO (
     idUSUARIO INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(45) NOT NULL,
-    senha CHAR(32) NOT NULL,
+    senha CHAR(256) NOT NULL,
+    nome varchar(45),
     fk_empresa INT,
     FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA)
 );
