@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.fundo {
+  display: flex;
+  min-height: 100vh;
+  background: #f2f2f2;
+}
+
+/* Conteúdo principal */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 20px;
+}
+
+/* Barra de título */
+.acidentes-bar {
+  background: #ffffff;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.acidentes-bar h1 {
+  font-size: 25px;
+}
+
+/* Barra de informações */
+.barra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text_over {
+  font-size: 15px;
+  padding: 10px 20px;
+}
+
+.text_data {
+  font-size: 15px;
+  padding: 10px 20px;
+  color: #818181;
+}
+
+/* Cards e tabela */
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.cards-acidentes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cards-acidentes .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover,
+.tabela:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabela */
+.tabela {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 325px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tipo {
+  font-weight: 600;
+}
+
+
+@media  (max-width: 900px) {
+  .cards-acidentes{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+}
+
+@media  (max-width: 500px) {
+
+  .tipo {
+    font-size: 12px;
+  }
+
+}

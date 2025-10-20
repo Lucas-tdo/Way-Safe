@@ -15,6 +15,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require  ("./src/routes/usuario")
+var tela_previaRouter = require  ("./src/routes/tela_previa_rota")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/", indexRouter);
+app.use("/tela_previa_rota", tela_previaRouter);
 app.use("/usuario",usuarioRouter)
 
 app.listen(PORTA_APP, function () {

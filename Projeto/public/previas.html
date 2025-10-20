@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previas</title>
+  <link rel="stylesheet" href="css/previas.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+
+  <div class="fundo">
+
+    <aside class="nav">
+      <button class="toggle-nav">☰ </button>
+
+      <div class="perfil">
+
+        <span class="nome">Olá, Roberto</span>
+      </div>
+
+      <ul class="menu-list">
+        <li class="active"> <img src="icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
+
+        <li> <a href="Rodovias.html"> <img src="icons/grafico.png" class="icon"></img></a> <a href="Rodovias.html"
+            class="text">Rodovias</a> </li>
+
+        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html"
+            class="text">Acidentes</a> </li>
+
+        <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a> <a href="analise.html"
+            class="text">Análise Detalhada</a>
+        </li>
+      </ul>
+
+      <div class="sair">Sair</div>
+    </aside>
+
+    <div class="container">
+
+
+      <div class="previas-bar">
+        <h1 style="font-weight: 800;">Previas</h1>
+      </div>
+
+      <div class="barra">
+        <h1 class="text_over">Overview</h1>
+        <h1 class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</h1>
+      </div>
+
+      <div class="graficos">
+        <div class="card_total">
+
+          <div class="conteudo">
+            <div id="linha1-card">
+              <img src="icons/grafico.png"> <span> Total de acidentes </span>
+            </div>
+          </div>
+          <h1 style="font-weight: 700; padding-top: 20px; padding-bottom: 10px;" id="qtd_acidentes_total">980 <span style="font-size: smally;">mil</span> </h1>
+          <p class="text_card1">Rodovias concessionadas </p>
+        </div>
+        <div class="card">
+          <div id="linha1-card">
+            <img src="icons/calendario.png"> <span>Mês com maior acidente </span>
+          </div>
+          <h1 style="font-weight: 700; margin-top: 11px;" id="pior_mes">Setembro </h1>
+          <div id="card-linha3">
+            <p style="color: rgb(173, 173, 173); font-weight: 500; font-size: 2rem;" id="num_mes">09</p>
+            <p id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 20.2% </b></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div id="linha1-card">
+            <img src="icons/rodovia.png"> <span>Trecho mais crítico </span>
+          </div>
+          <h1 style="font-weight: 700; margin-top: 10px; margin-bottom: 10px;" id="trecho_critico">150-SP </h1>
+          <div id="card-linha3">
+            <p class="text_card3">Rodovia com mais acidentes</p>
+            <span style="color: rgb(16, 147, 95); font-weight: 500; cursor: pointer;">Ver Mais</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="tabelas">
+
+        <div class="rank">
+          <div class="card_2">
+            <div class="grafico-scroll-container">
+              <div id="grafico-municipios"></div>
+            </div>
+            </div>
+          <div class="card_2">
+            <span style="text-align: left; font-weight: 700; margin-left: 10px;padding: 5px;">Rank de acidentes </span>
+            <hr>
+
+            <div class="rank-scroll">
+              <div class="coluna-rank">
+                <div class="imagem-acidente">
+                  <img src="icons/imagem-carro.png" alt="imagem-acidente-de-carro" width="50px">
+                </div>
+
+                <div class="descricao-acidente">
+                  <b style="font-weight: 500; font-size: 0.8rem;">1° Lugar</b>
+                  <div class="linha1-card2">
+                    <p style="font-size: 1.2rem; font-weight: 600;" id="1lugar">Carro </p>
+                    <p style="color: rgb(16, 147, 95); font-weight: 500; cursor: pointer;">Ver Mais</p>
+                  </div>
+                  <div>
+                    <p style="margin-top: 5px;" id="1qtd">50%</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="coluna-rank">
+                <div class="imagem-acidente">
+                  <img src="icons/3.png" alt="imagem-acidente-de-carro" width="50px">
+                </div>
+
+                <div class="descricao-acidente">
+                  <b style="font-weight: 500; font-size: 0.8rem;">2° Lugar</b>
+                  <div class="linha1-card2">
+                    <p style="font-size: 1.2rem; font-weight: 600;" id="2lugar">Caminhão</p>
+                    <p style="color: rgb(16, 147, 95); font-weight: 500; cursor: pointer;">Ver Mais</p>
+                  </div>
+                    <p style="margin-top: 5px;" id="2qtd">50%</p>
+                </div>
+              </div>
+
+
+              <div class="coluna-rank">
+                <div class="imagem-acidente">
+                  <img src="icons/moto-imagem.png" alt="imagem-acidente-de-uma-moto" width="50px">
+                </div>
+
+                <div class="descricao-acidente">
+                  <b style="font-weight: 500; font-size: 0.8rem;" >3° Lugar</b>
+                  <div class="linha1-card2">
+                    <p style="font-size: 1.2rem; font-weight: 600;" id="3lugar">Moto</p>
+                    <p style="color: rgb(16, 147, 95); font-weight: 500;cursor: pointer;">Ver Mais</p>
+                  </div>
+                    <p style="margin-top: 5px;" id="3qtd">50%</p>
+                </div>
+              </div>
+
+              <div class="coluna-rank">
+                <div class="imagem-acidente">
+                  <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px">
+                </div>
+
+                <div class="descricao-acidente">
+                  <b style="font-weight: 500; font-size: 0.8rem;">4° Lugar</b>
+                  <div class="linha1-card2">
+                    <p style="font-size: 1.2rem; font-weight: 600;"  id="4lugar">Animal</p>
+                    <p style="color: rgb(16, 147, 95); font-weight: 500;cursor: pointer;">Ver Mais</p>
+                  </div>
+                    <p style="margin-top: 5px;" id="4qtd">50%</p>
+                </div>
+              </div>
+
+              <div class="coluna-rank">
+                <div class="imagem-acidente">
+                  <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px">
+                </div>
+
+                <div class="descricao-acidente">
+                  <b style="font-weight: 500; font-size: 0.8rem;" >5° Lugar</b>
+                  <div class="linha1-card2">
+                    <p style="font-size: 1.2rem; font-weight: 600;" id="5lugar">Animal</p>
+                    <p style="color: rgb(16, 147, 95); font-weight: 500;cursor: pointer;">Ver Mais</p>
+                  </div>
+                    <p style="margin-top: 5px;" id="5qtd">50%</p>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    var options = {
+      chart: {
+        type: 'bar',
+        height: 300,
+        toolbar: { show: false }
+      },
+      series: [{
+        name: 'Acidentes',
+        data: [120, 90, 80, 75, 60, 55, 50, 45, 40, 30]
+      }],
+      yaxis: {
+        title: {
+          text: 'Quantidade de acidentes',
+          style: {
+            fontSize: '14px',
+            fontWeight: 'bold',
+            color: '#555'
+          }
+        }
+      },
+      xaxis: {
+        categories: [
+          'São Paulo', 'Campinas', 'Sorocaba', 'Santos',
+          'Ribeirão Preto', 'Bauru', 'Jundiaí', 'Marília', 'São José', 'Araraquara'
+        ],
+        labels: {
+          style: { fontSize: '12px' }
+        }
+      },
+      colors: ['#ED7D32'],
+      plotOptions: {
+        bar: {
+          borderRadius: 6,
+          horizontal: false,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      title: {
+        text: '10 Municípios com mais acidentes',
+        align: 'left',
+        style: { fontSize: '20px', fontWeight: '800' },
+        offsety: -10
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#grafico-municipios"), options);
+    chart.render();
+  </script>
+
+  <script>
+    // Alterna a classe "minimizado" no menu + filtro
+    document.querySelector('.toggle-nav')
+      .addEventListener('click', () => {
+        document.querySelector('.nav').classList.toggle('minimizado');
+        document.querySelector('.filtro-box').classList.toggle('ativo');
+      });
+
+
+
+
+    function total_acidentes(){
+      
+        var fk_empresa = sessionStorage.FK_EMPRESA
+
+        fetch(`/tela_previa_rota/qtdAcidentes/${fk_empresa}`)
+
+            .then(res => res.json())
+            .then(quantidade => {
+
+                var qtd = quantidade[0].qtd_Acidente
+                document.getElementById("qtd_acidentes_total").innerText = qtd;
+
+            })
+    }
+
+    function trechoMaisCritico(){
+      
+        var fk_empresa = sessionStorage.FK_EMPRESA
+
+        fetch(`/tela_previa_rota/trechoCritico/${fk_empresa}`)
+
+            .then(res => res.json())
+            .then(quantidade => {
+
+                var qtd = quantidade[0].qtd
+                var rodovia = quantidade[0].rodovia 
+              document.getElementById("trecho_critico").innerText = rodovia;
+
+            })
+    }
+    function top10() {
+      var fk_empresa = sessionStorage.FK_EMPRESA;
+
+            fetch(`/tela_previa_rota/top10/${fk_empresa}`)
+               .then(res => res.json())
+               .then(dados => {
+                 var municipios = dados.map(item => item.municipio);
+                 var qtds = dados.map(item => item.qtd);
+
+                 chart.updateOptions({
+                   xaxis: { categories: municipios }
+                 });
+               
+                 chart.updateSeries([{
+                   name: "Acidentes",
+                   data: qtds
+                 }]);
+               })
+               .catch(err => console.error("Erro ao buscar top 10 municípios:", err));
+    }
+
+
+    function PiorMes(){
+              var fk_empresa = sessionStorage.FK_EMPRESA
+
+        fetch(`/tela_previa_rota/PiorMes/${fk_empresa}`)
+
+            .then(res => res.json())
+            .then(quantidade => {
+              
+            MesAno = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
+
+              var qtd = quantidade[0].total_acidente
+                var mes = quantidade[0].mes
+                      document.getElementById("pior_mes").innerText = MesAno[mes - 1];
+                    
+                      document.getElementById("num_mes").innerText = qtd ;
+                    })
+                    
+                  }
+                  function top5MaisTiposAcidentes(){
+                    
+                    var fk_empresa = sessionStorage.FK_EMPRESA
+                    
+                    fetch(`/tela_previa_rota/top5MaisTiposAcidentes/${fk_empresa}`)
+                    
+                    .then(res => res.json())
+                    .then(quantidade => {
+                      for (var i = 0; i<5;i++){
+                        var qtd = quantidade[i].qtd
+                        var tipo = quantidade[i].tipo
+                        
+                        console.log(`top:${i+1}º ${tipo} com ${qtd} de acidentes `)
+                        document.getElementById(`${i+1}lugar`).innerText =`${tipo}`;
+                        document.getElementById(`${i+1}qtd`).innerText =`${qtd} acidentes `;
+                }
+
+            })
+            
+    }
+  </script>
+</body>
+
+</html>
