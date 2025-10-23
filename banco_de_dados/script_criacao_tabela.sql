@@ -21,7 +21,7 @@ CREATE TABLE EMPRESA (
 CREATE TABLE USUARIO (
     idUSUARIO INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(45) NOT NULL,
-    senha CHAR(256) NOT NULL,
+    senha VARCHAR(256) NOT NULL,
     nome varchar(45),
     fk_empresa INT,
     FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA)
@@ -59,7 +59,7 @@ CREATE TABLE ACIDENTE (
     FOREIGN KEY (fk_classe_acid) REFERENCES classe_acidente(idClasse_acid),
     FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA)
 );
-delete  from acidente where idACIDENTE=1;
+
 -- Tabela VITIMAS
 CREATE TABLE VITIMAS (
     fk_acidente INT PRIMARY KEY,
@@ -82,11 +82,9 @@ CREATE TABLE LOG(
     );
     
     -- insert into LOG(status,mensagem) values ("Sucesso","Rolou isso");
-    select * from LOG;
-    
 
     
-select * from acidente;
+
 -- INSERT INTO ACIDENTE (
 --     fk_rodovias,
 --     fk_classe_acid,
