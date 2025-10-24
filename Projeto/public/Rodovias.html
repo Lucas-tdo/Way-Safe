@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodovias</title>
+  <link rel="stylesheet" href="css/rodovias.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body id="body">
+  <div class="fundo">
+
+    <!-- MENU LATERAL -->
+    <aside class="nav">
+      <button class="toggle-nav">☰ </button>
+
+      <div class="perfil">
+
+        <span class="nome">Olá, Roberto</span>
+      </div>
+
+
+      <ul class="menu-list">
+        <li> <a href="previas.html"> <img src="icons/home.png" class="icon"></img> </a> <a href="previas.html"
+            class="text"> Previas</a> </li>
+
+        <li class="active"> <img src="icons/grafico.png" class="icon"></img> <a href="#" class="text">Rodovias</a> </li>
+
+        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html"
+            class="text">Acidentes</a> </li>
+
+        <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a> <a href="analise.html"
+            class="text">Análise Detalhada</a>
+        </li>
+      </ul>
+
+      <div class="sair">Sair</div>
+    </aside>
+    <!--FIM MENU LATERAL-->
+
+    <!--CONTEÚDO-->
+    <main class="container">
+
+      <div class="rodovias-bar">
+        <h1 style="font-weight: 800;">Rodovias</h1>
+      </div>
+
+      <div class="barra">
+        <p class="text_over" style="font-weight: 700;">#3 Rodovias com maior acidente</p>
+        <p class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</p>
+      </div>
+
+      <div class="conteudo-linha">
+        <!-- BLOCO DE FILTRO -->
+        <div class="filtro-box">
+          <h3>Filtro</h3>
+          <label>Município</label>
+          <input type="text" id="inp_municipio">
+
+          <label>Tipo acidente</label>
+          <select id="op_tipo_acidente">
+            <option value="">Selecione</option>
+            <!-- Inserir o resto depois -->
+          </select>
+
+          <label>Rodovia</label>
+          <input type="text" id="inp_rodovia">
+
+          <button style="background-color: rgb(36, 36, 36); color: white; height: 2.5rem;" onclick="buscar_rodovias()">
+            Buscar
+          </button>
+        </div>
+
+        <!-- CARDS + TABELA -->
+        <div class="conteudo-principal">
+          <div class="cards-rodovias">
+
+            <div class="card">
+              <div id="card-linha1">
+                <span> <span style="font-weight: 600;">1°</span> Rodovia </span> <img class="icons"
+                  src="icons/carro.png">
+              </div>
+              <h1 id="nome-rodovia1">sardinha</h1>
+              <div id="card-linha3">
+                <p id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 30% </b>dos acidentes</p>
+                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+              </div>
+
+            </div>
+
+            <div class="card">
+              <div id="card-linha1">
+                <span> <span style="font-weight: 600;">2°</span> Rodovia </span> <img class="icons"
+                  src="icons/caminhao.png">
+              </div>
+              <h1 id="nome-rodovia2">sardinha</h1>
+              <div id="card-linha3">
+                <p id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 30% </b>dos acidentes</p>
+                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div id="card-linha1">
+                <span> <span style="font-weight: 600;">3°</span> Rodovia </span> <img class="icons"
+                  src="icons/caminhao.png">
+              </div>
+              <h1 id="nome-rodovia3">sardinha</h1>
+              <div id="card-linha3">
+                <p id="porcentagem-de-acidente"><span style="color: red;">+</span><b> 30% </b>dos acidentes</p>
+                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="meio">
+            <!-- <button id="btn-relatorio-geral">relatório PDF</button> -->
+            <span class="tipo">Tipo frequente de acidentes nas Rodovias</span>
+          </div>
+
+
+          <div class="tabela-container">
+            <table class="tabela-rodovias">
+              <thead>
+                <tr>
+                  <th style=" border-top-left-radius:7px ;">Rank</th>
+                  <th>Rodovia</th>
+                  <th>Município</th>
+                  <th>Acidente</th>
+                  <th id="th-relatorio" style="border-top-right-radius:7px ;">Relatório</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1#</td>
+                  <td>SP-150</td>
+                  <td>Santos</td>
+                  <td>Colisão frontal</td>
+                  <td><a href="sp150.html"><button
+                        class="btn-relatorio">Visualizar</button></a><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
+                  </td>
+                </tr>
+                <tr>
+                  <td>2#</td>
+                  <td>BR-101</td>
+                  <td>Praia Grande</td>
+                  <td>Capotamento</td>
+                  <div id="botoes-tabela-relatorio">
+                    <td><button
+                        class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
+                    </td>
+                  </div>
+
+                </tr>
+                <tr>
+                  <td>3#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button
+                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>4#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button
+                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>5#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button
+                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
+                  </td>
+
+                </tr>
+                <tr>
+                  <td>5#</td>
+                  <td>SP-280</td>
+                  <td>Sorocaba</td>
+                  <td>Saída de pista</td>
+                  <td><button
+                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Alterna a classe "minimizado" no menu + filtro
+    document.querySelector('.toggle-nav')
+      .addEventListener('click', () => {
+        document.querySelector('.nav').classList.toggle('minimizado');
+        document.querySelector('.filtro-box').classList.toggle('ativo');
+      });
+
+    document.getElementById("body").onload = function () {
+      topRodovias();
+      buscar_rodovias();
+      carregar_tipos_acidentes();
+    };
+
+    function remove_acentos(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function carregar_tipos_acidentes() {
+      fetch('/tela_rodovias/listar_tipos_acidentes')
+        .then(res => res.json())
+        .then(tipos => {
+          var select = document.getElementById('op_tipo_acidente');
+
+          tipos.forEach(tipo => {
+            var option = document.createElement('option');
+            option.value = tipo.tipoAcidente;
+            option.textContent = tipo.tipoAcidente;
+            select.appendChild(option);
+          });
+
+          console.log(`${tipos.length} tipos de acidentes carregados`);
+        })
+        .catch(error => {
+          console.error("Erro ao carregar tipos de acidentes:", error);
+        });
+    }
+
+    function buscar_rodovias() {
+      var fk_empresa = sessionStorage.FK_EMPRESA
+
+      // Pega os valores e remove acentos, depois faz trim para remover espaços
+      var municipio = remove_acentos(document.getElementById("inp_municipio").value.trim());
+      var tipo_acidente = remove_acentos(document.getElementById("op_tipo_acidente").value.trim());
+      var rodovia = remove_acentos(document.getElementById("inp_rodovia").value.trim());
+
+      // Converte strings vazias em undefined para o backend processar corretamente
+      var dados = {
+        fk_empresa,
+        municipio: municipio !== '' ? municipio : undefined,
+        rodovia: rodovia !== '' ? rodovia : undefined,
+        tipo_acidente: tipo_acidente !== '' && tipo_acidente !== 'Selecione' ? tipo_acidente : undefined
+      };
+
+      console.log("Dados enviados:", dados); // Para debug
+
+      fetch(`/tela_rodovias/aplicar_filtro`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dados)
+      })
+        .then(res => res.json())
+        .then(resultado => {
+          console.log("Resultado recebido:", resultado);
+
+          // Atualiza a tabela com os resultados
+          var tabela = document.querySelector(".tabela-rodovias tbody");
+          tabela.innerHTML = ""; // Limpa a tabela
+
+          if (resultado.length === 0) {
+            tabela.innerHTML = `
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 20px;">
+                  Nenhum resultado encontrado
+                </td>
+              </tr>
+            `;
+            return;
+          }
+
+          resultado.forEach((item, index) => {
+            var linha = document.createElement("tr");
+            linha.innerHTML = `
+              <td>${index + 1}#</td>
+              <td>${item.codigoRodovia}</td>
+              <td>${item.municipio}</td>
+              <td>${item.tipoAcidente}</td>
+              <td><button class="btn-relatorio">Visualizar</button></td>
+            `;
+            tabela.appendChild(linha);
+          });
+        })
+        .catch(error => {
+          console.error("Erro ao buscar rodovias:", error);
+          alert("Erro ao buscar dados. Verifique o console.");
+        });
+    }
+
+    function topRodovias() {
+      var fk_empresa = sessionStorage.FK_EMPRESA;
+
+      console.log("===== topRodovias Frontend =====");
+      console.log("fk_empresa do sessionStorage:", fk_empresa);
+      console.log("Tipo:", typeof fk_empresa);
+
+      if (!fk_empresa || fk_empresa == 'undefined') {
+        console.error("ERRO: fk_empresa não está definido no sessionStorage!");
+        alert("Erro: Empresa não identificada. Faça login novamente.");
+        return;
+      }
+
+      fetch(`/tela_rodovias/topRodovias/${fk_empresa}`)
+        .then(res => {
+          console.log("Status da resposta:", res.status);
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(top => {
+          console.log("Top rodovias recebido:", top);
+          console.log("Quantidade:", top.length);
+
+          if (top.length >= 3) {
+            var top1 = top[0].nomeRodovia;
+            var top2 = top[1].nomeRodovia;
+            var top3 = top[2].nomeRodovia;
+            
+            document.getElementById("nome-rodovia1").innerText = top1;
+            document.getElementById("nome-rodovia2").innerText = top2;
+            document.getElementById("nome-rodovia3").innerText = top3;
+            
+            console.log("Cards atualizados com sucesso!");
+          } else {
+            console.warn("Menos de 3 rodovias retornadas:", top.length);
+          }
+        })
+        .catch(error => {
+          console.error("Erro ao buscar top rodovias:", error);
+          alert("Erro ao carregar top rodovias. Verifique o console.");
+        });
+    }
+  </script>
+</body>
+
+</html>
