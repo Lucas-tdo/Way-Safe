@@ -49,6 +49,7 @@ body {
 .text_over {
   font-size: 15px;
   padding: 10px 20px;
+  font-weight: 600;
 }
 
 .text_data {
@@ -67,7 +68,7 @@ body {
 
 .cards-acidentes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -85,7 +86,8 @@ body {
 }
 
 .card:hover,
-.tabela:hover {
+.tabela:hover,
+.tabela2:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
@@ -98,6 +100,17 @@ body {
   min-height: 325px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+
+.tabela2 {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
 
 .tipo {
   font-weight: 600;
