@@ -110,7 +110,16 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+#grafico-tipos,
+#grafico-evolucao {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 
+.apexcharts-canvas {
+  max-width: 100% !important;
+}
 
 .tipo {
   font-weight: 600;
