@@ -7,6 +7,7 @@
   <title>Acidentes</title>
   <link rel="stylesheet" href="css/acidentes.css">
   <link rel="stylesheet" href="css/nav.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body>
@@ -49,14 +50,28 @@
 
       <div class="conteudo-principal">
         <div class="cards-acidentes">
-          <div class="card">Total de acidentes (últimos 30 dias)</div>
-          <div class="card">Total de acidentes (últimos 60 dias)</div>
+          <div class="card">
+            <p>Total de acidentes (últimos 30 dias)</p>
+            <div id="conteudo-total-acid">
+              <p style="font-weight: 700;">1.577</p>
+            </div>
+            
+
+          </div>
+          <div class="card">
+            Total de acidentes (últimos 60 dias)
+             <div id="conteudo-total-acid">
+              <p style="font-weight: 700;">2.897</p>
+            </div>
+          </div>
           
         </div>
 
         <span class="tipo">Tabela das rodovias ranqueadas por seu indice de acidentes</span>
 
-        <div class="tabela"></div>
+        <div class="tabela">
+          <div id="grafico-tipos"></div>
+        </div>
 
         <span class="tipo">Evoluções dos acidentes nos ultimos 30 dias</span>
 
@@ -73,6 +88,137 @@
       .addEventListener('click', () => {
         document.querySelector('.nav').classList.toggle('minimizado');
       });
+
+      //Gráfico 1 - Tipos
+      var tiposOptions = {
+    chart: {
+      type: 'bar',
+      height: 350,
+      width: '100%',
+      toolbar: { show: false },
+    },
+    series: [{
+      name: 'Quantidade de acidentes',
+      data: [45, 60, 30, 80, 70, 65, 50, 55, 40, 62, 33, 58, 47, 72, 53, 38]
+    }],
+    xaxis: {
+      categories: [
+        'Colisão frontal',
+        'Colisão lateral',
+        'Atropelamento de pedestre',
+        'Capotamento',
+        'Tombamento',
+        'Saída de pista',
+        'Engavetamento',
+        'Queda de moto',
+        'Choque com objeto fixo',
+        'Animal na pista',
+        'Derrapagem',
+        'Incêndio em veículo',
+        'Colisão traseira',
+        'Queda de ocupante',
+        'Explosão',
+        'Outros'
+      ],
+      title: { 
+        text: 'TIPOS DE ACIDENTES', 
+        style: { fontWeight: 700 } 
+      },
+      labels: { rotate: -45 }
+    },
+    yaxis: {
+      title: { 
+        text: 'QUANTIDADE DE ACIDENTES', 
+        style: { fontWeight: 700 } 
+      }
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 6,
+        horizontal: false,
+        columnWidth: '55%',
+        distributed: true // 👈 faz cada barra ter uma cor diferente
+      }
+    },
+    colors: [
+      '#0077b6', '#0096c7', '#00b4d8', '#48cae4',
+      '#90e0ef', '#ade8f4', '#caf0f8', '#ffafcc',
+      '#ff758f', '#fb6f92', '#e36414', '#ffb703',
+      '#ff9f1c', '#ff4d6d', '#9d4edd', '#5a189a'
+    ], // 👈 paleta variada
+    title: {
+      text: 'Tipos de acidentes',
+      align: 'left',
+      style: {
+        fontSize: '26px',
+        fontWeight: '900',
+        color: '#111'
+      }
+    },
+    dataLabels: { enabled: false },
+    grid: { borderColor: '#eee' }
+  };
+
+  var graficoTipos = new ApexCharts(document.querySelector("#grafico-tipos"), tiposOptions);
+  graficoTipos.render();
+
+    // gráfico 02 - evolução diária
+    const dias = Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`);
+  const acidentesDiarios = Array.from({ length: 30 }, () => Math.floor(Math.random() * 80) + 20);
+
+  var evolucaoOptions = {
+    chart: {
+      type: 'line',
+      height: 350,
+      width: '100%',
+      toolbar: { show: false }
+    },
+    series: [{
+      name: 'Acidentes por dia',
+      data: acidentesDiarios
+    }],
+    xaxis: {
+      categories: dias,
+      title: { text: 'ÚLTIMOS 30 DIAS', style: { fontWeight: 700 } },
+      labels: { rotate: -45 }
+    },
+    yaxis: {
+      title: { text: 'QUANTIDADE DE ACIDENTES', style: { fontWeight: 700 } }
+    },
+    stroke: {
+      curve: 'smooth',
+      width: 3
+    },
+    markers: {
+      size: 4,
+      colors: ['#0077b6'],
+      strokeColors: '#fff',
+      strokeWidth: 2
+    },
+    colors: ['#0077b6'],
+    title: {
+      text: 'Evolução dos acidentes nos últimos 30 dias',
+      align: 'left',
+      style: {
+        fontSize: '26px',
+        fontWeight: '900',
+        color: '#111'
+      }
+    },
+    grid: { borderColor: '#eee' },
+    tooltip: { theme: 'light' }
+  };
+
+  // Cria o container do gráfico 2 dinamicamente (caso não exista)
+  const tabela2 = document.querySelector('.tabela2');
+  const graficoEvolucao = document.createElement('div');
+  graficoEvolucao.id = 'grafico-evolucao';
+  tabela2.appendChild(graficoEvolucao);
+
+  var graficoLinha = new ApexCharts(document.querySelector("#grafico-evolucao"), evolucaoOptions);
+  graficoLinha.render();
+
+  
   </script>
 </body>
 

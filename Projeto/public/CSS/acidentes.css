@@ -85,6 +85,15 @@ body {
   transition: all 0.3s ease;
 }
 
+#conteudo-total-acid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  font-size: 3rem;
+  
+}
+
 .card:hover,
 .tabela:hover,
 .tabela2:hover {
@@ -110,7 +119,16 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+#grafico-tipos,
+#grafico-evolucao {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 
+.apexcharts-canvas {
+  max-width: 100% !important;
+}
 
 .tipo {
   font-weight: 600;

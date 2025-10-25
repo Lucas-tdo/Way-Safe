@@ -71,14 +71,16 @@ html, body {
 
 .graficos .card {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 10px;
-  background: #fff;
-  padding: 12px;
+  background: #ffffff;
+  padding: 15px 15px 15px 30px;
+ 
   border-radius: 8px;
   min-height: 166px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  border-left: 5px solid green;
 }
 
 .graficos .card span {
@@ -94,6 +96,9 @@ html, body {
   gap: 10px;
   justify-content: center;
 }
+
+
+
 .row1{
   display: flex;
   gap: 50px;
@@ -102,7 +107,7 @@ html, body {
 
 .row2{
   display: flex;
-  
+  gap: 50px;
 }
 
 
@@ -192,7 +197,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
   padding: 10px 20px;
 }
 
