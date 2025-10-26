@@ -8,9 +8,9 @@ public class Main {
         ConexaoBanco cnx = new ConexaoBanco();
         ComandosJavaBanco comandos = new ComandosJavaBanco(cnx.getJdbcTemplate());
 
-        ExcelModeloAtual excel25 = new ExcelModeloAtual("./Jar/acidentes_2025.xlsx",2025);
-        ExcelModeloAntigo excel24 = new ExcelModeloAntigo("./Jar/acidentes_2024.xlsx",2024);
-        ExcelModeloAntigo excel23 = new ExcelModeloAntigo("./Jar/acidentes_2023.xlsx",2023);
+        ExcelModeloAtual excel25 = new ExcelModeloAtual("/app/acidentes_2025.xlsx",2025);
+        ExcelModeloAntigo excel24 = new ExcelModeloAntigo("/app/acidentes_2024.xlsx",2024);
+        ExcelModeloAntigo excel23 = new ExcelModeloAntigo("/app/acidentes_2023.xlsx",2023);
 
         excel23.extrairS3();
         List<RegistroAcidente> lote25 = excel25.tratarExcel();
