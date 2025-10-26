@@ -34,7 +34,7 @@
                     LocalDateTime dataHora = LocalDateTime.now();
                     DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
                     String dataFormatada = dataHora.format(dataFormato);
-                    String mensagem = "Registro de "+ (ultimaAdicionada)+" a "+ (i+1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
+                    String mensagem = "Registro de "+ (ultimaAdicionada)+" a "+ (i) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
                     System.out.println(dataFormatada+" "+mensagem);
                     save(acidentes,vitimas);
                     saveLog("Sucesso",mensagem,arquivoTratar);

@@ -3,7 +3,7 @@ var database = require("../database/config")
 
 function checaremail(email){
     var instrucaoSql = `
-        SELECT * FROM usuario WHERE email='${email}';
+        SELECT * FROM USUARIO WHERE email='${email}';
     `;
     return database.executar(instrucaoSql);
 }
@@ -18,7 +18,7 @@ function cadastrar(nome,email,senha,fk_empresa){
 
 function autenticar(email,senha){
     var instrucaoSql = `
-        SELECT * FROM usuario WHERE email="${email}" and senha =SHA2('${senha}', 256);
+        SELECT * FROM USUARIO WHERE email="${email}" and senha =SHA2('${senha}', 256);
     `;
     return database.executar(instrucaoSql);
 }

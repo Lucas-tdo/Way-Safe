@@ -1,0 +1,36 @@
+DockerFileComSite:
+
+
+FROM node:latest
+
+RUN apt install git
+
+RUN git clone https://github.com/Lucas-tdo/Way-Safe.git
+
+WORKDIR Way-Safe/Projeto
+
+COPY Way-Safe/Projeto/.env .env
+COPY Way-Safe/Projeto/.env.dev .env.dev
+
+RUN npm install
+
+ENV PORT=3333
+
+EXPOSE ${PORT}
+
+CMD ["npm", "start"]
+
+
+DockerFileSql:
+
+FROM mysql:8.1
+
+ENV MYSQL_ROOT_PASSWORD=Urubu100
+ENV MYSQL_DATABASE=waysafe
+ENV MYSQL_USER=Way_Safe
+ENV MYSQL_PASSWORD=Urubu100
+
+COPY /home/ubuntu/Projeto/Way-Safe/banco_de_dados/insert_rodovias_acidentes_concessionarias - Copia.sql /docker-entrypoint-initdb.d/
+COPY /home/ubuntu/Projeto/Way-Safe/banco_de_dados/script_criacao_tabela.sql /docker-entrypoint-initdb.d/
+
+ENV PORT=3306
