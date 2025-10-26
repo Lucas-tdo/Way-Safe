@@ -7,6 +7,8 @@
 
     public class ComandosJavaBanco {
         private final JdbcTemplate jdbcTemplate;
+        private Integer inicioLote=0;
+        private Integer ultimaAdicionada=1;
 
         public ComandosJavaBanco(JdbcTemplate jdbcTemplate) {
             this.jdbcTemplate = jdbcTemplate;
@@ -17,8 +19,7 @@
         public void saveLote(List<RegistroAcidente> registros , String arquivoTratar){
             String acidentes = "";
             String vitimas="";
-            Integer qtdRegistros=0;
-            Integer ultimaAdicionada=0;
+
 
             for (int i = 0; i < registros.size(); i++) {
                 if(!(acidentes.isEmpty()) && !(vitimas.isEmpty())){
@@ -28,22 +29,16 @@
 
                 acidentes+=registros.get(i).retornarAcidente();
                 vitimas+=registros.get(i).retornarVitimas();
-                qtdRegistros++;
-
-                if(i==registros.size()-1 ||qtdRegistros==1000){
-                    LocalDateTime dataHora = LocalDateTime.now();
-                    DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
-                    String dataFormatada = dataHora.format(dataFormato);
-                    String mensagem = "Registro de "+ (ultimaAdicionada)+" a "+ (i) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
-                    System.out.println(dataFormatada+" "+mensagem);
-                    save(acidentes,vitimas);
-                    saveLog("Sucesso",mensagem,arquivoTratar);
-                    qtdRegistros=0;
-                    ultimaAdicionada=i;
-                    acidentes="";
-                    vitimas="";
-                }
             }
+
+                LocalDateTime dataHora = LocalDateTime.now();
+                DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+                String dataFormatada = dataHora.format(dataFormato);
+                String mensagem = "Registro de "+ (inicioLote)+" a "+ (inicioLote+registros.size()-1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
+                System.out.println(dataFormatada+" "+mensagem);
+                save(acidentes,vitimas);
+                saveLog("Sucesso",mensagem,arquivoTratar);
+                inicioLote=inicioLote+registros.size();
         }
 
         public void save(String insertAcidente,String insertVitimas) {

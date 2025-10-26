@@ -49,7 +49,7 @@ public abstract class Excel {
         this.idPadrao = idPadrao;
     }
 
-    abstract List<RegistroAcidente> tratarExcel();
+    abstract void tratarExcel();
 
     public void extrairS3() {
         try {

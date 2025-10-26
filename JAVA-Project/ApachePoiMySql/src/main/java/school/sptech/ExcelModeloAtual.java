@@ -18,7 +18,9 @@ public class ExcelModeloAtual extends Excel{
     }
 
     @Override
-    public List<RegistroAcidente> tratarExcel(){
+    public void tratarExcel(){
+        ConexaoBanco cnx = new ConexaoBanco();
+        ComandosJavaBanco comandos = new ComandosJavaBanco(cnx.getJdbcTemplate());
         Integer Id= 1;
         try {
             Workbook workbook = new XSSFWorkbook(getArquivoTratar());
@@ -42,8 +44,16 @@ public class ExcelModeloAtual extends Excel{
                     registros.add(new RegistroAcidente( Integer.parseInt(super.getIdPadrao() +String.valueOf(Id)),registroArray[0],registroArray[1],registroArray[2] + " "+ registroArray[3],registroArray[4],registroArray[5],registroArray[6],registroArray[7],registroArray[8],registroArray[9],registroArray[10],registroArray[11],registroArray[12],registroArray[13],registroArray[14],registroArray[15],registroArray[16],registroArray[17],registroArray[18],registroArray[19]));
                 }
                 Id++;
-            }
 
+                if(registros.size()==1000){
+                    comandos.saveLote(registros,getArquivoTratar());
+                    registros.clear();
+                }
+            }
+            if(!registros.isEmpty()){
+                comandos.saveLote(registros,getArquivoTratar());
+                registros.clear();
+            }
             workbook.close();
         }
         catch (Exception e){
@@ -53,9 +63,8 @@ public class ExcelModeloAtual extends Excel{
         LocalDateTime dataHora = LocalDateTime.now();
         DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
         String dataFormatada = dataHora.format(dataFormato);
-        String mensagem = "Foram tratados "+ (registros.size())+" de registros no JAVA";
+        String mensagem = "Foram tratados "+ (Id-1)+" de registros no JAVA";
         System.out.println(dataFormatada+" "+mensagem);
-        return registros;
     }
 
 
