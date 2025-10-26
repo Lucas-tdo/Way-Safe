@@ -30,16 +30,16 @@
                 acidentes+=registros.get(i).retornarAcidente();
                 vitimas+=registros.get(i).retornarVitimas();
             }
-                save(acidentes,vitimas);
+
                 LocalDateTime dataHora = LocalDateTime.now();
                 DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
                 String dataFormatada = dataHora.format(dataFormato);
                 String mensagem = "Registro de "+ (inicioLote)+" a "+ (inicioLote+registros.size()-1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;
                 System.out.println(dataFormatada+" "+mensagem);
+                save(acidentes,vitimas);
                 saveLog("Sucesso",mensagem,arquivoTratar);
                 inicioLote=inicioLote+registros.size();
-                acidentes="";
-                vitimas="";
+
         }
 
         public void save(String insertAcidente,String insertVitimas) {
