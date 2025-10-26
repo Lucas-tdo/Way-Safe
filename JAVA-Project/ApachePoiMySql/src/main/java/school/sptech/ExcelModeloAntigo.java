@@ -3,6 +3,8 @@ package school.sptech;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +45,12 @@ public class ExcelModeloAntigo extends Excel {
             e.printStackTrace();
             e.getMessage();
         }
+        LocalDateTime dataHora = LocalDateTime.now();
+        DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+        String dataFormatada = dataHora.format(dataFormato);
+        String mensagem = "Foram tratados "+ (registros.size())+" de registros no JAVA";
+        System.out.println(dataFormatada+" "+mensagem);
 
-        System.out.println("Foram tratados " + registros.size() + " registros");
         return registros;
 
     }
