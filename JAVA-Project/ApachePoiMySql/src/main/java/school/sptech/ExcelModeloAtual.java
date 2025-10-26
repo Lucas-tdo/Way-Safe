@@ -49,6 +49,7 @@ public class ExcelModeloAtual extends Excel{
                     comandos.saveLote(registros,getArquivoTratar());
                     registros.clear();
                 }
+                workbook.close();
             }
             if(!registros.isEmpty()){
                 comandos.saveLote(registros,getArquivoTratar());

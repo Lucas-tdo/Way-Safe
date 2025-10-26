@@ -45,14 +45,18 @@ public class ExcelModeloAntigo extends Excel {
                     registros.clear();
                 }
             }
+            workbook.close();
             if(!registros.isEmpty()){
                 comandos.saveLote(registros,getArquivoTratar());
                 registros.clear();
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             e.getMessage();
         }
+
+
         LocalDateTime dataHora = LocalDateTime.now();
         DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
         String dataFormatada = dataHora.format(dataFormato);
