@@ -10,7 +10,6 @@ public class ConexaoBanco {
 
     public ConexaoBanco(){  
         BasicDataSource basicDataSource = new BasicDataSource();
-        //basicDataSource.setUrl("jdbc:mysql://ContainerBanco:3306/waysafe");
         basicDataSource.setUrl("jdbc:mysql://ContainerBanco:3306/waysafe");
         basicDataSource.setUsername("Way_Safe");
         basicDataSource.setPassword("Urubu100");

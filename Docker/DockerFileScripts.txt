@@ -9,8 +9,8 @@ RUN git clone https://github.com/Lucas-tdo/Way-Safe.git
 
 WORKDIR Way-Safe/Projeto
 
-COPY Way-Safe/Projeto/.env .env
-COPY Way-Safe/Projeto/.env.dev .env.dev
+COPY Chaves/.env .env
+COPY Chaves/.env.dev .env.dev
 
 RUN npm install
 
@@ -34,3 +34,45 @@ COPY /home/ubuntu/Projeto/Way-Safe/banco_de_dados/insert_rodovias_acidentes_conc
 COPY /home/ubuntu/Projeto/Way-Safe/banco_de_dados/script_criacao_tabela.sql /docker-entrypoint-initdb.d/
 
 ENV PORT=3306
+
+
+DockerJava:
+
+FROM openjdk:21-jdk-slim
+#Copia o script de inicialização para dentro do container
+
+RUN apt-get update && apt-get install -y git && apt-get clean && rm -rf /var/lib/apt/lists*
+
+COPY ../../Way-Safe/JAVA-Project/PastaJAR/ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar
+
+exec java -jar ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar
+
+EXPOSE 8080
+
+.env:
+AMBIENTE_PROCESSO=producao
+
+# Configurações de conexão com o banco de dados
+DB_HOST=localhost
+DB_DATABASE='waysafe'
+DB_USER='Way_Safe'
+DB_PASSWORD='Urubu100'
+DB_PORT=3306
+
+# Configurações do servidor de aplicação
+APP_PORT=3333
+APP_HOST=localhost
+
+.env.dev:
+AMBIENTE_PROCESSO=desenvolvimento
+
+# Configurações de conexão com o banco de dados
+DB_HOST=ContainerBanco
+DB_DATABASE='waysafe'
+DB_USER='Way_Safe'
+DB_PASSWORD='Urubu100'
+DB_PORT=3306
+
+# Configurações do servidor de aplicação
+APP_PORT=3333
+APP_HOST=localhost
