@@ -52,11 +52,12 @@ section nav {
 
 .logo img {
   width: 70px;
-  
+
 }
 
 /* Menu padrão */
-.menu, .canto_inferior_menu  {
+.menu,
+.canto_inferior_menu {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +67,8 @@ section nav {
   list-style: none;
 }
 
-.menu li a, .canto_inferior_menu li a {
+.menu li a,
+.canto_inferior_menu li a {
   display: inline-block;
   text-decoration: none;
   color: rgb(43, 43, 43);
@@ -76,7 +78,7 @@ section nav {
   font-size: 1.1rem;
 }
 
-#cadastro{
+#cadastro {
   background-color: #008D4A;
   color: #fff;
 }
@@ -174,15 +176,15 @@ section nav {
   gap: 2rem;
 }
 
-#pergunta_proposito{
+#pergunta_proposito {
   font-size: 2rem;
 }
 
-#palavra_proposito{
+#palavra_proposito {
   font-size: 3.5rem;
 }
 
-#text_proposito{
+#text_proposito {
   font-size: 1.35rem;
 }
 
@@ -226,9 +228,8 @@ section nav {
 }
 
 #section_contato {
-  background: linear-gradient(rgba(0, 0, 0, 0.268), rgba(0, 0, 0, 0.334)),
-              url(../Imagens/imagem-contato.svg) 
-              no-repeat center center / cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../Imagens/imagem-contato.svg) no-repeat center center / cover;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -236,7 +237,7 @@ section nav {
   padding: 8rem;
   color: var(--branco);
   box-sizing: border-box;
-}   
+}
 
 #section_contato h2 {
   font-size: 2.3rem;
@@ -246,7 +247,7 @@ section nav {
   color: white;
 }
 
-#section_contato p{
+#section_contato p {
   font-size: 1.5rem;
   line-height: 2.4rem;
   margin-bottom: 4rem;
@@ -255,9 +256,11 @@ section nav {
 #section_contato form {
   font-size: 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* duas colunas */
-  gap: 2rem; 
-  max-width: 100%; /* limite de largura */
+  grid-template-columns: 1fr 1fr;
+  /* duas colunas */
+  gap: 2rem;
+  max-width: 100%;
+  /* limite de largura */
   width: 100%;
   margin: 0 auto;
   padding: 3rem;
@@ -279,7 +282,8 @@ section nav {
 }
 
 #section_contato form textarea {
-  grid-column: 1 / 3; /* ocupa as duas colunas */
+  grid-column: 1 / 3;
+  /* ocupa as duas colunas */
   min-height: 100px;
   resize: none;
 }
@@ -301,7 +305,8 @@ section nav {
   width: 100%;
   border: none;
   border-bottom: 2px solid var(--verde-medio);
-  padding: 0.8rem 0 0.2rem 0; /* espaço pro label subir */
+  padding: 0.8rem 0 0.2rem 0;
+  /* espaço pro label subir */
   font-size: 1.4rem;
   outline: none;
   background: transparent;
@@ -310,7 +315,8 @@ section nav {
 .input-group label {
   position: absolute;
   left: 0;
-  top: 0.8rem; /* label colada no input */
+  top: 0.8rem;
+  /* label colada no input */
   font-size: 1.2rem;
   font-weight: 500;
   color: #333;
@@ -319,8 +325,8 @@ section nav {
 }
 
 /* Label sobe quando input em foco ou preenchido */
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
   top: -0.6rem;
   font-size: 1rem;
   color: var(--verde-medio);
@@ -349,17 +355,17 @@ section nav {
   color: var(--preto);
 }
 
-#way{
+#way {
   font-weight: 700;
 }
 
-#sobre_way{
+#sobre_way {
   font-size: 1.9rem;
   padding-left: 4rem;
   padding-bottom: 3rem;
 }
 
-#info{
+#info {
   font-size: 1.5rem;
 }
 
@@ -424,7 +430,7 @@ section nav {
 
 /* BOTÕES */
 
-.btn_enviar  {
+.btn_enviar {
   background-color: var(--verde-medio);
   color: var(--branco);
   padding: 0.8rem 2rem;
@@ -438,8 +444,8 @@ section nav {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btn_limpar{
-   background-color: var(--verde-medio);
+.btn_limpar {
+  background-color: var(--verde-medio);
   color: var(--branco);
   width: 30%;
   border: none;
@@ -458,7 +464,7 @@ section nav {
   transform: scale(1.04);
 }
 
-.btns_secundario{
+.btns_secundario {
   background-color: var(--verde-medio);
   color: var(--branco);
   padding: 0.8rem 2rem;
@@ -541,16 +547,20 @@ footer a {
   #mapa {
     display: none;
   }
+
   #section_contato {
     display: flex;
     justify-content: center;
   }
+
   #section_contato form {
     padding-right: 0rem;
   }
-  .proposito{
+
+
+  .proposito {
     padding: 0;
-  } 
+  }
 
 }
 
@@ -562,7 +572,7 @@ footer a {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .cards_principios .card {
     width: 25rem;
   }
@@ -570,10 +580,15 @@ footer a {
   #text_proposito {
     font-size: 1.5rem;
   }
-  #footer_nav ul, #footer_contatos h3{
+
+  #footer_nav ul,
+  #footer_contatos h3 {
     display: none;
   }
-  footer,#footer_contatos p, #footer_contatos a {
+
+  footer,
+  #footer_contatos p,
+  #footer_contatos a {
     gap: 0rem;
     display: flex;
     flex-direction: column;
@@ -585,6 +600,7 @@ footer a {
 
 /* Responsivo */
 @media (max-width: 1140px) {
+
   /* Esconde o menu padrão */
   .menu {
     position: fixed;
@@ -592,12 +608,36 @@ footer a {
     left: -100%;
     width: 100%;
     height: 100vh;
-    background: black;
+    background: rgb(255, 255, 255);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     transition: left 0.3s ease-in-out;
+  }
+
+  #section_contato form, 
+  #section_contato form input,
+  #section_contato form textarea 
+
+   {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  #section_contato {
+   padding: 4px; 
+  }
+
+  #section_contato h2,
+  #section_contato p {
+    padding: 20px;
+  }
+
+  .btn_limpar, .btn_enviar {
+    font-size: 1.0rem;
+    width: 10rem;
   }
 
   /* Exibe o botão hamburguer */
@@ -606,7 +646,7 @@ footer a {
   }
 
   /* Quando o checkbox está marcado, mostra o menu */
-  #nav_check:checked ~ .menu {
+  #nav_check:checked~.menu {
     left: 0;
     display: flex;
     align-items: stretch;
@@ -617,76 +657,116 @@ footer a {
   }
 
   /* Animação para o "X" */
-  #nav_check:checked + .hamburger div:nth-child(1) {
+  #nav_check:checked+.hamburger div:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
 
-  #nav_check:checked + .hamburger div:nth-child(2) {
+  #nav_check:checked+.hamburger div:nth-child(2) {
     opacity: 0;
   }
 
-  #nav_check:checked + .hamburger div:nth-child(3) {
+  #nav_check:checked+.hamburger div:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
 
-  
+
 }
 
 @media (max-width: 800px) {
-  
-  #section_contato h2, .sessao h2 {
+
+  #section_contato h2,
+  .sessao h2 {
     font-size: 2.5rem;
   }
 
-  #btn_contato{
+  #btn_contato {
     font-size: 1.3rem;
   }
-  h1{
+
+  h1 {
     font-size: 3rem;
-  } #centro p{
+  }
+
+  #centro p {
     font-size: 1.5rem;
-  } .btn_enviar {
-    padding: 1rem 2.5rem;
-    font-size: 1.5rem;
-  } #info {
+  }
+  
+  #section_proposito{
+    padding: 0rem 1rem;
+  }
+
+
+  #info {
     font-size: 1.7rem;
-  } #way {
+  }
+
+  #way {
     font-size: 3rem;
-  } #nosso {
+  }
+
+  #nosso {
     font-size: 2rem;
-  } .cor_amarela {
+  }
+
+  .cor_amarela {
     font-size: 3.5rem;
-  } .sessao {
+  }
+
+  .sessao {
     padding: 3rem 1rem;
   }
 }
 
 @media (max-width: 550px) {
-  
-  h1, #way,#section_contato h2, .sessao h2 {
+
+  h1,
+  #way,
+  #section_contato h2,
+  .sessao h2 {
     font-size: 2rem;
-  } #centro p, #info, #text_proposito, .sessao p, label {
+  }
+
+  #centro p,
+  #info,
+  #text_proposito,
+  .sessao p,
+  label {
     font-size: 1.1rem;
-  } .cards_principios .card {
+        line-height: 25px
+  }
+
+  #centro h1 {
+    font-size: 2rem;
+  }
+
+  .cards_principios .card {
     width: 15rem;
-  } .semaforo img {
+  }
+
+  .semaforo img {
     width: 3rem;
-  } #section_contato h2 {
-    padding: 3rem 4rem;
-  } 
+  }
+
+
+#section_valores {
+  padding: 6rem 1em;
+ }
+          
 }
 
 /* Mobile pequeno */
 @media (max-width: 550px) {
   #section_valores {
-    padding: 4rem 2rem; /* vertical horizontal */
+    padding: 4rem 2rem;
+    /* vertical horizontal */
   }
 }
 
 @media (max-width: 550px) {
   #sobre_way {
-    padding: 0  ; /* vertical horizontal */
+    padding: 10px;
+    /* vertical horizontal */
   }
 }
 
@@ -694,13 +774,20 @@ footer a {
 @media (max-width: 800px) {
   #section_valores {
     padding: 0rem 1rem;
-    
+
   }
 }
 
-/* Tablets */
-@media (max-width: 1140px) {
-  #section_valores {
-    padding: 6rem 4rem;
+@media (max-width: 400px) {
+  .cards_principios .card {
+    min-width: unset;
+    width: 90%;
+    font-size: 1rem;
+    padding: 1.2rem 0.4rem;
+  }
+
+  .cards_principios .card img {
+    width: 4rem;
+    height: auto;
   }
 }
