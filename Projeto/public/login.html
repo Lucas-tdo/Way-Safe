@@ -131,6 +131,9 @@
                     sessionStorage.EMAIL_USUARIO=resposta[0].email
                     sessionStorage.NOME_USUARIO=resposta[0].nome
                     sessionStorage.FK_EMPRESA=resposta[0].fk_empresa
+                            setTimeout(() => {
+                              window.location.href = '/login.html'
+                              },2000);
                 }
                 else{
                     alert("Usuário não localizado")

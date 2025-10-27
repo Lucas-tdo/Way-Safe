@@ -31,7 +31,7 @@ return database.executar(instrucaoSql);
 
 function top5MaisTiposAcidentes(fk_empresa){
     var instrucaoSql = `
-              select  descr as tipo, count(*) as qtd  from acidente join classe_acidente on fk_classe_acid = idClasse_acid  where fk_empresa = ${fk_empresa} group by tipo order by qtd desc limit 5;
+              select  descr as tipo, count(*) as qtd ,fk_classe_acid as classe  from acidente join classe_acidente on fk_classe_acid = idClasse_acid  where fk_empresa = ${fk_empresa} group by tipo,classe order by qtd desc limit 5;
 `    
 return database.executar(instrucaoSql);
 }

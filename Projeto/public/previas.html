@@ -99,7 +99,7 @@
             <div class="rank-scroll">
               <div class="coluna-rank">
                 <div class="imagem-acidente">
-                  <img src="icons/imagem-carro.png" alt="imagem-acidente-de-carro" width="50px">
+                  <img src="icons/imagem-carro.png" alt="imagem-acidente-de-carro" width="50px" id="1img">
                 </div>
 
                 <div class="descricao-acidente">
@@ -117,7 +117,7 @@
 
               <div class="coluna-rank">
                 <div class="imagem-acidente">
-                  <img src="icons/3.png" alt="imagem-acidente-de-carro" width="50px">
+                  <img src="icons/3.png" alt="imagem-acidente-de-carro" width="50px" id="2img">
                 </div>
 
                 <div class="descricao-acidente">
@@ -133,7 +133,7 @@
 
               <div class="coluna-rank">
                 <div class="imagem-acidente">
-                  <img src="icons/moto-imagem.png" alt="imagem-acidente-de-uma-moto" width="50px">
+                  <img src="icons/moto-imagem.png" alt="imagem-acidente-de-uma-moto" width="50px" id="3img">
                 </div>
 
                 <div class="descricao-acidente">
@@ -148,7 +148,7 @@
 
               <div class="coluna-rank">
                 <div class="imagem-acidente">
-                  <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px">
+                  <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px" id="4img">
                 </div>
 
                 <div class="descricao-acidente">
@@ -163,7 +163,7 @@
 
               <div class="coluna-rank">
                 <div class="imagem-acidente">
-                  <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px">
+                  <img src="icons/imagem-pata.png" alt="imagem-acidente-de-uma-moto" width="50px" id="5img">
                 </div>
 
                 <div class="descricao-acidente">
@@ -318,6 +318,12 @@
                     
                   }
                   function top5MaisTiposAcidentes(){
+                    let lista_img = [
+                    "atropelamento-animal.png","atropelamento-pedestre.png",
+                    "capotamento.png","colisao-frontal.png","colisao-lateral.png",
+                    "colisao-traseira.png","engavetamento.png","incendio.png",
+                    "objeto-contra-veiculo.png","saida-de-pita.png","sem-informacao.png","tombamento.png"
+                  ];
                     
                     var fk_empresa = sessionStorage.FK_EMPRESA
                     
@@ -328,10 +334,35 @@
                       for (var i = 0; i<5;i++){
                         var qtd = quantidade[i].qtd
                         var tipo = quantidade[i].tipo
-                        
+                        var img = quantidade[i].classe
+                        var caminhoImagem = ""
+
                         console.log(`top:${i+1}º ${tipo} com ${qtd} de acidentes `)
                         document.getElementById(`${i+1}lugar`).innerText =`${tipo}`;
                         document.getElementById(`${i+1}qtd`).innerText =`${qtd} acidentes `;
+
+                                                switch (img) {
+                          case 1: caminhoImagem = "atropelamento-animal.png"; break;
+                          case 2: caminhoImagem = "atropelamento-pedestre.png"; break;
+                          case 3: caminhoImagem = "capotamento.png"; break;
+                          case 4: caminhoImagem = "choque.png"; break;
+                          case 5: caminhoImagem = "colisao-frontal.png"; break;
+                          case 6: caminhoImagem = "colisao-lateral.png"; break;
+                          case 7: caminhoImagem = "colisao-lateral.png"; break;
+                          case 8: caminhoImagem = "colisao-traseira.png"; break;
+                          case 9: caminhoImagem = "engavetamento.png"; break;
+                          case 10: caminhoImagem = "incendio.png"; break;
+                          case 11: caminhoImagem = "objeto-contra-veiculo.png"; break;
+                          case 12: caminhoImagem = "sem-informacao.png"; break;
+                          case 13: caminhoImagem = "queda.png"; break;
+                          case 14: caminhoImagem = "saida-de-pista.png"; break;
+                          case 15: caminhoImagem = "sem-informacao.png"; break;
+                          case 16: caminhoImagem = "tombamento.png"; break;
+                          default: caminhoImagem = "sem-informacao.png"; break;
+                        }
+
+                  document.getElementById(`${i + 1}img`).src = `icons/${caminhoImagem}`;
+
                 }
 
             })
