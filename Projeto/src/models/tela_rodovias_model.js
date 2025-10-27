@@ -6,7 +6,7 @@ function topRodovias(fk_empresa) {
     
     var instrucaoSql = `
         SELECT IFNULL(rodovia_cod_numeric, 'Não identificado') as nomeRodovia, COUNT(fk_rodovias) as aparicoes 
-        FROM acidente
+        FROM ACIDENTE
         JOIN RODOVIAS ON idRODOVIAS = fk_rodovias
         WHERE fk_empresa = ${fk_empresa}
         GROUP BY rodovia_cod_numeric
