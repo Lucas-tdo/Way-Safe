@@ -1,23 +1,21 @@
+/* ===== IMPORT FONT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-optical-sizing: auto;
+    font-weight: 400;
     font-style: normal;
 }
 
-
 html, body {
-
   width: 100%;
   height: 100%;
-  overflow: auto; /* bloqueia scroll global */
-
-  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #EEEEEE;
 }
 
@@ -25,9 +23,8 @@ html, body {
 .fundo {
     display: flex;
     min-height: 100vh;
-    background: #f2f2f2;
+    background: #EEEEEE;
 }
-
 
 /* Conteúdo principal */
 .container {
@@ -36,37 +33,52 @@ html, body {
     flex-direction: column;
     gap: 5px;
     padding-bottom: 20px;
+    overflow: auto;
+    background: #EEEEEE;
 }
 
 .text_over {
-  font-size: 15px;
-  padding: 10px 20px
+  font-size: clamp(14px, 3vw, 15px);
+  padding: 10px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .text_data {
-  font-size: 15px;
+  font-size: clamp(13px, 2.5vw, 15px);
   padding: 10px 20px;
   color: #818181;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .barra {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* barra de título */
 .rodovias-bar {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
   background: #ffffff;
-  height: 70px;
+  height: auto;
+  min-height: 70px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
-
 .rodovias-bar h1 {
-  font-size: 25px;
+  font-size: clamp(18px, 4vw, 25px);
+  font-weight: 800;
+  margin: 0;
 }
 
 /* linha com filtro + cards/tabela */
@@ -125,14 +137,13 @@ html, body {
 
 
 .cards-rodovias {
-  
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
 .cards-rodovias .card{
-       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.059);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.059);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -143,19 +154,32 @@ html, body {
   border-radius: 8px;
   min-height: 150px;
   transition: all 0.3s ease;
+  overflow: hidden;
+}
 
+.cards-rodovias .card h1 {
+  font-size: clamp(18px, 4vw, 28px);
+  margin: 10px 0;
+  font-weight: 700;
+  word-break: break-word;
 }
 
 #card-linha1{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 #card-linha3{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 #card-linha3 button{
@@ -166,14 +190,26 @@ html, body {
   color: white;
   border-radius: 3px;
   cursor: pointer;
+  font-size: clamp(10px, 2vw, 14px);
+  transition: all 0.3s ease;
+}
+
+#card-linha3 button:hover {
+  background-color: #555555;
+  transform: scale(1.05);
 }
 
 .card p{
   padding-bottom: 5px;
+  font-size: clamp(12px, 2.5vw, 14px);
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 
 .card span {
-    margin-top: 5px;
+  margin-top: 5px;
+  font-size: clamp(12px, 2.5vw, 14px);
+  line-height: 1.4;
 }
 
 .card:hover {
@@ -186,51 +222,63 @@ html, body {
   width: 100%;
   gap: 15px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-/* #btn-relatorio-geral{
-  background-color: #ff1212;
-  border: none;
-  color: white;
-  padding: 5.9px;
-  border-radius: 3px;
-  cursor: pointer;
-
-} */
+.meio span {
+  font-size: clamp(14px, 3vw, 16px);
+  font-weight: 600;
+}
 
 .tabela-container {
-   
     background: #fff;
     border-radius: 8px;
     min-height: 325px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
-    max-height: 300px; /* altura máxima antes da rolagem aparecer */
-    overflow-y: auto;  /* ativa a barra de rolagem vertical */
-  
+/* Estilização da barra de scroll */
+.tabela-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tabela-container::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 10px;
+}
+
+.tabela-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
 .tabela-rodovias {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
-  font-size: 15px;
+  font-size: clamp(12px, 2.5vw, 15px);
 }
 
 .tabela-rodovias th {
   background-color: #d5d5d5fa;
   color: #282828;
-  padding-top: 25px;
-  padding-bottom: 15px;
-
+  padding: clamp(15px, 3vw, 25px) clamp(8px, 2vw, 15px);
   position: sticky;
   top: 0;
   z-index: 1;
+  font-size: clamp(11px, 2.5vw, 14px);
+  white-space: nowrap;
 }
 
 .tabela-rodovias td {
-  padding: 10px;
+  padding: clamp(8px, 2vw, 10px);
   border-bottom: 1px solid #ddd;
   text-align: center;
+  font-size: clamp(11px, 2.5vw, 14px);
 }
 
 .tabela-rodovias tr:hover {
@@ -241,68 +289,343 @@ html, body {
   background-color: #429050;
   color: #fff;
   border: none;
-  padding: 6px 12px;
+  padding: clamp(4px, 1.5vw, 6px) clamp(8px, 2.5vw, 12px);
   margin-left: 10px;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  font-size: clamp(10px, 2vw, 14px);
+  white-space: nowrap;
 }
 
 .btn-relatorio-pdf{
   background-color: #ff0000;
   color: #fff;
   border: none;
-  padding: 6px 12px;
+  padding: clamp(4px, 1.5vw, 6px) clamp(8px, 2.5vw, 12px);
   margin-left: 15px;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  font-size: clamp(10px, 2vw, 14px);
+  white-space: nowrap;
 }
-
-
 
 .btn-relatorio:hover {
   background-color: #00b85f;
   transform: scale(1.05);
 }
 
-.tabela:hover {
+.btn-relatorio-pdf:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+}
+
+.tabela-container:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .tipo {
     font-weight: 600;
+    font-size: clamp(14px, 2.5vw, 16px);
 }
 
 .icons {
     border-radius: 10px;
-    width: 40px;
+    width: clamp(30px, 6vw, 40px);
+    height: auto;
+    flex-shrink: 0;
 }
 
+/* ===== MEDIA QUERIES PARA RESPONSIVIDADE ===== */
+
+/* Melhorias para dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+  .btn-relatorio, .btn-relatorio-pdf, #card-linha3 button {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Tablets grandes e desktops pequenos */
+@media (max-width: 1200px) {
+  .cards-rodovias {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .conteudo-linha {
+    padding: 0 15px;
+  }
+  
+  .rodovias-bar {
+    padding: 15px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 550px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 950px) { 
   .conteudo-linha {
     display: flex;
     flex-direction: column;
+    gap: 15px;
   }
-  .filtro-box{
-    width: auto;
+  
+  .filtro-box {
+    width: 100%;
+    order: -1;
   }
- }
-
- @media (max-width: 700px) { 
+  
   .cards-rodovias {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
- }
-  @media (max-width:430px) { 
-    .tipo , .text_data {
-      font-size: 13px;
-    }
- }
+  
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .text_over, .text_data {
+    padding: 10px 15px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 500px;
+  }
+}
 
-   @media (max-width:360px) { 
-    .tipo , .text_data {
-      font-size: 10px;
-    }
- }
+/* Smartphones grandes */
+@media (max-width: 768px) {
+  .container {
+    gap: 10px;
+  }
+  
+  .rodovias-bar {
+    padding: 15px;
+    min-height: 60px;
+  }
+  
+  .rodovias-bar h1 {
+    font-size: clamp(16px, 5vw, 22px);
+  }
+  
+  .cards-rodovias {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 15px;
+    min-height: 120px;
+  }
+  
+  #card-linha1, #card-linha3 {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  #card-linha3 button {
+    width: auto;
+    min-width: 4rem;
+    height: 1.5rem;
+    font-size: 12px;
+  }
+  
+  .meio {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .tabela-container {
+    margin: 0 -15px;
+    border-radius: 0;
+    max-height: 350px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 500px;
+  }
+  
+  .conteudo-linha {
+    padding: 0 10px;
+  }
+  
+  .conteudo-principal {
+    gap: 15px;
+  }
+}
+
+/* Smartphones médios */
+@media (max-width: 600px) {
+  .text_over, .text_data {
+    font-size: 13px;
+    padding: 8px 15px;
+    white-space: normal;
+  }
+  
+  .barra {
+    padding: 0 10px;
+  }
+  
+  .filtro-box {
+    padding: 12px;
+    margin: 0 10px;
+  }
+  
+  .filtro-box h3 {
+    font-size: 16px;
+  }
+  
+  .filtro-box label {
+    font-size: 13px;
+  }
+  
+  .filtro-box select,
+  .filtro-box input,
+  .filtro-box button {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+  
+  .tabela-rodovias {
+    min-width: 450px;
+  }
+  
+  .btn-relatorio, .btn-relatorio-pdf {
+    padding: 6px 8px;
+    margin-left: 5px;
+    font-size: 11px;
+  }
+  
+  .tabela-container {
+    max-height: 300px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 500px) {
+  .rodovias-bar {
+    padding: 10px 15px;
+    min-height: 50px;
+  }
+  
+  .text_over, .text_data {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 12px;
+    min-height: 100px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(16px, 6vw, 20px);
+    margin: 5px 0;
+  }
+  
+  .cards-rodovias .card p {
+    font-size: 12px;
+  }
+  
+  .icons {
+    width: 30px;
+  }
+  
+  .meio span {
+    font-size: 14px;
+  }
+  
+  .tabela-container {
+    max-height: 250px;
+    margin: 0 -10px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 400px;
+    font-size: 11px;
+  }
+  
+  .tabela-rodovias th,
+  .tabela-rodovias td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+  
+  .btn-relatorio, .btn-relatorio-pdf {
+    padding: 4px 6px;
+    font-size: 9px;
+    margin-left: 2px;
+  }
+  
+  .filtro-box {
+    margin: 0 5px;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 430px) { 
+  .tipo, .text_data {
+    font-size: 13px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 10px;
+  }
+  
+  .tabela-container {
+    max-height: 200px;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) { 
+  .tipo, .text_data {
+    font-size: 10px;
+  }
+  
+  .rodovias-bar h1 {
+    font-size: clamp(14px, 6vw, 18px);
+  }
+  
+  .cards-rodovias .card {
+    padding: 10px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(14px, 7vw, 18px);
+  }
+  
+  .tabela-rodovias {
+    min-width: 350px;
+  }
+  
+  .filtro-box {
+    margin: 0 5px;
+    padding: 10px;
+  }
+  
+  #card-linha3 button {
+    width: 3.5rem;
+    height: 1.3rem;
+    font-size: 10px;
+  }
+  
+  .tabela-container {
+    max-height: 180px;
+  }
+}
