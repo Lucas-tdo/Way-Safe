@@ -23,7 +23,6 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
     var condicoes = [];
     var filtrosPreenchidos = 0;
 
-    // Conta quantos filtros foram preenchidos
     if (codigoRodovia != undefined && codigoRodovia != '') {
         condicoes.push(`rodovia_cod_numeric = '${codigoRodovia}'`);
         filtrosPreenchidos++;
@@ -35,7 +34,6 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
     }
 
     if (tipoAcidente != undefined && tipoAcidente != '') {
-        // Busca pela descrição da classe de acidente
         condicoes.push(`classe_acidente.descr = '${tipoAcidente}'`);
         filtrosPreenchidos++;
     }
@@ -56,7 +54,6 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
             ORDER BY totalAcidentes DESC;
         `;
     } else if (filtrosPreenchidos === 1) {
-        // UM FILTRO: Mostra detalhamento (rodovia aparece várias vezes com diferentes tipos)
         instrucaoSql = `
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
@@ -71,7 +68,6 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
             ORDER BY totalAcidentes DESC;
         `;
     } else {
-        // MÚLTIPLOS FILTROS: Mostra resultado mais específico/agrupado
         instrucaoSql = `
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
@@ -87,8 +83,8 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
         `;
     }
 
-    console.log("SQL gerado:", instrucaoSql); // Para debug
-    console.log("Filtros preenchidos:", filtrosPreenchidos); // Para debug
+    console.log("SQL gerado:", instrucaoSql); 
+    console.log("Filtros preenchidos:", filtrosPreenchidos);
 
     return database.executar(instrucaoSql);
 }
@@ -96,7 +92,7 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
 function listar_tipos_acidentes() {
     var instrucaoSql = `
         SELECT DISTINCT descr as tipoAcidente 
-        FROM classe_acidente 
+        FROM CLASSE_ACIDENTE 
         ORDER BY descr ASC;
     `;
     console.log("Buscando tipos de acidentes...");

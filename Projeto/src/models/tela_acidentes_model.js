@@ -61,25 +61,20 @@ function quantiaPorTipoAcidente(fk_empresa, periodo) {
 
     console.log("SQL topTiposAcidentes:", instrucaoSql);
     return database.executar(instrucaoSql).then(resultados => {
-        // Inicializar arrays com os dados da query
         const quantidades = [];
         const tiposAcidentes = [];
 
-        // Primeiro, adicionar todos os resultados da query
         resultados.forEach(item => {
             quantidades.push(item.total_aparicoes);
             tiposAcidentes.push(item.tipo_acidente);
         });
 
-        // Depois, verificar quais tipos estão faltando e adicionar no final
         todosOsTipos.forEach(tipo => {
-            // Verificar se o tipo já existe na lista de resultados (comparação case-insensitive e sem espaços extras)
             const jaExiste = tiposAcidentes.some(tipoExistente => 
                 tipoExistente.toLowerCase().trim() === tipo.toLowerCase().trim()
             );
             
             if (!jaExiste) {
-                // Se não existe, adicionar no final com quantidade 0
                 quantidades.push(0);
                 tiposAcidentes.push(tipo);
             }
@@ -92,8 +87,83 @@ function quantiaPorTipoAcidente(fk_empresa, periodo) {
     });
 }
 
+function evolucao_acidentes(fk_empresa, dias) {
+    console.log("Executando evolucao_acidentes para empresa:", fk_empresa, "período:", dias, "dias");
+
+    let agrupamento = '';
+    let formato = '';
+    let tipoAgrupamento = '';
+
+    if (dias <= 30) {
+        agrupamento = 'DATE(data_hora)';
+        formato = '%Y-%m-%d';
+        tipoAgrupamento = 'dia';
+    } else if (dias <= 200) {
+        agrupamento = 'YEARWEEK(data_hora, 1)';
+        formato = '%x-W%v';
+        tipoAgrupamento = 'semana';
+    } else if (dias <= 1000) {
+        agrupamento = 'DATE_FORMAT(data_hora, "%Y-%m")';
+        formato = '%Y-%m';
+        tipoAgrupamento = 'mês';
+    } else {
+        agrupamento = 'YEAR(data_hora)';
+        formato = '%Y';
+        tipoAgrupamento = 'ano';
+    }
+
+    var instrucaoSql = `
+        SELECT 
+            ${agrupamento} as periodo,
+            COUNT(*) as qtd_acidentes,
+            MIN(DATE(data_hora)) as data_inicio,
+            MAX(DATE(data_hora)) as data_fim
+        FROM ACIDENTE 
+        WHERE fk_empresa = ${fk_empresa} 
+        AND data_hora BETWEEN DATE_SUB(NOW(), INTERVAL ${dias} DAY) AND NOW()
+        GROUP BY ${agrupamento}
+        ORDER BY periodo ASC;
+    `;
+
+    console.log("SQL acidentesPorPeriodo:", instrucaoSql);
+    return database.executar(instrucaoSql).then(resultados => {
+        const periodos = [];
+        const quantidades = [];
+        const labels = [];
+
+        resultados.forEach(item => {
+            periodos.push(item.periodo);
+            quantidades.push(item.qtd_acidentes);
+            
+            if (tipoAgrupamento === 'dia') {
+                labels.push(new Date(item.data_inicio).toLocaleDateString('pt-BR'));
+            } else if (tipoAgrupamento === 'semana') {
+                const ano = item.periodo.toString().substring(0, 4);
+                const semana = item.periodo.toString().substring(4);
+                labels.push(`${ano} - Semana ${semana}`);
+            } else if (tipoAgrupamento === 'mês') {
+                const [ano, mes] = item.periodo.split('-');
+                const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 
+                             'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+                labels.push(`${meses[parseInt(mes) - 1]} ${ano}`);
+            } else if (tipoAgrupamento === 'ano') {
+                labels.push(item.periodo.toString());
+            }
+        });
+
+        return {
+            periodos: periodos,
+            quantidades: quantidades,
+            labels: labels,
+            tipoAgrupamento: tipoAgrupamento,
+            totalPeriodos: resultados.length
+        };
+    });
+}
+
 
 module.exports = {
     total_acidentes,
-    quantiaPorTipoAcidente
+    quantiaPorTipoAcidente,
+    evolucao_acidentes
 }

@@ -246,12 +246,10 @@
     function buscar_rodovias() {
       var fk_empresa = sessionStorage.FK_EMPRESA
 
-      // Pega os valores e remove acentos, depois faz trim para remover espaços
       var municipio = remove_acentos(document.getElementById("inp_municipio").value.trim());
       var tipo_acidente = remove_acentos(document.getElementById("op_tipo_acidente").value.trim());
       var rodovia = remove_acentos(document.getElementById("inp_rodovia").value.trim());
 
-      // Converte strings vazias em undefined para o backend processar corretamente
       var dados = {
         fk_empresa,
         municipio: municipio !== '' ? municipio : undefined,
@@ -259,7 +257,7 @@
         tipo_acidente: tipo_acidente !== '' && tipo_acidente !== 'Selecione' ? tipo_acidente : undefined
       };
 
-      console.log("Dados enviados:", dados); // Para debug
+      console.log("Dados enviados:", dados); 
 
       fetch(`/tela_rodovias_rota/aplicar_filtro`, {
         method: "POST",
@@ -272,9 +270,8 @@
         .then(resultado => {
           console.log("Resultado recebido:", resultado);
 
-          // Atualiza a tabela com os resultados
           var tabela = document.querySelector(".tabela-rodovias tbody");
-          tabela.innerHTML = ""; // Limpa a tabela
+          tabela.innerHTML = ""; 
 
           if (resultado.length === 0) {
             tabela.innerHTML = `

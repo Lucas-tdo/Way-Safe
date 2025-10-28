@@ -19,6 +19,25 @@ function totalAcidentes(req, res) {
         });
 }
 
+function evolucaoAcidentes(req, res) {
+    var fk_empresa = req.params.fk_empresa;
+    var periodo = req.params.periodo;
+
+    // Log para debug
+    console.log("Filtros recebidos:", { fk_empresa, periodo });
+
+    tela_acidentes_model.evolucao_acidentes(fk_empresa, periodo)
+        .then(resposta => {
+            console.log(`Busca retornou ${resposta.length} resultados`);
+            res.json(resposta);
+        })
+        .catch(erro => {
+            console.log("Erro na busca:", erro);
+            res.status(500).json(erro.sqlMessage || erro);
+        });
+}
+
+
 function quantiaPorTipoAcidente(req, res) {
     var fk_empresa = req.params.fk_empresa;
     var periodo = req.params.periodo;
@@ -39,5 +58,6 @@ function quantiaPorTipoAcidente(req, res) {
 
 module.exports = {
     totalAcidentes,
-    quantiaPorTipoAcidente
+    quantiaPorTipoAcidente,
+    evolucaoAcidentes
 }

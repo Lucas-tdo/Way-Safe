@@ -53,7 +53,7 @@
       <div class="conteudo-principal">
         <div class="cards-acidentes">
           <div class="card">
-            <p>Total de acidentes (últimos 30 dias)</p>
+            <p>Total de acidentes (último ano)</p>
             <div id="conteudo-total-acid">
               <p style="font-weight: 700;" id="acidente_30">1.577</p>
             </div>
@@ -61,7 +61,7 @@
 
           </div>
           <div class="card">
-            Total de acidentes (últimos 60 dias)
+            Total de acidentes (últimos 6 meses)
             <div id="conteudo-total-acid">
               <p style="font-weight: 700;" id="acidente_60">2.897</p>
             </div>
@@ -72,14 +72,13 @@
         <span class="tipo">Tabela das rodovias ranqueadas por seu indice de acidentes</span>
 
         <input type="number" name="" id="periodo_tipos" defaultValue="undefined">
-        <button onclick="total_acidentes_por_tipo(document.getElementById('periodo_tipos').value)">teste</button>
+        <button id="botao_filtro">teste</button>
 
         <div class="tabela">
           <div id="grafico-tipos"></div>
         </div>
 
         <span class="tipo">Evoluções dos acidentes nos ultimos 30 dias</span>
-
 
         <div class="tabela2"></div>
       </div>
@@ -94,8 +93,10 @@
         document.querySelector('.nav').classList.toggle('minimizado');
       });
 
-    var qtd_por_tipo = [];
+    var quantidade_por_tipo = [];
     var tipos = [];
+    var quantidade_evolucao = [];
+    var tempo = '';
 
     //Gráfico 1 - Tipos
     var tiposOptions = {
@@ -107,7 +108,7 @@
       },
       series: [{
         name: 'Quantidade de acidentes',
-        data: qtd_por_tipo
+        data: quantidade_por_tipo
       }],
       xaxis: {
         categories: tipos,
@@ -154,8 +155,8 @@
     graficoTipos.render();
 
     // gráfico 02 - evolução diária
-    const dias = Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`);
-    const acidentesDiarios = Array.from({ length: 30 }, () => Math.floor(Math.random() * 80) + 20);
+    //const dias = Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`);
+    //const acidentesDiarios = Array.from({ length: 30 }, () => Math.floor(Math.random() * 80) + 20);
 
     var evolucaoOptions = {
       chart: {
@@ -166,10 +167,10 @@
       },
       series: [{
         name: 'Acidentes por dia',
-        data: acidentesDiarios
+        data: []
       }],
       xaxis: {
-        categories: dias,
+        categories: [],
         title: { text: 'ÚLTIMOS 30 DIAS', style: { fontWeight: 700 } },
         labels: { rotate: -45 }
       },
@@ -209,12 +210,19 @@
     var graficoLinha = new ApexCharts(document.querySelector("#grafico-evolucao"), evolucaoOptions);
     graficoLinha.render();
 
-    /*
-    document.getElementById("body").onload = function () {
-      total_acidentes(30);
-      total_acidentes(60);
-    };
-    */
+    window.addEventListener("load", (event) => {
+      total_acidentes(360)
+      total_acidentes(130);
+
+      evolucao_acidentes(360); //Deve vir primeiro para definir o tempo(dia, mes ou ano)
+      total_acidentes_por_tipo(360);
+    });
+
+    document.getElementById("botao_filtro").addEventListener("click", function () {
+      evolucao_acidentes(document.getElementById('periodo_tipos').value) //Deve vir primeiro para definir o tempo(dia, mes ou ano)
+      total_acidentes_por_tipo(document.getElementById('periodo_tipos').value) 
+    });
+
 
     function total_acidentes(periodo) {
 
@@ -224,8 +232,8 @@
         .then(res => res.json())
         .then(quantidade => {
 
-          var qtd = quantidade[0].qtd_Acidente
-          if (periodo == 30) {
+          var qtd = quantidade.qtd_Acidente
+          if (periodo == 360) {
             document.getElementById("acidente_30").innerText = qtd;
           } else {
             document.getElementById("acidente_60").innerText = qtd;
@@ -235,10 +243,40 @@
 
     }
 
+    function evolucao_acidentes(periodo) {
+
+      var fk_empresa = sessionStorage.FK_EMPRESA
+
+      fetch(`/tela_acidentes_rota/evolucao_acidentes/${fk_empresa}/${periodo}`)
+        .then(res => res.json())
+        .then(quantidade => {
+
+          quantidade_evolucao = quantidade.quantidades;
+
+          datas = quantidade.labels;
+          tempo = quantidade.tipoAgrupamento;
+
+          console.log(datas);
+          console.log(quantidade_evolucao);
+
+          graficoLinha.updateOptions({
+            xaxis: {
+              categories: datas
+            },
+            title: {
+              text: `Evolução dos acidentes nos últimos ${datas.length} ${tempo}${datas.length > 1 ? 'es' : ''}`
+            }
+          });
+
+          graficoLinha.updateSeries([{
+            data: quantidade_evolucao
+          }])
+
+        })
+
+    }
+
     function total_acidentes_por_tipo(periodo) {
-
-      console.log(periodo)
-
       var fk_empresa = sessionStorage.FK_EMPRESA
 
       fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/${periodo}`)
@@ -247,10 +285,18 @@
 
           quantidade_por_tipo = quantidade.quantidades;
           tipos = quantidade.tipos;
+          var extensao_tempo = '';
+
+          switch() {
+            case
+          }
 
           graficoTipos.updateOptions({
             xaxis: {
               categories: tipos
+            },
+            title: {
+              text: `Tipos de acidentes nos últimos ${datas.length} ${tempo}${datas.length > 1 ? 'es' : ''}`
             }
           });
 
