@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,8 @@
   <title>SP-150</title>
   <link rel="stylesheet" href="css/sp150.css">
   <link rel="stylesheet" href="css/nav.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body>
@@ -17,18 +19,20 @@
       <button class="toggle-nav">☰ </button>
 
       <div class="perfil">
-
         <span class="nome">Olá, Roberto</span>
       </div>
 
       <ul class="menu-list">
-        <li > <img src="icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
+        <li><img src="icons/home.png" class="icon"><a href="#" class="text">Previas</a></li>
 
-        <li class="active"> <a href="Rodovias.html"> <img src="icons/grafico.png" class="icon"></img></a> <a href="Rodovias.html" class="text">Rodovias</a> </li>
+        <li class="active">
+          <a href="Rodovias.html"><img src="icons/grafico.png" class="icon"></a>
+          <a href="Rodovias.html" class="text">Rodovias</a>
+        </li>
 
-        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html" class="text">Acidentes</a> </li>
-
-        <!-- <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a> <a href="analise.html" class="text">Análise Detalhada</a> -->
+        <li>
+          <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></a>
+          <a href="acidentes.html" class="text">Acidentes</a>
         </li>
       </ul>
 
@@ -37,64 +41,108 @@
 
     <div class="container">
 
-
       <div class="previas-bar">
-       <a href="Rodovias.html" > <img src="./icons/seta-esquerda.png"> </a>  <h1 style="font-weight: 700;">  Específicaçães da Rodovia</h1>
+        <a href="Rodovias.html"><img src="./icons/seta-esquerda.png" alt="Voltar"></a>
+        <h1 style="font-weight: 700;">Especificações das Rodovias</h1>
       </div>
 
       <div class="barra">
-        <h1 class="text_over" style="font-weight: 700;">Registros da Rodovia SP-150</h1>
+        <h1 class="text_over" style="font-weight: 700;">Registro da rodovia SP-150</h1>
       </div>
-
 
       <div class="graficos">
         <div class="card_total">
-
           <div id="card-linha1">
             <p>Rodovia:</p>
           </div>
 
           <div id="nome-rodovia-tabela">
-            <h1 id="nome-rodovia" style="font-weight: 700; font-size: 45px; ">SP-150</h1>
+            <h1 id="nome-rodovia" style="font-weight: 700; font-size: 45px;">SP-150</h1>
           </div>
-
-        
-
         </div>
-       
+
         <div class="card">
           <div class="container-info">
             <div class="card-row row1">
               <p style="font-weight: 700;">Rank de acidente:<span> 1° </span></p>
               <p style="font-weight: 700;">Total de acidentes:<span> 150 mil</span></p>
-              <p style="font-weight: 700;">Município: <span> Guarulhos</span></p>
+              <p style="font-weight: 700;">Município:<span> Guarulhos</span></p>
             </div>
-
-           
           </div>
-          
         </div>
       </div>
 
       <div class="rank">
-        <div class="card_2"> <span> Tipos de acidentes do ultimo mes </span></div>
-        <div class="card_2"> 
-          <span>Top 5 tipos de acidente nos ultimos 12 meses </span> 
-      
-         
+        <div class="card_2">
+          <span>Tipos de acidentes do último mês</span>
+          <div id="chart-bar"></div>
+        </div>
 
-
+        <div class="card_2">
+          <span>Top 5 tipos de acidente nos últimos 12 meses</span>
+          <div id="chart-pie"></div>
         </div>
       </div>
+
     </div>
   </div>
+
   <script>
-    // Alterna a classe "minimizado" no menu + filtro
-    document.querySelector('.toggle-nav')
-      .addEventListener('click', () => {
-        document.querySelector('.nav').classList.toggle('minimizado');
-        document.querySelector('.filtro-box').classList.toggle('ativo');
-      });
+    // Alterna o menu lateral
+    const filtroBox = document.querySelector('.filtro-box');
+    document.querySelector('.toggle-nav').addEventListener('click', () => {
+      document.querySelector('.nav').classList.toggle('minimizado');
+      if (filtroBox) filtroBox.classList.toggle('ativo');
+    });
+
+    const coresAcidentes = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'];
+
+    // Gráfico 01 - Barras
+    const optionsBar = {
+      chart: {
+        type: 'bar',
+        height: 300,
+        width: '100%',
+        toolbar: { show: false }
+      },
+      series: [{
+        name: 'Quantidade',
+        data: [45, 32, 28, 18]
+      }],
+      xaxis: {
+        categories: ['Colisão traseira', 'Saída de pista', 'Capotamento', 'Atropelamento']
+      },
+      colors: coresAcidentes,
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          borderRadius: 4,
+          distributed: true
+        }
+      }
+    };
+
+    const chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
+    chartBar.render();
+
+    // Gráfico 02 - Pizza
+    const optionsPie = {
+      chart: {
+        type: 'pie',
+        height: 300,
+        width: '100%',
+        toolbar: { show: false }
+      },
+      series: [30, 25, 20, 15, 10],
+      labels: ['Colisão traseira', 'Saída de pista', 'Capotamento', 'Atropelamento', 'Outros'],
+      colors: coresAcidentes,
+      legend: {
+        position: 'bottom'
+      }
+    };
+
+    const chartPie = new ApexCharts(document.querySelector("#chart-pie"), optionsPie);
+    chartPie.render();
   </script>
 
 </body>
