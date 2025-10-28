@@ -16,6 +16,8 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require  ("./src/routes/usuario")
 var tela_previaRouter = require  ("./src/routes/tela_previa_rota")
+var tela_rodoviasRouter = require  ("./src/routes/tela_rodovias_rota")
+var tela_acidentesRouter = require  ("./src/routes/tela_acidentes_rota")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +28,8 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/tela_previa_rota", tela_previaRouter);
 app.use("/usuario",usuarioRouter)
+app.use("/tela_rodovias_rota",tela_rodoviasRouter);
+app.use("/tela_acidentes_rota",tela_acidentesRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

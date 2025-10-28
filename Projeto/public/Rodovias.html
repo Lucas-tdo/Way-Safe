@@ -224,7 +224,7 @@
     }
 
     function carregar_tipos_acidentes() {
-      fetch('/tela_rodovias/listar_tipos_acidentes')
+      fetch('/tela_rodovias_rota/listar_tipos_acidentes')
         .then(res => res.json())
         .then(tipos => {
           var select = document.getElementById('op_tipo_acidente');
@@ -261,7 +261,7 @@
 
       console.log("Dados enviados:", dados); // Para debug
 
-      fetch(`/tela_rodovias/aplicar_filtro`, {
+      fetch(`/tela_rodovias_rota/aplicar_filtro`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -318,7 +318,7 @@
         return;
       }
 
-      fetch(`/tela_rodovias/topRodovias/${fk_empresa}`)
+      fetch(`/tela_rodovias_rota/topRodovias/${fk_empresa}`)
         .then(res => {
           console.log("Status da resposta:", res.status);
           if (!res.ok) {
