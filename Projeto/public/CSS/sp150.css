@@ -1,3 +1,4 @@
+/* ===== IMPORT FONT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * {
@@ -11,7 +12,10 @@
 }
 
 html, body {
+  width: 100%;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #EEEEEE;
 }
 
@@ -27,38 +31,64 @@ html, body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  padding-bottom: 20px;
+  overflow: auto;
   background: #EEEEEE;
- 
 }
 
 /* BARRA SUPERIOR */
 .previas-bar {
-  gap: 15px;
-  background: #ffffff;
-  height: 70px;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  gap: 15px;
+  background: #ffffff;
+  height: auto;
+  min-height: 70px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
+  flex-wrap: wrap;
 }
 
 .previas-bar h1 {
-  font-size: 25px;
+  font-size: clamp(18px, 4vw, 25px);
+  font-weight: 700;
+  margin: 0;
+}
+
+.previas-bar img {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.previas-bar img:hover {
+  transform: scale(1.1);
 }
 
 .text_over {
-  font-size: 15px;
+  font-size: clamp(14px, 3vw, 15px);
   padding: 10px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .text_data {
-  font-size: 15px;
+  font-size: clamp(13px, 2.5vw, 15px);
   padding: 10px 20px;
   color: #818181;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .barra {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* OVERVIEW COM 3 CARDS */
@@ -75,16 +105,17 @@ html, body {
   gap: 10px;
   background: #ffffff;
   padding: 15px 15px 15px 30px;
- 
   border-radius: 8px;
   min-height: 166px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border-left: 5px solid green;
+  overflow: hidden;
 }
 
 .graficos .card span {
   margin-top: 5px;
+  font-size: clamp(12px, 2.5vw, 14px);
 }
 
 .container-info{
@@ -97,21 +128,23 @@ html, body {
   justify-content: center;
 }
 
-
-
 .row1{
   display: flex;
   gap: 50px;
-  padding-bottom: 10px  ;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.row1 p {
+  font-size: clamp(12px, 2.5vw, 14px);
+  line-height: 1.4;
 }
 
 .row2{
   display: flex;
   gap: 50px;
+  flex-wrap: wrap;
 }
-
-
-
 
 .card:hover {
   transform: scale(1.02);
@@ -130,27 +163,34 @@ html, body {
   min-height: 150px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .card_total span {
   margin-top: 5px;
-
+  font-size: clamp(12px, 2.5vw, 14px);
 }
 
 .card_total p{
   padding-bottom: 5px;
+  font-size: clamp(12px, 2.5vw, 14px);
 }
 
 #card-linha1{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 #card-linha3{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 #card-linha3 button{
@@ -161,6 +201,13 @@ html, body {
   color: white;
   border-radius: 3px;
   cursor: pointer;
+  font-size: clamp(10px, 2vw, 14px);
+  transition: all 0.3s ease;
+}
+
+#card-linha3 button:hover {
+  background-color: #555555;
+  transform: scale(1.05);
 }
 
 #nome-rodovia-tabela{
@@ -170,6 +217,12 @@ html, body {
   align-items: center;
   flex-direction: column;
   margin-bottom: 1.5rem;
+}
+
+#nome-rodovia-tabela h1 {
+  font-size: clamp(28px, 7vw, 45px);
+  word-break: break-word;
+  text-align: center;
 }
 
 
@@ -184,6 +237,12 @@ html, body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.card_2 span {
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
 }
 
 .card_2:hover,
@@ -197,7 +256,6 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-
   padding: 10px 20px;
 }
 
@@ -208,50 +266,276 @@ html, body {
   min-height: 340px;
 }
 
-@media (max-width: 1100px) {
-
-  .graficos .card span, .card_total span {
-    font-size: 14px;
-  } 
-
+/* Container com scroll horizontal para gráficos */
+.grafico-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 15px;
 }
-@media (max-width: 900px) {
+
+.grafico-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.grafico-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 10px;
+}
+
+.grafico-scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#chart-bar,
+#chart-pie {
+  min-width: 400px;
+  width: 100%;
+}
+
+/* ===== MEDIA QUERIES PARA RESPONSIVIDADE ===== */
+
+/* Melhorias para dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+  #card-linha3 button {
+    min-height: 44px;
+    min-width: 44px;
+  }
   
-  .graficos  {
+  .card:hover,
+  .card_total:hover,
+  .card_2:hover {
+    transform: none;
+  }
+}
+
+/* Tablets grandes e desktops pequenos */
+@media (max-width: 1200px) {
+  .graficos {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 15px;
+  }
+  
+  .rank {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .graficos .card span, 
+  .card_total span {
+    font-size: 14px;
+  }
+}
+/* Tablets */
+@media (max-width: 900px) {
+  .graficos {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     padding: 10px 20px;
-  } 
+  }
+  
   .rank {
     display: flex;
     flex-direction: column;
   }
+  
   .row1 {
     display: flex;
     flex-direction: column;
+    gap: 10px;
   }
 
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .previas-bar {
+    padding: 15px;
+  }
 }
 
-@media (max-width: 700px) { 
-  .text_data {
-    font-size: 11px;
+/* Smartphones grandes */
+@media (max-width: 768px) {
+  .container {
+    gap: 10px;
   }
+
+  .previas-bar {
+    min-height: 60px;
+    padding: 15px;
+  }
+
   .previas-bar h1 {
     font-size: 18px;
   }
- }
 
- @media (max-width: 500px) { 
+  .card_2 {
+    min-height: 300px;
+    padding: 15px;
+  }
+
+  #chart-bar,
+  #chart-pie {
+    min-width: 350px;
+  }
+
+  .row1 {
+    gap: 15px;
+  }
+}
+
+/* Smartphones médios */
+@media (max-width: 600px) {
+  .previas-bar {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .graficos,
+  .rank {
+    padding: 10px 15px;
+  }
+
+  .card_total,
+  .graficos .card,
+  .card_2 {
+    padding: 15px;
+    min-height: auto;
+  }
+
+  #nome-rodovia-tabela h1 {
+    font-size: 32px;
+  }
+
+  .text_data {
+    font-size: 11px;
+  }
+
+  .barra {
+    padding: 10px 15px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 500px) {
   .text_over {
     display: none;
   }
+  
   .card_2 span {
     font-size: 14px;
   }
+  
+  .previas-bar h1 {
+    font-size: 16px;
+  }
+
+  .previas-bar {
+    padding: 10px 15px;
+    min-height: 50px;
+  }
+
+  .graficos,
+  .rank {
+    padding: 10px;
+  }
+
+  .card_total,
+  .graficos .card {
+    padding: 12px;
+  }
+
+  .row1 {
+    gap: 10px;
+  }
+
+  .row1 p {
+    font-size: 12px;
+  }
+
+  #chart-bar,
+  #chart-pie {
+    min-width: 320px;
+  }
+
+  #card-linha3 button {
+    width: 4rem;
+    height: 1.6rem;
+    font-size: 11px;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 430px) {
+  .previas-bar h1 {
+    font-size: 14px;
+  }
+
+  #nome-rodovia-tabela h1 {
+    font-size: 28px;
+  }
+
+  .card_2 {
+    padding: 12px;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) {
+  .previas-bar {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
   .previas-bar h1 {
     font-size: 12px;
   }
 
- }
+  .graficos,
+  .rank {
+    padding: 8px;
+    gap: 10px;
+  }
+
+  .card_total,
+  .graficos .card,
+  .card_2 {
+    padding: 10px;
+  }
+
+  #nome-rodovia-tabela {
+    margin-bottom: 1rem;
+  }
+
+  #nome-rodovia-tabela h1 {
+    font-size: 24px;
+  }
+
+  .row1 p {
+    font-size: 11px;
+  }
+
+  #chart-bar,
+  #chart-pie {
+    min-width: 280px;
+  }
+
+  #card-linha3 button {
+    width: 3.5rem;
+    height: 1.5rem;
+    font-size: 10px;
+  }
+
+  .barra {
+    padding: 8px 10px;
+  }
+
+  .text_data {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+}
 
