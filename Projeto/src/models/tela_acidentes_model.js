@@ -5,19 +5,18 @@ function total_acidentes(fk_empresa, periodo) {
     console.log("Executando total_acidentes para empresa:", fk_empresa);
 
     var instrucaoSql = `
-        SELECT COUNT(*) as qtd_Acidente from ACIDENTE
+        SELECT COUNT(*) as total from ACIDENTE
         WHERE fk_empresa = ${fk_empresa} 
         AND data_hora BETWEEN DATE_SUB(NOW(), INTERVAL ${periodo} DAY) AND NOW();
     `;
 
-    console.log("SQL contarAcidentesPorPeriodo:", instrucaoSql);
+    console.log("SQL total acidentes:", instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function quantiaPorTipoAcidente(fk_empresa, periodo) {
     console.log("Executando quantiaPorTipoAcidente para empresa:", fk_empresa, periodo);
 
-    // Lista completa com todos os 16 tipos de acidentes possíveis
     const todosOsTipos = [
         'Colisão frontal',
         'Colisão lateral',

@@ -212,7 +212,7 @@
 
     window.addEventListener("load", (event) => {
       total_acidentes(360)
-      total_acidentes(130);
+      total_acidentes(180);
 
       evolucao_acidentes(360); //Deve vir primeiro para definir o tempo(dia, mes ou ano)
       total_acidentes_por_tipo(360);
@@ -220,7 +220,7 @@
 
     document.getElementById("botao_filtro").addEventListener("click", function () {
       evolucao_acidentes(document.getElementById('periodo_tipos').value) //Deve vir primeiro para definir o tempo(dia, mes ou ano)
-      total_acidentes_por_tipo(document.getElementById('periodo_tipos').value) 
+      total_acidentes_por_tipo(document.getElementById('periodo_tipos').value)
     });
 
 
@@ -230,9 +230,12 @@
 
       fetch(`/tela_acidentes_rota/total_acidentes/${fk_empresa}/${periodo}`)
         .then(res => res.json())
-        .then(quantidade => {
+        .then(total => {
 
-          var qtd = quantidade.qtd_Acidente
+          var qtd = total[0].total;
+
+          console.log(total[0].total);
+
           if (periodo == 360) {
             document.getElementById("acidente_30").innerText = qtd;
           } else {
@@ -255,16 +258,32 @@
 
           datas = quantidade.labels;
           tempo = quantidade.tipoAgrupamento;
+          var tempo_extensao = '';
 
           console.log(datas);
           console.log(quantidade_evolucao);
+
+          switch (tempo) {
+            case 'dia':
+              datas.length > 1 ? tempo_extensao = 'dias' : tempo_extensao = 'dia'
+              break
+            case 'semana':
+              datas.length > 1 ? tempo_extensao = 'semanas' : tempo_extensao = 'semana'
+              break
+            case 'mês':
+              datas.length > 1 ? tempo_extensao = 'meses' : tempo_extensao = 'mês'
+              break
+            case 'ano':
+              datas.length > 1 ? tempo_extensao = 'anos' : tempo_extensao = 'ano'
+              break
+          }
 
           graficoLinha.updateOptions({
             xaxis: {
               categories: datas
             },
             title: {
-              text: `Evolução dos acidentes nos últimos ${datas.length} ${tempo}${datas.length > 1 ? 'es' : ''}`
+              text: `Evolução dos acidentes nos últimos ${datas.length} ${tempo_extensao}`
             }
           });
 
@@ -287,8 +306,19 @@
           tipos = quantidade.tipos;
           var extensao_tempo = '';
 
-          switch() {
-            case
+          switch (tempo) {
+            case 'dia':
+              datas.length > 1 ? tempo_extensao = 'dias' : tempo_extensao = 'dia'
+              break
+            case 'semana':
+              datas.length > 1 ? tempo_extensao = 'semanas' : tempo_extensao = 'semana'
+              break
+            case 'mês':
+              datas.length > 1 ? tempo_extensao = 'meses' : tempo_extensao = 'mês'
+              break
+            case 'ano':
+              datas.length > 1 ? tempo_extensao = 'anos' : tempo_extensao = 'ano'
+              break
           }
 
           graficoTipos.updateOptions({
@@ -296,7 +326,7 @@
               categories: tipos
             },
             title: {
-              text: `Tipos de acidentes nos últimos ${datas.length} ${tempo}${datas.length > 1 ? 'es' : ''}`
+              text: `Tipos de acidentes nos últimos ${datas.length} ${tempo_extensao}`
             }
           });
 
