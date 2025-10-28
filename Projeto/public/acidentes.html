@@ -78,7 +78,7 @@
           <div id="grafico-tipos"></div>
         </div>
 
-        <span class="tipo">Evoluções dos acidentes nos ultimos 30 dias</span>
+        <span class="tipo">Evoluções dos acidentes</span>
 
         <div class="tabela2"></div>
       </div>
@@ -283,7 +283,11 @@
               categories: datas
             },
             title: {
-              text: `Evolução dos acidentes nos últimos ${datas.length} ${tempo_extensao}`
+              text: `Evolução dos acidentes 
+              n${a = (tempo_extensao == 'semana') || (tempo_extensao == 'semanas') ? 'a' : 'o'}
+              ${a = !(tempo_extensao == 'mês') && (tempo_extensao.endsWith('s')) ? 's' : ''} 
+              últim${a = (tempo_extensao == 'semana') || (tempo_extensao == 'semanas') ? 'a' : 'o'}${a = !(tempo_extensao == 'mês') && (tempo_extensao.endsWith('s')) ? 's' : ''} 
+              ${c = datas.length > 1 ? datas.length : ''} ${tempo_extensao}`
             }
           });
 
@@ -304,7 +308,7 @@
 
           quantidade_por_tipo = quantidade.quantidades;
           tipos = quantidade.tipos;
-          var extensao_tempo = '';
+          var tempo_extensao = '';
 
           switch (tempo) {
             case 'dia':
@@ -326,7 +330,8 @@
               categories: tipos
             },
             title: {
-              text: `Tipos de acidentes nos últimos ${datas.length} ${tempo_extensao}`
+              text: `Tipos de acidentes nos últim${a = (tempo_extensao == 'semana') || (tempo_extensao == 'semanas') ? 'a' : 'o'}${a = !(tempo_extensao == 'mês') && (tempo_extensao.endsWith('s')) ? 's' : ''} 
+              ${c = datas.length > 1 ? datas.length : ''} ${tempo_extensao}`
             }
           });
 
