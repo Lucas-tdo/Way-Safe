@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" onload="">
 
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="CSS/nav.css">
 </head>
 
-<body>
+<body >
 
   <div class="fundo">
 
@@ -18,7 +18,7 @@
 
       <div class="perfil">
 
-        <span class="nome">Olá, Roberto</span>
+        <span class="nome" id="nome_usuario">Olá, Roberto</span>
       </div>
 
       <ul class="menu-list">
@@ -246,7 +246,16 @@
 
 
 
+    function chamarFuncoes(){
 
+    document.getElementById("nome_usuario").innerText=`Olá, ${sessionStorage.NOME_USUARIO}`
+
+      top10(),
+      top5MaisTiposAcidentes(),
+      total_acidentes(),
+      trechoMaisCritico(),
+      PiorMes()
+    }
     function total_acidentes(){
       
         var fk_empresa = sessionStorage.FK_EMPRESA
