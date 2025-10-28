@@ -1,21 +1,28 @@
+/* ===== IMPORT FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+html,
 body {
-  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #EEEEEE;
 }
 
 .fundo {
   display: flex;
   min-height: 100vh;
-  background: #f2f2f2;
+  background: #EEEEEE;
 }
 
 /* Conteúdo principal */
@@ -25,35 +32,46 @@ body {
   flex-direction: column;
   gap: 5px;
   padding-bottom: 20px;
+  overflow: auto;
+  background: #EEEEEE;
 }
 
 /* Barra de título */
 .acidentes-bar {
-  background: #ffffff;
-  height: 70px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 20px;
+  height: auto;
+  min-height: 70px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+  flex-wrap: wrap;
 }
 
 .acidentes-bar h1 {
-  font-size: 25px;
+  font-size: clamp(18px, 4vw, 25px);
+  font-weight: 800;
+  margin: 0;
 }
 
 /* Barra de informações */
 .barra {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .text_over {
-  font-size: 15px;
+  font-size: clamp(14px, 3vw, 20px);
   padding: 10px 20px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .text_data {
-  font-size: 15px;
+  font-size: clamp(13px, 2.5vw, 15px);
   padding: 10px 20px;
   color: #818181;
 }
@@ -68,7 +86,7 @@ body {
 
 .cards-acidentes {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -81,17 +99,23 @@ body {
   padding: 20px;
   border-radius: 8px;
   min-height: 200px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-#conteudo-total-acid{
+.cards-acidentes .card p {
+  font-size: clamp(14px, 2.5vw, 16px);
+  line-height: 1.4;
+}
+
+#conteudo-total-acid {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80%;
-  font-size: 3rem;
-  
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
 }
 
 .card:hover,
@@ -101,53 +125,405 @@ body {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Tabela */
+.card:hover,
+.tabela:hover,
+.tabela2:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabela/Gráficos */
 .tabela {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   min-height: 325px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
-
 
 .tabela2 {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   min-height: 250px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Container com scroll horizontal para gráficos */
+.grafico-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+/* Indicador de scroll em dispositivos móveis */
+@media (max-width: 768px) {
+  .grafico-scroll-container::after {
+    content: '← Deslize para ver mais →';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #999;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0.7;
+    animation: fadeInOut 3s ease-in-out infinite;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+}
+
+.grafico-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.grafico-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 10px;
+}
+
+.grafico-scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
 #grafico-tipos,
 #grafico-evolucao {
   width: 100%;
+  min-width: 600px;
   max-width: 100%;
-  height: auto;
+  height: 350px;
 }
 
 .apexcharts-canvas {
   max-width: 100% !important;
 }
 
+/* Ajusta textos dos gráficos em telas menores */
+.apexcharts-text {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.apexcharts-title-text {
+  font-size: 20px !important;
+}
+
+.apexcharts-xaxis-title-text,
+.apexcharts-yaxis-title-text {
+  font-size: 12px !important;
+}
+
+/* Ajusta altura dos gráficos em telas menores */
+@media (max-width: 768px) {
+  #grafico-tipos,
+  #grafico-evolucao {
+    height: 320px;
+    min-width: 550px;
+  }
+}
+
+@media (max-width: 600px) {
+  #grafico-tipos,
+  #grafico-evolucao {
+    height: 300px;
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  #grafico-tipos,
+  #grafico-evolucao {
+    height: 280px;
+    min-width: 450px;
+  }
+  
+  /* Ajusta o tamanho das fontes dos gráficos */
+  .apexcharts-title-text {
+    font-size: 14px !important;
+  }
+  
+  .apexcharts-xaxis-label,
+  .apexcharts-yaxis-label {
+    font-size: 8px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  #grafico-tipos,
+  #grafico-evolucao {
+    height: 260px;
+    min-width: 400px;
+  }
+}
+
 .tipo {
   font-weight: 600;
+  font-size: clamp(14px, 2.5vw, 16px);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Estilos para filtros */
+#periodo_tipos {
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: clamp(13px, 2.5vw, 15px);
+  margin-bottom: 10px;
+}
+
+#botao_filtro {
+  padding: 10px 20px;
+  background-color: #008D4A;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: clamp(13px, 2.5vw, 15px);
+  transition: background 0.3s ease;
+  margin-left: 10px;
+}
+
+#botao_filtro:hover {
+  background-color: #006d39;
+}
+
+#botao_filtro:active {
+  transform: scale(0.98);
 }
 
 
-@media  (max-width: 900px) {
-  .cards-acidentes{
-    display: flex;
-    flex-direction: column;
+/* ===== MEDIA QUERIES PARA RESPONSIVIDADE ===== */
 
+/* Melhorias para dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover,
+  .tabela:hover,
+  .tabela2:hover {
+    transform: none;
+  }
+}
+
+/* Tablets e dispositivos médios */
+@media (max-width: 1100px) {
+  .cards-acidentes {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
   }
 
+  .conteudo-principal {
+    padding: 0 15px;
+  }
+
+  .barra {
+    padding: 10px 15px;
+  }
 }
 
-@media  (max-width: 500px) {
+/* Tablets */
+@media (max-width: 900px) {
+  .cards-acidentes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .acidentes-bar {
+    padding: 15px;
+    min-height: 60px;
+  }
+
+  .acidentes-bar h1 {
+    font-size: clamp(16px, 5vw, 22px);
+  }
+
+  .cards-acidentes .card {
+    min-height: 180px;
+  }
+
+  #grafico-tipos,
+  #grafico-evolucao {
+    min-width: 500px;
+  }
+
+  .tabela,
+  .tabela2 {
+    padding: 15px;
+  }
+}
+
+/* Smartphones grandes */
+@media (max-width: 768px) {
+  .container {
+    gap: 10px;
+  }
+
+  .conteudo-principal {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .cards-acidentes .card {
+    padding: 15px;
+    min-height: 160px;
+  }
+
+  #conteudo-total-acid {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .tabela,
+  .tabela2 {
+    margin: 0 -10px;
+    border-radius: 0;
+    min-height: 300px;
+    padding: 15px 10px;
+  }
+
+  .barra {
+    padding: 5px 10px;
+  }
+
+  .text_over,
+  .text_data {
+    padding: 5px 10px;
+  }
+  
+  .grafico-scroll-container {
+    margin: 0 -5px;
+  }
+}
+
+/* Smartphones médios */
+@media (max-width: 600px) {
+  .acidentes-bar {
+    padding: 10px 15px;
+    min-height: 50px;
+  }
+
+  .cards-acidentes .card {
+    padding: 12px;
+    min-height: 140px;
+  }
+
+  #grafico-tipos,
+  #grafico-evolucao {
+    min-width: 450px;
+  }
+
+  .tipo {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .text_data {
+    font-size: 11px;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 500px) {
+  .text_over {
+    display: none;
+  }
 
   .tipo {
     font-size: 12px;
   }
 
+  .cards-acidentes .card {
+    padding: 10px;
+    min-height: 120px;
+    gap: 8px;
+  }
+
+  .cards-acidentes .card p {
+    font-size: 12px;
+  }
+
+  #conteudo-total-acid {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .tabela,
+  .tabela2 {
+    padding: 10px;
+    min-height: 250px;
+  }
+
+  #grafico-tipos,
+  #grafico-evolucao {
+    min-width: 450px;
+  }
+
+  .barra {
+    padding: 5px;
+  }
+
+  .text_data {
+    padding: 5px 10px;
+  }
+
+  #periodo_tipos {
+    max-width: 100%;
+    margin-bottom: 8px;
+  }
+
+  #botao_filtro {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  
+  .grafico-scroll-container {
+    padding-bottom: 5px;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) {
+  .acidentes-bar {
+    padding: 8px 10px;
+  }
+
+  .acidentes-bar h1 {
+    font-size: clamp(14px, 6vw, 18px);
+  }
+
+  .cards-acidentes .card {
+    padding: 8px;
+    min-height: 100px;
+  }
+
+  #conteudo-total-acid {
+    font-size: clamp(1.2rem, 9vw, 1.8rem);
+  }
+
+  #grafico-tipos,
+  #grafico-evolucao {
+    min-width: 350px;
+  }
+
+  .conteudo-principal {
+    gap: 10px;
+  }
+
+  .tipo {
+    font-size: 11px;
+  }
 }
