@@ -125,9 +125,6 @@
         if(mensagem==""){
             checaremail()
         }
-        if(mensagem == ""){
-          checarEmpresa()
-        }
         else{
           alert(mensagem)
         }
@@ -141,6 +138,10 @@
       .then(resposta=>{resposta.json().then(resposta=>{
         if(resposta.length>0){
           alert("Email já está em uso!")
+        }
+        else{
+
+        checarEmpresa()
         }
         })
       })
