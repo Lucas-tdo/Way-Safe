@@ -1,17 +1,17 @@
 var database = require("../database/config")
 
-
 function topRodovias(fk_empresa) {
     console.log("Executando topRodovias para empresa:", fk_empresa);
     
     var instrucaoSql = `
-        SELECT IFNULL(rodovia_cod_numeric, 'Não identificado') as nomeRodovia, COUNT(fk_rodovias) as aparicoes 
+        SELECT IFNULL(rodovia_cod_numeric, 'Não identificado') as nomeRodovia, 
+               COUNT(fk_rodovias) as aparicoes 
         FROM ACIDENTE
         JOIN RODOVIAS ON idRODOVIAS = fk_rodovias
         WHERE fk_empresa = ${fk_empresa}
         GROUP BY rodovia_cod_numeric
         ORDER BY aparicoes DESC
-        LIMIT 3
+        LIMIT 3;
     `;
     
     console.log("SQL topRodovias:", instrucaoSql);
@@ -36,7 +36,7 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
 
     if (tipoAcidente != undefined && tipoAcidente != '') {
         // Busca pela descrição da classe de acidente
-        condicoes.push(`CLASSE_ACIDENTE.descr = '${tipoAcidente}'`);
+        condicoes.push(`classe_acidente.descr = '${tipoAcidente}'`);
         filtrosPreenchidos++;
     }
 
@@ -47,13 +47,13 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
-                CLASSE_ACIDENTE.descr as tipoAcidente,
+                classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
-            JOIN CLASSE_ACIDENTE ON fk_classe_acid = idClasse_acid
-            GROUP BY rodovia_cod_numeric, municipio, CLASSE_ACIDENTE.descr
-            ORDER BY totalAcidentes DESC
+            JOIN classe_acidente ON fk_classe_acid = idClasse_acid
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
+            ORDER BY totalAcidentes DESC;
         `;
     } else if (filtrosPreenchidos === 1) {
         // UM FILTRO: Mostra detalhamento (rodovia aparece várias vezes com diferentes tipos)
@@ -61,14 +61,14 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
-                CLASSE_ACIDENTE.descr as tipoAcidente,
+                classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
-            JOIN CLASSE_ACIDENTE ON fk_classe_acid = idClasse_acid
+            JOIN classe_acidente ON fk_classe_acid = idClasse_acid
             WHERE ${condicoes.join(' AND ')}
-            GROUP BY rodovia_cod_numeric, municipio, CLASSE_ACIDENTE.descr
-            ORDER BY totalAcidentes DESC
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
+            ORDER BY totalAcidentes DESC;
         `;
     } else {
         // MÚLTIPLOS FILTROS: Mostra resultado mais específico/agrupado
@@ -76,14 +76,14 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
-                CLASSE_ACIDENTE.descr as tipoAcidente,
+                classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
-            JOIN CLASSE_ACIDENTE ON fk_classe_acid = idClasse_acid
+            JOIN classe_acidente ON fk_classe_acid = idClasse_acid
             WHERE ${condicoes.join(' AND ')}
-            GROUP BY rodovia_cod_numeric, municipio, CLASSE_ACIDENTE.descr
-            ORDER BY totalAcidentes DESC
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
+            ORDER BY totalAcidentes DESC;
         `;
     }
 
@@ -96,8 +96,8 @@ function buscar_rodovias(codigoRodovia, municipio, tipoAcidente) {
 function listar_tipos_acidentes() {
     var instrucaoSql = `
         SELECT DISTINCT descr as tipoAcidente 
-        FROM CLASSE_ACIDENTE 
-        ORDER BY descr ASC
+        FROM classe_acidente 
+        ORDER BY descr ASC;
     `;
     console.log("Buscando tipos de acidentes...");
     return database.executar(instrucaoSql);

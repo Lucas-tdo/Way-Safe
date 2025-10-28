@@ -7,6 +7,12 @@ function checaremail(email){
     `;
     return database.executar(instrucaoSql);
 }
+function checarEmpresa(empresa){
+    var instrucaoSql = `
+        SELECT * FROM USUARIO WHERE EMPRESA='${empresa}';
+    `;
+    return database.executar(instrucaoSql);
+}
 
 
 function cadastrar(nome,email,senha,fk_empresa){
@@ -25,5 +31,6 @@ function autenticar(email,senha){
 module.exports = {
     checaremail,
     cadastrar,
-    autenticar
+    autenticar,
+    checarEmpresa
 }

@@ -125,6 +125,9 @@
         if(mensagem==""){
             checaremail()
         }
+        if(mensagem == ""){
+          checarEmpresa()
+        }
         else{
           alert(mensagem)
         }
@@ -148,6 +151,27 @@
         console.log(erro)
       })
     }
+
+  function checarEmpresa(){
+        var empresa = input_fk_empresa.value
+        fetch(`/usuario/checarEmpresa/${empresa}`,{
+        method:"GET"
+      })
+      .then(resposta=>{resposta.json().then(resposta=>{
+        if(resposta.length=0){
+          alert("Codigo de empresa inválido")
+        }
+        else{
+          cadastrar()
+        }
+        })
+      })
+      .catch(erro=>{
+        console.log(erro)
+      })
+    
+  }
+
 
     function cadastrar(){
         var nome = input_nome.value

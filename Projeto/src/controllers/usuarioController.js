@@ -18,6 +18,23 @@ function checaremail(req,res){
         })
     }
 }
+function checarEmpresa(req,res){
+    var empresa = req.params.empresa
+    if(empresa==undefined){
+        res.status(400).send('Seu codigo de empresa está undefined!')
+    }
+    else{
+        usuarioModel.checarEmpresa(empresa)
+        .then(resposta=>{
+            console.log("Analisando se a empresa existe já está cadastrado");
+            res.json(resposta)
+        })
+        .catch(erro=>{
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+}
 
 function cadastrar(req,res){
     var nome = req.body.nomeServer;
@@ -82,5 +99,6 @@ function autenticar(req,res){
 module.exports = {
     checaremail,
     cadastrar,
-    autenticar
+    autenticar,
+    checarEmpresa
 }
