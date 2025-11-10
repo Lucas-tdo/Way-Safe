@@ -3,8 +3,8 @@ var router = express.Router();
 
 var TelaAcidentesController = require("../controllers/tela_acidentes_controller");
 
-router.get("/total_acidentes/:fk_empresa/:periodo", function(req, res) {
-    TelaAcidentesController.totalAcidentes(req, res);
+router.get("/municipio_mais_acidentes/:fk_empresa/:periodo", function(req, res) {
+    TelaAcidentesController.municipio_mais_acidentes(req, res);
 });
 
 router.get("/evolucao_acidentes/:fk_empresa/:periodo", function(req, res) {
