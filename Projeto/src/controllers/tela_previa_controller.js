@@ -1,8 +1,28 @@
 var usuarioModel = require("../models/tela_previa_model");
 
 
+function anosAcidentes(req,res){
+    var fk_empresa = req.params.fk_empresa
+    if(fk_empresa==undefined){
+        res.status(400).send('Seu fk_empresa está undefined!')
+    }
+    else{
+        usuarioModel.anosAcidentes(fk_empresa)
+        .then(resposta=>{
+            console.log("Analisando se o fk_empresa");
+            res.json(resposta)
+        })
+        .catch(erro=>{
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+}
+
 function qtdAcidentes(req,res){
     var fk_empresa = req.params.fk_empresa
+    var anoSelecionado = req.params.anoSelecionado
+
     if(fk_empresa==undefined){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
@@ -20,6 +40,8 @@ function qtdAcidentes(req,res){
 }
 function trechoCritico(req,res){
     var fk_empresa = req.params.fk_empresa
+    var anoSelecionado = req.params.anoSelecionado
+
     if(fk_empresa==undefined){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
@@ -37,11 +59,13 @@ function trechoCritico(req,res){
 }
 function top10(req,res){
     var fk_empresa = req.params.fk_empresa
+    var anoSelecionado = req.params.anoSelecionado
+
     if(fk_empresa==undefined){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
     else{
-        usuarioModel.top10(fk_empresa)
+        usuarioModel.top10(fk_empresa,anoSelecionado)
         .then(resposta=>{
             console.log("Analisando se o fk_empresa");
             res.json(resposta)
@@ -54,11 +78,13 @@ function top10(req,res){
 }
 function PiorMes(req,res){
     var fk_empresa = req.params.fk_empresa
+    var anoSelecionado = req.params.anoSelecionado
+
     if(fk_empresa==undefined){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
     else{
-        usuarioModel.PiorMes(fk_empresa)
+        usuarioModel.PiorMes(fk_empresa,anoSelecionado)
         .then(resposta=>{
             console.log("Analisando se o fk_empresa");
             res.json(resposta)
@@ -71,11 +97,13 @@ function PiorMes(req,res){
 }
 function top5MaisTiposAcidentes(req,res){
     var fk_empresa = req.params.fk_empresa
+    var anoSelecionado = req.params.anoSelecionado
+
     if(fk_empresa==undefined){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
     else{
-        usuarioModel.top5MaisTiposAcidentes(fk_empresa)
+        usuarioModel.top5MaisTiposAcidentes(fk_empresa,anoSelecionado)
         .then(resposta=>{
             console.log("Analisando se o fk_empresa");
             res.json(resposta)
@@ -95,5 +123,6 @@ module.exports = {
     trechoCritico,
     top10,
     PiorMes,
-    top5MaisTiposAcidentes
+    top5MaisTiposAcidentes,
+    anosAcidentes
 }

@@ -1,65 +1,108 @@
+var database = require("../database/config");
 
-var database = require("../database/config")
-
-function qtdAcidentes(fk_empresa) {
+function qtdAcidentes(fk_empresa, anoSelecionado) {
     var instrucaoSql = `
-        select count(*) as qtd_Acidente 
-        from ACIDENTE 
-        where fk_empresa = ${fk_empresa};
+        SELECT COUNT(*) AS qtd_Acidente 
+        FROM ACIDENTE 
+        WHERE fk_empresa = ${fk_empresa}
+    `;
+
+    if (anoSelecionado != "") {
+        instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
+    }
+
+    instrucaoSql += ";";
+    return database.executar(instrucaoSql);
+}
+
+function trechoCritico(fk_empresa, anoSelecionado) {
+    var instrucaoSql = `
+        SELECT rodovia_cod_numeric AS rodovia,
+               COUNT(*) AS qtd 
+        FROM RODOVIAS 
+        JOIN ACIDENTE ON idRODOVIAS = fk_rodovias 
+        WHERE fk_empresa = ${fk_empresa}
+    `;
+
+    if (anoSelecionado != "") {
+        instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
+    }
+
+    instrucaoSql += `
+        GROUP BY rodovia_cod_numeric 
+        ORDER BY qtd DESC 
+        LIMIT 1;
     `;
     return database.executar(instrucaoSql);
 }
 
-function trechoCritico(fk_empresa) {
+function top10(fk_empresa, anoSelecionado) {
     var instrucaoSql = `
-        select rodovia_cod_numeric as rodovia,
-               count(*) as qtd 
-        from RODOVIAS 
-        join ACIDENTE on idRODOVIAS = fk_rodovias 
-        where fk_empresa = ${fk_empresa} 
-        group by rodovia_cod_numeric 
-        order by qtd desc 
-        limit 1;
+        SELECT municipio,
+               COUNT(*) AS qtd 
+        FROM ACIDENTE 
+        WHERE fk_empresa = ${fk_empresa}
+    `;
+
+    if (anoSelecionado != "") {
+        instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
+    }
+
+    instrucaoSql += `
+        GROUP BY municipio 
+        ORDER BY qtd DESC 
+        LIMIT 10;
     `;
     return database.executar(instrucaoSql);
 }
 
-function top10(fk_empresa) {
+function anosAcidentes(fk_empresa) {
     var instrucaoSql = `
-        select municipio,
-               count(*) as qtd 
-        from ACIDENTE 
-        where fk_empresa = ${fk_empresa} 
-        group by municipio 
-        order by qtd desc 
-        limit 10;
+        SELECT DISTINCT YEAR(data_hora) AS ano
+        FROM ACIDENTE
+        WHERE fk_empresa = ${fk_empresa}
+        ORDER BY ano DESC;
     `;
     return database.executar(instrucaoSql);
 }
 
-function PiorMes(fk_empresa) {
+function PiorMes(fk_empresa, anoSelecionado) {
     var instrucaoSql = `
-        select month(data_hora) as mes,
-               count(*) as total_acidente 
-        from ACIDENTE 
-        where fk_empresa = ${fk_empresa} 
-        group by mes 
-        order by total_acidente desc;
+        SELECT MONTH(data_hora) AS mes,
+               COUNT(*) AS total_acidente 
+        FROM ACIDENTE 
+        WHERE fk_empresa = ${fk_empresa}
+    `;
+
+    if (anoSelecionado != "") {
+        instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
+    }
+
+    instrucaoSql += `
+        GROUP BY mes 
+        ORDER BY total_acidente DESC;
     `;
     return database.executar(instrucaoSql);
 }
 
-function top5MaisTiposAcidentes(fk_empresa) {
+function top5MaisTiposAcidentes(fk_empresa, anoSelecionado) {
     var instrucaoSql = `
-        select descr as tipo,
-               count(*) as qtd,
-               fk_classe_acid as classe  
-        from ACIDENTE 
-        join classe_acidente on fk_classe_acid = idClasse_acid  
-        where fk_empresa = ${fk_empresa} 
-        group by tipo, classe 
-        order by qtd desc 
-        limit 5;
+        SELECT descr AS tipo,
+               COUNT(*) AS qtd,
+               fk_classe_acid AS classe  
+        FROM ACIDENTE 
+        JOIN classe_acidente ON fk_classe_acid = idClasse_acid  
+        WHERE fk_empresa = ${fk_empresa}
+    `;
+
+    if (anoSelecionado != "") {
+        instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
+    }
+
+    instrucaoSql += `
+        GROUP BY tipo, classe 
+        ORDER BY qtd DESC 
+        LIMIT 5;
     `;
     return database.executar(instrucaoSql);
 }
@@ -69,6 +112,6 @@ module.exports = {
     trechoCritico,
     top10,
     PiorMes,
-    top5MaisTiposAcidentes
-}
-
+    top5MaisTiposAcidentes,
+    anosAcidentes
+};

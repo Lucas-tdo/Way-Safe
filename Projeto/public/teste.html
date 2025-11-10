@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select com Checkboxes</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .select-simulado {
+    position: relative;
+    width: 250px;
+  }
+
+  .select-titulo {
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .opcoes {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 10;
+  }
+
+  .opcoes label {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+
+  .opcoes label:hover {
+    background: #eee;
+  }
+
+  .opcoes input {
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="select-simulado">
+  <div class="select-titulo" id="selectTitulo">Escolha opções</div>
+  <div class="opcoes" id="opcoes">
+    <label><input type="checkbox" value="Opção 1"> Opção 1</label>
+    <label><input type="checkbox" value="Opção 2"> Opção 2</label>
+    <label><input type="checkbox" value="Opção 3"> Opção 3</label>
+    <label><input type="checkbox" value="Opção 4"> Opção 4</label>
+  </div>
+</div>
+
+<script>
+  const selectTitulo = document.getElementById('selectTitulo');
+  const opcoes = document.getElementById('opcoes');
+
+  // Abre/fecha o menu
+  selectTitulo.addEventListener('click', () => {
+    opcoes.style.display = opcoes.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Fecha o menu ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.select-simulado')) {
+      opcoes.style.display = 'none';
+    }
+  });
+
+  // Atualiza o texto do título com as opções marcadas
+  const checkboxes = opcoes.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(chk => {
+    chk.addEventListener('change', () => {
+      const selecionadas = Array.from(checkboxes)
+        .filter(c => c.checked)
+        .map(c => c.value);
+      selectTitulo.textContent = selecionadas.length
+        ? selecionadas.join(', ')
+        : 'Escolha opções';
+    });
+  });
+</script>
+
+</body>
+</html>

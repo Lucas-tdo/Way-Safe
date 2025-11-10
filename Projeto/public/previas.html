@@ -46,7 +46,11 @@
 
       <div class="barra">
         <h1 class="text_over">Overview</h1>
-        <h1 class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</h1>
+        <h1 class="text_data">
+          <select name="anos" id="selectAnos" onchange="mudarAno()">
+            <option value="">Selecione um ano</option>
+          </select>
+        </h1>
       </div>
 
       <div class="graficos">
@@ -253,28 +257,71 @@
       top5MaisTiposAcidentes(),
       total_acidentes(),
       trechoMaisCritico(),
-      PiorMes()
+      PiorMes(),
+      anosAcidentes()
     }
     function total_acidentes(){
       
-        var fk_empresa = sessionStorage.FK_EMPRESA
+      var fk_empresa = sessionStorage.FK_EMPRESA
+      
+      fetch(`/tela_previa_rota/qtdAcidentes/${fk_empresa}/${anoSelecionado}`)
+      
+      .then(res => res.json())
+      .then(quantidade => {
 
-        fetch(`/tela_previa_rota/qtdAcidentes/${fk_empresa}`)
-
-            .then(res => res.json())
-            .then(quantidade => {
-
-                var qtd = quantidade[0].qtd_Acidente
+        var qtd = quantidade[0].qtd_Acidente
                 document.getElementById("qtd_acidentes_total").innerText = qtd;
-
             })
+          }
+
+  function anosAcidentes(){
+  var fk_empresa = sessionStorage.FK_EMPRESA;
+
+  fetch(`/tela_previa_rota/anosAcidentes/${fk_empresa}`)
+    .then(res => res.json())
+    .then(anos => {
+      console.log("Anos recebidos:", anos);
+
+      const select = document.getElementById("selectAnos");
+      select.innerHTML = '<option value="">Selecione um ano</option>';
+
+      anos.forEach(item => {
+        // acessa item.ano
+        const option = document.createElement("option");
+        option.value = item.ano;
+        option.textContent = item.ano;
+        select.appendChild(option);
+      });
+    })
+    .catch(err => {
+      console.error("Erro ao buscar anos:", err);
+    });
+}
+
+
+  let anoSelecionado = null; // variável global
+  
+  function mudarAno() {
+    anoSelecionado = document.getElementById("selectAnos").value;
+    console.log("Ano selecionado:", anoSelecionado);
+  
+    if (anoSelecionado) {
+      total_acidentes();
+      trechoMaisCritico();
+      PiorMes();
+      top10();
+      top5MaisTiposAcidentes();
     }
+  }
+
+
+
 
     function trechoMaisCritico(){
       
         var fk_empresa = sessionStorage.FK_EMPRESA
 
-        fetch(`/tela_previa_rota/trechoCritico/${fk_empresa}`)
+        fetch(`/tela_previa_rota/trechoCritico/${fk_empresa}/${anoSelecionado}`)
 
             .then(res => res.json())
             .then(quantidade => {
@@ -288,7 +335,7 @@
     function top10() {
       var fk_empresa = sessionStorage.FK_EMPRESA;
 
-            fetch(`/tela_previa_rota/top10/${fk_empresa}`)
+            fetch(`/tela_previa_rota/top10/${fk_empresa}/${anoSelecionado}`)
                .then(res => res.json())
                .then(dados => {
                  var municipios = dados.map(item => item.municipio);
@@ -310,7 +357,7 @@
     function PiorMes(){
               var fk_empresa = sessionStorage.FK_EMPRESA
 
-        fetch(`/tela_previa_rota/PiorMes/${fk_empresa}`)
+        fetch(`/tela_previa_rota/PiorMes/${fk_empresa}/${anoSelecionado}`)
 
             .then(res => res.json())
             .then(quantidade => {
@@ -335,7 +382,7 @@
                     
                     var fk_empresa = sessionStorage.FK_EMPRESA
                     
-                    fetch(`/tela_previa_rota/top5MaisTiposAcidentes/${fk_empresa}`)
+                    fetch(`/tela_previa_rota/top5MaisTiposAcidentes/${fk_empresa}/${anoSelecionado}`)
                     
                     .then(res => res.json())
                     .then(quantidade => {
@@ -380,3 +427,6 @@
 </body>
 
 </html>
+
+
+
