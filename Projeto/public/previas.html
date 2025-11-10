@@ -237,18 +237,19 @@
 
     var chart = new ApexCharts(document.querySelector("#grafico-municipios"), options);
     chart.render();
-  </script>
+    </script>
 
-  <script>
-    // Alterna a classe "minimizado" no menu + filtro
-    document.querySelector('.toggle-nav')
-      .addEventListener('click', () => {
+<script>
+  // Alterna a classe "minimizado" no menu + filtro
+  document.querySelector('.toggle-nav')
+  .addEventListener('click', () => {
         document.querySelector('.nav').classList.toggle('minimizado');
         document.querySelector('.filtro-box').classList.toggle('ativo');
       });
 
-
-
+      
+      
+    let anoSelecionado = null; // variável global
     function chamarFuncoes(){
 
     document.getElementById("nome_usuario").innerText=`Olá, ${sessionStorage.NOME_USUARIO}`
@@ -299,7 +300,6 @@
 }
 
 
-  let anoSelecionado = null; // variável global
   
   function mudarAno() {
     anoSelecionado = document.getElementById("selectAnos").value;

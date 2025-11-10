@@ -27,7 +27,7 @@ function qtdAcidentes(req,res){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
     else{
-        usuarioModel.qtdAcidentes(fk_empresa)
+        usuarioModel.qtdAcidentes(fk_empresa,anoSelecionado)
         .then(resposta=>{
             console.log("Analisando se o fk_empresa");
             res.json(resposta)
@@ -46,7 +46,7 @@ function trechoCritico(req,res){
         res.status(400).send('Seu fk_empresa está undefined!')
     }
     else{
-        usuarioModel.trechoCritico(fk_empresa)
+        usuarioModel.trechoCritico(fk_empresa,anoSelecionado)
         .then(resposta=>{
             console.log("Analisando se o fk_empresa");
             res.json(resposta)

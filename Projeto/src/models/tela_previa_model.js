@@ -7,7 +7,7 @@ function qtdAcidentes(fk_empresa, anoSelecionado) {
         WHERE fk_empresa = ${fk_empresa}
     `;
 
-    if (anoSelecionado != "") {
+    if (anoSelecionado && !isNaN(anoSelecionado)) {
         instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
     }
 
@@ -24,7 +24,7 @@ function trechoCritico(fk_empresa, anoSelecionado) {
         WHERE fk_empresa = ${fk_empresa}
     `;
 
-    if (anoSelecionado != "") {
+    if (anoSelecionado && !isNaN(anoSelecionado)) {
         instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
     }
 
@@ -44,7 +44,7 @@ function top10(fk_empresa, anoSelecionado) {
         WHERE fk_empresa = ${fk_empresa}
     `;
 
-    if (anoSelecionado != "") {
+    if (anoSelecionado && !isNaN(anoSelecionado)) {
         instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
     }
 
@@ -74,7 +74,7 @@ function PiorMes(fk_empresa, anoSelecionado) {
         WHERE fk_empresa = ${fk_empresa}
     `;
 
-    if (anoSelecionado != "") {
+    if (anoSelecionado && !isNaN(anoSelecionado)) {
         instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
     }
 
@@ -95,7 +95,7 @@ function top5MaisTiposAcidentes(fk_empresa, anoSelecionado) {
         WHERE fk_empresa = ${fk_empresa}
     `;
 
-    if (anoSelecionado != "") {
+    if (anoSelecionado && !isNaN(anoSelecionado)) {
         instrucaoSql += ` AND YEAR(data_hora) = ${anoSelecionado}`;
     }
 
