@@ -41,7 +41,7 @@
     <main class="container">
 
       <div class="acidentes-bar">
-        <h1>Acidentes</h1>
+        <h1>Vitimas</h1>
       </div>
 
       <div class="barra">
@@ -53,7 +53,7 @@
       <div class="conteudo-principal">
         <div class="cards-acidentes">
           <div class="card">
-            <p>Total de acidentes (último ano)</p>
+            <p>Municipio com mais vítimas fatais</p>
             <div id="conteudo-total-acid">
               <p style="font-weight: 700;" id="acidente_30">1.577</p>
             </div>
@@ -100,9 +100,7 @@
       .addEventListener('click', () => {
         document.querySelector('.nav').classList.toggle('minimizado');
       });
-
-    var quantidade_por_tipo = [];
-    var tipos = [];
+    
     var quantidade_evolucao = [];
     var tempo = '';
 
@@ -116,10 +114,10 @@
       },
       series: [{
         name: 'Quantidade de acidentes',
-        data: quantidade_por_tipo
+        data: []
       }],
       xaxis: {
-        categories: tipos,
+        categories: [],
         title: {
           text: 'TIPOS DE ACIDENTES',
           style: { 
@@ -268,12 +266,8 @@
       }]
     };
 
-    var graficoTipos = new ApexCharts(document.querySelector("#grafico-tipos"), tiposOptions);
-    graficoTipos.render();
+    
 
-    // gráfico 02 - evolução diária
-    //const dias = Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`);
-    //const acidentesDiarios = Array.from({ length: 30 }, () => Math.floor(Math.random() * 80) + 20);
 
     var evolucaoOptions = {
       chart: {
@@ -441,16 +435,19 @@
     };
 
     // Renderiza os gráficos
+    var graficoTipos = new ApexCharts(document.querySelector("#grafico-tipos"), tiposOptions);
+        graficoTipos.render();
+
     var graficoLinha = new ApexCharts(document.querySelector("#grafico-evolucao"), evolucaoOptions);
     graficoLinha.render();
 
-    window.addEventListener("load", (event) => {
-      total_acidentes(360)
-      total_acidentes(180);
+    var fk_empresa = sessionStorage.FK_EMPRESA
 
+    window.addEventListener("load", (event) => {
+      municipio_mais_acidentes()
       evolucao_acidentes(360); //Deve vir primeiro para definir o tempo(dia, mes ou ano)
-      total_acidentes_por_tipo(360);
-    });
+      total_acidentes_por_tipo();
+     });
 
     document.getElementById("botao_filtro").addEventListener("click", function () {
       evolucao_acidentes(document.getElementById('periodo_tipos').value) //Deve vir primeiro para definir o tempo(dia, mes ou ano)
@@ -458,25 +455,18 @@
     });
 
 
-    function total_acidentes(periodo) {
+    async function municipio_mais_acidentes() {
 
       var fk_empresa = sessionStorage.FK_EMPRESA
 
-      fetch(`/tela_acidentes_rota/total_acidentes/${fk_empresa}/${periodo}`)
-        .then(res => res.json())
-        .then(total => {
-
-          var qtd = total[0].total;
-
-          console.log(total[0].total);
-
-          if (periodo == 360) {
-            document.getElementById("acidente_30").innerText = qtd;
-          } else {
-            document.getElementById("acidente_60").innerText = qtd;
-          }
-
-        })
+      const resp = await fetch(`/tela_acidentes_rota/municipio_mais_acidentes/${fk_empresa}/"2025"`)
+      if(resp.ok){
+        const resp_municipio = await resp.json();
+        document.getElementById("acidente_30").innerText = `${resp_municipio[0].municipio}(${resp_municipio[0].total_vitima_fatais})`;
+      }
+      else{
+        console.log("Erro")
+      }
 
     }
 
@@ -533,48 +523,32 @@
 
     }
 
-    function total_acidentes_por_tipo(periodo) {
-      var fk_empresa = sessionStorage.FK_EMPRESA
-
-      fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/${periodo}`)
-        .then(res => res.json())
-        .then(quantidade => {
-
-          quantidade_por_tipo = quantidade.quantidades;
-          tipos = quantidade.tipos;
-          var tempo_extensao = '';
-
-          switch (tempo) {
-            case 'dia':
-              datas.length > 1 ? tempo_extensao = 'dias' : tempo_extensao = 'dia'
-              break
-            case 'semana':
-              datas.length > 1 ? tempo_extensao = 'semanas' : tempo_extensao = 'semana'
-              break
-            case 'mês':
-              datas.length > 1 ? tempo_extensao = 'meses' : tempo_extensao = 'mês'
-              break
-            case 'ano':
-              datas.length > 1 ? tempo_extensao = 'anos' : tempo_extensao = 'ano'
-              break
+    async function total_acidentes_por_tipo() {
+      const resp = await fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/"2025"`)
+      if(resp.ok){
+        const resp_municipio_tipo = await resp.json(); 
+        const tipos = resp_municipio_tipo.map(item => item.descr); 
+        const quantidade_por_tipo = resp_municipio_tipo.map(item => item.total_vitima_fatais);
+        graficoTipos.updateOptions({
+          xaxis: {
+            categories: tipos
           }
+        });
 
-          graficoTipos.updateOptions({
-            xaxis: {
-              categories: tipos
-            },
-            title: {
-              text: `Tipos de acidentes nos últim${a = (tempo_extensao == 'semana') || (tempo_extensao == 'semanas') ? 'a' : 'o'}${a = !(tempo_extensao == 'mês') && (tempo_extensao.endsWith('s')) ? 's' : ''} 
-              ${c = datas.length > 1 ? datas.length : ''} ${tempo_extensao}`
-            }
-          });
-
-          graficoTipos.updateSeries([{
-            data: quantidade_por_tipo
-          }])
-        })
-
+      graficoTipos.updateSeries([{
+        data: quantidade_por_tipo
+      }]);
+        
+        
+      }
+      else{
+        console.log("Erro")
+      }
     }
+
+
+
+
   </script>
 </body>
 

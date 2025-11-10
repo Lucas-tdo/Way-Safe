@@ -1,13 +1,13 @@
 var tela_acidentes_model = require("../models/tela_acidentes_model");
 
 
-function totalAcidentes(req, res) {
+function municipio_mais_acidentes(req, res) {
     var fk_empresa = req.params.fk_empresa;
     var periodo = req.params.periodo;
 
     console.log("Filtros recebidos:", { fk_empresa, periodo });
 
-    tela_acidentes_model.total_acidentes(fk_empresa, periodo)
+    tela_acidentes_model.municipio_mais_acidentes(fk_empresa, periodo)
         .then(resposta => {
             console.log(`Busca retornou ${resposta.length} resultados`);
             res.json(resposta);
@@ -39,14 +39,14 @@ function evolucaoAcidentes(req, res) {
 
 function quantiaPorTipoAcidente(req, res) {
     var fk_empresa = req.params.fk_empresa;
-    var periodo = req.params.periodo;
+    var ano = req.params.periodo;
 
     // Log para debug
-    console.log("Filtros recebidos:", { fk_empresa, periodo });
+    console.log("Filtros recebidos:", { fk_empresa, ano });
 
-    tela_acidentes_model.quantiaPorTipoAcidente(fk_empresa, periodo)
+    tela_acidentes_model.quantiaPorTipoAcidente(fk_empresa, ano)
         .then(resposta => {
-            console.log(`Tipos de acidentes encontrados:`, resposta);
+            console.log(resposta);
             res.json(resposta); // A função já retorna o objeto formatado
         })
         .catch(erro => {
@@ -56,7 +56,7 @@ function quantiaPorTipoAcidente(req, res) {
 }
 
 module.exports = {
-    totalAcidentes,
+    municipio_mais_acidentes,
     quantiaPorTipoAcidente,
     evolucaoAcidentes
 }
