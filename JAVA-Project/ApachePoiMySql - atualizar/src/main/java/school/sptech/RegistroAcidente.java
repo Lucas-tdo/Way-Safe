@@ -50,13 +50,13 @@ public class RegistroAcidente {
 
     public String atualizarVitimas(){
         return String.format(
-                "UPDATE VITIMAS SET (" +
+                "UPDATE VITIMAS SET " +
                         "vitima_ilesa = %s," +
                         "vitima_fatal =  %s," +
                         "vitima_fer_leve = %s," +
-                        "vitima_fer_media = %s ," +
+                        "vitima_fer_media = %s," +
                         "vitima_fer_grave = %s," +
-                        "vitimas_fer_seminfo =  %s) WHERE fk_acidente = %d",
+                        "vitimas_fer_seminfo =  %s WHERE fk_acidente = %d",
 
                 ILESA_INT,
                 VIT_FATAL_INT,
@@ -74,21 +74,21 @@ public class RegistroAcidente {
 
     public String atualizarAcidente(){
         return String.format(
-                "UPDATE ACIDENTE SET ( " +
-                        "fk_rodovias = %d" +
-                        "fk_classe_acid = %d" +
-                        "fk_empresa = %d" +
-                        "data_hora = '%s'" +
-                        "tipo_acidente = '%s'" +
-                        "metereologia = '%s'" +
-                        "visibilidade = '%s'" +
-                        "denominacao = '%s'" +
-                        "municipio = '%s'" +
-                        "regional_der = '%s'" +
-                        "jurisdicao = '%s'" +
-                        "latitude ='%s'" +
+                "UPDATE ACIDENTE SET  " +
+                        "fk_rodovias = %d," +
+                        "fk_classe_acid = %d," +
+                        "fk_empresa = %d," +
+                        "data_hora = '%s'," +
+                        "tipo_acidente = '%s'," +
+                        "metereologia = '%s'," +
+                        "visibilidade = '%s'," +
+                        "denominacao = '%s'," +
+                        "municipio = '%s'," +
+                        "regional_der = '%s'," +
+                        "jurisdicao = '%s'," +
+                        "latitude ='%s'," +
                         "longitude = '%s'" +
-                        ") WHERE id = %d",
+                        " WHERE idACIDENTE = %d",
                 rodovia,
                 classeAcidente,
                 nomeConcessionaria,

@@ -4,6 +4,7 @@ import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
+import software.amazon.awssdk.services.s3.model.S3Exception;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
 import java.io.File;
@@ -75,6 +76,13 @@ public abstract class Excel {
             DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
             String dataFormatada = dataHora.format(dataFormato);
             String mensagem = "Erro ao pegar arquivos S3 ou arquivos já existem na máquina";
+            System.out.println(dataFormatada+" "+mensagem);
+        }
+        catch(S3Exception e){
+            LocalDateTime dataHora = LocalDateTime.now();
+            DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+            String dataFormatada = dataHora.format(dataFormato);
+            String mensagem = "Erro ao pegar credenciais S3 ou arquivos já existem na máquina";
             System.out.println(dataFormatada+" "+mensagem);
         }
 

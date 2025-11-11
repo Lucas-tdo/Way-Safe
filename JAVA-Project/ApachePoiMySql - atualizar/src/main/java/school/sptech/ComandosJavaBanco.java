@@ -33,8 +33,8 @@
         }
 
         public void update(String insertAcidente,String insertVitimas) {
-            jdbcTemplate.update("(fk_rodovias, fk_classe_acid, fk_empresa, data_hora, tipo_acidente, metereologia, visibilidade, denominacao, municipio, regional_der, jurisdicao, latitude, longitude) VALUES ".concat(insertAcidente) );
-            jdbcTemplate.update("(vitima_ilesa, vitima_fatal, vitima_fer_leve, vitima_fer_media, vitima_fer_grave , vitimas_fer_seminfo) VALUES ".concat(insertVitimas));
+            jdbcTemplate.update(insertAcidente );
+            jdbcTemplate.update(insertVitimas);
         }
 
         public void updateLog(String status , String mensagem, String arquivo){

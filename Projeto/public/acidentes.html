@@ -61,6 +61,13 @@
 
           </div>
           <div class="card">
+            Tipo de acidente mais recorrente
+            <div id="conteudo-total-acid">
+              <p style="font-weight: 700;" id="acidente_70">2.897</p>
+            </div>
+          </div>
+
+          <div class="card">
             Total de acidentes (últimos 6 meses)
             <div id="conteudo-total-acid">
               <p style="font-weight: 700;" id="acidente_60">2.897</p>
@@ -523,12 +530,16 @@
 
     }
 
+
+    
+
     async function total_acidentes_por_tipo() {
       const resp = await fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/"2025"`)
       if(resp.ok){
         const resp_municipio_tipo = await resp.json(); 
         const tipos = resp_municipio_tipo.map(item => item.descr); 
         const quantidade_por_tipo = resp_municipio_tipo.map(item => item.total_vitima_fatais);
+        acidente_70.innerHTML=`${tipos[0]}(${quantidade_por_tipo[0]})`
         graficoTipos.updateOptions({
           xaxis: {
             categories: tipos
