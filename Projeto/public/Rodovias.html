@@ -48,29 +48,17 @@
 
       <div class="barra">
         <p class="text_over" style="font-weight: 700;">#3 Rodovias com maior acidente</p>
-        <p class="text_data">Ultimas Atualizações: 22/09/2025 ás 13:45:03</p>
+        <div class="barra">
+          <p>Ano:</p>
+
+          <select name="" id="select-ano" placeholder="ano" onchange="mudanca_seletor()">
+            <option value="">Selecione um ano</option>
+          </select>
+
+        </div>
       </div>
 
       <div class="conteudo-linha">
-        <!-- BLOCO DE FILTRO -->
-        <div class="filtro-box">
-          <h3>Filtro</h3>
-          <label>Município</label>
-          <input type="text" id="inp_municipio">
-
-          <label>Tipo acidente</label>
-          <select id="op_tipo_acidente">
-            <option value="">Selecione</option>
-            <!-- Inserir o resto depois -->
-          </select>
-
-          <label>Rodovia</label>
-          <input type="text" id="inp_rodovia">
-
-          <button style="background-color: rgb(36, 36, 36); color: white; height: 2.5rem;" onclick="buscar_rodovias()">
-            Buscar
-          </button>
-        </div>
 
         <!-- CARDS + TABELA -->
         <div class="conteudo-principal">
@@ -82,7 +70,7 @@
               </div>
               <h1 id="nome-rodovia1">SP-150</h1>
               <div id="card-linha3">
-               <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p></a>
+               <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;" onclick="guardarSessionStorage(document.getElementById(`nome-rodovia1`).innerHTML)">Ver Mais</p></a>
               </div>
 
             </div>
@@ -93,7 +81,7 @@
               </div>
               <h1 id="nome-rodovia2">BR-101</h1>
               <div id="card-linha3">
-                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+                <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;" onclick="guardarSessionStorage(document.getElementById(`nome-rodovia2`).innerHTML)">Ver Mais</p></a>
               </div>
             </div>
 
@@ -103,15 +91,21 @@
               </div>
               <h1 id="nome-rodovia3">SP-280</h1>
               <div id="card-linha3">
-                <p style="color: rgb(16, 147, 95); font-weight: 500;">Ver Mais</p>
+                <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;" onclick="guardarSessionStorage(document.getElementById(`nome-rodovia3`).innerHTML)">Ver Mais</p></a>
               </div>
             </div>
 
           </div>
-          <div class="meio">
-            <!-- <button id="btn-relatorio-geral">relatório PDF</button> -->
-            <span class="tipo">Rank das rodovias por acidente</span>
+          <div class="barra">
+            <p class="tipo">Rodovias com mais acidentes</p>
+            <div class="barra">
+              <p>Municipio:</p>
+                <input type="text" name="" id="select-municipio" placeholder="municipio" list="data-municipio" onchange="mudanca_seletor()">
+                <datalist id="data-municipio"></datalist>
+              </select>
+            </div>
           </div>
+    
 
 
           <div class="tabela-container">
@@ -122,72 +116,12 @@
                   <th>Rodovia</th>
                   <th>Município</th>
                   <th>Acidente</th>
-                  <th id="th-relatorio" style="border-top-right-radius:7px ;">Especificação</th>
-
+                  <th>Quantidade de acidentes</th>
+                  <th id="th-relatorio" style="border-top-right-radius:7px;">Especificação</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1#</td>
-                  <td>SP-150</td>
-                  <td>Santos</td>
-                  <td>Colisão frontal</td>
-                  <td><a href="sp150.html"><button
-                        class="btn-relatorio">Visualizar</button></a><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
-                  </td>
-                </tr>
-                <tr>
-                  <td>2#</td>
-                  <td>BR-101</td>
-                  <td>Praia Grande</td>
-                  <td>Capotamento</td>
-                  <div id="botoes-tabela-relatorio">
-                    <td><button
-                        class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
-                    </td>
-                  </div>
-
-                </tr>
-                <tr>
-                  <td>3#</td>
-                  <td>SP-280</td>
-                  <td>Sorocaba</td>
-                  <td>Saída de pista</td>
-                  <td><button
-                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
-                  </td>
-
-                </tr>
-                <tr>
-                  <td>4#</td>
-                  <td>SP-280</td>
-                  <td>Sorocaba</td>
-                  <td>Saída de pista</td>
-                  <td><button
-                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
-                  </td>
-
-                </tr>
-                <tr>
-                  <td>5#</td>
-                  <td>SP-280</td>
-                  <td>Sorocaba</td>
-                  <td>Saída de pista</td>
-                  <td><button
-                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
-                  </td>
-
-                </tr>
-                <tr>
-                  <td>6#</td>
-                  <td>SP-280</td>
-                  <td>Sorocaba</td>
-                  <td>Saída de pista</td>
-                  <td><button
-                      class="btn-relatorio">Visualizar</button><!--<button class="btn-relatorio-pdf">Relatório PDF</button>-->
-                  </td>
-
-                </tr>
+                
               </tbody>
             </table>
           </div>
@@ -206,48 +140,77 @@
         document.querySelector('.filtro-box').classList.toggle('ativo');
       });
 
-    document.getElementById("body").onload = function () {
-      topRodovias();
-      buscar_rodovias();
-      carregar_tipos_acidentes();
-    };
+      function remove_acentos(str) {
+        if(str != undefined &&  str != '' &&  str != null){
+          return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }else{
+          return str
+        }
+      }
 
-    function remove_acentos(str) {
-      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    }
+      function guardarSessionStorage(rodovia){
+        sessionStorage.codigoRodovia = rodovia;
+      }
 
-    function carregar_tipos_acidentes() {
-      fetch('/tela_rodovias_rota/listar_tipos_acidentes')
+      window.onload = function() {
+        carregar_anos()
+        carregar_municipios()
+        buscar_rodovias(
+          document.getElementById("select-municipio").value,
+          document.getElementById("select-ano").value
+        )
+      };
+
+      function mudanca_seletor(){
+        buscar_rodovias(
+          document.getElementById("select-municipio").value,
+          document.getElementById("select-ano").value
+        )
+      }
+
+    function carregar_municipios() {
+      fetch('/tela_rodovias_rota/listar_municipios')
         .then(res => res.json())
-        .then(tipos => {
-          var select = document.getElementById('op_tipo_acidente');
+        .then(municipios => {
+          var select = document.getElementById('data-municipio');
 
-          tipos.forEach(tipo => {
+          municipios.forEach(municipio => {
             var option = document.createElement('option');
-            option.value = tipo.tipoAcidente;
-            option.textContent = tipo.tipoAcidente;
+            option.value = municipio.municipio;
             select.appendChild(option);
           });
 
-          console.log(`${tipos.length} tipos de acidentes carregados`);
+          console.log(`${municipios.length} tipos de acidentes carregados`);
         })
         .catch(error => {
           console.error("Erro ao carregar tipos de acidentes:", error);
         });
     }
 
-    function buscar_rodovias() {
+    function carregar_anos() {
+      fetch('/tela_rodovias_rota/listar_anos')
+        .then(res => res.json())
+        .then(anos => {
+          anos.forEach(ano => {
+            document.getElementById("select-ano").innerHTML += `<option value=${ano.ano}>${ano.ano}</option>`
+          });
+          console.log(`${anos.length} anos de acidente`);
+        })
+        .catch(error => {
+          console.error("Erro ao carregar anos de acidente:", error);
+        });
+    }
+
+    function buscar_rodovias(municipio, ano) {
       var fk_empresa = sessionStorage.FK_EMPRESA
 
-      var municipio = remove_acentos(document.getElementById("inp_municipio").value.trim());
-      var tipo_acidente = remove_acentos(document.getElementById("op_tipo_acidente").value.trim());
-      var rodovia = remove_acentos(document.getElementById("inp_rodovia").value.trim());
+      var municipio = remove_acentos(municipio);
+      var ano = remove_acentos(ano);
 
       var dados = {
         fk_empresa,
         municipio: municipio !== '' ? municipio : undefined,
-        rodovia: rodovia !== '' ? rodovia : undefined,
-        tipo_acidente: tipo_acidente !== '' && tipo_acidente !== 'Selecione' ? tipo_acidente : undefined
+        ano: ano !== '' ? ano : undefined,
       };
 
       console.log("Dados enviados:", dados); 
@@ -276,15 +239,26 @@
             `;
             return;
           }
+          var topRodovias = []
 
-          resultado.forEach((item, index) => {
+          resultado.slice(0, 100).forEach((item, index) => {
+
+            if(topRodovias.length < 3){
+              if(topRodovias.includes(item.codigoRodovia)){
+              }else{
+                topRodovias.push(item.codigoRodovia)
+                document.getElementById(`nome-rodovia${topRodovias.length}`).innerHTML = `${item.codigoRodovia}`
+              }
+            }
+            
             var linha = document.createElement("tr");
             linha.innerHTML = `
               <td>${index + 1}#</td>
               <td>${item.codigoRodovia}</td>
               <td>${item.municipio}</td>
               <td>${item.tipoAcidente}</td>
-              <td><button class="btn-relatorio">Visualizar</button></td>
+              <td>${item.totalAcidentes}</td>
+              <td><button class="btn-relatorio" onclick="guardarSessionStorage('${item.codigoRodovia}')">Visualizar</button></td>
             `;
             tabela.appendChild(linha);
           });
