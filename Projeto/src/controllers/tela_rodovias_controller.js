@@ -31,13 +31,12 @@ function topRodovias(req, res) {
 
 function buscar_rodovias(req, res) {
     var municipio = req.body.municipio;
-    var rodovia = req.body.rodovia;
-    var tipo_acidente = req.body.tipo_acidente;
+    var ano = req.body.ano;
 
     // Log para debug
-    console.log("Filtros recebidos:", { municipio, rodovia, tipo_acidente });
+    console.log("Filtros recebidos:", { municipio, ano });
 
-    tela_rodovias_model.buscar_rodovias(rodovia, municipio, tipo_acidente)
+    tela_rodovias_model.buscar_rodovias(municipio, ano)
         .then(resposta => {
             console.log(`Busca retornou ${resposta.length} resultados`);
             res.json(resposta);
@@ -48,8 +47,21 @@ function buscar_rodovias(req, res) {
         });
 }
 
-function listar_tipos_acidentes(req, res) {
-    tela_rodovias_model.listar_tipos_acidentes()
+function listar_anos(req, res) {
+    tela_rodovias_model.listar_anos()
+        .then(resposta => {
+            console.log(`Anos presentes no banco de dados: ${resposta.length}`);
+            res.json(resposta);
+        })
+        .catch(erro => {
+            console.log("Erro ao buscar tipos de acidentes:", erro);
+            res.status(500).json(erro.sqlMessage || erro);
+        });
+}
+
+
+function listar_municipios(req, res) {
+    tela_rodovias_model.listar_municipios()
         .then(resposta => {
             console.log(`Tipos de acidentes encontrados: ${resposta.length}`);
             res.json(resposta);
@@ -63,5 +75,6 @@ function listar_tipos_acidentes(req, res) {
 module.exports = {
     topRodovias,
     buscar_rodovias,
-    listar_tipos_acidentes
+    listar_anos,
+    listar_municipios
 }
