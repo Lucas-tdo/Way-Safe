@@ -14,7 +14,11 @@
             this.jdbcTemplate = jdbcTemplate;
         }
 
-
+        public void apagarBanco(){
+            jdbcTemplate.update("SET foreign_key_checks = 0");
+            jdbcTemplate.update("TRUNCATE TABLE ACIDENTE");
+            jdbcTemplate.update("TRUNCATE TABLE VITIMAS");
+        }
 
         public void saveLote(List<RegistroAcidente> registros , String arquivoTratar){
             String acidentes = "";

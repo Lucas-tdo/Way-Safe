@@ -1,7 +1,9 @@
 drop database if exists waysafe;
 create database if not exists waysafe;
 use waysafe;
-
+SET foreign_key_checks = 0;
+TRUNCATE TABLE ACIDENTE;
+TRUNCATE TABLE VITIMAS;
 -- =========================================
 -- CRIAÇÃO DAS TABELAS DO BANCO DE ACIDENTES
 -- =========================================
