@@ -47,113 +47,93 @@
             </div>
 
             <div class="barra">
-                <button class="cadastrar">Cadastrar</button>
+                <button class="cadastrar" onclick="cadastrar()">Cadastrar</button>
                 <p> Funcionários</p>
             </div>
+            <!-- CARDS + TABELA -->
+            <div class="conteudo-principal">
+                <div class="cards-rodovias"></div>
 
-            <div class="conteudo-linha">
-                <!-- BLOCO DE FILTRO -->
-                <div class="filtro-box">
-                    <h3>Filtro</h3>
-                    <label>Município</label>
-                    <input type="text" id="inp_municipio">
+                <div class="meio">
+                    <span class="tipo">Lista de Funcionários </span>
 
-                    <label>Tipo acidente</label>
-                    <select id="op_tipo_acidente">
-                        <option value="">Selecione</option>
-                    </select>
+                    <div class="icones-direita">
 
-                    <label>Rodovia</label>
-                    <input type="text" id="inp_rodovia">
-
-                    <button style="background-color: rgb(36, 36, 36); color: white; height: 2.5rem;"
-                        onclick="buscar_rodovias()">Buscar</button>
+                        <img class="icons_meio" src="./icons/atualizar.png" alt="Atualizar">
+                    </div>
                 </div>
 
-                <!-- CARDS + TABELA -->
-                <div class="conteudo-principal">
-                    <div class="cards-rodovias"></div>
 
-                    <div class="meio">
-                        <span class="tipo">Lista de Funcionários </span>
-
-                        <div class="icones-direita">
-
-                            <img class="icons_meio" src="./icons/atualizar.png" alt="Atualizar">
-                        </div>
-                    </div>
-
-
-                    <div class="tabela-container">
-                        <table class="tabela-rodovias">
-                            <thead>
-                                <tr>
-                                    <th style="border-top-left-radius:7px;">ID</th>
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>Senha</th>
-                                    <th id="th-relatorio" style="border-top-right-radius:7px;">Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Bruno Almeida</td>
-                                    <td>bruno.almeida@ecorodovias.com.br</td>
-                                    <td>Sol!Rápido_73Mar</td>
-                                    <td>
-                                        <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
-                                        <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Camila Ramos</td>
-                                    <td>camila.ramos@arteris.com.br</td>
-                                    <td>Neve@Doce8Luz</td>
-                                    <td>
-                                        <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
-                                        <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Eduardo Lopes</td>
-                                    <td>eduardo.lopes@ccr.com.br</td>
-                                    <td>Lago#Verde_92Sol</td>
-                                    <td>
-                                        <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
-                                        <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Fernanda Dias</td>
-                                    <td>fernanda.dias@viasul.com.br</td>
-                                    <td>Tigre!Doce_54Céu</td>
-                                    <td>
-                                        <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
-                                        <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Gustavo Martins</td>
-                                    <td>gustavo.martins@triunfo.com.br</td>
-                                    <td>Chuva@Branca_81Flor</td>
-                                    <td>
-                                        <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
-                                        <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                <div class="tabela-container">
+                    <table class="tabela-rodovias">
+                        <thead>
+                            <tr>
+                                <th style="border-top-left-radius:7px;">ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Senha</th>
+                                <th id="th-relatorio" style="border-top-right-radius:7px;">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Bruno Almeida</td>
+                                <td>bruno.almeida@ecorodovias.com.br</td>
+                                <td>Sol!Rápido_73Mar</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Camila Ramos</td>
+                                <td>camila.ramos@arteris.com.br</td>
+                                <td>Neve@Doce8Luz</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Eduardo Lopes</td>
+                                <td>eduardo.lopes@ccr.com.br</td>
+                                <td>Lago#Verde_92Sol</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Fernanda Dias</td>
+                                <td>fernanda.dias@viasul.com.br</td>
+                                <td>Tigre!Doce_54Céu</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Gustavo Martins</td>
+                                <td>gustavo.martins@triunfo.com.br</td>
+                                <td>Chuva@Branca_81Flor</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
+    </div>
 
-        </main>
+    </main>
     </div>
 
     <script>
@@ -162,6 +142,73 @@
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');
             });
+
+        function cadastrar() {
+            var nome = input_nome.value
+            var email = input_email.value
+            var senha = input_senha.value
+            var fk_empresa = sessionStorage.FK_EMPRESA
+
+            fetch(`/usuario/cadastrar`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    emailServer: email,
+                    senhaServer: senha,
+                    fk_empresaServer: fk_empresa,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    if (resposta.ok) {
+                        alert("Cadastro realizado");
+                        postarSlack(nome, email);
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+        }
+
+        function adicionarFuncionario(nome, email) {
+            fetch(`/usuario/notificar-slack`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    text: `Novo funcionário cadastrado: ${nome} Email: ${email}`,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("Notificação Slack enviada:", resposta);
+                })
+                .catch(function (erro) {
+                    console.log(`#ERRO ao notificar Slack: ${erro}`);
+                });
+        }
+
+        
+        function removerFuncionario(nome, email) {
+            fetch(`/usuario/notificar-slack`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    text: `Funcionário removido: ${nome} Email: ${email}`,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("Notificação Slack enviada:", resposta);
+                })
+                .catch(function (erro) {
+                    console.log(`#ERRO ao notificar Slack: ${erro}`);
+                });
+        }
     </script>
 </body>
 

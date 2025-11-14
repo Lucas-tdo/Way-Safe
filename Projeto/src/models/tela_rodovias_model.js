@@ -1,23 +1,5 @@
 var database = require("../database/config")
 
-function topRodovias(fk_empresa) {
-    console.log("Executando topRodovias para empresa:", fk_empresa);
-    
-    var instrucaoSql = `
-        SELECT IFNULL(rodovia_cod_numeric, 'Não identificado') as nomeRodovia, 
-               COUNT(fk_rodovias) as aparicoes 
-        FROM ACIDENTE
-        JOIN RODOVIAS ON idRODOVIAS = fk_rodovias
-        WHERE fk_empresa = ${fk_empresa}
-        GROUP BY rodovia_cod_numeric
-        ORDER BY aparicoes DESC
-        LIMIT 3;
-    `;
-    
-    console.log("SQL topRodovias:", instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
 function buscar_rodovias(municipio, ano) {
     var instrucaoSql = '';
     var condicoes = [];
@@ -104,7 +86,6 @@ function listar_municipios() {
 }
 
 module.exports = {
-    topRodovias,
     buscar_rodovias,
     listar_anos,
     listar_municipios
