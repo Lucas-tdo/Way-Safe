@@ -104,7 +104,7 @@ async function notificarSlack(req, res) {
 
     try {
         const response = await fetch(
-            'https://hooks.slack.com/services/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',
+            'https://hooks.slack.com/services/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',
             {
                 method: 'POST',
                 headers: {
