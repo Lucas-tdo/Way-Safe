@@ -94,11 +94,45 @@ function autenticar(req,res){
     }
 }
 
+async function notificarSlack(req, res) {
+    var mensagem = req.body.text;
+    
+    if (mensagem == undefined) {
+        res.status(400).send("Mensagem está undefined");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            'https://hooks.slack.com/services/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',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: mensagem }),
+            }
+        );
+
+        if (response.ok) {
+            console.log("Notificação enviada ao Slack com sucesso!");
+            res.status(200).send("Notificação enviada ao Slack");
+        } else {
+            console.log("Erro ao enviar notificação ao Slack");
+            res.status(response.status).send("Erro ao enviar para o Slack");
+        }
+    } catch (erro) {
+        console.log("Erro ao notificar Slack:", erro);
+        res.status(500).send("Erro interno ao notificar Slack");
+    }
+}
+
 
 
 module.exports = {
     checaremail,
     cadastrar,
     autenticar,
-    checarEmpresa
+    checarEmpresa,
+    notificarSlack
 }

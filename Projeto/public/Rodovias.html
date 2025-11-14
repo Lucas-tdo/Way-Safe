@@ -17,7 +17,7 @@
       <button class="toggle-nav">☰ </button>
 
       <div class="perfil">
-        <img class="img_user" src="icons/user.png">  <a href="add_func.html"><img src="icons/engrenagem.png"></a>
+        <img class="img_user" src="icons/user.png"> <a href="add_func.html"><img src="icons/engrenagem.png"></a>
       </div>
 
 
@@ -66,11 +66,14 @@
 
             <div class="card">
               <div id="card-linha1">
-                <span> <span style="font-weight: 600;">1°</span> Rodovia </span> 
+                <span> <span style="font-weight: 600;">1°</span> Rodovia </span>
               </div>
               <h1 id="nome-rodovia1">SP-150</h1>
               <div id="card-linha3">
-               <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;" onclick="guardarSessionStorage(document.getElementById(`nome-rodovia1`).innerHTML)">Ver Mais</p></a>
+                <a href="sp150.html" style="text-decoration: none;">
+                  <p style="color: rgb(16, 147, 95); font-weight: 500;"
+                    onclick="guardarSessionStorage(document.getElementById(`nome-rodovia1`).innerHTML)">Ver Mais</p>
+                </a>
               </div>
 
             </div>
@@ -81,17 +84,23 @@
               </div>
               <h1 id="nome-rodovia2">BR-101</h1>
               <div id="card-linha3">
-                <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;" onclick="guardarSessionStorage(document.getElementById(`nome-rodovia2`).innerHTML)">Ver Mais</p></a>
+                <a href="sp150.html" style="text-decoration: none;">
+                  <p style="color: rgb(16, 147, 95); font-weight: 500;"
+                    onclick="guardarSessionStorage(document.getElementById(`nome-rodovia2`).innerHTML)">Ver Mais</p>
+                </a>
               </div>
             </div>
 
             <div class="card">
               <div id="card-linha1">
-                <span> <span style="font-weight: 600;">3°</span> Rodovia </span> 
+                <span> <span style="font-weight: 600;">3°</span> Rodovia </span>
               </div>
               <h1 id="nome-rodovia3">SP-280</h1>
               <div id="card-linha3">
-                <a href="sp150.html" style="text-decoration: none;"> <p style="color: rgb(16, 147, 95); font-weight: 500;" onclick="guardarSessionStorage(document.getElementById(`nome-rodovia3`).innerHTML)">Ver Mais</p></a>
+                <a href="sp150.html" style="text-decoration: none;">
+                  <p style="color: rgb(16, 147, 95); font-weight: 500;"
+                    onclick="guardarSessionStorage(document.getElementById(`nome-rodovia3`).innerHTML)">Ver Mais</p>
+                </a>
               </div>
             </div>
 
@@ -100,12 +109,13 @@
             <p class="tipo">Rodovias com mais acidentes</p>
             <div class="barra">
               <p>Municipio:</p>
-                <input type="text" name="" id="select-municipio" placeholder="municipio" list="data-municipio" onchange="mudanca_seletor()">
-                <datalist id="data-municipio"></datalist>
+              <input type="text" name="" id="select-municipio" placeholder="municipio" list="data-municipio"
+                onchange="mudanca_seletor()">
+              <datalist id="data-municipio"></datalist>
               </select>
             </div>
           </div>
-    
+
 
 
           <div class="tabela-container">
@@ -121,7 +131,7 @@
                 </tr>
               </thead>
               <tbody>
-                
+
               </tbody>
             </table>
           </div>
@@ -140,33 +150,38 @@
         document.querySelector('.filtro-box').classList.toggle('ativo');
       });
 
-      function remove_acentos(str) {
-        if(str != undefined &&  str != '' &&  str != null){
-          return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        }else{
-          return str
-        }
+    function remove_acentos(str) {
+      if (str != undefined && str != '' && str != null) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      } else {
+        return str
       }
+    }
 
-      function guardarSessionStorage(rodovia){
-        sessionStorage.codigoRodovia = rodovia;
-      }
+    function guardarSessionStorage(rodovia) {
+      sessionStorage.codigoRodovia = rodovia;
+    }
 
-      window.onload = function() {
-        carregar_anos()
-        carregar_municipios()
-        buscar_rodovias(
-          document.getElementById("select-municipio").value,
-          document.getElementById("select-ano").value
-        )
-      };
 
-      function mudanca_seletor(){
-        buscar_rodovias(
-          document.getElementById("select-municipio").value,
-          document.getElementById("select-ano").value
-        )
-      }
+
+    window.onload = function () {
+      carregar_anos()
+      carregar_municipios()
+      buscar_rodovias(
+        document.getElementById("select-municipio").value,
+        document.getElementById("select-ano").value
+      )
+      teste_slack()
+    };
+
+    function mudanca_seletor() {
+      buscar_rodovias(
+        document.getElementById("select-municipio").value,
+        document.getElementById("select-ano").value
+      )
+    }
+
+    
 
     function carregar_municipios() {
       fetch('/tela_rodovias_rota/listar_municipios')
@@ -213,7 +228,7 @@
         ano: ano !== '' ? ano : undefined,
       };
 
-      console.log("Dados enviados:", dados); 
+      console.log("Dados enviados:", dados);
 
       fetch(`/tela_rodovias_rota/aplicar_filtro`, {
         method: "POST",
@@ -227,7 +242,7 @@
           console.log("Resultado recebido:", resultado);
 
           var tabela = document.querySelector(".tabela-rodovias tbody");
-          tabela.innerHTML = ""; 
+          tabela.innerHTML = "";
 
           if (resultado.length === 0) {
             tabela.innerHTML = `
@@ -243,14 +258,14 @@
 
           resultado.slice(0, 100).forEach((item, index) => {
 
-            if(topRodovias.length < 3){
-              if(topRodovias.includes(item.codigoRodovia)){
-              }else{
+            if (topRodovias.length < 3) {
+              if (topRodovias.includes(item.codigoRodovia)) {
+              } else {
                 topRodovias.push(item.codigoRodovia)
                 document.getElementById(`nome-rodovia${topRodovias.length}`).innerHTML = `${item.codigoRodovia}`
               }
             }
-            
+
             var linha = document.createElement("tr");
             linha.innerHTML = `
               <td>${index + 1}#</td>
@@ -266,51 +281,6 @@
         .catch(error => {
           console.error("Erro ao buscar rodovias:", error);
           alert("Erro ao buscar dados. Verifique o console.");
-        });
-    }
-
-    function topRodovias() {
-      var fk_empresa = sessionStorage.FK_EMPRESA;
-
-      console.log("===== topRodovias Frontend =====");
-      console.log("fk_empresa do sessionStorage:", fk_empresa);
-      console.log("Tipo:", typeof fk_empresa);
-
-      if (!fk_empresa || fk_empresa == 'undefined') {
-        console.error("ERRO: fk_empresa não está definido no sessionStorage!");
-        alert("Erro: Empresa não identificada. Faça login novamente.");
-        return;
-      }
-
-      fetch(`/tela_rodovias_rota/topRodovias/${fk_empresa}`)
-        .then(res => {
-          console.log("Status da resposta:", res.status);
-          if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-          }
-          return res.json();
-        })
-        .then(top => {
-          console.log("Top rodovias recebido:", top);
-          console.log("Quantidade:", top.length);
-
-          if (top.length >= 3) {
-            var top1 = top[0].nomeRodovia;
-            var top2 = top[1].nomeRodovia;
-            var top3 = top[2].nomeRodovia;
-            
-            document.getElementById("nome-rodovia1").innerText = top1;
-            document.getElementById("nome-rodovia2").innerText = top2;
-            document.getElementById("nome-rodovia3").innerText = top3;
-            
-            console.log("Cards atualizados com sucesso!");
-          } else {
-            console.warn("Menos de 3 rodovias retornadas:", top.length);
-          }
-        })
-        .catch(error => {
-          console.error("Erro ao buscar top rodovias:", error);
-          alert("Erro ao carregar top rodovias. Verifique o console.");
         });
     }
   </script>
