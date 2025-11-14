@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botões que surgem</title>
+  <style>
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="botaoPrincipal">Clique aqui</button>
+  <div id="containerBotoes" class="container"></div>
+
+  <script>
+    const botaoPrincipal = document.getElementById('botaoPrincipal');
+    const container = document.getElementById('containerBotoes');
+
+    botaoPrincipal.addEventListener('click', () => {
+      // Criar primeiro botão
+      const botao1 = document.createElement('button');
+      botao1.textContent = 'Botão 1';
+      botao1.onclick = () => alert('Executou a função do Botão 1!');
+
+      // Criar segundo botão
+      const botao2 = document.createElement('button');
+      botao2.textContent = 'Botão 2';
+      botao2.onclick = () => alert('Executou a função do Botão 2!');
+
+      // Adicionar ao container
+      container.appendChild(botao1);
+      container.appendChild(botao2);
+
+      // Opcional: desabilita o botão principal pra não repetir
+      botaoPrincipal.disabled = true;
+    });
+  </script>
+
+</body>
+</html>
