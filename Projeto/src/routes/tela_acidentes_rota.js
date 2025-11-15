@@ -7,14 +7,19 @@ router.get("/municipio_mais_acidentes/:fk_empresa/:periodo", function(req, res) 
     TelaAcidentesController.municipio_mais_acidentes(req, res);
 });
 
-router.get("/evolucao_acidentes/:fk_empresa/:periodo", function(req, res) {
-    TelaAcidentesController.evolucaoAcidentes(req, res);
+router.get("/tipo_mais_recorrente/:fk_empresa/:periodo", function(req, res) {
+    TelaAcidentesController.tipo_mais_recorrente(req, res);
 });
 
+router.get("/total_de_acidentes/:fk_empresa/:periodo", function(req, res) {
+    TelaAcidentesController.total_de_acidentes(req, res);
+});
 
-router.get("/total_acidentes_por_tipo/:fk_empresa/:periodo", function(req, res) {
+router.get("/total_acidentes_por_tipo/:fk_empresa/:periodo/:mes", function(req, res) {
     TelaAcidentesController.quantiaPorTipoAcidente(req, res);
 });
+
+
 
 module.exports = router;
 
