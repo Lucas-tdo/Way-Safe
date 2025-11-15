@@ -24,29 +24,6 @@ function municipio_mais_acidentes(req, res) {
         });
 }
 
-function tipo_mais_recorrente(req, res) {
-    var fk_empresa = req.params.fk_empresa;
-    var periodo = "";
-
-    if (req.params.periodo === "") {
-        periodo = undefined
-    } else {
-        periodo = req.params.periodo;
-    }
-
-    console.log("Filtros recebidos:", { fk_empresa, periodo });
-
-    tela_acidentes_model.tipo_mais_recorrente(fk_empresa, periodo)
-        .then(resposta => {
-            console.log(`Busca retornou ${resposta.length} resultados`);
-            res.json(resposta);
-        })
-        .catch(erro => {
-            console.log("Erro na busca:", erro);
-            res.status(500).json(erro.sqlMessage || erro);
-        });
-}
-
 function total_de_acidentes(req, res) {
     var fk_empresa = req.params.fk_empresa;
     var periodo = "";
@@ -106,6 +83,5 @@ function quantiaPorTipoAcidente(req, res) {
 module.exports = {
     municipio_mais_acidentes,
     quantiaPorTipoAcidente,
-    tipo_mais_recorrente,
     total_de_acidentes
 }
