@@ -18,7 +18,7 @@
       <button class="toggle-nav">☰ </button>
 
       <div class="perfil">
-        <img class="img_user" src="icons/user.png">  <a href="add_func.html"><img src="icons/engrenagem.png"></a>
+        <img class="img_user" src="icons/user.png"> <a href="add_func.html"><img src="icons/engrenagem.png"></a>
       </div>
 
       <ul class="menu-list">
@@ -35,13 +35,22 @@
 
       <div class="sair">Sair</div>
     </aside>
-    <!-- FIM MENU -->
 
     <!-- CONTEÚDO -->
     <main class="container">
 
       <div class="acidentes-bar">
         <h1>Vitimas</h1>
+      </div>
+
+      <div class="barra">
+        <p class="text_over" style="font-weight: 700;"></p>
+        <div class="barra">
+          <p>Ano:</p>
+          <select name="" id="select-ano" onchange="mudanca_seletor(this.value)">
+            <option value="">Selecione um ano</option>
+          </select>
+        </div>
       </div>
 
       <div class="barra">
@@ -55,7 +64,7 @@
           <div class="card">
             <p>Municipio com mais vítimas fatais</p>
             <div id="conteudo-total-acid">
-              <p style="font-weight: 700;" id="acidente_30">1.577</p>
+              <p style="font-weight: 700;" id="municipio_mais_vitimas">Carregando...</p>
             </div>
 
 
@@ -63,24 +72,39 @@
           <div class="card">
             Tipo de acidente mais recorrente
             <div id="conteudo-total-acid">
-              <p style="font-weight: 700;" id="acidente_70">2.897</p>
+              <p style="font-weight: 700;" id="tipo_mais_recorrente">Carregando...</p>
             </div>
           </div>
 
           <div class="card">
-            Total de acidentes (últimos 6 meses)
+            Total de acidentes
             <div id="conteudo-total-acid">
-              <p style="font-weight: 700;" id="acidente_60">2.897</p>
+              <p style="font-weight: 700;" id="total_de_acidentes">Carregando...</p>
             </div>
           </div>
 
         </div>
 
-        <span class="tipo">Filtragem por quantidade de dias</span>
+        <span class="tipo">Filtragem por quantidade de mês</span>
 
         <div>
 
-          <input type="number" name="" id="periodo_tipos" defaultValue="undefined">
+          <select name="" id="periodo_tipos">
+            <option value="">Selecione um mes</option>
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+          </select>
+
           <button id="botao_filtro">Filtrar dias</button>
         </div>
         <div class="tabela">
@@ -89,478 +113,13 @@
           </div>
         </div>
 
-        <span class="tipo">Evoluções dos acidentes</span>
 
-        <div class="tabela2">
-          <div class="grafico-scroll-container">
-            <div id="grafico-evolucao"></div>
-          </div>
-        </div>
       </div>
 
     </main>
   </div>
 
-  <script>
-    // Alterna menu (mantido para consistência, mesmo sem filtro)
-    document.querySelector('.toggle-nav')
-      .addEventListener('click', () => {
-        document.querySelector('.nav').classList.toggle('minimizado');
-      });
-
-    var quantidade_evolucao = [];
-    var tempo = '';
-
-    //Gráfico 1 - Tipos
-    var tiposOptions = {
-      chart: {
-        type: 'bar',
-        height: 350,
-        width: '100%',
-        toolbar: { show: false },
-      },
-      series: [{
-        name: 'Quantidade de acidentes',
-        data: []
-      }],
-      xaxis: {
-        categories: [],
-        title: {
-          text: 'TIPOS DE ACIDENTES',
-          style: {
-            fontWeight: 700,
-            fontSize: '12px'
-          }
-        },
-        labels: {
-          rotate: -45,
-          rotateAlways: true,
-          style: {
-            fontSize: '11px'
-          },
-          trim: true,
-          hideOverlappingLabels: true
-        }
-      },
-      yaxis: {
-        title: {
-          text: 'QUANTIDADE DE ACIDENTES',
-          style: {
-            fontWeight: 700,
-            fontSize: '12px'
-          }
-        },
-        labels: {
-          style: {
-            fontSize: '11px'
-          }
-        }
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 6,
-          horizontal: false,
-          columnWidth: '55%',
-          distributed: true // 👈 faz cada barra ter uma cor diferente
-        }
-      },
-      colors: [
-        '#0077b6', '#0096c7', '#00b4d8', '#48cae4',
-        '#90e0ef', '#ade8f4', '#caf0f8', '#ffafcc',
-        '#ff758f', '#fb6f92', '#e36414', '#ffb703',
-        '#ff9f1c', '#ff4d6d', '#9d4edd', '#5a189a'
-      ], // 👈 paleta variada
-      title: {
-        text: 'Tipos de acidentes',
-        align: 'left',
-        style: {
-          fontSize: '20px',
-          fontWeight: '900',
-          color: '#111'
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      grid: {
-        borderColor: '#eee',
-        padding: {
-          left: 10,
-          right: 10
-        }
-      },
-      legend: {
-        show: false
-      },
-      responsive: [{
-        breakpoint: 768,
-        options: {
-          chart: {
-            height: 320
-          },
-          title: {
-            style: {
-              fontSize: '16px'
-            }
-          },
-          xaxis: {
-            labels: {
-              style: {
-                fontSize: '9px'
-              }
-            },
-            title: {
-              style: {
-                fontSize: '10px'
-              }
-            }
-          },
-          yaxis: {
-            labels: {
-              style: {
-                fontSize: '9px'
-              }
-            },
-            title: {
-              style: {
-                fontSize: '10px'
-              }
-            }
-          }
-        }
-      }, {
-        breakpoint: 480,
-        options: {
-          chart: {
-            height: 280
-          },
-          title: {
-            style: {
-              fontSize: '14px'
-            }
-          },
-          xaxis: {
-            labels: {
-              style: {
-                fontSize: '8px'
-              },
-              rotate: -45
-            },
-            title: {
-              style: {
-                fontSize: '9px'
-              }
-            }
-          },
-          yaxis: {
-            labels: {
-              style: {
-                fontSize: '8px'
-              }
-            },
-            title: {
-              style: {
-                fontSize: '9px'
-              }
-            }
-          },
-          plotOptions: {
-            bar: {
-              columnWidth: '70%'
-            }
-          }
-        }
-      }]
-    };
-
-
-
-
-    var evolucaoOptions = {
-      chart: {
-        type: 'line',
-        height: 350,
-        width: '100%',
-        toolbar: { show: false },
-        zoom: { enabled: false }
-      },
-      series: [{
-        name: 'Acidentes por dia',
-        data: []
-      }],
-      xaxis: {
-        categories: [],
-        title: {
-          text: 'ÚLTIMOS 30 DIAS',
-          style: {
-            fontWeight: 700,
-            fontSize: '12px'
-          }
-        },
-        labels: {
-          rotate: -45,
-          rotateAlways: true,
-          style: {
-            fontSize: '11px'
-          },
-          trim: true
-        }
-      },
-      yaxis: {
-        title: {
-          text: 'QUANTIDADE DE ACIDENTES',
-          style: {
-            fontWeight: 700,
-            fontSize: '12px'
-          }
-        },
-        labels: {
-          style: {
-            fontSize: '11px'
-          }
-        }
-      },
-      stroke: {
-        curve: 'smooth',
-        width: 3
-      },
-      markers: {
-        size: 4,
-        colors: ['#0077b6'],
-        strokeColors: '#fff',
-        strokeWidth: 2
-      },
-      colors: ['#0077b6'],
-      title: {
-        text: 'Evolução dos acidentes nos últimos 30 dias',
-        align: 'left',
-        style: {
-          fontSize: '20px',
-          fontWeight: '900',
-          color: '#111'
-        }
-      },
-      grid: {
-        borderColor: '#eee',
-        padding: {
-          left: 10,
-          right: 10
-        }
-      },
-      tooltip: {
-        theme: 'light',
-        style: {
-          fontSize: '12px'
-        }
-      },
-      responsive: [{
-        breakpoint: 768,
-        options: {
-          chart: {
-            height: 320
-          },
-          title: {
-            style: {
-              fontSize: '16px'
-            }
-          },
-          xaxis: {
-            labels: {
-              style: {
-                fontSize: '9px'
-              }
-            },
-            title: {
-              style: {
-                fontSize: '10px'
-              }
-            }
-          },
-          yaxis: {
-            labels: {
-              style: {
-                fontSize: '9px'
-              }
-            },
-            title: {
-              style: {
-                fontSize: '10px'
-              }
-            }
-          },
-          markers: {
-            size: 3
-          },
-          stroke: {
-            width: 2
-          }
-        }
-      }, {
-        breakpoint: 480,
-        options: {
-          chart: {
-            height: 280
-          },
-          title: {
-            style: {
-              fontSize: '14px'
-            }
-          },
-          xaxis: {
-            labels: {
-              style: {
-                fontSize: '8px'
-              },
-              rotate: -45
-            },
-            title: {
-              style: {
-                fontSize: '9px'
-              }
-            }
-          },
-          yaxis: {
-            labels: {
-              style: {
-                fontSize: '8px'
-              }
-            },
-            title: {
-              style: {
-                fontSize: '9px'
-              }
-            }
-          },
-          markers: {
-            size: 2
-          },
-          stroke: {
-            width: 2
-          }
-        }
-      }]
-    };
-
-    // Renderiza os gráficos
-    var graficoTipos = new ApexCharts(document.querySelector("#grafico-tipos"), tiposOptions);
-    graficoTipos.render();
-
-    var graficoLinha = new ApexCharts(document.querySelector("#grafico-evolucao"), evolucaoOptions);
-    graficoLinha.render();
-
-    var fk_empresa = sessionStorage.FK_EMPRESA
-
-    window.addEventListener("load", (event) => {
-      municipio_mais_acidentes()
-      evolucao_acidentes(360); //Deve vir primeiro para definir o tempo(dia, mes ou ano)
-      total_acidentes_por_tipo();
-    });
-
-    document.getElementById("botao_filtro").addEventListener("click", function () {
-      evolucao_acidentes(document.getElementById('periodo_tipos').value) //Deve vir primeiro para definir o tempo(dia, mes ou ano)
-      total_acidentes_por_tipo(document.getElementById('periodo_tipos').value)
-    });
-
-
-    async function municipio_mais_acidentes() {
-
-      var fk_empresa = sessionStorage.FK_EMPRESA
-
-      const resp = await fetch(`/tela_acidentes_rota/municipio_mais_acidentes/${fk_empresa}/"2025"`)
-      if (resp.ok) {
-        const resp_municipio = await resp.json();
-        document.getElementById("acidente_30").innerText = `${resp_municipio[0].municipio}(${resp_municipio[0].total_vitima_fatais})`;
-      }
-      else {
-        console.log("Erro")
-      }
-
-    }
-
-    function evolucao_acidentes(periodo) {
-
-      var fk_empresa = sessionStorage.FK_EMPRESA
-
-      fetch(`/tela_acidentes_rota/evolucao_acidentes/${fk_empresa}/${periodo}`)
-        .then(res => res.json())
-        .then(quantidade => {
-
-          quantidade_evolucao = quantidade.quantidades;
-
-          datas = quantidade.labels;
-          tempo = quantidade.tipoAgrupamento;
-          var tempo_extensao = '';
-
-          console.log(datas);
-          console.log(quantidade_evolucao);
-
-          switch (tempo) {
-            case 'dia':
-              datas.length > 1 ? tempo_extensao = 'dias' : tempo_extensao = 'dia'
-              break
-            case 'semana':
-              datas.length > 1 ? tempo_extensao = 'semanas' : tempo_extensao = 'semana'
-              break
-            case 'mês':
-              datas.length > 1 ? tempo_extensao = 'meses' : tempo_extensao = 'mês'
-              break
-            case 'ano':
-              datas.length > 1 ? tempo_extensao = 'anos' : tempo_extensao = 'ano'
-              break
-          }
-
-          graficoLinha.updateOptions({
-            xaxis: {
-              categories: datas
-            },
-            title: {
-              text: `Evolução dos acidentes 
-              n${a = (tempo_extensao == 'semana') || (tempo_extensao == 'semanas') ? 'a' : 'o'}
-              ${a = !(tempo_extensao == 'mês') && (tempo_extensao.endsWith('s')) ? 's' : ''} 
-              últim${a = (tempo_extensao == 'semana') || (tempo_extensao == 'semanas') ? 'a' : 'o'}${a = !(tempo_extensao == 'mês') && (tempo_extensao.endsWith('s')) ? 's' : ''} 
-              ${c = datas.length > 1 ? datas.length : ''} ${tempo_extensao}`
-            }
-          });
-
-          graficoLinha.updateSeries([{
-            data: quantidade_evolucao
-          }])
-
-        })
-
-    }
-
-
-
-
-    async function total_acidentes_por_tipo() {
-      const resp = await fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/"2025"`)
-      if (resp.ok) {
-        const resp_municipio_tipo = await resp.json();
-        const tipos = resp_municipio_tipo.map(item => item.descr);
-        const quantidade_por_tipo = resp_municipio_tipo.map(item => item.total_vitima_fatais);
-        acidente_70.innerHTML = `${tipos[0]}(${quantidade_por_tipo[0]})`
-        graficoTipos.updateOptions({
-          xaxis: {
-            categories: tipos
-          }
-        });
-
-        graficoTipos.updateSeries([{
-          data: quantidade_por_tipo
-        }]);
-
-
-      }
-      else {
-        console.log("Erro")
-      }
-    }
-
-
-
-
-  </script>
+  <script src="JS/acidentes.js"></script>
 </body>
 
 </html>

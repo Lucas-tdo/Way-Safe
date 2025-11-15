@@ -173,16 +173,7 @@
       )
       teste_slack()
     };
-
-    function mudanca_seletor() {
-      buscar_rodovias(
-        document.getElementById("select-municipio").value,
-        document.getElementById("select-ano").value
-      )
-    }
-
     
-
     function carregar_municipios() {
       fetch('/tela_rodovias_rota/listar_municipios')
         .then(res => res.json())

@@ -2,21 +2,21 @@ var database = require("../database/config")
 
 
 function municipio_mais_acidentes(fk_empresa, ano) {
-    console.log("Executando total_acidentes para empresa:", fk_empresa);
+    console.log("Executando municipio_mais_vitimas para empresa:", fk_empresa);
 
     var instrucaoSql = `
-        select a.municipio, (
+        select a.municipio as municipio, (
         SUM(v.vitima_fatal) +
         SUM(v.vitima_fer_leve) +
         SUM(v.vitima_fer_media) +
         SUM(v.vitima_fer_grave) +
         SUM(v.vitimas_fer_seminfo) +
         SUM(v.vitima_ilesa)
-    ) as total_vitima_fatais from ACIDENTE as a
+    ) as total_vitima from ACIDENTE as a
     JOIN VITIMAS as v on a.idACIDENTE=v.fk_acidente 
-    WHERE year(a.data_hora)=${ano} and a.municipio is not null and a.fk_empresa=${fk_empresa}
+    WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
     group by a.municipio
-    order by total_vitima_fatais desc
+    order by total_vitima desc
     limit 2;
     `;
 
@@ -24,12 +24,32 @@ function municipio_mais_acidentes(fk_empresa, ano) {
     return database.executar(instrucaoSql);
 }
 
+function tipo_mais_recorrente(fk_empresa, ano) {
+    console.log("Executando municipio_mais_vitimas para empresa:", fk_empresa);
 
+    var instrucaoSql = `
+        select 
+        c.descr classe,
+        count(fk_classe_acid) aparicoes 
+        from acidente a
+        join classe_acidente c on a.fk_classe_acid = c.idClasse_acid
+        where a.fk_empresa = ${fk_empresa} ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
+        group by classe
+        order by aparicoes desc
+        limit 1;
+    `;
 
-function quantiaPorTipoAcidente(fk_empresa, ano) {
+    console.log("SQL municipio mais acidentes:", instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function quantiaPorTipoAcidente(fk_empresa, ano, mes) {
     console.log("Executando quantiaPorTipoAcidente para empresa:", fk_empresa, ano);
 
-    var instrucaoSql= `
+    console.log(typeof ano)
+    console.log(typeof mes)
+
+    var instrucaoSql = `
     select c.descr, (
         SUM(v.vitima_fatal) +
         SUM(v.vitima_fer_leve) +
@@ -40,90 +60,36 @@ function quantiaPorTipoAcidente(fk_empresa, ano) {
     ) as total_vitima_fatais from ACIDENTE as a
     JOIN VITIMAS as v on a.idACIDENTE=v.fk_acidente 
     JOIN classe_acidente as c on a.fk_classe_acid=c.idClasse_acid
-    WHERE year(a.data_hora)=${ano} and a.municipio is not null and a.fk_empresa=${fk_empresa}
+    WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} 
+    ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
+    ${mes == "undefined" ? '' : `and month(a.data_hora)=${mes}`}
     group by c.descr
     order by total_vitima_fatais desc;
     `
+
+    console.log("SQL quantidade por tipo de acidente:", instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function evolucao_acidentes(fk_empresa, dias) {
-    console.log("Executando evolucao_acidentes para empresa:", fk_empresa, "período:", dias, "dias");
-
-    let agrupamento = '';
-    let formato = '';
-    let tipoAgrupamento = '';
-
-    if (dias <= 30) {
-        agrupamento = 'DATE(data_hora)';
-        formato = '%Y-%m-%d';
-        tipoAgrupamento = 'dia';
-    } else if (dias <= 200) {
-        agrupamento = 'YEARWEEK(data_hora, 1)';
-        formato = '%x-W%v';
-        tipoAgrupamento = 'semana';
-    } else if (dias <= 1000) {
-        agrupamento = 'DATE_FORMAT(data_hora, "%Y-%m")';
-        formato = '%Y-%m';
-        tipoAgrupamento = 'mês';
-    } else {
-        agrupamento = 'YEAR(data_hora)';
-        formato = '%Y';
-        tipoAgrupamento = 'ano';
-    }
+function total_de_acidentes(fk_empresa, ano) {
+    console.log("Executando totalDeAcidentes para empresa:", fk_empresa, ano);
 
     var instrucaoSql = `
-        SELECT 
-            ${agrupamento} as periodo,
-            COUNT(*) as qtd_acidentes,
-            MIN(DATE(data_hora)) as data_inicio,
-            MAX(DATE(data_hora)) as data_fim
-        FROM ACIDENTE 
-        WHERE fk_empresa = ${fk_empresa} 
-        AND data_hora BETWEEN DATE_SUB(NOW(), INTERVAL ${dias} DAY) AND NOW()
-        GROUP BY ${agrupamento}
-        ORDER BY periodo ASC;
-    `;
+        select 
+            count(*) as total
+        from acidente 
+        where fk_empresa = ${fk_empresa} ${ano == "undefined" ? '' : `and year(data_hora)=${ano}`};
+        ;
+    `
 
-    console.log("SQL acidentesPorPeriodo:", instrucaoSql);
-    return database.executar(instrucaoSql).then(resultados => {
-        const periodos = [];
-        const quantidades = [];
-        const labels = [];
-
-        resultados.forEach(item => {
-            periodos.push(item.periodo);
-            quantidades.push(item.qtd_acidentes);
-            
-            if (tipoAgrupamento === 'dia') {
-                labels.push(new Date(item.data_inicio).toLocaleDateString('pt-BR'));
-            } else if (tipoAgrupamento === 'semana') {
-                const ano = item.periodo.toString().substring(0, 4);
-                const semana = item.periodo.toString().substring(4);
-                labels.push(`${ano} - Semana ${semana}`);
-            } else if (tipoAgrupamento === 'mês') {
-                const [ano, mes] = item.periodo.split('-');
-                const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 
-                             'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-                labels.push(`${meses[parseInt(mes) - 1]} ${ano}`);
-            } else if (tipoAgrupamento === 'ano') {
-                labels.push(item.periodo.toString());
-            }
-        });
-
-        return {
-            periodos: periodos,
-            quantidades: quantidades,
-            labels: labels,
-            tipoAgrupamento: tipoAgrupamento,
-            totalPeriodos: resultados.length
-        };
-    });
+    console.log("SQL total de acidentes:", instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 
 module.exports = {
+    municipio_mais_acidentes,
+    tipo_mais_recorrente,
     quantiaPorTipoAcidente,
-    evolucao_acidentes,
-    municipio_mais_acidentes
-}
+    total_de_acidentes,
+};

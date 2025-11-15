@@ -3,7 +3,13 @@ var tela_acidentes_model = require("../models/tela_acidentes_model");
 
 function municipio_mais_acidentes(req, res) {
     var fk_empresa = req.params.fk_empresa;
-    var periodo = req.params.periodo;
+    var periodo = ""
+
+    if (req.params.periodo === "") {
+        periodo = undefined
+    } else {
+        periodo = req.params.periodo;
+    }
 
     console.log("Filtros recebidos:", { fk_empresa, periodo });
 
@@ -18,14 +24,19 @@ function municipio_mais_acidentes(req, res) {
         });
 }
 
-function evolucaoAcidentes(req, res) {
+function tipo_mais_recorrente(req, res) {
     var fk_empresa = req.params.fk_empresa;
-    var periodo = req.params.periodo;
+    var periodo = "";
 
-    // Log para debug
+    if (req.params.periodo === "") {
+        periodo = undefined
+    } else {
+        periodo = req.params.periodo;
+    }
+
     console.log("Filtros recebidos:", { fk_empresa, periodo });
 
-    tela_acidentes_model.evolucao_acidentes(fk_empresa, periodo)
+    tela_acidentes_model.tipo_mais_recorrente(fk_empresa, periodo)
         .then(resposta => {
             console.log(`Busca retornou ${resposta.length} resultados`);
             res.json(resposta);
@@ -36,15 +47,50 @@ function evolucaoAcidentes(req, res) {
         });
 }
 
+function total_de_acidentes(req, res) {
+    var fk_empresa = req.params.fk_empresa;
+    var periodo = "";
+
+    if (req.params.periodo === "") {
+        periodo = undefined
+    } else {
+        periodo = req.params.periodo;
+    }
+
+    console.log("Filtros recebidos:", { fk_empresa, periodo });
+
+    tela_acidentes_model.total_de_acidentes(fk_empresa, periodo)
+        .then(resposta => {
+            console.log(`Busca retornou ${resposta.length} resultados`);
+            res.json(resposta);
+        })
+        .catch(erro => {
+            console.log("Erro na busca:", erro);
+            res.status(500).json(erro.sqlMessage || erro);
+        });
+}
 
 function quantiaPorTipoAcidente(req, res) {
     var fk_empresa = req.params.fk_empresa;
-    var ano = req.params.periodo;
+    var periodo = "";
+    var mes = "";
+
+    if (req.params.periodo === "") {
+        periodo = undefined
+    } else {
+        periodo = req.params.periodo;
+    }
+
+    if (req.params.mes === "") {
+        mes = undefined
+    } else {
+        mes = req.params.mes;
+    }
 
     // Log para debug
-    console.log("Filtros recebidos:", { fk_empresa, ano });
+    console.log("Filtros recebidos:", { fk_empresa, periodo, mes });
 
-    tela_acidentes_model.quantiaPorTipoAcidente(fk_empresa, ano)
+    tela_acidentes_model.quantiaPorTipoAcidente(fk_empresa, periodo, mes)
         .then(resposta => {
             console.log(resposta);
             res.json(resposta); // A função já retorna o objeto formatado
@@ -55,8 +101,11 @@ function quantiaPorTipoAcidente(req, res) {
         });
 }
 
+
+
 module.exports = {
     municipio_mais_acidentes,
     quantiaPorTipoAcidente,
-    evolucaoAcidentes
+    tipo_mais_recorrente,
+    total_de_acidentes
 }
