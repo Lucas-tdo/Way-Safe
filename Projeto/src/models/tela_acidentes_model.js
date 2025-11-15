@@ -24,30 +24,8 @@ function municipio_mais_acidentes(fk_empresa, ano) {
     return database.executar(instrucaoSql);
 }
 
-function tipo_mais_recorrente(fk_empresa, ano) {
-    console.log("Executando municipio_mais_vitimas para empresa:", fk_empresa);
-
-    var instrucaoSql = `
-        select 
-        c.descr classe,
-        count(fk_classe_acid) aparicoes 
-        from acidente a
-        join classe_acidente c on a.fk_classe_acid = c.idClasse_acid
-        where a.fk_empresa = ${fk_empresa} ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
-        group by classe
-        order by aparicoes desc
-        limit 1;
-    `;
-
-    console.log("SQL municipio mais acidentes:", instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-function quantiaPorTipoAcidente(fk_empresa, ano, mes) {
+function quantiaPorTipoAcidente(fk_empresa, ano) {
     console.log("Executando quantiaPorTipoAcidente para empresa:", fk_empresa, ano);
-
-    console.log(typeof ano)
-    console.log(typeof mes)
 
     var instrucaoSql = `
     select c.descr, (
@@ -62,7 +40,6 @@ function quantiaPorTipoAcidente(fk_empresa, ano, mes) {
     JOIN classe_acidente as c on a.fk_classe_acid=c.idClasse_acid
     WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} 
     ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
-    ${mes == "undefined" ? '' : `and month(a.data_hora)=${mes}`}
     group by c.descr
     order by total_vitima_fatais desc;
     `
@@ -89,7 +66,6 @@ function total_de_acidentes(fk_empresa, ano) {
 
 module.exports = {
     municipio_mais_acidentes,
-    tipo_mais_recorrente,
     quantiaPorTipoAcidente,
-    total_de_acidentes,
+    total_de_acidentes
 };

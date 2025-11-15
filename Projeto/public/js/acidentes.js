@@ -4,7 +4,7 @@ async function municipio_mais_acidentes(ano) {
     const resp = await fetch(`/tela_acidentes_rota/municipio_mais_acidentes/${fk_empresa}/${ano}`)
     if (resp.ok) {
         const resp_municipio = await resp.json();
-    
+
         const municipio = resp_municipio.map(item => item.municipio)[0]
         const quantidade = resp_municipio.map(item => item.total_vitima)[0]
 
@@ -12,21 +12,6 @@ async function municipio_mais_acidentes(ano) {
     }
     else {
         console.log("Erro municipio_mais_acidentes")
-    }
-}
-
-async function tipo_mais_recorrente(ano) {
-    var fk_empresa = sessionStorage.FK_EMPRESA
-
-    const resp = await fetch(`/tela_acidentes_rota/tipo_mais_recorrente/${fk_empresa}/${ano}`)
-    if (resp.ok) {
-        const resp_tipo = await resp.json();
-        const tipo = resp_tipo.map(item => item.classe)
-
-        document.getElementById("tipo_mais_recorrente").innerText = `${tipo}`;
-    }
-    else {
-        console.log("Erro tipo_mais_recorrente")
     }
 }
 
@@ -45,14 +30,19 @@ async function total_de_acidentes(ano) {
     }
 }
 
-async function total_acidentes_por_tipo(ano, mes) {
+async function total_acidentes_por_tipo(ano) {
     var fk_empresa = sessionStorage.FK_EMPRESA;
 
-    const resp = await fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/${ano}/${mes}`)
+    const resp = await fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/${ano}`)
     if (resp.ok) {
         const resp_municipio_tipo = await resp.json();
         const tipos = resp_municipio_tipo.map(item => item.descr);
+        const tipoMaisRecorrente = resp_municipio_tipo.map(item => item.descr)[0];
+
         const quantidade_por_tipo = resp_municipio_tipo.map(item => item.total_vitima_fatais);
+
+        document.getElementById("tipo_mais_recorrente").innerText = `${tipoMaisRecorrente}`;
+
         graficoTipos.updateOptions({
             xaxis: {
                 categories: tipos
@@ -79,18 +69,12 @@ window.addEventListener("load", (event) => {
     carregar_anos()
 
     municipio_mais_acidentes()
-    tipo_mais_recorrente()
     total_de_acidentes()
     total_acidentes_por_tipo()
 });
 
-document.getElementById("botao_filtro").addEventListener("click", function () {
-    total_acidentes_por_tipo(document.getElementById('select-ano').value ,document.getElementById('periodo_tipos').value)
-});
-
 function mudanca_seletor(ano) {
     municipio_mais_acidentes(ano);
-    tipo_mais_recorrente(ano);
     total_de_acidentes(ano);
     total_acidentes_por_tipo(ano)
 }
