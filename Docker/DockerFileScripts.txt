@@ -51,8 +51,8 @@ ENV MYSQL_DATABASE=waysafe
 ENV MYSQL_USER=Way_Safe
 ENV MYSQL_PASSWORD=Urubu100
 
-COPY /home/ubuntu/Projeto/Way-Safe/banco_de_dados/insert_rodovias_acidentes_concessionarias - Copia.sql /docker-entrypoint-initdb.d/
-COPY /home/ubuntu/Projeto/Way-Safe/banco_de_dados/script_criacao_tabela.sql /docker-entrypoint-initdb.d/
+COPY /Way-Safe/banco_de_dados/01insert_rodovias_acidentes_concessionarias.sql /docker-entrypoint-initdb.d/
+COPY /Way-Safe/banco_de_dados/00script_criacao_tabela.sql /docker-entrypoint-initdb.d/
 
 ENV PORT=3306
 
@@ -64,7 +64,7 @@ FROM openjdk:21-jdk-slim
 
 RUN apt-get update && apt-get install -y git && apt-get clean && rm -rf /var/lib/apt/lists*
 
-COPY /home/ubuntu/Projeto/Way-Safe/JAVA-Project/PastaJAR/ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar /app/ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar
+COPY /Way-Safe/JAVA-Project/PastaJAR/ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar /app/ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar
 
 WORKDIR /app
 
