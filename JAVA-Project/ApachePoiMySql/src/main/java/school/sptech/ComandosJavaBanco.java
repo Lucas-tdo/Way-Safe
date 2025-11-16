@@ -2,6 +2,7 @@
     import org.springframework.jdbc.core.JdbcTemplate;
 
     import java.time.LocalDateTime;
+    import java.time.ZoneId;
     import java.time.format.DateTimeFormatter;
     import java.util.List;
 
@@ -18,7 +19,8 @@
             jdbcTemplate.update("SET foreign_key_checks = 0");
             jdbcTemplate.update("TRUNCATE TABLE ACIDENTE");
             jdbcTemplate.update("TRUNCATE TABLE VITIMAS");
-            LocalDateTime dataHora = LocalDateTime.now();
+            ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+            LocalDateTime dataHora = LocalDateTime.now(zoneId);
             DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
             String dataFormatada = dataHora.format(dataFormato);
             String mensagem = "O Banco foi apagado para inserção dos dados!";
@@ -40,7 +42,8 @@
                 vitimas+=registros.get(i).retornarVitimas();
             }
 
-                LocalDateTime dataHora = LocalDateTime.now();
+                ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+                LocalDateTime dataHora = LocalDateTime.now(zoneId);
                 DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
                 String dataFormatada = dataHora.format(dataFormato);
                 String mensagem = "Registro de "+ (inicioLote)+" a "+ (inicioLote+registros.size()-1) + " adicionados ao banco de dados, do arquivo "+arquivoTratar;

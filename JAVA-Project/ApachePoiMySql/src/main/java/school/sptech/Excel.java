@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -73,21 +74,24 @@ public abstract class Excel {
             }
         }
         catch (IOException e){
-            LocalDateTime dataHora = LocalDateTime.now();
+            ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+            LocalDateTime dataHora = LocalDateTime.now(zoneId);
             DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
             String dataFormatada = dataHora.format(dataFormato);
             String mensagem = "Erro ao pegar arquivos S3 ou arquivos já existem na máquina";
             System.out.println(dataFormatada+" "+mensagem);
         }
         catch (S3Exception e){
-            LocalDateTime dataHora = LocalDateTime.now();
+            ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+            LocalDateTime dataHora = LocalDateTime.now(zoneId);
             DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
             String dataFormatada = dataHora.format(dataFormato);
             String mensagem = "Erro ao pegar arquivos S3 as credenciais não estão setadas, ou arquivos já existem na máquina";
             System.out.println(dataFormatada+" "+mensagem);
         }
         catch (SdkClientException e){
-            LocalDateTime dataHora = LocalDateTime.now();
+            ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+            LocalDateTime dataHora = LocalDateTime.now(zoneId);
             DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
             String dataFormatada = dataHora.format(dataFormato);
             String mensagem = "Erro ao pegar arquivos S3 as credenciais não estão setadas, ou arquivos já existem na máquina";
