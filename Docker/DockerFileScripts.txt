@@ -72,6 +72,7 @@ EXPOSE 8080
 
 ENV SENHASQL=Urubu100
 ENV USERSQL=Way_Safe
+ENV TOKENSLACK=https://hooks.slack.com/services/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
 
 CMD ["java", "-jar", "ApachePoiMySql_Ubuntu-1.0-SNAPSHOT.jar"]
 

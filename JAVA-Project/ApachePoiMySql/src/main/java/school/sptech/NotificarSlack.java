@@ -19,7 +19,7 @@ public class NotificarSlack {
 
             // Um "fetch" só que do java
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://hooks.slack.com/services/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")) // Token do Slack webhook
+                    .uri(URI.create(System.getenv("TOKENSLACK"))) // Token do Slack webhook
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(json)) // Mensagem enviada la do front
                     .build();
