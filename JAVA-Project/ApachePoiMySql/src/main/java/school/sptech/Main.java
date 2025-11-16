@@ -1,7 +1,6 @@
 package school.sptech;
 
 import java.util.List;
-import sptech.NotificacaoSlack;
 
 
 public class Main {
@@ -16,6 +15,7 @@ public class Main {
         excel25.tratarExcel();
         excel24.tratarExcel();
         excel23.tratarExcel();
+        NotificarSlack.notificarSlack();
     }
 
     }

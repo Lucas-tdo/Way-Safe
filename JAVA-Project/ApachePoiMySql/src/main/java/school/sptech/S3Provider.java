@@ -15,9 +15,8 @@ public class S3Provider {
 
     public S3Client getS3Client() {
         return S3Client.builder()
-              .region(Region.US_EAST_1)
-              .credentialsProvider(credentials)
-              .build();
+                .region(Region.US_EAST_1)
+                .credentialsProvider(credentials)
+                .build();
     }
 }
-

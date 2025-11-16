@@ -1,5 +1,6 @@
 package school.sptech;
 
+import software.amazon.awssdk.core.exception.SdkClientException;
 import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
@@ -85,6 +86,13 @@ public abstract class Excel {
             String mensagem = "Erro ao pegar arquivos S3 as credenciais não estão setadas, ou arquivos já existem na máquina";
             System.out.println(dataFormatada+" "+mensagem);
         }
+        catch (SdkClientException e){
+            LocalDateTime dataHora = LocalDateTime.now();
+            DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+            String dataFormatada = dataHora.format(dataFormato);
+            String mensagem = "Erro ao pegar arquivos S3 as credenciais não estão setadas, ou arquivos já existem na máquina";
+            System.out.println(dataFormatada+" "+mensagem);
+        }
 
     }
 }
@@ -131,4 +139,3 @@ public abstract class Excel {
 //22,POSIÇÃO CÉLULA JURISDICAO
 //24,POSIÇÃO CÉLULA  LAT_FINAL
 //25 POSIÇÃO CÉLULA  LAT_FINAL
-

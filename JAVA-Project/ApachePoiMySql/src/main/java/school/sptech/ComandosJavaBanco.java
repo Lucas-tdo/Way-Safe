@@ -18,6 +18,11 @@
             jdbcTemplate.update("SET foreign_key_checks = 0");
             jdbcTemplate.update("TRUNCATE TABLE ACIDENTE");
             jdbcTemplate.update("TRUNCATE TABLE VITIMAS");
+            LocalDateTime dataHora = LocalDateTime.now();
+            DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+            String dataFormatada = dataHora.format(dataFormato);
+            String mensagem = "O Banco foi apagado para inserção dos dados!";
+            System.out.println(dataFormatada+" "+mensagem);
         }
 
         public void saveLote(List<RegistroAcidente> registros , String arquivoTratar){

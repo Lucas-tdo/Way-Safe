@@ -53,20 +53,20 @@ public class RegistroAcidente {
     public String retornarVitimas(){
         return String.format(
                 " (%d, %s, %s, %s, %s, %s ,%s)",
-                        ID,
-                        ILESA_INT,
-                        VIT_FATAL_INT,
-                        VIT_LEVE_INT,
-                        VIT_MODERADA_INT,
-                        VIT_GRAVE_INT ,
-                        VIT_SEMINFO_INT
+                ID,
+                ILESA_INT,
+                VIT_FATAL_INT,
+                VIT_LEVE_INT,
+                VIT_MODERADA_INT,
+                VIT_GRAVE_INT ,
+                VIT_SEMINFO_INT
 
         );
     }
 
     public String retornarAcidente(){
         return String.format(
-                        "( %d,%d, %d, %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                "( %d,%d, %d, %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
                 ID,
                 rodovia,
                 classeAcidente,
