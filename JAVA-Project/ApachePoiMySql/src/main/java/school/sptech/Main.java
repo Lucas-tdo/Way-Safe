@@ -1,5 +1,8 @@
 package school.sptech;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -16,6 +19,13 @@ public class Main {
         excel24.tratarExcel();
         excel23.tratarExcel();
         NotificarSlack.notificarSlack();
+
+        ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+        LocalDateTime dataHora = LocalDateTime.now(zoneId);
+        DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+        String dataFormatada = dataHora.format(dataFormato);
+        String mensagem = "Os dados foram alocados ao banco!";
+        System.out.println(dataFormatada+" "+mensagem);
     }
 
     }
