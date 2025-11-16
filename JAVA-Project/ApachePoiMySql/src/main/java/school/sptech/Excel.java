@@ -72,6 +72,13 @@ public abstract class Excel {
                 InputStream objectContent = s3Cliente.getObject(getObjectRequest, ResponseTransformer.toInputStream());
                 Files.copy(objectContent, new File(object.key()).toPath());
             }
+
+            ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
+            LocalDateTime dataHora = LocalDateTime.now(zoneId);
+            DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
+            String dataFormatada = dataHora.format(dataFormato);
+            String mensagem = "Os arquivos acidentes_2025, acidentes_2024 e acidentes_2023 foram clonados!";
+            System.out.println(dataFormatada+" "+mensagem);
         }
         catch (IOException e){
             ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
@@ -97,12 +104,7 @@ public abstract class Excel {
             String mensagem = "Erro ao pegar arquivos S3 as credenciais não estão setadas, ou arquivos já existem na máquina";
             System.out.println(dataFormatada+" "+mensagem);
         }
-        ZoneId zoneId = ZoneId.of("America/Sao_Paulo");
-        LocalDateTime dataHora = LocalDateTime.now(zoneId);
-        DateTimeFormatter dataFormato = DateTimeFormatter.ofPattern(" dd/MM/yyyy '('EEEE')' hh:mm:ss a");
-        String dataFormatada = dataHora.format(dataFormato);
-        String mensagem = "Os arquivos acidentes_2025, acidentes_2024 e acidentes_2023 foram clonados!";
-        System.out.println(dataFormatada+" "+mensagem);
+
     }
 }
 
