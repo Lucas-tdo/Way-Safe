@@ -1,4 +1,4 @@
-var ambiente_processo = 'producao';
+var ambiente_processo = 'desenvolvimento';
 // var ambiente_processo = 'producao';
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
@@ -18,6 +18,7 @@ var usuarioRouter = require  ("./src/routes/usuario")
 var tela_previaRouter = require  ("./src/routes/tela_previa_rota")
 var tela_rodoviasRouter = require  ("./src/routes/tela_rodovias_rota")
 var tela_acidentesRouter = require  ("./src/routes/tela_acidentes_rota")
+var tela_rodovia_espRouter = require  ("./src/routes/tela_rodovia_esp_rota")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,6 +31,7 @@ app.use("/tela_previa_rota", tela_previaRouter);
 app.use("/usuario",usuarioRouter)
 app.use("/tela_rodovias_rota",tela_rodoviasRouter);
 app.use("/tela_acidentes_rota",tela_acidentesRouter);
+app.use("/tela_rodovia_esp_rota",tela_rodovia_espRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -39,6 +39,7 @@ body {
 .previas-bar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 20px 20px;
   height: 70px;
   background: #fff;
