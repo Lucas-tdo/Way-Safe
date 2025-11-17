@@ -58,6 +58,33 @@ html, body {
     padding: 30px 100px;
 }
 
+.container-txt{
+  display: none;
+}
+
+.container-txt.ativa{
+ display: flex;
+  position: fixed;
+  top: 0;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000087;
+  z-index: 1000;
+}
+
+.caixa-de-texto-container{
+  z-index: 1;
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border: solid 1px grey;
+  padding: 40px 40px;
+  margin-right: 13%;
+  border-radius: 10px;
+}
+
 .pagperfil{
     display: flex;
     flex-direction: column;
@@ -153,13 +180,13 @@ input[type="file"] {
 }
 
 .caixa-de-texto{
-    background-color: #f5f5f5;
+    background-color: #fcfbfb;
     padding: 12px;
     border: none;
     border-radius: 5px;
 }
 .caixa-de-texto {
-  background-color: #f5f5f5;
+  background-color: #f5f5f569;
   transition: background-color 0.4s ease;
 }
 

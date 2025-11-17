@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil</title>
-  <link rel="stylesheet" href="../CSS/perfil.css">
-  <link rel="stylesheet" href="../CSS/nav.css">
+  <link rel="stylesheet" href="CSS/perfil.css">
+  <link rel="stylesheet" href="CSS/nav.css">
 </head>
 
 <body id="body">
@@ -22,22 +22,22 @@
       </div>
 
       <ul class="menu-list">
-        <li > <img src="../icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
+        <li > <img src="icons/home.png" class="icon"></img> <a href="#" class="text"> Previas</a> </li>
 
-        <li> <a href="Rodovias.html"> <img src="../icons/empresa.png" class="icon"></img></a> <a href="Rodovias.html"
+        <li> <a href="Rodovias.html"> <img src="icons/empresa.png" class="icon"></img></a> <a href="Rodovias.html"
             class="text">Rodovias</a> </li>
 
-        <li> <a href="acidentes.html"><img src="../icons/alerta.png" class="icon"></img></a> <a href="acidentes.html"
+        <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html"
             class="text">Acidentes</a> </li>
 
         <!-- <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></img></a> <a href="analise.html" class="text">Análise Detalhada</a> -->
         <li class="active">
-                    <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" height="25px" width="35px">
+                    <img src="icons/user.png" class="icon" height="25px" width="35px">
                     <a href="perfilFunc.html" class="text">Perfil</a>
                 </li>
       </ul>
 
-      <a class="sair" href="../previas.html">
+      <a class="sair" href="previas.html">
         <div>Voltar</div>
       </a>
     </aside>
@@ -81,7 +81,7 @@
                       align-items: center;
                       gap: 2px;
                       color: rgb(0, 0, 0);">
-               <img src="../icons/lapisPreto.png" alt="" height="18px"> Editar
+               <img src="icons/lapisPreto.png" alt="" height="18px"> Editar
               </button>
             </div>
           </div>
@@ -91,7 +91,7 @@
             <div>
               <label for="input-foto" class="foto-perfil" id="fotoContainer">
                 <span><img
-                    src="../Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                    src="Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
                     alt=""></span>
                 <img id="fotoPreview" style="display:none;">
               </label>
@@ -177,7 +177,7 @@
       if (!editando) {
         // Entrar no modo edição
         transformarEmInputs();
-        editarBtn.innerHTML = '<img src="../icons/check.svg" alt="" height="18px"> Salvar';
+        editarBtn.innerHTML = '<img src="icons/check.svg" alt="" height="18px"> Salvar';
         editando = true;
       } else {
         // Salvar e voltar para visualização
@@ -190,7 +190,7 @@
         }, 1000); // some depois de 2s
 
         salvarAlteracoes();
-        editarBtn.innerHTML = '<img src="../icons/lapisPreto.png" alt="" height="18px"> Editar';
+        editarBtn.innerHTML = '<img src="icons/lapisPreto.png" alt="" height="18px"> Editar';
         editando = false;
       }
     });
