@@ -125,7 +125,7 @@ services:
       - dbdata:/var/lib/mysql
 
   backend-java:
-    image: imagejava
+    image: lucastdo/javaimage
     container_name: ContainerJava
     depends_on:
       database:
