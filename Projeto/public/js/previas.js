@@ -154,7 +154,7 @@ function top5MaisTiposAcidentes() {
 
 }
 function logoEmpresa() {
-    var fk_empresa = 2;
+    var fk_empresa = sessionStorage.FK_EMPRESA;
 
     let caminhoImagem;
 
