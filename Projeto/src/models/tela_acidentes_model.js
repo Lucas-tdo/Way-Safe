@@ -17,7 +17,7 @@ function municipio_mais_acidentes(fk_empresa, ano) {
     WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
     group by a.municipio
     order by total_vitima desc
-    limit 2;
+    limit 10;
     `;
 
     console.log("SQL municipio mais acidentes:", instrucaoSql);
