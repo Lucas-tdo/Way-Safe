@@ -13,36 +13,35 @@
   <div class="fundo">
 
     <!-- MENU LATERAL -->
-   <aside class="nav">
-            <button class="toggle-nav">☰ </button>
+    <aside class="nav">
+      <button class="toggle-nav">☰ </button>
 
-            <div class="perfil">
-                <img class="img_user" src="../icons/user.png"> <img src="../icons/engrenagem.png">  
-              
-            </div>
+      <div class="perfil">
+        <img class="img_user" src="../icons/user.png"> <img src="../icons/engrenagem.png">
 
-                           
+      </div>
 
-            <ul class="menu-list">
-                <li >
-                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
-                    <a href="adm.html" class="text">Administradores</a>
-                </li>
 
-                <li>
-                    <a href="adm_conc.html"> <img src="../icons/empresa.png" class="icon"></a>
-                    <a href="adm_conc.html" class="text">Concessionárias</a>
-                </li>
 
-                <li  class="active" >
-                   <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
-                    <a href="perfil.html" class="text">Perfil</a>
-                </li>
+      <ul class="menu-list">
+        <li >
+          <a href="add_func.html"><img src="../icons/funcionarios.png" class="icon"></a>
+          <a href="add_func.html" class="text">Funcionários</a>
+        </li>
 
-            </ul>
+        <li class="active">
+          <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon"></a>
+          <a href="perfil.html" class="text">Perfil</a>
+        </li>
 
-            <a class="sair" href="../previas.html"><div >Voltar</div></a>
-        </aside>
+
+
+      </ul>
+
+      <a class="sair" href="../previas.html">
+        <div>Voltar</div>
+      </a>
+    </aside>
     <!--FIM MENU LATERAL-->
 
     <!--CONTEÚDO-->
@@ -54,14 +53,14 @@
 
 
       <div id="msg" class="container-txt">
-          <div class="caixa-de-texto-container" id="caixaTexto">
-            <p id="texto-caixa">Alterações realizadas com sucesso</p>
-          </div>
+        <div class="caixa-de-texto-container" id="caixaTexto">
+          <p id="texto-caixa">Alterações realizadas com sucesso</p>
         </div>
+      </div>
       <div class="container-de-baixo">
 
-        
-        
+
+
 
 
         <div class="pagperfil" style="background-color: rgb(255, 255, 255);">
@@ -83,7 +82,7 @@
                       align-items: center;
                       gap: 2px;
                       color: rgb(0, 0, 0);">
-               <img src="../icons/lapisPreto.png" alt="" height="18px"> Editar
+                <img src="../icons/lapisPreto.png" alt="" height="18px"> Editar
               </button>
             </div>
           </div>
@@ -92,9 +91,7 @@
           <div class="config-foto">
             <div>
               <label for="input-foto" class="foto-perfil" id="fotoContainer">
-                <span><img
-                    src="../Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
-                    alt=""></span>
+                <span><img src="../Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""></span>
                 <img id="fotoPreview" style="display:none;">
               </label>
               <input type="file" id="input-foto" accept="image/*">
@@ -211,11 +208,11 @@
       campos.forEach(campo => {
         const input = document.getElementById(`${campo}Input`);
         const valor = input.value;
-        
-        if(campo == 'senha'){
-            input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">**********</p>`;
-        }else{
-            input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
+
+        if (campo == 'senha') {
+          input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">**********</p>`;
+        } else {
+          input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
         }
       });
 
