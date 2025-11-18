@@ -9,7 +9,7 @@ function checaremail(email){
 }
 function checarEmpresa(empresa){
     var instrucaoSql = `
-        SELECT * FROM USUARIO WHERE EMPRESA='${empresa}';
+        SELECT * FROM EMPRESA WHERE idEMPRESA='${empresa}';
     `;
     return database.executar(instrucaoSql);
 }
