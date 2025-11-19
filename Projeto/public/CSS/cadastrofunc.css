@@ -16,8 +16,15 @@
 /* Área do conteúdo */
 .container {
     flex: 1;
-
 }
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+}
+
 .cadastro-bar {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
     background: #ffffff;
@@ -116,9 +123,12 @@ hr {
     border-color: #000;
 }
 
+
+
 /* Responsivo */
 @media (max-width: 780px) {
     .campos-cadastro {
         flex-direction: column;
+        display: block;
     }
 }
