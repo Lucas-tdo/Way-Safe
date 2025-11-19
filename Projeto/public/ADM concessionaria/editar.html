@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Funcionário</title>
+    <title>Editar Funcionário</title>
 
     <link rel="stylesheet" href="../CSS/cadastrofunc.css">
     <link rel="stylesheet" href="../CSS/nav.css">
-
-    <link rel="stylesheet" href="../CSS/modais.css">
+    <link rel="stylesheet" href="../CSS/modais.css"> <!-- CSS dos modais -->
 </head>
 
 <body id="body">
@@ -17,7 +16,7 @@
     <div class="fundo">
 
         <aside class="nav">
-            <button class="toggle-nav">☰ </button>
+            <button class="toggle-nav">☰</button>
 
             <div class="perfil">
                 <img class="img_user" src="../icons/user.png">
@@ -32,8 +31,7 @@
 
                 <li>
                     <a href="perfil.html">
-                        <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png"
-                            class="icon">
+                        <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon">
                     </a>
                     <a href="perfil.html" class="text">Perfil</a>
                 </li>
@@ -48,7 +46,7 @@
 
             <div class="cadastro-bar">
                 <a href="add_func.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
-                <h1>Cadastrar Funcionário</h1>
+                <h1>Editar Funcionário</h1>
             </div>
 
             <div class="container-de-baixo">
@@ -57,13 +55,12 @@
                     <div class="title1-cadastro">
                         <div class="infos">
                             <h3>Informações do Funcionário</h3>
-                            <p>Preencha os dados para criar um novo registro</p>
+                            <p>Editar as informações do funcionário</p>
                         </div>
                     </div>
 
                     <hr>
 
-                    <!-- CAMPOS DO CADASTRO -->
                     <form class="campos-cadastro">
 
                         <div class="coluna-cadastro">
@@ -84,8 +81,7 @@
 
                     </form>
 
-                    <!-- BOTÃO -->
-                    <button class="btn-cadastrar-func" onclick="abrirModal()">Cadastrar</button>
+                    <button id="btn-editar" class="btn-cadastrar-func">Editar</button>
 
                 </div>
             </div>
@@ -93,55 +89,68 @@
         </main>
     </div>
 
-    <!-- MODAL CONFIRMAÇÃO -->
-    <div id="modalConfirm" class="modal">
+    <!-- MODAL 1: CONFIRMAR EDIÇÃO -->
+    <div id="modal-confirmar" class="modal">
         <div class="modal-content">
-            <h3>Confirmar Cadastro?</h3>
-            <p>Deseja realmente cadastrar este funcionário?</p>
+            <h2>Confirmar Edição</h2>
+            <p>Tem certeza que deseja salvar as alterações?</p>
 
             <div class="modal-buttons">
-                <button id="confirmar-edicao" onclick="confirmarCadastro()">Sim</button>
-                <button id="cancelar-edicao" onclick="fecharModal()">Cancelar</button>
+                <button id="confirmar-edicao">Sim</button>
+                <button id="cancelar-edicao">Cancelar</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL SUCESSO -->
-    <div id="modalSucesso" class="modal">
+    <!-- MODAL 2: SUCESSO -->
+    <div id="modal-sucesso" class="modal">
         <div class="modal-content">
-            <h3>Cadastro concluído!</h3>
-            <p>Funcionário cadastrado com sucesso.</p>
+            <h2>Sucesso!</h2>
+            <p>As informações foram atualizadas.</p>
 
-            <div class="modal-buttons">
-                <button id="confirmar-edicao" onclick="fecharModalSucesso()">Ok</button>
+            <div class="modal-buttons" style="justify-content: center;">
+                <button id="fechar-sucesso" style="background:#429050; color:white;">OK</button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
     <script>
         document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');
             });
 
-        function abrirModal() {
-            document.getElementById('modalConfirm').style.display = "flex";
-        }
+        // Referências
+        const btnEditar = document.getElementById("btn-editar");
+        const modalConfirmar = document.getElementById("modal-confirmar");
+        const modalSucesso = document.getElementById("modal-sucesso");
 
-        function fecharModal() {
-            document.getElementById('modalConfirm').style.display = "none";
-        }
+        const cancelarEdicao = document.getElementById("cancelar-edicao");
+        const confirmarEdicao = document.getElementById("confirmar-edicao");
+        const fecharSucesso = document.getElementById("fechar-sucesso");
 
-        function confirmarCadastro() {
-            fecharModal();
-            document.getElementById('modalSucesso').style.display = "flex";
-        }
+        // Abrir modal de confirmação
+        btnEditar.addEventListener("click", () => {
+            modalConfirmar.style.display = "flex";
+        });
 
-        function fecharModalSucesso() {
-            document.getElementById('modalSucesso').style.display = "none";
- 
-        }
+        // Cancelar
+        cancelarEdicao.addEventListener("click", () => {
+            modalConfirmar.style.display = "none";
+        });
+
+        // Confirmar edição → abre sucesso
+        confirmarEdicao.addEventListener("click", () => {
+            modalConfirmar.style.display = "none";
+            modalSucesso.style.display = "flex";
+
+            // aqui você faz a requisição ao banco
+        });
+
+        // Fechar sucesso
+        fecharSucesso.addEventListener("click", () => {
+            modalSucesso.style.display = "none";
+        });
     </script>
 
 </body>
