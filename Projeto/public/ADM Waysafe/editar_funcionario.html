@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Funcionário</title>
+
+    <link rel="stylesheet" href="../CSS/cadastrofunc.css">
+    <link rel="stylesheet" href="../CSS/nav.css">
+    <link rel="stylesheet" href="../CSS/modais.css"> <!-- CSS dos modais -->
+</head>
+
+<body id="body">
+
+    <div class="fundo">
+
+         <aside class="nav">
+       <button class="toggle-nav">☰ </button>
+
+          <div class="perfil">
+                <img class="img_user" src="../icons/user.png"> 
+                <a href=""></a><img src="../icons/engrenagem.png">  
+            </div>
+
+            <ul class="menu-list">
+                  <li  class="active">
+                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
+                    <a href="adm.html" class="text">Administradores</a>
+                </li>
+
+                <li >
+                    <img src="../icons/empresa.png" class="icon">
+                    <a href="adm_conc.html" class="text">Concessionárias</a>
+                </li>
+
+                <li>
+                   <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
+                    <a href="perfil.html" class="text">Perfil</a>
+                </li>
+            </ul>
+
+            <a class="sair" href="../previas.html">
+                <div>Voltar</div>
+            </a>
+        </aside>
+
+        <main class="container">
+
+            <div class="cadastro-bar">
+                <a href="adm.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
+                <h1>Editar Funcionário</h1>
+            </div>
+
+            <div class="container-de-baixo">
+                <div class="pagcadastro">
+
+                    <div class="title1-cadastro">
+                        <div class="infos">
+                            <h3>Informações do Funcionário</h3>
+                            <p>Editar as informações do funcionário</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <form class="campos-cadastro">
+
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Nome Completo</label>
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
+
+                            <label class="label-cadastro">Email</label>
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com">
+                        </div>
+
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Senha</label>
+                            <input type="password" class="input-cadastro" placeholder="********">
+
+                           <label class="label-cadastro">Nivel de acesso</label>
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2">
+                        </div>
+
+                    </form>
+
+                    <button id="btn-editar" class="btn-cadastrar-func">Editar</button>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- MODAL 1: CONFIRMAR EDIÇÃO -->
+    <div id="modal-confirmar" class="modal">
+        <div class="modal-content">
+            <h2>Confirmar Edição</h2>
+            <p>Tem certeza que deseja salvar as alterações?</p>
+
+            <div class="modal-buttons">
+                <button id="confirmar-edicao">Sim</button>
+                <button id="cancelar-edicao">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: SUCESSO -->
+    <div id="modal-sucesso" class="modal">
+        <div class="modal-content">
+            <h2>Sucesso!</h2>
+            <p>As informações foram atualizadas.</p>
+
+            <div class="modal-buttons" style="justify-content: center;">
+                <button id="fechar-sucesso" style="background:#429050; color:white;">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.toggle-nav')
+            .addEventListener('click', () => {
+                document.querySelector('.nav').classList.toggle('minimizado');
+            });
+
+        // Referências
+        const btnEditar = document.getElementById("btn-editar");
+        const modalConfirmar = document.getElementById("modal-confirmar");
+        const modalSucesso = document.getElementById("modal-sucesso");
+
+        const cancelarEdicao = document.getElementById("cancelar-edicao");
+        const confirmarEdicao = document.getElementById("confirmar-edicao");
+        const fecharSucesso = document.getElementById("fechar-sucesso");
+
+        // Abrir modal de confirmação
+        btnEditar.addEventListener("click", () => {
+            modalConfirmar.style.display = "flex";
+        });
+
+        // Cancelar
+        cancelarEdicao.addEventListener("click", () => {
+            modalConfirmar.style.display = "none";
+        });
+
+        // Confirmar edição → abre sucesso
+        confirmarEdicao.addEventListener("click", () => {
+            modalConfirmar.style.display = "none";
+            modalSucesso.style.display = "flex";
+
+            // aqui você faz a requisição ao banco
+        });
+
+        // Fechar sucesso
+        fecharSucesso.addEventListener("click", () => {
+            modalSucesso.style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>

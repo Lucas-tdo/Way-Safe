@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Funcionário</title>
+
+    <link rel="stylesheet" href="../CSS/cadastrofunc.css">
+    <link rel="stylesheet" href="../CSS/nav.css">
+
+    <link rel="stylesheet" href="../CSS/modais.css">
+</head>
+
+<body id="body">
+
+    <div class="fundo">
+
+        <aside class="nav">
+       <button class="toggle-nav">☰ </button>
+
+          <div class="perfil">
+                <img class="img_user" src="../icons/user.png"> 
+                <a href=""></a><img src="../icons/engrenagem.png">  
+            </div>
+
+            <ul class="menu-list">
+                  <li  class="active">
+                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
+                    <a href="adm.html" class="text">Administradores</a>
+                </li>
+
+                <li >
+                    <img src="../icons/empresa.png" class="icon">
+                    <a href="adm_conc.html" class="text">Concessionárias</a>
+                </li>
+
+                <li>
+                   <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
+                    <a href="perfil.html" class="text">Perfil</a>
+                </li>
+            </ul>
+
+            <a class="sair" href="../previas.html">
+                <div>Voltar</div>
+            </a>
+        </aside>
+
+        <main class="container">
+
+            <div class="cadastro-bar">
+                <a href="adm.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
+                <h1>Cadastrar Funcionário</h1>
+            </div>
+
+            <div class="container-de-baixo">
+                <div class="pagcadastro">
+
+                    <div class="title1-cadastro">
+                        <div class="infos">
+                            <h3>Informações do Funcionário</h3>
+                            <p>Preencha os dados para criar um novo registro</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- CAMPOS DO CADASTRO -->
+                    <form class="campos-cadastro">
+
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Nome Completo</label>
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
+
+                            <label class="label-cadastro">Email</label>
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com">
+                        </div>
+
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Senha</label>
+                            <input type="password" class="input-cadastro" placeholder="********">
+
+                            <label class="label-cadastro">Nivel de acesso</label>
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2">
+                        </div>
+
+                    </form>
+
+                    <!-- BOTÃO -->
+                    <button class="btn-cadastrar-func" onclick="abrirModal()">Cadastrar</button>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- MODAL CONFIRMAÇÃO -->
+    <div id="modalConfirm" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Cadastro?</h3>
+            <p>Deseja realmente cadastrar este funcionário?</p>
+
+            <div class="modal-buttons">
+                <button id="confirmar-edicao" onclick="confirmarCadastro()">Sim</button>
+                <button id="cancelar-edicao" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SUCESSO -->
+    <div id="modalSucesso" class="modal">
+        <div class="modal-content">
+            <h3>Cadastro concluído!</h3>
+            <p>Funcionário cadastrado com sucesso.</p>
+
+            <div class="modal-buttons">
+                <button id="confirmar-edicao" onclick="fecharModalSucesso()">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
+    <script>
+        document.querySelector('.toggle-nav')
+            .addEventListener('click', () => {
+                document.querySelector('.nav').classList.toggle('minimizado');
+            });
+
+        function abrirModal() {
+            document.getElementById('modalConfirm').style.display = "flex";
+        }
+
+        function fecharModal() {
+            document.getElementById('modalConfirm').style.display = "none";
+        }
+
+        function confirmarCadastro() {
+            fecharModal();
+            document.getElementById('modalSucesso').style.display = "flex";
+        }
+
+        function fecharModalSucesso() {
+            document.getElementById('modalSucesso').style.display = "none";
+ 
+        }
+    </script>
+
+</body>
+
+</html>
