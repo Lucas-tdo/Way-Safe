@@ -1,6 +1,7 @@
 var database = require("../database/config")
 
 
+
 function checaremail(email){
     var instrucaoSql = `
         SELECT * FROM USUARIO WHERE email='${email}';
