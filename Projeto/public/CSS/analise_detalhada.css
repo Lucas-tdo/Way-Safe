@@ -1,0 +1,112 @@
+/* ===== IMPORT FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #EEEEEE;
+}
+
+
+.fundo {
+    display: flex;
+    min-height: 100vh;
+    background: #EEEEEE;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+    overflow: auto;
+    background: #EEEEEE;
+}
+
+
+.tabela-container {
+    background: #fff;
+    border-radius: 8px;
+    min-height: 325px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Estilização da barra de scroll */
+.tabela-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tabela-container::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 10px;
+}
+
+.tabela-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.tabela-analise {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: clamp(12px, 2.5vw, 15px);
+}
+
+.tabela-analise th {
+  background-color: #d5d5d5fa;
+  color: #282828;
+  padding: clamp(15px, 3vw, 25px) clamp(8px, 2vw, 15px);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-size: clamp(11px, 2.5vw, 14px);
+  white-space: nowrap;
+}
+
+.tabela-analise td {
+  padding: clamp(8px, 2vw, 10px);
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: clamp(11px, 2.5vw, 14px);
+}
+
+.tabela-analise tr:hover {
+  background-color: #f3f3f3;
+}
+
+
+/* barra de título */
+.analise-bar {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
+  background: #ffffff;
+  height: auto;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.analise-bar h1 {
+  font-size: clamp(18px, 4vw, 25px);
+  font-weight: 800;
+  margin: 0;
+}
