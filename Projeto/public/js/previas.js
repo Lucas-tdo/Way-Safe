@@ -154,7 +154,7 @@ function top5MaisTiposAcidentes() {
 
 }
 function logoEmpresa() {
-    var fk_empresa = sessionStorage.FK_EMPRESA;
+    var fk_empresa = 3;
 
     let caminhoImagem;
 
@@ -185,7 +185,7 @@ function logoEmpresa() {
         case 24: caminhoImagem = "viaRondon_logo.png"; break; // VIARONDON
     }
     // Aplica no elemento
-    document.getElementById("imagem-empresa").src = `/imagens/imagens_empresa/${caminhoImagem}`;
+    document.getElementById("imagem-empresa").src = `Imagens/imagens_empresa/${caminhoImagem}`;
 }
 
 
