@@ -103,6 +103,7 @@
             input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
         }
       });
+    }
 
         })
         .catch(function (resposta) {

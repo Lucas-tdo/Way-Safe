@@ -20,6 +20,10 @@ router.post("/autenticar",function(req,res){
     usuarioController.autenticar(req,res);
 })
 
+router.post("/cadastrarFuncionario",(req,res)=>{
+    usuarioController.cadastrarFuncionario(req,res);
+})
+
 router.post("/notificar-slack", function(req,res){
     usuarioController.notificarSlack(req,res);
 })

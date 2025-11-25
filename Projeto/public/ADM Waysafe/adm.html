@@ -102,7 +102,7 @@
                                     <th id="th-relatorio" style="border-top-right-radius:7px;">Ação</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tbAdm">
                                 <tr>
                                     <td>1</td>
                                     <td>Akira Tanaka</td>
@@ -165,8 +165,8 @@
             </div>
         </div>
     </div>
-
-    <script>
+<!-- <script src="../js/adm_conc.js"> chama o script que vai executar a leitura da função. no caso, a de listagem dos usuarios waysafe -->
+    <script src="../js/adm.js">
         document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');
