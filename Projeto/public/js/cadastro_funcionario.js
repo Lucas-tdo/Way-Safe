@@ -126,7 +126,7 @@ function checarEmpresa() {
                     alert("Codigo de empresa inválido")
                 }
                 else {
-                    cadastrar()
+                    cadastrarFuncionario()
                 }
             })
         })

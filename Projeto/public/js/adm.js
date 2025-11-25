@@ -9,9 +9,9 @@ async function pegarAdm(){
   for (const registro of resp_json) {
     tbAdm.innerHTML += `
       <tr>
-                                  <td>${registro.fkEMPRESA}</td>
-                                  <td>${registro.NOME}</td>
-                                  <td>${registro.EMAIL}</td>
+                                  <td>${registro.fk_empresa}</td>
+                                  <td>${registro.nome}</td>
+                                  <td>${registro.email}</td>
                                   <td>${registro.senha}</td>
                                   <td>
                                       <a href="#"><img class="icon_tabela" src="../icons/editar.png"></a>

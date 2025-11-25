@@ -93,7 +93,7 @@ function Validar() {
                     if (resposta.length == 1) {
                         alert("Usuário logado")
                         console.log(resposta)
-                        sessionStorage.ID_USUARIO = resposta[0].id
+                        sessionStorage.ID_USUARIO = resposta[0].idUSUARIO
                         sessionStorage.EMAIL_USUARIO = resposta[0].email
                         sessionStorage.NOME_USUARIO = resposta[0].nome
                         sessionStorage.FK_EMPRESA = resposta[0].fk_empresa
