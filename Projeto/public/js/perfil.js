@@ -74,26 +74,26 @@
             input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
         }
       });
+    }
 
-
-
-      document.getElementById('nomeTexto').textContent = document.getElementById('nomeView').textContent;
-      document.getElementById('emailTexto').textContent = document.getElementById('emailView').textContent;
-
-      function pegarDadosUsuario(){
-        var email = sessionStorage.EMAIL_USUARIO;
-        var nomeUsuario = sessionStorage.NOME_USUARIO;
-        var fkEmpresa = sessionStorage.FK_EMPRESA;
-        var idUsuario = sessionStorage.ID_USUARIO;
-        var senha = sessionStorage.SENHA_USUARIO;
-
-        nomeTexto.innerHTML = nomeUsuario;
-        console.log("oi")
+    
+    function pegarDadosUsuario(){
+      var email = sessionStorage.EMAIL_USUARIO;
+      var nomeUsuario = sessionStorage.NOME_USUARIO;
+      var fkEmpresa = sessionStorage.FK_EMPRESA;
+      var idUsuario = sessionStorage.ID_USUARIO;
+      var senha = sessionStorage.SENHA_USUARIO;
+      
+      nomeTexto.innerHTML = nomeUsuario;
+      emailTexto.innerHTML = email;
+      console.log("oi")
+        document.getElementById('nomeView').innerText = nomeUsuario
+        document.getElementById('emailView').innerText = email
+        document.getElementById('nomeTexto').innerText = nomeUsuario
       }
-
+    
       window.addEventListener("load", (event) => {
         pegarDadosUsuario()
         });
 
 
-    }

@@ -20,6 +20,7 @@ var tela_rodoviasRouter = require  ("./src/routes/tela_rodovias_rota")
 var tela_acidentesRouter = require  ("./src/routes/tela_acidentes_rota")
 var tela_rodovia_espRouter = require  ("./src/routes/tela_rodovia_esp_rota")
 var concessionariaRouter = require ("./src/routes/concessionaria_rota");
+var adm_waysafeRouter = require ("./src/routes/adm_waysafe_rota");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,6 +35,7 @@ app.use("/tela_rodovias_rota",tela_rodoviasRouter);
 app.use("/tela_acidentes_rota",tela_acidentesRouter);
 app.use("/tela_rodovia_esp_rota",tela_rodovia_espRouter);
 app.use("/conc", concessionariaRouter)
+app.use("/adm_waysafe", adm_waysafeRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -1,9 +1,16 @@
 function Validar() {
+    var nome = input_nome.value
     var email = input_email.value
     var senha = input_senha.value
+    // no caso, a fk não vai ser inserida de novo, mas chamada via session Storage
+    var fk_empresa = sessionStorage.FK_EMPRESA
+
+    // var fk_empresa = input_fk_empresa.value
+    var nivel_acesso = input_nivel.value
+
     var mensagem = ''
 
-    if (email == "" || senha == "") {
+    if (nome == "" || email == "" || senha == "" || fk_empresa == "") {
         mensagem = "Todos campos devem estar preenchidos"
     }
     else {
@@ -78,41 +85,87 @@ function Validar() {
 
 
     if (mensagem == "") {
-
-        fetch(`/usuario/autenticar/`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: input_email.value,
-                senha: input_senha.value
-            })
-        })
-            .then(resposta => {
-                resposta.json().then(resposta => {
-                    console.log(resposta)
-                    if (resposta.length == 1) {
-                        alert("Usuário logado")
-                        console.log(resposta)
-                        sessionStorage.ID_USUARIO = resposta[0].idUSUARIO
-                        sessionStorage.EMAIL_USUARIO = resposta[0].email
-                        sessionStorage.NOME_USUARIO = resposta[0].nome
-                        sessionStorage.FK_EMPRESA = resposta[0].fk_empresa
-                        setTimeout(() => {
-                            window.location.href = '/previas.html'
-                        }, 2000);
-                    }
-                    else {
-                        alert("Usuário não localizado")
-                    }
-                }
-                )
-            })
-            .catch(erro => {
-                console.log(erro)
-            })
-
+        alert("oi")
+        checaremail()
     }
     else {
         alert(mensagem)
     }
+}
+
+function checaremail() {
+    var email = input_email.value
+    alert("aqui")
+    fetch(`/usuario/checaremail/${email}`, {
+        method: "GET"
+    })
+        .then(resposta => {
+            resposta.json().then(resposta => {
+                if (resposta.length > 0) {
+                    alert("Email já está em uso!")
+                }
+                else {
+
+                    checarEmpresa()
+                }
+            })
+        })
+        .catch(erro => {
+            console.log(erro)
+        })
+}
+// não acho que vai precisar validar a empresa de novo, mas vou deixar em aguardo aqui por enquanto
+function checarEmpresa() {
+  var fk_empresa = sessionStorage.FK_EMPRESA
+    fetch(`/usuario/checarEmpresa/${empresa}`, {
+        method: "GET"
+    })
+        .then(resposta => {
+            resposta.json().then(resposta => {
+                if (resposta.length = 0) {
+                    alert("Codigo de empresa inválido")
+                }
+                else {
+                    cadastrarFuncionario()
+                }
+            })
+        })
+        .catch(erro => {
+            console.log(erro)
+        })
+
+}
+
+
+function cadastrarFuncionario() {
+    var nome = input_nome.value
+    var email = input_email.value
+    var senha = input_senha.value
+    var fk_empresa = sessionStorage.FK_EMPRESA
+    var nivel_acesso = input_nivel.value
+
+    fetch(`/usuario/cadastrarFuncionario/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nomeServer: nome,
+            emailServer: email,
+            senhaServer: senha,
+            fk_empresaServer: fk_empresa,
+            nivelAcessoServer: nivel_acesso
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            alert("Cadastro realizado")
+            setTimeout(() => {
+                window.location.href = '/login.html'
+            }, 2000);
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
 }
