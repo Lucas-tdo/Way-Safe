@@ -88,10 +88,11 @@ function Validar() {
             })
         })
             .then(resposta => {
+                carregamento('<img style="background-blend-mode: multiply;" src="https://imgs.search.brave.com/JSAO89d1G0SIReS6qEJuOn8LN-Y8bvyD89el8cH4w6U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmdp/ZmVyLmNvbS9vcmln/aW4vMzQvMzQzMzhk/MjYwMjNlNTUxNWY2/Y2M4OTY5YWEwMjdi/Y2FfdzIwMC5naWY.gif" alt="">')
                 resposta.json().then(resposta => {
                     console.log(resposta)
                     if (resposta.length == 1) {
-                        alert("Usuário logado")
+                        
                         console.log(resposta)
                         sessionStorage.ID_USUARIO = resposta[0].idUSUARIO
                         sessionStorage.EMAIL_USUARIO = resposta[0].email
@@ -102,7 +103,7 @@ function Validar() {
                         }, 2000);
                     }
                     else {
-                        alert("Usuário não localizado")
+                        mensagemErro("Usuário não localizado")
                     }
                 }
                 )
@@ -113,6 +114,23 @@ function Validar() {
 
     }
     else {
-        alert(mensagem)
+        mensagemErro(mensagem)
     }
+}
+
+function mensagemErro(mensagem){
+    const msg = document.getElementById("msg");
+    msg.classList.add("ativa");
+    const atributoMensagem = document.getElementById("texto-caixa");
+    atributoMensagem.innerHTML=`${mensagem}`;
+    setTimeout(() => {
+        msg.classList.remove("ativa")
+    }, 1500);
+}
+
+function carregamento(mensagem){
+    const msg = document.getElementById("msg");
+    msg.classList.add("ativa");
+    const atributoMensagem = document.getElementById("texto-caixa");
+    atributoMensagem.innerHTML=`${mensagem}`;
 }
