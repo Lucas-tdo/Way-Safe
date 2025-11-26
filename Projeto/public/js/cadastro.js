@@ -84,11 +84,12 @@ function Validar() {
         checaremail()
     }
     else {
-        alert(mensagem)
+        mensagemErro(mensagem)
     }
 }
 
 function checaremail() {
+    carregamento('<img style="background-blend-mode: multiply;" src="https://imgs.search.brave.com/JSAO89d1G0SIReS6qEJuOn8LN-Y8bvyD89el8cH4w6U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmdp/ZmVyLmNvbS9vcmln/aW4vMzQvMzQzMzhk/MjYwMjNlNTUxNWY2/Y2M4OTY5YWEwMjdi/Y2FfdzIwMC5naWY.gif" alt="">')
     var email = input_email.value
     fetch(`/usuario/checaremail/${email}`, {
         method: "GET"
@@ -96,7 +97,7 @@ function checaremail() {
         .then(resposta => {
             resposta.json().then(resposta => {
                 if (resposta.length > 0) {
-                    alert("Email já está em uso!")
+                    mensagemErro("Email já está em uso!")
                 }
                 else {
 
@@ -117,7 +118,7 @@ function checarEmpresa() {
         .then(resposta => {
             resposta.json().then(resposta => {
                 if (resposta.length = 0) {
-                    alert("Codigo de empresa inválido")
+                    mensagemErro("Codigo de empresa inválido")
                 }
                 else {
                     cadastrar()
@@ -151,7 +152,7 @@ function cadastrar() {
     })
         .then(function (resposta) {
             console.log("resposta: ", resposta);
-            alert("Cadastro realizado")
+            mensagemErro("Cadastro realizado")
             setTimeout(() => {
                 window.location.href = '/login.html'
             }, 2000);
@@ -160,4 +161,22 @@ function cadastrar() {
             console.log(`#ERRO: ${resposta}`);
 
         });
+}
+
+
+function mensagemErro(mensagem){
+    const msg = document.getElementById("msg");
+    msg.classList.add("ativa");
+    const atributoMensagem = document.getElementById("texto-caixa");
+    atributoMensagem.innerHTML=`${mensagem}`;
+    setTimeout(() => {
+        msg.classList.remove("ativa")
+    }, 1500);
+}
+
+function carregamento(mensagem){
+    const msg = document.getElementById("msg");
+    msg.classList.add("ativa");
+    const atributoMensagem = document.getElementById("texto-caixa");
+    atributoMensagem.innerHTML=`${mensagem}`;
 }
