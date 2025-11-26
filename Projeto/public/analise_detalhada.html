@@ -38,7 +38,7 @@
       </ul>
 
 
-  
+
 
       <div class="sair">Sair</div>
     </aside>
@@ -51,31 +51,131 @@
         <h1 style="font-weight: 800;">Análise Detalhada</h1>
       </div>
 
+      <div class="barra">
+        <p>Ano:</p>
+        <select name="" id="select-ano" placeholder="ano" onchange="mudanca_seletor()">
+          <option value="">Selecione um ano</option>
+        </select>
+      </div>
+
+      <div class="conteudo-linha">
+
+        <!-- CARDS + TABELA -->
+        <div class="conteudo-principal">
+          <div class="inputs-padrao">
+
+            <div class="container-input">
+              <label for="inputRodovia">Rodovia</label>
+              <input type="text" name="" id="inputRodovia">
+            </div>
+
+            <div class="container-input">
+              <label for="inputMunicipio">Municipio</label>
+              <input type="text" name="" id="inputMunicipio">
+            </div>
+
+            <div class="container-input">
+              <label for="inputTipo">Tipo acidente</label>
+              <input type="text" name="" id="inputTipo">
+            </div>
+
+          </div>
 
 
-      <!-- <div class="tabela-container">
-      <table class="tabela-analise">
-        <thead>
-          <tr>
-            <th style=" border-top-left-radius:7px ;">Rank</th>
-            <th>Rodovia</th>
-            <th>Município</th>
-            <th>Acidente</th>
-            <th>Quantidade de acidentes</th>
-            <th id="th-relatorio" style="border-top-right-radius:7px;">Especificação</th>
-          </tr>
-        </thead>
-        <tbody>
+          <div class="container">
+            <!-- Primeira seção expansível -->
+            <details class="expansivel">
 
-        </tbody>
-      </table>
-    </div> -->
+              <summary>Filtros</summary>
 
-  </div>
+              <div class="inputs-filtro">
 
+                <div class="inputs-padrao">
+                  <div class="container-input">
+                    <label for="inputDia">Dia</label>
+                    <div class="inputs-dia" id="inputDia">
+                      <input type="date" name="" id="inputDiaInicio">
+                      <span> à </span>
+                      <input type="date" name="" id="inputDiaFinal">
+                    </div>
+                  </div>
 
-  </main>
+                  <div class="container-input">
+                    <label for="inputMetereologia">Metereologia</label>
+                    <select type="text" name="" id="inputMetereologia">
+                      <option value="BOA">Boa</option>
+                      <option value="CHUVA">Chuva</option>
+                      <option value="NUBLADO">Nublado</option>
+                      <option value="GAROA">Garoa</option>
+                      <option value="NEBLINA">Neblina</option>
+                      <option value="NEBLINA">Neblina</option>
+                      <option value="GRANIZO">Granizo</option>
+                      <option value="">Sem informação</option> // buscar por SEM INFO/NULO/0 e NÃO INFORMADA no banco
+                    </select>
+                  </div>
+
+                  <div class="container-input">
+                    <label for="inputVisibilidade">Visibilidade</label>
+                    <select type="text" name="" id="inputVisibilidade">
+                      <option value="PARCIAL">Parcial</option>
+                      <option value="BOA">Boa</option>
+                      <option value="REGULAR">Regular</option>
+                      <option value="RUIM">Ruim</option>
+
+                      <option value="">Sem informação</option> // buscar por SEM INFO/NULO/0
+                    </select>
+                  </div>
+                </div>
+
+                <div class="inputs-padrao">
+                  <div class="container-input">
+                    <label for="inputDenominacao">Denominacao</label>
+                    <input type="text" name="" id="inputDenominacao" list="data-denominacao">
+                    <datalist id="data-denominacao"></datalist>
+                  </div>
+
+                  <div class="container-input">
+                    <label for="inputJurisdicao">Jurisdição</label>
+                    <input type="text" name="" id="inputJurisdicao" list="data-jurisdicao">
+                    <datalist id="data-jurisdicao"></datalist>
+                  </div>
+
+                  <div class="container-input">
+                    <label for="inputQuantidade">Quantidade de vitimas</label>
+                    <input type="number" name="" id="inputQuantidade">
+                  </div>
+                </div>
+
+              </div>
+
+          </div>
+          </details>
+        </div>
+
+      </div>
+
+      <div class="tabela-container">
+        <table class="tabela-rodovias">
+          <thead>
+            <tr>
+              <th style=" border-top-left-radius:7px ;">Rank</th>
+              <th>Rodovia</th>
+              <th>Município</th>
+              <th>Acidente</th>
+              <th>Quantidade de acidentes</th>
+              <th id="th-relatorio" style="border-top-right-radius:7px;">Especificação</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+
+    </main>
 
 </body>
 
 </html>
+
+<script src="./js/analise_detalhada.js"></script>

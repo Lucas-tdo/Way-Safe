@@ -26,6 +26,7 @@ html, body {
     background: #EEEEEE;
 }
 
+/* Conteúdo principal */
 .container {
     flex: 1;
     display: flex;
@@ -36,6 +37,194 @@ html, body {
     background: #EEEEEE;
 }
 
+.text_over {
+  font-size: clamp(14px, 3vw, 15px);
+  padding: 10px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text_data {
+  font-size: clamp(13px, 2.5vw, 15px);
+  padding: 10px 20px;
+  color: #818181;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barra {
+  display: flex;
+  justify-content:right;
+  align-items: right;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* barra de título */
+.analise-bar {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
+  background: #ffffff;
+  height: auto;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.rodovias-bar h1 {
+  font-size: clamp(18px, 4vw, 25px);
+  font-weight: 800;
+  margin: 0;
+}
+
+/* linha com filtro + cards/tabela */
+.conteudo-linha {
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+    flex: 1;
+}
+
+/* filtro ao lado */
+.filtro-box {
+    display: none; /* escondido por padrão */
+    width: 250px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    height: fit-content;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    flex-shrink: 0; /* não encolher */
+}
+
+.filtro-box h3 {
+    margin-bottom: 10px;
+}
+
+.filtro-box label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+.filtro-box select,
+.filtro-box input,
+.filtro-box button {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* aparece quando o menu está minimizado */
+.filtro-box.ativo {
+    display: block;
+}
+
+/* cards e tabela ocupam o resto */
+.conteudo-principal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Inputs padrao */
+
+.inputs-padrao {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.inputs-dia {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.inputs-dia input {
+  display: flex;  
+  max-width: 95px;
+}
+
+.inputs-filtro {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.container-input {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+.container-input select {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+/* Inputs sessão filtro */
+
+.expansivel {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden; /* Garante que o conteúdo animado não vaze */
+}
+
+/* O elemento summary é o "botão" que você clica */
+.expansivel summary {
+    background-color: #fafafa;
+    color: black;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    /* Remove o marcador padrão (triângulo ou seta) em alguns navegadores */
+    list-style: none; 
+}
+
+/* Adiciona um pequeno ícone personalizado para indicar expansão */
+.expansivel summary::before {
+    content: "+";
+    margin-right: 10px;
+    float: left;
+}
+
+/* Muda o ícone quando a seção está aberta */
+.expansivel[open] summary::before {
+    content: "-";
+}
+
+/* Estiliza o conteúdo que aparece/desaparece */
+.conteudo {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
+}
+
+.meio{
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meio span {
+  font-size: clamp(14px, 3vw, 16px);
+  font-weight: 600;
+}
 
 .tabela-container {
     background: #fff;
@@ -63,14 +252,14 @@ html, body {
   background: #f1f1f1;
 }
 
-.tabela-analise {
+.tabela-rodovias {
   width: 100%;
   min-width: 600px;
   border-collapse: collapse;
   font-size: clamp(12px, 2.5vw, 15px);
 }
 
-.tabela-analise th {
+.tabela-rodovias th {
   background-color: #d5d5d5fa;
   color: #282828;
   padding: clamp(15px, 3vw, 25px) clamp(8px, 2vw, 15px);
@@ -81,32 +270,358 @@ html, body {
   white-space: nowrap;
 }
 
-.tabela-analise td {
+.tabela-rodovias td {
   padding: clamp(8px, 2vw, 10px);
   border-bottom: 1px solid #ddd;
   text-align: center;
   font-size: clamp(11px, 2.5vw, 14px);
 }
 
-.tabela-analise tr:hover {
+.tabela-rodovias tr:hover {
   background-color: #f3f3f3;
 }
 
-
-/* barra de título */
-.analise-bar {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
-  background: #ffffff;
-  height: auto;
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  flex-wrap: wrap;
+.btn-relatorio {
+  background-color: #429050;
+  color: #fff;
+  border: none;
+  padding: clamp(4px, 1.5vw, 6px) clamp(8px, 2.5vw, 12px);
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-size: clamp(10px, 2vw, 14px);
+  white-space: nowrap;
 }
 
-.analise-bar h1 {
-  font-size: clamp(18px, 4vw, 25px);
-  font-weight: 800;
-  margin: 0;
+.btn-relatorio-pdf{
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: clamp(4px, 1.5vw, 6px) clamp(8px, 2.5vw, 12px);
+  margin-left: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-size: clamp(10px, 2vw, 14px);
+  white-space: nowrap;
+}
+
+.btn-relatorio:hover {
+  background-color: #00b85f;
+  transform: scale(1.05);
+}
+
+.btn-relatorio-pdf:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+}
+
+.tabela-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tipo {
+    font-weight: 600;
+    font-size: clamp(14px, 2.5vw, 16px);
+}
+
+.icons {
+    border-radius: 10px;
+    width: clamp(30px, 6vw, 40px);
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* ===== MEDIA QUERIES PARA RESPONSIVIDADE ===== */
+
+/* Melhorias para dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+  .btn-relatorio, .btn-relatorio-pdf, #card-linha3 button {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Tablets grandes e desktops pequenos */
+@media (max-width: 1200px) {
+  .cards-rodovias {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .conteudo-linha {
+    padding: 0 15px;
+  }
+  
+  .rodovias-bar {
+    padding: 15px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 550px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 950px) { 
+  .conteudo-linha {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .filtro-box {
+    width: 100%;
+    order: -1;
+  }
+  
+  .cards-rodovias {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .text_over, .text_data {
+    padding: 10px 15px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 500px;
+  }
+}
+
+/* Smartphones grandes */
+@media (max-width: 768px) {
+  .container {
+    gap: 10px;
+  }
+  
+  .rodovias-bar {
+    padding: 15px;
+    min-height: 60px;
+  }
+  
+  .rodovias-bar h1 {
+    font-size: clamp(16px, 5vw, 22px);
+  }
+  
+  .cards-rodovias {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 15px;
+    min-height: 120px;
+  }
+  
+  #card-linha1, #card-linha3 {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  #card-linha3 button {
+    width: auto;
+    min-width: 4rem;
+    height: 1.5rem;
+    font-size: 12px;
+  }
+  
+  .meio {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .tabela-container {
+    margin: 0 -15px;
+    border-radius: 0;
+    max-height: 350px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 500px;
+  }
+  
+  .conteudo-linha {
+    padding: 0 10px;
+  }
+  
+  .conteudo-principal {
+    gap: 15px;
+  }
+}
+
+/* Smartphones médios */
+@media (max-width: 600px) {
+  .text_over, .text_data {
+    font-size: 13px;
+    padding: 8px 15px;
+    white-space: normal;
+  }
+  
+  .barra {
+    padding: 0 10px;
+  }
+  
+  .filtro-box {
+    padding: 12px;
+    margin: 0 10px;
+  }
+  
+  .filtro-box h3 {
+    font-size: 16px;
+  }
+  
+  .filtro-box label {
+    font-size: 13px;
+  }
+  
+  .filtro-box select,
+  .filtro-box input,
+  .filtro-box button {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+  
+  .tabela-rodovias {
+    min-width: 450px;
+  }
+  
+  .btn-relatorio, .btn-relatorio-pdf {
+    padding: 6px 8px;
+    margin-left: 5px;
+    font-size: 11px;
+  }
+  
+  .tabela-container {
+    max-height: 300px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 500px) {
+  .rodovias-bar {
+    padding: 10px 15px;
+    min-height: 50px;
+  }
+  
+  .text_over, .text_data {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 12px;
+    min-height: 100px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(16px, 6vw, 20px);
+    margin: 5px 0;
+  }
+  
+  .cards-rodovias .card p {
+    font-size: 12px;
+  }
+  
+  .icons {
+    width: 30px;
+  }
+  
+  .meio span {
+    font-size: 14px;
+  }
+  
+  .tabela-container {
+    max-height: 250px;
+    margin: 0 -10px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 400px;
+    font-size: 11px;
+  }
+  
+  .tabela-rodovias th,
+  .tabela-rodovias td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+  
+  .btn-relatorio, .btn-relatorio-pdf {
+    padding: 4px 6px;
+    font-size: 9px;
+    margin-left: 2px;
+  }
+  
+  .filtro-box {
+    margin: 0 5px;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 430px) { 
+  .tipo, .text_data {
+    font-size: 13px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 10px;
+  }
+  
+  .tabela-container {
+    max-height: 200px;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) { 
+  .tipo, .text_data {
+    font-size: 10px;
+  }
+  
+  .rodovias-bar h1 {
+    font-size: clamp(14px, 6vw, 18px);
+  }
+  
+  .cards-rodovias .card {
+    padding: 10px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(14px, 7vw, 18px);
+  }
+  
+  .tabela-rodovias {
+    min-width: 350px;
+  }
+  
+  .filtro-box {
+    margin: 0 5px;
+    padding: 10px;
+  }
+  
+  #card-linha3 button {
+    width: 3.5rem;
+    height: 1.3rem;
+    font-size: 10px;
+  }
+  
+  .tabela-container {
+    max-height: 180px;
+  }
 }
