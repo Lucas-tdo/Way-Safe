@@ -70,18 +70,18 @@
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">Nome Completo</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="input_nome">
 
                             <label class="label-cadastro">Email</label>
-                            <input type="email" class="input-cadastro" placeholder="email@gmail.com">
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
                         </div>
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">Senha</label>
-                            <input type="password" class="input-cadastro" placeholder="********">
-
+                            <input type="password" class="input-cadastro" placeholder="********" id="input_senha">
+<!-- // aqui deve ter uma limitação de caracteres e alguma validação se é diferente de 1 ou 2 -->
                             <label class="label-cadastro">Nivel de acesso</label>
-                            <input type="text" class="input-cadastro" placeholder="1 ou 2">
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2" id="input_nivel">
                         </div>
 
                     </form>
@@ -121,7 +121,11 @@
     </div>
 
     <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
-    <script>
+     <!-- //aqui vai ter que criar um novo funcionario pegando as informações do inputs. -->
+     <!-- //pegar mesmas informações do cadastro e validar. -->
+     <!-- // ver se dá para usar o cadastro.js (não vai gerar alguma complicação ou vai precisar de informações adicionais). -->
+    <!-- Vou criar a parte só para ver se o processo dá certo -->
+    <script src="../js/cadastro_funcionario">
         document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');

@@ -6,7 +6,7 @@
 
 
 
-
+      
 
     // Foto de perfil
     const inputFoto = document.getElementById('input-foto');
@@ -54,19 +54,48 @@
     });
 
     function transformarEmInputs() {
-      const campos = ['nome', 'email', 'telefone', 'cep', 'endereco', 'senha'];
+      const campos = ['nome', 'email', 'senha'];
       campos.forEach(campo => {
         const p = document.getElementById(`${campo}View`);
         const valor = p.textContent;
-        p.outerHTML = `<input style="background-color:#DEDEDE;" class="caixa-de-texto" id="${campo}Input" type="${campo === 'senha' ? 'password' : 'text'}" value="${valor}">`;
+        if(campo=="senha"){
+          p.outerHTML = `<input style="background-color:#DEDEDE;" class="caixa-de-texto" id="${campo}Input" placeholder="Digite a nova senha" type="${campo === 'senha' ? 'password' : 'text'}" >`;
+        }
+        else{
+          p.outerHTML = `<input style="background-color:#DEDEDE;" class="caixa-de-texto" id="${campo}Input" type="${campo === 'senha' ? 'password' : 'text'}" value="${valor}">`;
+
+        }
       });
     }
 
     function salvarAlteracoes() {
-      const campos = ['nome', 'email', 'telefone', 'cep', 'endereco', 'senha'];
-      campos.forEach(campo => {
-        const input = document.getElementById(`${campo}Input`);
-        const valor = input.value;
+      var nome = nomeInput.value; 
+      var email = emailInput.value;
+      var senha = senhaInput.value;
+
+      fetch(`/adm/editarDados/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nomeServer: nome,
+            emailServer: email,
+            senhaServer: senha,
+            idServer: sessionStorage.ID_USUARIO
+            
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            alert("Funcionou!")
+            sessionStorage.EMAIL_USUARIO = email
+            sessionStorage.NOME_USUARIO = nome
+
+            const campos = ['nome', 'email', 'senha'];
+            campos.forEach(campo => {
+            const input = document.getElementById(`${campo}Input`);
+            const valor = input.value;
         
         if(campo == 'senha'){
             input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">**********</p>`;
@@ -75,6 +104,17 @@
         }
       });
 
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+
+
+      
+
+    }
 
 
       document.getElementById('nomeTexto').textContent = document.getElementById('nomeView').textContent;
@@ -87,13 +127,13 @@
         var idUsuario = sessionStorage.ID_USUARIO;
         var senha = sessionStorage.SENHA_USUARIO;
 
-        nomeTexto.innerHTML = nomeUsuario;
-        console.log("oi")
-      }
+        nomeTexto.innerHTML = sessionStorage.NOME_USUARIO;
+        emailTexto.innerHTML = sessionStorage.EMAIL_USUARIO;
 
-      window.addEventListener("load", (event) => {
+        nomeView.innerHTML = sessionStorage.NOME_USUARIO;
+        emailView.innerHTML = sessionStorage.EMAIL_USUARIO;
+
+      }
+       window.addEventListener("load", (event) => {
         pegarDadosUsuario()
         });
-
-
-    }

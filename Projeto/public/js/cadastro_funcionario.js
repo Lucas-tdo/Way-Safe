@@ -2,7 +2,11 @@ function Validar() {
     var nome = input_nome.value
     var email = input_email.value
     var senha = input_senha.value
-    var fk_empresa = input_fk_empresa.value
+    // no caso, a fk não vai ser inserida de novo, mas chamada via session Storage
+    var fk_empresa = sessionStorage.FK_EMPRESA
+
+    // var fk_empresa = input_fk_empresa.value
+    var nivel_acesso = input_nivel.value
 
     var mensagem = ''
 
@@ -81,6 +85,7 @@ function Validar() {
 
 
     if (mensagem == "") {
+        alert("oi")
         checaremail()
     }
     else {
@@ -90,6 +95,7 @@ function Validar() {
 
 function checaremail() {
     var email = input_email.value
+    alert("aqui")
     fetch(`/usuario/checaremail/${email}`, {
         method: "GET"
     })
@@ -108,9 +114,9 @@ function checaremail() {
             console.log(erro)
         })
 }
-
+// não acho que vai precisar validar a empresa de novo, mas vou deixar em aguardo aqui por enquanto
 function checarEmpresa() {
-    var empresa = input_fk_empresa.value
+  var fk_empresa = sessionStorage.FK_EMPRESA
     fetch(`/usuario/checarEmpresa/${empresa}`, {
         method: "GET"
     })
@@ -120,7 +126,7 @@ function checarEmpresa() {
                     alert("Codigo de empresa inválido")
                 }
                 else {
-                    cadastrar()
+                    cadastrarFuncionario()
                 }
             })
         })
@@ -131,13 +137,14 @@ function checarEmpresa() {
 }
 
 
-function cadastrar() {
+function cadastrarFuncionario() {
     var nome = input_nome.value
     var email = input_email.value
     var senha = input_senha.value
-    var fk_empresa = input_fk_empresa.value
+    var fk_empresa = sessionStorage.FK_EMPRESA
+    var nivel_acesso = input_nivel.value
 
-    fetch(`/usuario/cadastrar/`, {
+    fetch(`/usuario/cadastrarFuncionario/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -147,6 +154,7 @@ function cadastrar() {
             emailServer: email,
             senhaServer: senha,
             fk_empresaServer: fk_empresa,
+            nivelAcessoServer: nivel_acesso
         }),
     })
         .then(function (resposta) {

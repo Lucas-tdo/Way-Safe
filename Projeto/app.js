@@ -22,6 +22,7 @@ var tela_rodovia_espRouter = require  ("./src/routes/tela_rodovia_esp_rota")
 var tela_analise_detalhada_Router = require  ("./src/routes/tela_analise_detalhada_rota")
 
 var concessionariaRouter = require ("./src/routes/concessionaria_rota");
+var administradorRouter = require("./src/routes/administrador_rota")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +40,9 @@ app.use("/tela_analise_detalhada_rota",tela_analise_detalhada_Router);
 
 app.use("/conc", concessionariaRouter)
 
+app.use("/conc", concessionariaRouter);
+app.use("/adm", administradorRouter);
+    
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
