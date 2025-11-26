@@ -10,11 +10,11 @@ public class ConexaoBanco {
 
     public ConexaoBanco(){
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl("jdbc:mysql://ContainerBanco:3306/waysafe");
+        basicDataSource.setUrl("jdbc:mysql://localhost:3306/waysafe");
         String user = System.getenv("USERSQL");
         String senha = System.getenv("SENHASQL");;
-        basicDataSource.setUsername(user);
-        basicDataSource.setPassword(senha);
+        basicDataSource.setUsername("Way_Safe");
+        basicDataSource.setPassword("Urubu100");
 
         this.basicDataSource = basicDataSource;
         this.jdbcTemplate = new JdbcTemplate(basicDataSource);
