@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-function buscar_rodovias(municipio, ano) {
+function buscar_rodovias(municipio, ano, fk_empresa) {
     var instrucaoSql = '';
     var condicoes = [];
     var filtrosPreenchidos = 0;
@@ -12,6 +12,11 @@ function buscar_rodovias(municipio, ano) {
 
     if (ano != undefined && ano != '') {
         condicoes.push(`YEAR(data_hora) LIKE '%${ano}%'`);
+        filtrosPreenchidos++;
+    }
+
+    if (fk_empresa != undefined && ano != '') {
+        condicoes.push(`fk_empresa = ${fk_empresa}`);
         filtrosPreenchidos++;
     }
 
@@ -27,6 +32,7 @@ function buscar_rodovias(municipio, ano) {
                 FROM ACIDENTE
                 JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
                 JOIN classe_acidente ON fk_classe_acid = idClasse_acid
+                WHERE ${condicoes.join(' AND ')}
                 GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
                 ORDER BY totalAcidentes DESC;
         `;
