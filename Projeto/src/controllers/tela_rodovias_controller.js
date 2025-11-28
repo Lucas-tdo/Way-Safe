@@ -32,11 +32,14 @@ function topRodovias(req, res) {
 function buscar_rodovias(req, res) {
     var municipio = req.body.municipio;
     var ano = req.body.ano;
+    var fk_empresa = req.body.fk_empresa;
+
+    console.log("abacate: " + fk_empresa)
 
     // Log para debug
-    console.log("Filtros recebidos:", { municipio, ano });
+    console.log("Filtros recebidos banana:", { municipio, ano, fk_empresa });
 
-    tela_rodovias_model.buscar_rodovias(municipio, ano)
+    tela_rodovias_model.buscar_rodovias(municipio, ano, fk_empresa)
         .then(resposta => {
             console.log(`Busca retornou ${resposta.length} resultados`);
             res.json(resposta);

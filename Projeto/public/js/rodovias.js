@@ -19,15 +19,15 @@ async function carregar_municipios() {
 }
 
 async function buscar_rodovias(municipio, ano) {
-    var fk_empresa = sessionStorage.FK_EMPRESA
+    var fk_empresa = sessionStorage.FK_EMPRESA;
 
     var municipio = remove_acentos(municipio);
     var ano = remove_acentos(ano);
 
     var dados = {
-        fk_empresa,
+        fk_empresa: fk_empresa !== '' ? fk_empresa : undefined,
         municipio: municipio !== '' ? municipio : undefined,
-        ano: ano !== '' ? ano : undefined,
+        ano: ano !== '' ? ano : undefined
     };
 
     console.log("Dados enviados:", dados);
@@ -97,6 +97,13 @@ window.onload = function () {
         document.getElementById("select-ano").value
     )
 };
+
+function mudanca_seletor() {
+    buscar_rodovias(
+        document.getElementById("select-municipio").value,
+        document.getElementById("select-ano").value
+    )
+}
 
 function guardarSessionStorage(rodovia) {
     sessionStorage.codigoRodovia = rodovia;
