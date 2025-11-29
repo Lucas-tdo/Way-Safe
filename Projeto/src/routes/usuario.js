@@ -4,9 +4,14 @@ const upload = require('../config/configUpload'); // ARQUIVO COM A CONFIGURAÇÃ
 
 var usuarioController = require("../controllers/usuarioController");
 
-router.get("/pegarSenha/:email",function(req,res){
+router.get("/pegarSenha/:email/:senha",function(req,res){
     usuarioController.pegarSenha(req,res)
 })
+
+//tem que ter a rota post (objetivo diferentes)
+router.post('/atualizarSenha', function(req, res) {
+    usuarioController.atualizarSenha(req, res);
+  });
 
 router.get("/checaremail/:email",function(req,res){
     usuarioController.checaremail(req,res)

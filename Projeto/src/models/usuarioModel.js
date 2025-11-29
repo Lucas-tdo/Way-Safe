@@ -1,11 +1,11 @@
 var database = require("../database/config")
 
-function pegarSenha(email){
+function pegarSenha(email,senha){
     console.log("na model em pegar a senha do usuário")
     var instrucaoSql = `
-        SELECT senha FROM USUARIO WHERE email='${email}'; 
+        SELECT * FROM USUARIO WHERE email='${email}' and senha=SHA2('${senha}', 256); 
     `
-        
+     console.log(senha);   
     return database.executar(instrucaoSql);
 }
 
@@ -20,6 +20,14 @@ function checarEmpresa(empresa){
         SELECT * FROM EMPRESA WHERE idEMPRESA='${empresa}';
     `;
     return database.executar(instrucaoSql);
+}
+
+function atualizarSenha(senha,idUSUARIO){
+    var instrucaoSql = `
+        UPDATE USUARIO SET senha =SHA2('${senha}', 256) WHERE idUSUARIO = ${idUSUARIO};
+    `;
+    return database.executar(instrucaoSql);
+
 }
 
 
@@ -41,5 +49,6 @@ module.exports = {
     cadastrar,
     autenticar,
     checarEmpresa,
-    pegarSenha
+    pegarSenha,
+    atualizarSenha
 }

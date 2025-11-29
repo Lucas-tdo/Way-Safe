@@ -2,14 +2,42 @@ var usuarioModel = require("../models/usuarioModel");
 
 function pegarSenha(req,res){ 
     const email = req.params.email;
+    const senha = req.params.senha;
     
     if(email==undefined){
         res.status(400).send('Seu email está undefined!')
+    } else if(senha==undefined){
+        res.status(400).send('Sua senha está undefined!')
     }
+
     else{
-        usuarioModel.pegarSenha(email)
+        usuarioModel.pegarSenha(email,senha)
         .then(resposta=>{
-            console.log("Analisando se a senha atual confere");
+            console.log("Analisando se e-mail e senha conferem");
+            res.json(resposta)
+            console.log(resposta);
+        })
+        .catch(erro=>{
+            console.log(erro)
+           res.status(500).json(erro.sqlMessage)
+        })
+    }
+}
+
+function atualizarSenha(req,res){ 
+    const idUSUARIO = req.body.idUSUARIO;
+    const senha = req.body.senha;
+    
+    if(idUSUARIO==undefined){
+        res.status(400).send('idUSUARIO está undefined!')
+    } else if(senha==undefined){
+        res.status(400).send('Sua senha está undefined!')
+    }
+
+    else{
+        usuarioModel.atualizarSenha(senha,idUSUARIO)
+        .then(resposta=>{
+            console.log("Senha atualizada para o Id: " , idUSUARIO);
             res.json(resposta)
             console.log(resposta);
         })
@@ -190,5 +218,6 @@ module.exports = {
     cadastrarFuncionario,
     checarEmpresa,
     notificarSlack,
-    pegarSenha
+    pegarSenha,
+    atualizarSenha
 }
