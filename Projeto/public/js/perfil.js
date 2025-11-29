@@ -4,9 +4,43 @@
         document.querySelector('.nav').classList.toggle('minimizado');
       });
 
+    // INICIO: Abertura e fechamento de popup
+      const abrePopup = document.getElementById("abrir-popup");
+      const fechaPopup = document.getElementById("fechar-popup");
+      const popup = document.getElementById("popup");
 
-
+      abrePopup.addEventListener("click", () =>{
+        popup.classList.add("abrir-popup");
+      })
+      fechaPopup.addEventListener("click", () =>{
+        popup.classList.remove("abrir-popup");
+      })
+      // FIM: Abertura e fechamento de popup
       
+      // INICIO: VALIDAÇÃO PEGAR SENHA 
+
+  function pegarSenha() {
+    var email = sessionStorage.EMAIL_USUARIO;
+    fetch(`/usuario/pegarSenha/${email}`, {
+        method: "GET"
+    })
+        .then(resposta => {
+            resposta.json().then(resposta => {
+                if (resposta.length <= 0) {
+                    mensagemErro("Erro ao pegarSenha atual")
+                } else {
+                  // nova função para validar e inserir a senha atual ao input.
+                  // fazer comparação da senha atual no bd, com a que o usuário inserriu, confirmando que são a mesma.
+                }
+            })
+        })
+        .catch(erro => {
+            console.log(erro)
+        })
+  }
+
+      // FIM: VALIDAÇÃO PEGAR SENHA 
+
 
     // Foto de perfil
     const inputFoto = document.getElementById('input-foto');

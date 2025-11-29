@@ -4,6 +4,10 @@ const upload = require('../config/configUpload'); // ARQUIVO COM A CONFIGURAÇÃ
 
 var usuarioController = require("../controllers/usuarioController");
 
+router.get("/pegarSenha/:email",function(req,res){
+    usuarioController.pegarSenha(req,res)
+})
+
 router.get("/checaremail/:email",function(req,res){
     usuarioController.checaremail(req,res)
 })

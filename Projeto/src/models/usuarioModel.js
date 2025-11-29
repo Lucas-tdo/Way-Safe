@@ -1,6 +1,13 @@
 var database = require("../database/config")
 
-
+function pegarSenha(email){
+    console.log("na model em pegar a senha do usuário")
+    var instrucaoSql = `
+        SELECT senha FROM USUARIO WHERE email='${email}'; 
+    `
+        
+    return database.executar(instrucaoSql);
+}
 
 function checaremail(email){
     var instrucaoSql = `
@@ -33,5 +40,6 @@ module.exports = {
     checaremail,
     cadastrar,
     autenticar,
-    checarEmpresa
+    checarEmpresa,
+    pegarSenha
 }

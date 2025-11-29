@@ -1,5 +1,24 @@
 var usuarioModel = require("../models/usuarioModel");
 
+function pegarSenha(req,res){ 
+    const email = req.params.email;
+    
+    if(email==undefined){
+        res.status(400).send('Seu email está undefined!')
+    }
+    else{
+        usuarioModel.pegarSenha(email)
+        .then(resposta=>{
+            console.log("Analisando se a senha atual confere");
+            res.json(resposta)
+            console.log(resposta);
+        })
+        .catch(erro=>{
+            console.log(erro)
+           res.status(500).json(erro.sqlMessage)
+        })
+    }
+}
 
 function checaremail(req,res){
     var email = req.params.email
@@ -170,5 +189,6 @@ module.exports = {
     autenticar,
     cadastrarFuncionario,
     checarEmpresa,
-    notificarSlack
+    notificarSlack,
+    pegarSenha
 }
