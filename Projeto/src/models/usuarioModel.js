@@ -18,7 +18,7 @@ function checarEmpresa(empresa){
 
 function cadastrar(nome,email,senha,fk_empresa){
     var instrucaoSql = `
-        INSERT INTO USUARIO (nome,email,senha,fk_empresa) VALUES ('${nome}','${email}',SHA2('${senha}',256),${fk_empresa});
+        INSERT INTO USUARIO (nome,email,senha,fk_empresa,nivel_acesso_fk) VALUES ('${nome}','${email}',SHA2('${senha}',256),${fk_empresa},3);
     `;
     return database.executar(instrucaoSql);
 }
