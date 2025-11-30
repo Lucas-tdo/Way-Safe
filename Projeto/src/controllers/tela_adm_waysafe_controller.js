@@ -47,12 +47,13 @@ function cadastrar(req,res){
     }
 }
 
+
+
 function editarDados(req,res){
     console.log("to no controller")
 
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
     var id = req.body.idServer;
 
     if(nome==undefined){
@@ -61,16 +62,64 @@ function editarDados(req,res){
     else if(email==undefined){
         res.status(400).send('Seu email está undefined!')
     }
-    else if(senha==undefined){
-        res.status(400).send('Sua senha está undefined!')
+    else if(id==undefined){
+        res.status(400).send('Seu id está undefined!')
+    }
+    else{
+        tela_adm_waysafe_model.editarDados(nome,email,id)
+        .then(resposta=>{
+            console.log("Dados alterados");
+            res.status(200).send(resposta)
+        })
+        .catch(erro=>{
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+
+
+}
+
+function editarADM(req,res){
+    console.log("to no controller")
+
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var id = req.body.idServer;
+
+    if(nome==undefined){
+        res.status(400).send('Seu nome está undefined!')
+    }
+    else if(email==undefined){
+        res.status(400).send('Seu email está undefined!')
     }
     else if(id==undefined){
         res.status(400).send('Seu id está undefined!')
     }
     else{
-        administradorModel.editarDados(nome,email,senha,id)
+        tela_adm_waysafe_model.editarADM(nome,email,id)
         .then(resposta=>{
             console.log("Dados alterados");
+            res.status(200).send(resposta)
+        })
+        .catch(erro=>{
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+
+
+}
+
+function removerADM(req,res){
+    var id = req.body.idServer;
+    if(id==undefined){
+        res.status(400).send('Seu id está undefined!')
+    }
+    else{
+        tela_adm_waysafe_model.removerADM(id)
+        .then(resposta=>{
+            console.log(`ADM com id ${id} removido`);
             res.status(200).send(resposta)
         })
         .catch(erro=>{
@@ -88,5 +137,7 @@ function editarDados(req,res){
 module.exports = {
   pegarFuncAdm,
   editarDados,
-  cadastrar
+  cadastrar,
+  editarADM,
+  removerADM
 };

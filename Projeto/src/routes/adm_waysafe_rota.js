@@ -11,11 +11,19 @@ router.get("/pegarFuncAdm",function(req,res){
 })
 
 router.post("/editarDados",function(req,res){
-    AdministradorController.editarDados(req,res);
+    TelaAdmWaysafeController.editarDados(req,res);
 })
 
 router.post("/cadastrarAdm",(req,res)=>{
     TelaAdmWaysafeController.cadastrar(req,res);
+})
+
+router.post("/editarADM",function(req,res){
+    TelaAdmWaysafeController.editarADM(req,res);
+})
+
+router.delete("/removerADM",function(req,res){
+    TelaAdmWaysafeController.removerADM(req,res);
 })
 
 module.exports = router;

@@ -232,7 +232,7 @@
     function salvarAlteracoes() {
       var nome = nomeInput.value; 
       var email = emailInput.value;
-      var senha = senhaInput.value;
+      
 
       fetch(`/adm_waysafe/editarDados/`, {
         method: "POST",
@@ -242,7 +242,6 @@
         body: JSON.stringify({
             nomeServer: nome,
             emailServer: email,
-            senhaServer: senha,
             idServer: sessionStorage.ID_USUARIO
             
         }),

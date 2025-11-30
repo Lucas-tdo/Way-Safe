@@ -68,23 +68,20 @@
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">Nome Completo</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="input_nome">
 
                             <label class="label-cadastro">Email</label>
-                            <input type="email" class="input-cadastro" placeholder="email@gmail.com">
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
                         </div>
 
                         <div class="coluna-cadastro">
-                            <label class="label-cadastro">Senha</label>
-                            <input type="password" class="input-cadastro" placeholder="********">
-
                            <label class="label-cadastro">Nivel de acesso</label>
-                            <input type="text" class="input-cadastro" placeholder="1 ou 2">
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" disabled>
                         </div>
 
                     </form>
 
-                    <button id="btn-editar" class="btn-cadastrar-func">Editar</button>
+                    <button id="btn-editar" onclick="Validar()" class="btn-cadastrar-func">Editar</button>
 
                 </div>
             </div>
@@ -105,6 +102,13 @@
         </div>
     </div>
 
+    <div id="modalErro" class="modal">
+        <div class="modal-content">
+            <h3>Erro</h3>
+            <p id="mensagem-Erro"></p>
+        </div>
+    </div>
+
     <!-- MODAL 2: SUCESSO -->
     <div id="modal-sucesso" class="modal">
         <div class="modal-content">
@@ -118,43 +122,8 @@
     </div>
 <!-- // perfil.js há uma configuração semelhante ao que seria usado em editar, mas não é citado aqui.
 // CHECAR possibilidade de reciclar informações para esse ponto. -->
-    <script>
-        document.querySelector('.toggle-nav')
-            .addEventListener('click', () => {
-                document.querySelector('.nav').classList.toggle('minimizado');
-            });
-
-        // Referências
-        const btnEditar = document.getElementById("btn-editar");
-        const modalConfirmar = document.getElementById("modal-confirmar");
-        const modalSucesso = document.getElementById("modal-sucesso");
-
-        const cancelarEdicao = document.getElementById("cancelar-edicao");
-        const confirmarEdicao = document.getElementById("confirmar-edicao");
-        const fecharSucesso = document.getElementById("fechar-sucesso");
-
-        // Abrir modal de confirmação
-        btnEditar.addEventListener("click", () => {
-            modalConfirmar.style.display = "flex";
-        });
-
-        // Cancelar
-        cancelarEdicao.addEventListener("click", () => {
-            modalConfirmar.style.display = "none";
-        });
-
-        // Confirmar edição → abre sucesso
-        confirmarEdicao.addEventListener("click", () => {
-            modalConfirmar.style.display = "none";
-            modalSucesso.style.display = "flex";
-
-            // aqui você faz a requisição ao banco
-        });
-
-        // Fechar sucesso
-        fecharSucesso.addEventListener("click", () => {
-            modalSucesso.style.display = "none";
-        });
+    <script src="../js/editar_Administrador.js">
+        
     </script>
 
 </body>

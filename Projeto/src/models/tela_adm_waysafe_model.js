@@ -11,17 +11,10 @@ function pegarFuncAdm(){
     return database.executar(instrucaoSql);
 }
 
-function editarDados(nome,email, senha, id){
-    if(senha=="" || senha==null || senha==" "){
-        var instrucaoSql = `
-            UPDATE USUARIO SET nome='${nome}',email='${email}',senha =SHA2('${senha}', 256) WHERE idUSUARIO=${id};
-        `
-    }
-    else{
+function editarDados(nome,email,id){
         var instrucaoSql = `
             UPDATE USUARIO SET nome='${nome}',email='${email}' WHERE idUSUARIO=${id};
         `
-    }
     return database.executar(instrucaoSql);
 }
 
@@ -32,9 +25,25 @@ function cadastrar(nome,email,senha){
     return database.executar(instrucaoSql);
 }
 
+function editarADM(nome,email,id){
+    var instrucaoSql = `
+        UPDATE usuario SET nome='${nome}',email='${email}' WHERE idUSUARIO=${id};
+    `;
+    return database.executar(instrucaoSql);
+}
+
+function removerADM(id){
+  var instrucaoSql = `
+        DELETE from usuario WHERE idUSUARIO=${id};
+    `;
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
   pegarFuncAdm,
   editarDados,
-  cadastrar
+  cadastrar,
+  editarADM,
+  removerADM
 };

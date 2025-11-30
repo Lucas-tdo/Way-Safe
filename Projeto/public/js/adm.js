@@ -8,17 +8,11 @@ document.querySelector('.toggle-nav')
             });
 
         /* === MODAL JS === */
-        const modal = document.getElementById("modal-confirmar");
+        var idExcluir;
+        const modal = document.getElementById("modalexcluir");
         const cancelarBtn = document.getElementById("cancelar-excluir");
         const confirmarBtn = document.getElementById("confirmar-excluir");
 
-        // Abre modal ao clicar na lixeira
-        document.querySelectorAll('.icon_tabela[src="../icons/lixo.png"]').forEach(icon => {
-            icon.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.style.display = "flex";
-            });
-        });
 
         // Cancelar fecha o modal
         cancelarBtn.addEventListener('click', () => {
@@ -34,24 +28,28 @@ document.querySelector('.toggle-nav')
 
         // Aqui você faz a conexão depois
         confirmarBtn.addEventListener('click', () => {
-            alert(" Função de excluir no banco.");
+            fetch(`/adm_waysafe/removerADM`,{
+                    method : "DELETE",
+                    headers :{
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        idServer: idExcluir
+                    })
+                })
+                .then(resposta=>{
+                    console.log(resposta)
+                    pegarAdm()
+                })
+                .catch(erro=>{
+                    console.log(erro)
+                })
+
             modal.style.display = "none";
         });
 
 
-        // Escuta todos cliques da página
-        document.addEventListener("click", function (e) {
 
-            // Se clicou no ícone de editar
-            if (e.target.classList.contains("icon-tabela")) {
-
-                e.preventDefault();
-
-                // Aqui você coloca a página que vai abrir:
-                window.location.href = "editar_funcionario.html";
-
-            }
-        });
 
 
 async function pegarAdm(){
@@ -67,12 +65,23 @@ async function pegarAdm(){
                                   <td>${registro.email}</td>
                                   <td>*********</td>
                                   <td>
-                                      <a href="#"><img class="icon_tabela" src="../icons/editar.png"></a>
-                                      <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                      <a href="#" onclick="enviarEditar(${registro.idUSUARIO})"> <img class="icon-tabela" src="../icons/editar.png"></a>
+                                      <a href="#" onclick="abrirExcluir(${registro.idUSUARIO})" ><img class="icon_tabela" src="../icons/lixo.png"></a>
                                   </td>
                               </tr>
       `;
   }
+}
+
+function enviarEditar(id){
+    sessionStorage.setItem("IDADM",id);
+    window.location.href="editar_ADM.html";
+}
+
+function abrirExcluir(id){
+    var divExcluir = document.getElementById("modalexcluir")
+    divExcluir.style.display = "flex";
+    idExcluir=id;
 }
 
 window.addEventListener("load", (event) => {
