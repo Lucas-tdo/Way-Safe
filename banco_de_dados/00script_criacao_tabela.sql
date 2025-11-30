@@ -2,7 +2,8 @@ drop database if exists waysafe;
 create database if not exists waysafe;
 use waysafe;
 SET foreign_key_checks = 0;
--- =========================================
+
+      -- =========================================
 -- CRIAÇÃO DAS TABELAS DO BANCO DE ACIDENTES
 -- =========================================
 
@@ -24,16 +25,9 @@ CREATE TABLE USUARIO (
     senha VARCHAR(256) NOT NULL,
     nome varchar(45) NOT NULL,
     fk_empresa INT,
-    FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA)
-);
-
-CREATE TABLE USUARIO_ADM (
-  idUSUARIO_ADM INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(45) NOT NULL,
-  senha VARCHAR(256) NOT NULL,
-  nome VARCHAR(45) NOT NULL,
-  fk_empresa INT,
-  FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA)
+    nivel_acesso_fk INT NOT NULL,
+    FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA),
+    FOREIGN KEY (nivel_acesso_fk) REFERENCES NIVEL_ACESSO(idNivelAcesso)
 );
 
 -- Tabela RODOVIAS
@@ -71,14 +65,17 @@ CREATE TABLE ACIDENTE (
 
 -- Tabela VITIMAS
 CREATE TABLE VITIMAS (
-    fk_acidente INT PRIMARY KEY,
+    fk_acidente INT,
     vitima_ilesa INT,
     vitima_fatal INT,
     vitima_fer_leve INT,
     vitima_fer_media INT,
     vitima_fer_grave INT,
     vitimas_fer_seminfo INT,
-    FOREIGN KEY (fk_acidente) REFERENCES ACIDENTE(idACIDENTE)
+	PRIMARY KEY (fk_acidente),
+    CONSTRAINT fk_vitimas_acidente
+        FOREIGN KEY (fk_acidente)
+        REFERENCES ACIDENTE(idACIDENTE)
 );
 
 CREATE TABLE LOG(
@@ -89,45 +86,9 @@ CREATE TABLE LOG(
     arquivo varchar(100),
     constraint chk_log check(Status IN ("Sucesso","Erro"))
     );
-    
-    -- insert into LOG(status,mensagem) values ("Sucesso","Rolou isso");
-
-    
-
--- INSERT INTO ACIDENTE (
---     fk_rodovias,
---     fk_classe_acid,
---     fk_empresa,
---     data_hora,
---     tipo_acidente,
---     metereologia,
---     visibilidade,
---    denominacao,
---     municipio,
---     reginal_der,
---     jurisdicao,
---     latitude,
---     longitude
--- ) VALUES
--- (1, 1, 1, '2024-10-05', 'Colisão Frontal', 'Chuva Leve', 'Boa', 'SP-330 - Km 50', 'Campinas', 'DER-SP', 'Estadual', '-22.9099', '-47.0626'),
--- (1, 1, 1, '2024-11-10', 'Atropelamento', 'Céu Claro', 'Boa', 'SP-330 - Km 80', 'Limeira', 'DER-SP', 'Estadual', '-22.5611', '-47.4017');
 
 
--- select * from acidente where idACIDENTE=202519180;
--- select * from vitimas where fk_acidente=202519180;
-
--- INSERT INTO VITIMAS (
---     fk_acidente,
---     vitima_ilesa,
---     vitima_fatal,
---     vitima_fer_leve,
---     vitima_fer_media,
---     vitima_fer_grave
--- ) VALUES
--- (1, 2, 0, 1, 0, 1),
--- (2, 0, 1, 0, 0, 0);
-
-
-
-
-
+CREATE TABLE  NIVEL_ACESSO(
+idNivelAcesso INT PRIMARY KEY auto_increment,
+descricao varchar(255)
+);

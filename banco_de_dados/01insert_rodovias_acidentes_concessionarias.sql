@@ -1,8 +1,9 @@
 USE waysafe;
 
--- ==============================
--- INSERTS NA TABELA EMPRESA
--- ==============================
+INSERT INTO NIVEL_ACESSO(idNivelAcesso,descricao) VALUES
+(1,"adminstrador geral"),
+(2,"gerente empresa"),
+(3,"funcionario empresa");
 
 INSERT INTO EMPRESA (idEMPRESA, NOME) VALUES 
 (1, 'AUTOBAN'),
@@ -361,3 +362,4 @@ INSERT INTO RODOVIAS (idRODOVIAS, rodovia_cod_numeric) VALUES
 (307, 'SPM360D'),
 (308, 'SPM360E'),
 (309 , 'SEM NOME');
+
