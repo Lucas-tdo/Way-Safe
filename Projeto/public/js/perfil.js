@@ -73,7 +73,7 @@
       var email = emailInput.value;
       var senha = senhaInput.value;
 
-      fetch(`/adm/editarDados/`, {
+      fetch(`/adm_waysafe/editarDados/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

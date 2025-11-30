@@ -28,7 +28,7 @@ function autenticar(email,senha){
         SELECT * FROM USUARIO WHERE email="${email}" and senha =SHA2('${senha}', 256);
     `;
     return database.executar(instrucaoSql);
-}
+} 
 module.exports = {
     checaremail,
     cadastrar,
