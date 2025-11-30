@@ -23,6 +23,7 @@ var tela_analise_detalhada_Router = require  ("./src/routes/tela_analise_detalha
 
 var concessionariaRouter = require ("./src/routes/concessionaria_rota");
 var administradorRouter = require("./src/routes/administrador_rota")
+var adm_waysafeRouter = require ("./src/routes/adm_waysafe_rota");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,6 +43,7 @@ app.use("/conc", concessionariaRouter)
 
 app.use("/conc", concessionariaRouter);
 app.use("/adm", administradorRouter);
+app.use("/adm_waysafe", adm_waysafeRouter);
     
 app.listen(PORTA_APP, function () {
     console.log(`
