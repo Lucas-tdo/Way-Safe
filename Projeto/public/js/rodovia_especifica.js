@@ -1,26 +1,25 @@
 
 
-    let anoSelecionado = null;
-    // let rodoviaSelecionada = sessionStorage.FK_RODOVIA;
-    let rodoviaSelecionada = sessionStorage.codigoRodovia;
+let anoSelecionado = null;
+// let rodoviaSelecionada = sessionStorage.FK_RODOVIA;
+let rodoviaSelecionada = sessionStorage.codigoRodovia;
 ;
 
-    chamarFuncoes()
+chamarFuncoes()
 
-    function chamarFuncoes(){
+function chamarFuncoes() {
 
-    document.getElementById("nome").innerText=`Olá, ${sessionStorage.NOME_USUARIO}`
-      anosAcidentes()
-      top5MaisTiposAcidentes(),
-      municipiosAcidentesQtd(),
-      total_acidentes(),
-      rodovia()
+  anosAcidentes()
+  top5MaisTiposAcidentes(),
+    municipiosAcidentesQtd(),
+    total_acidentes(),
+    rodovia()
 
-    }
-
+}
 
 
-  function anosAcidentes(){
+
+function anosAcidentes() {
   var fk_empresa = sessionStorage.FK_EMPRESA;
 
   fetch(`/tela_rodovia_esp_rota/anosAcidentes/${fk_empresa}/${rodoviaSelecionada}`)
@@ -29,7 +28,6 @@
       console.log("Anos recebidos:", anos);
 
       const select = document.getElementById("selectAnos");
-      select.innerHTML = '<option value="">Selecione um ano</option>';
 
       anos.forEach(item => {
         // acessa item.ano
@@ -47,21 +45,19 @@
 
 
 
-    function mudarAno() {
-    anoSelecionado = document.getElementById("selectAnos").value;
-    console.log("Ano selecionado:", anoSelecionado);
-  
-    if (anoSelecionado) {
-      anosAcidentes();
-      top5MaisTiposAcidentes();
-      municipiosAcidentesQtd();
-      total_acidentes();
-      rodovia()
-    }
-  }
+function mudarAno() {
+  anoSelecionado = document.getElementById("selectAnos").value;
+  console.log("Ano selecionado:", anoSelecionado);
+
+  top5MaisTiposAcidentes();
+  municipiosAcidentesQtd();
+  total_acidentes();
+  rodovia()
+
+}
 
 
-    function top5MaisTiposAcidentes() {
+function top5MaisTiposAcidentes() {
   var fk_empresa = sessionStorage.FK_EMPRESA;
 
   fetch(`/tela_rodovia_esp_rota/top5MaisTiposAcidentes/${fk_empresa}/${anoSelecionado}/${rodoviaSelecionada}`)
@@ -96,9 +92,9 @@
       console.error("Erro ao buscar top 5 tipos de acidente:", err);
     });
 
-  }
+}
 
- function municipiosAcidentesQtd() {
+function municipiosAcidentesQtd() {
   const fk_empresa = sessionStorage.FK_EMPRESA;
 
   fetch(`/tela_rodovia_esp_rota/municipiosAcidentesQtd/${fk_empresa}/${anoSelecionado}/${rodoviaSelecionada}`)
@@ -142,31 +138,31 @@
 }
 
 
-function total_acidentes(){
-      
-      var fk_empresa = sessionStorage.FK_EMPRESA
-      
-      fetch(`/tela_rodovia_esp_rota/qtdAcidentes/${fk_empresa}/${anoSelecionado}/${rodoviaSelecionada}`)
-      
-      .then(res => res.json())
-      .then(quantidade => {
+function total_acidentes() {
 
-        var qtd = quantidade[0].qtd_Acidente
-                document.getElementById("qtd_acidentes_total_rodovia").innerText = qtd;
-            })
-          }
+  var fk_empresa = sessionStorage.FK_EMPRESA
+
+  fetch(`/tela_rodovia_esp_rota/qtdAcidentes/${fk_empresa}/${anoSelecionado}/${rodoviaSelecionada}`)
+
+    .then(res => res.json())
+    .then(quantidade => {
+
+      var qtd = quantidade[0].qtd_Acidente
+      document.getElementById("qtd_acidentes_total_rodovia").innerHTML = qtd;
+    })
+}
 
 
-    function rodovia(){
-      
-      fetch(`/tela_rodovia_esp_rota/nomeRodovia/${rodoviaSelecionada}`)
-      
-      .then(res => res.json())
-      .then(rodovia => {
+function rodovia() {
 
-        var rodovia_nome = rodovia[0].rodovia_cod_numeric
-                document.getElementById("nome-rodovia").innerText = rodovia_nome;
-            })
-          }
+  fetch(`/tela_rodovia_esp_rota/nomeRodovia/${rodoviaSelecionada}`)
+
+    .then(res => res.json())
+    .then(rodovia => {
+
+      var rodovia_nome = sessionStorage.codigoRodovia
+      document.getElementById("nome-rodovia").innerText = rodovia_nome;
+    })
+}
 
 
