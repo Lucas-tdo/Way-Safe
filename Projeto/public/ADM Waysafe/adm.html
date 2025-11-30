@@ -84,9 +84,8 @@
                     <div class="meio">
                         <span class="tipo">Lista de Administradores </span>
 
-                        <div class="icones-direita">
-             
-                            <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar">
+                        <div class="icones-direita" onclick="refreshTabela()">
+                            <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar" id="atualizar-tb">
                         </div>
                     </div>
 
@@ -217,6 +216,11 @@
 
             }
         });
+
+        // Teste para ver se funciona o refresh
+        function refreshTabela(){
+            document.getElementsByClassName("tabela-rodovias").innerHTML = document.getElementsByClassName("tabela-rodovias").innerHTML;
+        }
     </script>
 </body>
 
