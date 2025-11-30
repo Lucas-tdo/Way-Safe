@@ -10,4 +10,8 @@ router.get("/pegarFuncAdm",function(req,res){
   TelaAdmWaysafeController.pegarFuncAdm(req,res)
 })
 
+router.post("/editarDados",function(req,res){
+    AdministradorController.editarDados(req,res);
+})
+
 module.exports = router;
