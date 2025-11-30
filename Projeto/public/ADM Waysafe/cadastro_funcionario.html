@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Funcionário</title>
+    <title>Cadastrar Administrador</title>
 
     <link rel="stylesheet" href="../CSS/cadastrofunc.css">
     <link rel="stylesheet" href="../CSS/nav.css">
@@ -50,7 +50,7 @@
 
             <div class="cadastro-bar">
                 <a href="adm.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
-                <h1>Cadastrar Funcionário</h1>
+                <h1>Cadastrar Administrador</h1>
             </div>
 
             <div class="container-de-baixo">
@@ -58,7 +58,7 @@
 
                     <div class="title1-cadastro">
                         <div class="infos">
-                            <h3>Informações do Funcionário</h3>
+                            <h3>Informações do Administrador</h3>
                             <p>Preencha os dados para criar um novo registro</p>
                         </div>
                     </div>
@@ -81,13 +81,13 @@
                             <input type="password" class="input-cadastro" placeholder="********" id="input_senha">
 <!-- // aqui deve ter uma limitação de caracteres e alguma validação se é diferente de 1 ou 2 -->
                             <label class="label-cadastro">Nivel de acesso</label>
-                            <input type="text" class="input-cadastro" placeholder="1 ou 2" id="input_nivel">
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" id="input_nivel" disabled>
                         </div>
 
                     </form>
 
                     <!-- BOTÃO -->
-                    <button class="btn-cadastrar-func" onclick="abrirModal()">Cadastrar</button>
+                    <button class="btn-cadastrar-func" onclick="Validar()">Cadastrar</button>
 
                 </div>
             </div>
@@ -99,7 +99,7 @@
     <div id="modalConfirm" class="modal">
         <div class="modal-content">
             <h3>Confirmar Cadastro?</h3>
-            <p>Deseja realmente cadastrar este funcionário?</p>
+            <p>Deseja realmente cadastrar este Administrador?</p>
 
             <div class="modal-buttons">
                 <button id="confirmar-edicao" onclick="confirmarCadastro()">Sim</button>
@@ -120,34 +120,20 @@
         </div>
     </div>
 
+    <div id="modalErro" class="modal">
+        <div class="modal-content">
+            <h3>Erro</h3>
+            <p id="mensagem-Erro"></p>
+        </div>
+    </div>
+
     <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
      <!-- //aqui vai ter que criar um novo funcionario pegando as informações do inputs. -->
      <!-- //pegar mesmas informações do cadastro e validar. -->
      <!-- // ver se dá para usar o cadastro.js (não vai gerar alguma complicação ou vai precisar de informações adicionais). -->
     <!-- Vou criar a parte só para ver se o processo dá certo -->
-    <script src="../js/cadastro_funcionario">
-        document.querySelector('.toggle-nav')
-            .addEventListener('click', () => {
-                document.querySelector('.nav').classList.toggle('minimizado');
-            });
-
-        function abrirModal() {
-            document.getElementById('modalConfirm').style.display = "flex";
-        }
-
-        function fecharModal() {
-            document.getElementById('modalConfirm').style.display = "none";
-        }
-
-        function confirmarCadastro() {
-            fecharModal();
-            document.getElementById('modalSucesso').style.display = "flex";
-        }
-
-        function fecharModalSucesso() {
-            document.getElementById('modalSucesso').style.display = "none";
- 
-        }
+    <script src="../js/cadastro_Administrador.js">
+        
     </script>
 
 </body>

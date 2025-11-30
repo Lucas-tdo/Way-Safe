@@ -14,4 +14,8 @@ router.post("/editarDados",function(req,res){
     AdministradorController.editarDados(req,res);
 })
 
+router.post("/cadastrarAdm",(req,res)=>{
+    TelaAdmWaysafeController.cadastrar(req,res);
+})
+
 module.exports = router;
