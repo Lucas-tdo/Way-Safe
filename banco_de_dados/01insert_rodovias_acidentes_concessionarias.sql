@@ -5,31 +5,32 @@ INSERT INTO NIVEL_ACESSO(idNivelAcesso,descricao) VALUES
 (2,"gerente empresa"),
 (3,"funcionario empresa");
 
-INSERT INTO EMPRESA (idEMPRESA, NOME) VALUES 
-(1, 'AUTOBAN'),
- (2, 'CART'),
- (3, 'COLINAS'),
-(4, 'ECOVIAS IMIGRANTES'),
- (5, 'EIXOSP'),
- (6, 'ENTREVIAS'),
- (7, 'INTERVIAS'),
- (8, 'LESTE PAULISTA'),
- (9, 'NOROESTE PAULISTA'),
- (10, 'NOVO LITORAL'),
- (11, 'RAPOSO CASTELLO'),
- (12, 'RENOVIAS'),
- (13, 'RODOANEL'),
- (14, 'ROTA'),
- (15, 'SOROCABANA'),
- (16, 'SPMAR'),
- (17, 'SPVIAS'),
- (18, 'TAMOIOS'),
- (19, 'TEBE'),
- (20, 'TIETÊ'),
- (21, 'TRIÂNGULO'),
- (22, 'VIAOESTE'),
- (23, 'VIAPAULISTA'),
- (24, 'VIARONDON');
+INSERT INTO EMPRESA (idEMPRESA, CNPJ, CEP, complemento, NOME, EMAIL, TELEFONE) VALUES
+(1,  '12345678000101', '01001000', 'Sala 101', 'AUTOBAN', 'contato@autoban.com', '11987654321'),
+(2,  '22345678000102', '01002000', 'Sala 12', 'CART', 'contato@cart.com', '11987654322'),
+(3,  '32345678000103', '01003000', NULL, 'COLINAS', 'contato@colinas.com', '11987654323'),
+(4,  '42345678000104', '01004000', 'Bloco B', 'ECOVIAS IMIGRANTES', 'contato@ecovias.com', '11987654324'),
+(5,  '52345678000105', '01005000', NULL, 'EIXOSP', 'contato@eixosp.com', '11987654325'),
+(6,  '62345678000106', '01006000', 'Andar 3', 'ENTREVIAS', 'contato@entrevias.com', '11987654326'),
+(7,  '72345678000107', '01007000', NULL, 'INTERVIAS', 'contato@intervias.com', '11987654327'),
+(8,  '82345678000108', '01008000', 'Conjunto 5', 'LESTE PAULISTA', 'contato@lestepaulista.com', '11987654328'),
+(9,  '92345678000109', '01009000', NULL, 'NOROESTE PAULISTA', 'contato@noroestepaulista.com', '11987654329'),
+(10, '10345678000110', '01010000', 'Bloco A', 'NOVO LITORAL', 'contato@novolitoral.com', '11987654330'),
+(11, '11345678000111', '01011000', 'Sala 22', 'RAPOSO CASTELLO', 'contato@raposocastello.com', '11987654331'),
+(12, '12345678000112', '01012000', NULL, 'RENOVIAS', 'contato@renovias.com', '11987654332'),
+(13, '13345678000113', '01013000', 'Torre 1', 'RODOANEL', 'contato@rodoanel.com', '11987654333'),
+(14, '14345678000114', '01014000', NULL, 'ROTA', 'contato@rota.com', '11987654334'),
+(15, '15345678000115', '01015000', 'Sala 10', 'SOROCABANA', 'contato@sorocabana.com', '11987654335'),
+(16, '16345678000116', '01016000', NULL, 'SPMAR', 'contato@spmar.com', '11987654336'),
+(17, '17345678000117', '01017000', 'Andar 2', 'SPVIAS', 'contato@spvias.com', '11987654337'),
+(18, '18345678000118', '01018000', NULL, 'TAMOIOS', 'contato@tamoios.com', '11987654338'),
+(19, '19345678000119', '01019000', 'Anexo 1', 'TEBE', 'contato@tebe.com', '11987654339'),
+(20, '20345678000120', '01020000', NULL, 'TIETÊ', 'contato@tiete.com', '11987654340'),
+(21, '21345678000121', '01021000', 'Sala 5', 'TRIÂNGULO', 'contato@triangulo.com', '11987654341'),
+(22, '22345678000122', '01022000', NULL, 'VIAOESTE', 'contato@viaoeste.com', '11987654342'),
+(23, '23345678000123', '01023000', 'Bloco D', 'VIAPAULISTA', 'contato@viapaulista.com', '11987654343'),
+(24, '24345678000124', '01024000', NULL, 'VIARONDON', 'contato@viarondon.com', '11987654344');
+
 
 -- ==============================
 -- INSERTS NA TABELA classe_acidente
