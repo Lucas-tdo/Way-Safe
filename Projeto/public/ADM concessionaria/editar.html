@@ -65,18 +65,16 @@
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">Nome Completo</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="nome_func">
 
                             <label class="label-cadastro">Email</label>
-                            <input type="email" class="input-cadastro" placeholder="email@gmail.com">
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="email_func">
                         </div>
 
                         <div class="coluna-cadastro">
-                            <label class="label-cadastro">Senha</label>
-                            <input type="password" class="input-cadastro" placeholder="********">
 
                             <label class="label-cadastro">Código da Empresa</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: 987654">
+                            <input type="text" class="input-cadastro" placeholder="Ex: 987654" id="empresa_func">
                         </div>
 
                     </form>
@@ -96,7 +94,7 @@
             <p>Tem certeza que deseja salvar as alterações?</p>
 
             <div class="modal-buttons">
-                <button id="confirmar-edicao">Sim</button>
+                <button id="confirmar-edicao" onclick="editarDados()">Sim</button>
                 <button id="cancelar-edicao">Cancelar</button>
             </div>
         </div>
@@ -156,3 +154,4 @@
 </body>
 
 </html>
+<script src="../js/adm_conc_editar.js"></script>

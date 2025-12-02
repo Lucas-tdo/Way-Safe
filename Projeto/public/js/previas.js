@@ -8,7 +8,8 @@ function chamarFuncoes() {
         total_acidentes(),
         trechoMaisCritico(),
         PiorMes(),
-        anosAcidentes()
+        anosAcidentes(),
+        logoEmpresa()
 }
 function total_acidentes() {
 
@@ -18,7 +19,7 @@ function total_acidentes() {
 
         .then(res => res.json())
         .then(quantidade => {
-
+        
             var qtd = quantidade[0].qtd_Acidente
             document.getElementById("qtd_acidentes_total").innerText = qtd;
         })

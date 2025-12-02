@@ -1,6 +1,6 @@
 
 
-    let anoSelecionado = null;
+    var anoSelecionado = null;
     // let rodoviaSelecionada = sessionStorage.FK_RODOVIA;
     let rodoviaSelecionada = sessionStorage.codigoRodovia;
 ;
@@ -9,7 +9,7 @@
 
     function chamarFuncoes(){
 
-    document.getElementById("nome").innerText=`Olá, ${sessionStorage.NOME_USUARIO}`
+    // document.getElementById("nome").innerText=`Olá, ${sessionStorage.NOME_USUARIO}`
       anosAcidentes()
       top5MaisTiposAcidentes(),
       municipiosAcidentesQtd(),

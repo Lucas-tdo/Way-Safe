@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-function buscar_rodovias(municipio, ano) {
+function buscar_rodovias(municipio, ano,fk_empresa) {
     var instrucaoSql = '';
     var condicoes = [];
     var filtrosPreenchidos = 0;
@@ -22,12 +22,13 @@ function buscar_rodovias(municipio, ano) {
                 SELECT 
                     IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                     municipio,
+                    fk_rodovias,
                     classe_acidente.descr as tipoAcidente,
                     COUNT(*) as totalAcidentes
                 FROM ACIDENTE
                 JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
                 JOIN classe_acidente ON fk_classe_acid = idClasse_acid
-                GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
+                GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
                 ORDER BY totalAcidentes DESC;
         `;
     } else if (filtrosPreenchidos === 1) {
@@ -35,27 +36,30 @@ function buscar_rodovias(municipio, ano) {
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
+                fk_rodovias,
                 classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
             JOIN classe_acidente ON fk_classe_acid = idClasse_acid
             WHERE ${condicoes.join(' AND ')}
-            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
             ORDER BY totalAcidentes DESC;
         `;
     } else {
         instrucaoSql = `
             SELECT 
-                IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
+                IFNULL(rodovia_cod_nume
+                ric, 'Não identificado') as codigoRodovia,
                 municipio,
+                fk_rodovias,
                 classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
             JOIN classe_acidente ON fk_classe_acid = idClasse_acid
             WHERE ${condicoes.join(' AND ')}
-            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
             ORDER BY totalAcidentes DESC;
         `;
     }
