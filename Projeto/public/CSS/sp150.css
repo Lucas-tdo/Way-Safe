@@ -26,6 +26,15 @@ html, body {
 }
 
 
+.select_caixa {
+      height: 36px;
+    padding: 8px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    outline: none;
+    line-height: 1;
+}
+
 /* CONTEÚDO */
 .container {
   flex: 1;
