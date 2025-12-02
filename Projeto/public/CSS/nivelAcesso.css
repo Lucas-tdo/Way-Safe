@@ -1,0 +1,670 @@
+/* ===== IMPORT FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #EEEEEE;
+}
+
+
+
+/* ===== MODAL ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    width: 320px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn .25s ease;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#confirmar-excluir {
+    background: #429050;
+    color: white;
+}
+
+#cancelar-excluir {
+    background: #777;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fundo {
+    display: flex;
+    min-height: 100vh;
+    background: #EEEEEE;
+}
+
+/* Conteúdo principal */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+    overflow: auto;
+    background: #EEEEEE;
+}
+
+.text_over {
+  font-size: clamp(14px, 3vw, 15px);
+  padding: 10px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text_data {
+  font-size: clamp(13px, 2.5vw, 15px);
+  padding: 10px 20px;
+  color: #818181;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* barra de título */
+.rodovias-bar {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
+  background: #ffffff;
+  height: auto;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.rodovias-bar h1 {
+  font-size: clamp(18px, 4vw, 25px);
+  font-weight: 800;
+  margin: 0;
+}
+
+/* linha com filtro + cards/tabela */
+.conteudo-linha {
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+    flex: 1;
+}
+
+/* filtro ao lado */
+.filtro-box {
+    display: none; /* escondido por padrão */
+    width: 250px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    height: fit-content;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    flex-shrink: 0; /* não encolher */
+}
+
+.filtro-box h3 {
+    margin-bottom: 10px;
+}
+
+.filtro-box label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+.filtro-box select,
+.filtro-box input,
+.filtro-box button {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* aparece quando o menu está minimizado */
+.filtro-box.ativo {
+    display: block;
+}
+
+/* cards e tabela ocupam o resto */
+.conteudo-principal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.cadastrar {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #429050;;
+  color: white;
+  border: none;
+}
+
+.cadastrar:hover {
+    transform: scale(1.05);
+}
+
+.icones-direita {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* espaço entre os ícones */
+}
+
+.meio {
+  display: flex;
+  justify-content: space-between; /* espaça o texto e os ícones */
+  align-items: center; /* centraliza verticalmente */
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.icons_meio {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icons_meio:hover {
+  transform: scale(1.1);
+}
+
+
+.tabela-container {
+    background: #fff;
+    border-radius: 8px;
+    min-height: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Estilização da barra de scroll */
+.tabela-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tabela-container::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 10px;
+}
+
+.tabela-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.tabela-rodovias {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: clamp(12px, 2.5vw, 15px);
+}
+
+.tabela-rodovias th {
+  background-color: #d5d5d5fa;
+  color: #282828;
+  padding: clamp(15px, 3vw, 25px) clamp(8px, 2vw, 15px);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-size: clamp(11px, 2.5vw, 14px);
+  white-space: nowrap;
+}
+
+
+
+.tabela-rodovias tr:hover {
+  background-color: #f3f3f3;
+}
+
+.icon_tabela {
+  width: 20px;
+}
+
+.icon-tabela {
+  width: 20px;
+}
+
+
+
+.icon_tabela:hover {
+  transform: scale(1.05);
+}
+
+
+.tabela-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tipo {
+    font-weight: 600;
+    font-size: clamp(14px, 2.5vw, 16px);
+}
+
+.icons {
+    border-radius: 10px;
+    width: clamp(30px, 6vw, 40px);
+    height: auto;
+    flex-shrink: 0;
+}
+
+tr{
+    display: flex;
+    justify-content: center;
+  
+    align-items: center;
+}
+td {
+    width: 100%;
+    border-bottom: solid rgba(128, 128, 128, 0.204) 1px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#desc{
+    padding-left: 50px;
+}
+
+#acoes{
+    gap: 5px;
+}
+
+th{
+    width: 100%;
+}
+
+
+.nivelAcesso1{
+    width: 100%;
+    color: #4b609e;
+    background-color: #92d0efae;
+    width: 120px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.nivelAcesso2{
+   width: 100%;
+    color: #3a5c34;
+    background-color: #92efa8a1;
+    width: 120px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px; 
+}
+.nivelAcesso3{
+   width: 100%;
+    color: #996a12;
+    background-color: #efde92a1;
+    width: 120px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px; 
+}
+/* ===== MEDIA QUERIES PARA RESPONSIVIDADE ===== */
+
+/* Melhorias para dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+  .btn-relatorio, .btn-relatorio-pdf, #card-linha3 button {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Tablets grandes e desktops pequenos */
+@media (max-width: 1200px) {
+  .cards-rodovias {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .conteudo-linha {
+    padding: 0 15px;
+  }
+  
+  .rodovias-bar {
+    padding: 15px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 550px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 950px) { 
+  .conteudo-linha {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .filtro-box {
+    width: 100%;
+    order: -1;
+  }
+  
+  .cards-rodovias {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .text_over, .text_data {
+    padding: 10px 15px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 500px;
+  }
+}
+
+/* Smartphones grandes */
+@media (max-width: 768px) {
+  .container {
+    gap: 10px;
+  }
+  
+  .rodovias-bar {
+    padding: 15px;
+    min-height: 60px;
+  }
+  
+  .rodovias-bar h1 {
+    font-size: clamp(16px, 5vw, 22px);
+  }
+  
+  .cards-rodovias {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 15px;
+    min-height: 120px;
+  }
+  
+  #card-linha1, #card-linha3 {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  #card-linha3 button {
+    width: auto;
+    min-width: 4rem;
+    height: 1.5rem;
+    font-size: 12px;
+  }
+  
+  .meio {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .tabela-container {
+    margin: 0 -15px;
+    border-radius: 0;
+    max-height: 350px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 500px;
+  }
+  
+  .conteudo-linha {
+    padding: 0 100px;
+  }
+  
+  .conteudo-principal {
+    gap: 15px;
+  }
+}
+
+/* Smartphones médios */
+@media (max-width: 600px) {
+  .text_over, .text_data {
+    font-size: 13px;
+    padding: 8px 15px;
+    white-space: normal;
+  }
+  
+  .barra {
+    padding: 0 10px;
+  }
+  
+  .filtro-box {
+    padding: 12px;
+    margin: 0 10px;
+  }
+  
+  .filtro-box h3 {
+    font-size: 16px;
+  }
+  
+  .filtro-box label {
+    font-size: 13px;
+  }
+  
+  .filtro-box select,
+  .filtro-box input,
+  .filtro-box button {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+  
+  .tabela-rodovias {
+    min-width: 450px;
+  }
+  
+  .btn-relatorio, .btn-relatorio-pdf {
+    padding: 6px 8px;
+    margin-left: 5px;
+    font-size: 11px;
+  }
+  
+  .tabela-container {
+    max-height: 300px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 500px) {
+  .rodovias-bar {
+    padding: 10px 15px;
+    min-height: 50px;
+  }
+  
+  .text_over, .text_data {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 12px;
+    min-height: 100px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(16px, 6vw, 20px);
+    margin: 5px 0;
+  }
+  
+  .cards-rodovias .card p {
+    font-size: 12px;
+  }
+  
+  .icons {
+    width: 30px;
+  }
+  
+  .meio span {
+    font-size: 14px;
+  }
+  
+  .tabela-container {
+    max-height: 250px;
+    margin: 0 -10px;
+  }
+  
+  .tabela-rodovias {
+    min-width: 400px;
+    font-size: 11px;
+  }
+  
+  .tabela-rodovias th,
+  .tabela-rodovias td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+  
+  .btn-relatorio, .btn-relatorio-pdf {
+    padding: 4px 6px;
+    font-size: 9px;
+    margin-left: 2px;
+  }
+  
+  .filtro-box {
+    margin: 0 5px;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 430px) { 
+  .tipo, .text_data {
+    font-size: 13px;
+  }
+  
+  .cards-rodovias .card {
+    padding: 10px;
+  }
+  
+  .tabela-container {
+    max-height: 200px;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 360px) { 
+  .tipo, .text_data {
+    font-size: 10px;
+  }
+  
+  .rodovias-bar h1 {
+    font-size: clamp(14px, 6vw, 18px);
+  }
+  
+  .cards-rodovias .card {
+    padding: 10px;
+  }
+  
+  .cards-rodovias .card h1 {
+    font-size: clamp(14px, 7vw, 18px);
+  }
+  
+  .tabela-rodovias {
+    min-width: 350px;
+  }
+  
+  .filtro-box {
+    margin: 0 5px;
+    padding: 10px;
+  }
+  
+  #card-linha3 button {
+    width: 3.5rem;
+    height: 1.3rem;
+    font-size: 10px;
+  }
+  
+  .tabela-container {
+    max-height: 180px;
+  }
+}
