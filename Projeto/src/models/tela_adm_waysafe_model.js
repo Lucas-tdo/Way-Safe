@@ -27,14 +27,14 @@ function cadastrar(nome,email,senha){
 
 function editarADM(nome,email,id){
     var instrucaoSql = `
-        UPDATE usuario SET nome='${nome}',email='${email}' WHERE idUSUARIO=${id};
+        UPDATE USUARIO SET nome='${nome}',email='${email}' WHERE idUSUARIO=${id};
     `;
     return database.executar(instrucaoSql);
 }
 
 function removerADM(id){
   var instrucaoSql = `
-        DELETE from usuario WHERE idUSUARIO=${id};
+        DELETE from USUARIO WHERE idUSUARIO=${id};
     `;
     return database.executar(instrucaoSql);
 }
