@@ -13,35 +13,36 @@
   <div class="fundo">
 
     <!-- MENU LATERAL -->
-    <aside class="nav">
-      <button class="toggle-nav">☰ </button>
+   <aside class="nav">
+            <button class="toggle-nav">☰ </button>
 
-      <div class="perfil">
-        <img class="img_user" src="../icons/user.png"> <img src="../icons/engrenagem.png">
+            <div class="perfil">
+                <img class="img_user" src="../icons/user.png"> <img src="../icons/engrenagem.png">  
+              
+            </div>
 
-      </div>
+                           
 
+            <ul class="menu-list">
+                <li >
+                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
+                    <a href="adm.html" class="text">Administradores</a>
+                </li>
 
+                <li>
+                    <a href="adm_conc.html"> <img src="../icons/empresa.png" class="icon"></a>
+                    <a href="adm_conc.html" class="text">Concessionárias</a>
+                </li>
 
-      <ul class="menu-list">
-        <li >
-          <a href="add_func.html"><img src="../icons/funcionarios.png" class="icon"></a>
-          <a href="add_func.html" class="text">Funcionários</a>
-        </li>
+                <li  class="active" >
+                   <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
+                    <a href="perfil.html" class="text">Perfil</a>
+                </li>
 
-        <li class="active">
-          <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon"></a>
-          <a href="perfil.html" class="text">Perfil</a>
-        </li>
+            </ul>
 
-
-
-      </ul>
-
-      <a class="sair" href="../previas.html">
-        <div>Voltar</div>
-      </a>
-    </aside>
+            <a class="sair" href="../previas.html"><div >Voltar</div></a>
+        </aside>
     <!--FIM MENU LATERAL-->
 
     <!--CONTEÚDO-->
@@ -53,14 +54,14 @@
 
 
       <div id="msg" class="container-txt">
-        <div class="caixa-de-texto-container" id="caixaTexto">
-          <p id="texto-caixa">Alterações realizadas com sucesso</p>
-        </div>
+          <div class="caixa-de-texto-container" id="caixaTexto">
+            <p id="texto-caixa">Alterações realizadas com sucesso</p>
+          </div>
       </div>
       <div class="container-de-baixo">
 
-
-
+        
+        
 
 
         <div class="pagperfil" style="background-color: rgb(255, 255, 255);">
@@ -82,7 +83,7 @@
                       align-items: center;
                       gap: 2px;
                       color: rgb(0, 0, 0);">
-                <img src="../icons/lapisPreto.png" alt="" height="18px"> Editar
+               <img src="../icons/lapisPreto.png" alt="" height="18px"> Editar
               </button>
             </div>
           </div>
@@ -91,7 +92,9 @@
           <div class="config-foto">
             <div>
               <label for="input-foto" class="foto-perfil" id="fotoContainer">
-                <span><img src="../Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""></span>
+                <span><img
+                    src="../Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt=""></span>
                 <img id="fotoPreview" style="display:none;">
               </label>
               <input type="file" id="input-foto" accept="image/*">
@@ -116,113 +119,46 @@
               <label style="font-weight: 600;">Email</label>
               <p class="caixa-de-texto" id="emailView">email@gmail.com</p>
 
-              <label style="font-weight: 600;">Telefone</label>
-              <p class="caixa-de-texto" id="telefoneView">11 99999-9999</p>
-
             </div>
-
+            
             <div class="coluna-campos1">
-              <label style="font-weight: 600;">CEP</label>
-              <p class="caixa-de-texto" id="cepView">00000-000</p>
 
-              <label style="font-weight: 600;">Endereço</label>
-              <p class="caixa-de-texto" id="enderecoView">Rua Nome da Rua, 123</p>
+              <label style="font-weight: 600;">Precisa alterar sua senha?</label>
+              <button id="abrir-popup" class="btn-alterar">Alterar senha</button>
+              <div class="popup" id="popup">
 
-              <label>Alterar Senha</label>
-              <p class="caixa-de-texto" id="senhaView">**********</p>
+                <div class="interior-popup">
+
+                  <button id="fechar-popup"><img src="../icons/btn-sair.svg" alt=""></button>
+                  <h2 style="font-weight: 700;">Altere sua senha</h2>
+                  <label for="input_senha_atual">Insira sua senha atual</label>
+                  <input type="password" id="input_senha_atual" class="caixa-de-texto-senha">
+
+                  <label for="input-senha-nova">Insira sua nova senha</label>
+                  <input type="password" id="input_senha_nova" class="caixa-de-texto-senha">
+
+                  <label for="input-senha-confirmacao">Confirme sua nova senha</label>
+                  <input type="password" id="input_senha_confirmacao" class="caixa-de-texto-senha">
+
+                  <p id="avisos-senha"></p>
+                  <h2 id="aviso-sucesso"></h2>
+                  
+                  <button onclick="pegarSenha()" class="btn-alterar">Alterar senha</button>
+
+                </div>
+
+              </div>
+
             </div>
+
           </div>
         </div>
       </div>
 
     </main>
   </div>
-
-  <script>
-    // Menu lateral
-    document.querySelector('.toggle-nav')
-      .addEventListener('click', () => {
-        document.querySelector('.nav').classList.toggle('minimizado');
-      });
-
-
-
-
-
-    // Foto de perfil
-    const inputFoto = document.getElementById('input-foto');
-    const fotoPreview = document.getElementById('fotoPreview');
-    const fotoContainer = document.getElementById('fotoContainer');
-
-    inputFoto.addEventListener('change', function () {
-      const arquivo = this.files[0];
-      if (arquivo) {
-        const leitor = new FileReader();
-        leitor.onload = function (e) {
-          fotoPreview.src = e.target.result;
-          fotoPreview.style.display = 'block';
-          fotoContainer.querySelector('span').style.display = 'none';
-        }
-        leitor.readAsDataURL(arquivo);
-      }
-    });
-    //Fim da lógica para colocar a foto de perfil
-
-    // Alternar modo de edição
-    const editarBtn = document.getElementById('editarBtn');
-    let editando = false;
-
-    editarBtn.addEventListener('click', () => {
-      if (!editando) {
-        // Entrar no modo edição
-        transformarEmInputs();
-        editarBtn.innerHTML = '<img src="../icons/check.svg" alt="" height="18px"> Salvar';
-        editando = true;
-      } else {
-        // Salvar e voltar para visualização
-        const msg = document.getElementById("msg");
-
-        msg.classList.add("ativa");
-
-        setTimeout(() => {
-          msg.classList.remove("ativa");
-        }, 1000); // some depois de 2s
-
-        salvarAlteracoes();
-        editarBtn.innerHTML = '<img src="../icons/lapisPreto.png" alt="" height="18px"> Editar';
-        editando = false;
-      }
-    });
-
-    function transformarEmInputs() {
-      const campos = ['nome', 'email', 'telefone', 'cep', 'endereco', 'senha'];
-      campos.forEach(campo => {
-        const p = document.getElementById(`${campo}View`);
-        const valor = p.textContent;
-        p.outerHTML = `<input style="background-color:#DEDEDE;" class="caixa-de-texto" id="${campo}Input" type="${campo === 'senha' ? 'password' : 'text'}" value="${valor}">`;
-      });
-    }
-
-    function salvarAlteracoes() {
-      const campos = ['nome', 'email', 'telefone', 'cep', 'endereco', 'senha'];
-      campos.forEach(campo => {
-        const input = document.getElementById(`${campo}Input`);
-        const valor = input.value;
-
-        if (campo == 'senha') {
-          input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">**********</p>`;
-        } else {
-          input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
-        }
-      });
-
-
-
-      document.getElementById('nomeTexto').textContent = document.getElementById('nomeView').textContent;
-      document.getElementById('emailTexto').textContent = document.getElementById('emailView').textContent;
-
-    }
-  </script>
+  
 </body>
-
+<script src="../js/perfil.js">
+</script>
 </html>

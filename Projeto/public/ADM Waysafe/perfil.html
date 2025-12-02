@@ -123,25 +123,27 @@
             
             <div class="coluna-campos1">
 
-              <label>Alterar Senha</label>
-              <p class="caixa-de-texto" id="senhaView">**********</p>
-              <button id="abrir-popup" >Alterar senha</button>
+              <label style="font-weight: 600;">Precisa alterar sua senha?</label>
+              <button id="abrir-popup" class="btn-alterar">Alterar senha</button>
               <div class="popup" id="popup">
 
                 <div class="interior-popup">
 
                   <button id="fechar-popup"><img src="../icons/btn-sair.svg" alt=""></button>
-                  <h2>Altere sua senha</h2>
+                  <h2 style="font-weight: 700;">Altere sua senha</h2>
                   <label for="input_senha_atual">Insira sua senha atual</label>
-                  <input type="password" id="input_senha_atual">
+                  <input type="password" id="input_senha_atual" class="caixa-de-texto-senha">
 
                   <label for="input-senha-nova">Insira sua nova senha</label>
-                  <input type="password" id="input_senha_nova">
+                  <input type="password" id="input_senha_nova" class="caixa-de-texto-senha">
 
                   <label for="input-senha-confirmacao">Confirme sua nova senha</label>
-                  <input type="password" id="input_senha_confirmacao">
+                  <input type="password" id="input_senha_confirmacao" class="caixa-de-texto-senha">
+
+                  <p id="avisos-senha"></p>
+                  <h2 id="aviso-sucesso"></h2>
                   
-                  <button onclick="pegarSenha()">Alterar senha</button>
+                  <button onclick="pegarSenha()" class="btn-alterar">Alterar senha</button>
 
                 </div>
 
