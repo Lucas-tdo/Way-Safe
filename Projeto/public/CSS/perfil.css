@@ -595,3 +595,11 @@ input[type="file"] {
 .popup label{
   text-align: left;
 }
+
+#abrir-popup,#pergunta-popup{
+  display: none;
+}
+
+#labelSenhaView,#senhaView{
+  display: flex;
+}
