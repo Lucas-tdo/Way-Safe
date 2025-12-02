@@ -17,7 +17,8 @@
       <button class="toggle-nav">☰ </button>
 
       <div class="perfil">
-        <img class="img_user" src="icons/user.png"> <a href="ADM concessionaria/add_func.html"><img src="icons/engrenagem.png"></a>
+        <img id="imagem-empresa" class="img_user"> <br>
+        <a href="ADM concessionaria/add_func.html"><img src="icons/engrenagem.png"></a>
       </div>
 
       <ul class="menu-list">
@@ -27,16 +28,16 @@
             class="text">Rodovias</a> </li>
 
         <li> <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></img></a> <a href="acidentes.html"
-            class="text">Acidentes</a> </li>
+            class="text">Vítimas</a> </li>
 
-               <li> <a href="analise_detalhada.html"><img src="icons/analise.png" class="icon"></img></a>
-         <a href="analise_detalhada.html" class="text">Análise Detalhada</a>
-      </li>
+        <li> <a href="analise_detalhada.html"><img src="icons/analise.png" class="icon"></img></a>
+          <a href="analise_detalhada.html" class="text">Análise Detalhada</a>
+        </li>
 
- 
+
       </ul>
 
-      <div class="sair">Sair</div>
+      <a style="text-decoration: none;" href="login.html"><div class="sair">Sair</div></a>
     </aside>
 
     <div class="container">
@@ -44,14 +45,15 @@
 
       <div class="previas-bar">
         <h1 style="font-weight: 800;">Previas</h1>
-        <img  class="img_empresa" id="imagem-empresa" ></h1> 
+
 
       </div>
 
       <div class="barra">
         <h1 class="text_over">Overview</h1>
         <h1 class="text_data">
-          <select name="anos" id="selectAnos" onchange="mudarAno()">
+
+          <select class="select_caixa" name="anos" id="selectAnos" onchange="mudarAno()">
             <option value="">Selecione um ano</option>
           </select>
         </h1>
@@ -196,7 +198,7 @@
   <script src="js/previas.js"></script>
 
   <script>
-    
+
   </script>
 </body>
 

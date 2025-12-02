@@ -18,12 +18,13 @@
     <aside class="nav">
       <button class="toggle-nav">☰ </button>
 
-       <div class="perfil">
-        <img class="img_user" src="icons/user.png">  <a href="add_func.html"><img src="icons/engrenagem.png"></a>
+      <div class="perfil">
+        <img id="imagem-empresa" class="img_user"> <br>
+        <a href="ADM concessionaria/add_func.html"><img src="icons/engrenagem.png"></a>
       </div>
 
       <ul class="menu-list">
-        <li><img src="icons/home.png" class="icon"><a href="#" class="text">Previas</a></li>
+        <li> <a href="previas.html"><img src="icons/home.png" class="icon"></a><a href="previas.html" class="text">Previas</a></li>
 
         <li class="active">
           <a href="Rodovias.html"><img src="icons/grafico.png" class="icon"></a>
@@ -32,11 +33,18 @@
 
         <li>
           <a href="acidentes.html"><img src="icons/alerta.png" class="icon"></a>
-          <a href="acidentes.html" class="text">Acidentes</a>
+          <a href="acidentes.html" class="text">Vitímas</a>
         </li>
+
+
+        <li> <a href="analise_detalhada.html"><img src="icons/analise.png" class="icon"></img></a>
+          <a href="analise_detalhada.html" class="text">Análise Detalhada</a>
+        </li>
+
+
       </ul>
 
-      <div class="sair">Sair</div>
+      <a style="text-decoration: none;" href="login.html"><div class="sair">Sair</div></a>
     </aside>
 
     <div class="container">
@@ -51,8 +59,8 @@
         <div class="barra">
           <p>Ano:</p>
 
-          <select name="" id="selectAnos" placeholder="ano" onchange="mudarAno()">
-            <option value= "null">Selecione um ano</option>
+          <select class="select_caixa" name="" id="selectAnos" placeholder="ano" onchange="mudarAno()">
+            <option value="null">Selecione um ano</option>
           </select>
 
         </div>
@@ -267,7 +275,7 @@
     chartPie.render();
   </script>
 
-<script src="js/rodovia_especifica.js"></script>
+  <script src="js/rodovia_especifica.js"></script>
 </body>
 
 </html>

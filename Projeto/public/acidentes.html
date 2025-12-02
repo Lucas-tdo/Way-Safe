@@ -17,8 +17,9 @@
     <aside class="nav">
       <button class="toggle-nav">☰ </button>
 
-      <div class="perfil">
-        <img class="img_user" src="icons/user.png"> <a href="ADM concessionaria/add_func.html"><img src="icons/engrenagem.png"></a>
+        <div class="perfil">
+        <img id="imagem-empresa" class="img_user"> <br>
+        <a href="ADM concessionaria/add_func.html"><img src="icons/engrenagem.png"></a>
       </div>
 
       <ul class="menu-list">
@@ -28,16 +29,16 @@
         <li> <a href="Rodovias.html"><img src="icons/grafico.png" class="icon"></a> <a href="Rodovias.html"
             class="text">Rodovias</a></li>
 
-        <li class="active"> <img src="icons/alerta.png" class="icon"> <a href="#" class="text">Acidentes</a></li>
+        <li class="active"> <img src="icons/alerta.png" class="icon"> <a href="#" class="text">Vítimas</a></li>
 
-           <li> <a href="analise_detalhada.html"><img src="icons/analise.png" class="icon"></img></a>
-         <a href="analise_detalhada.html" class="text">Análise Detalhada</a>
-      </li>
+        <li> <a href="analise_detalhada.html"><img src="icons/analise.png" class="icon"></img></a>
+          <a href="analise_detalhada.html" class="text">Análise Detalhada</a>
+        </li>
 
         <!-- <li> <a href="analise.html"><img src="icons/analise.png" class="icon"></a> <a href="analise.html" class="text">Análise Detalhada</a></li> -->
       </ul>
 
-      <div class="sair">Sair</div>
+      <a style="text-decoration: none;" href="login.html"><div class="sair">Sair</div></a>
     </aside>
 
     <!-- CONTEÚDO -->
@@ -51,7 +52,7 @@
         <p class="text_over" style="font-weight: 700;"></p>
         <div class="barra">
           <p>Ano:</p>
-          <select name="" id="select-ano" onchange="mudanca_seletor(this.value)">
+          <select class="select_caixa" name="" id="select-ano" onchange="mudanca_seletor(this.value)">
             <option value="">Selecione um ano</option>
           </select>
         </div>
