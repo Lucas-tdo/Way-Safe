@@ -15,7 +15,15 @@
       })
       fechaPopup.addEventListener("click", () =>{
         popup.classList.remove("abrir-popup");
+        limpaInputs();
       })
+
+      function limpaInputs(){
+        input_senha_atual.value = '';
+        input_senha_nova.value = '';
+        input_senha_confirmacao.value = '';
+        mensagemSenha('');
+      }
       // FIM: Abertura e fechamento de popup
       
       // INICIO: VALIDAÇÃO PEGAR SENHA 
@@ -33,8 +41,8 @@
             resposta.json().then(resposta => {
               console.log(resposta);
                 if (resposta.length <= 0) {
-                  mensagemSenha("Não compatível com a senha atual")
-                  input_senha_atual.borderColor = "red"
+                  mensagemSenha("Não é compatível com a senha atual")
+                  input_senha_atual.style.borderColor = "red"
                 } else {
                     console.log("Certo! Próximo passo: validar Inputs");
                     validarInputsSenha()
@@ -176,11 +184,11 @@
         .then(function (resposta) {
           console.log("resposta: ", resposta);
           mensagemSenha("");
-          //Continua aparecendo o p avisos-senha
           document.getElementById("aviso-sucesso").innerHTML = "Senha atualizada!";
-            // essa parte funcionou, mas agora preciso fazer funcionar para fechar o pop-up em algum momento
           setTimeout(() => {
             document.getElementById("popup").classList.remove("abrir-popup");
+            limpaInputs();
+            document.getElementById("aviso-sucesso").innerHTML = "";
           }, 5000);
         })
         .catch(function (resposta) {
@@ -221,6 +229,7 @@ function mensagemSenha(mensagem){
     // Alternar modo de edição
     const editarBtn = document.getElementById('editarBtn');
     let editando = false;
+    
 
     editarBtn.addEventListener('click', () => {
       if (!editando) {
@@ -228,6 +237,12 @@ function mensagemSenha(mensagem){
         transformarEmInputs();
         editarBtn.innerHTML = '<img src="../icons/check.svg" alt="" height="18px"> Salvar';
         editando = true;
+        document.getElementById("pergunta-popup").style.display = "flex";
+        document.getElementById("abrir-popup").style.display = "flex";
+        document.getElementById("labelSenhaView").style.display = "none";
+        document.getElementById("senhaView").style.display = "none";
+
+        
       } else {
         // Salvar e voltar para visualização
         const msg = document.getElementById("msg");
@@ -241,6 +256,11 @@ function mensagemSenha(mensagem){
         salvarAlteracoes();
         editarBtn.innerHTML = '<img src="../icons/lapisPreto.png" alt="" height="18px"> Editar';
         editando = false;
+        document.getElementById("pergunta-popup").style.display = "none";
+        document.getElementById("abrir-popup").style.display = "none";
+        document.getElementById("labelSenhaView").style.display = "flex";
+        document.getElementById("senhaView").style.display = "flex";
+
       }
     });
 
@@ -281,7 +301,6 @@ function mensagemSenha(mensagem){
             campos.forEach(campo => {
             const input = document.getElementById(`${campo}Input`);
             const valor = input.value;
-        
         
             input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
       });
