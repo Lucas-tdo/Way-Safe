@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Concessionária</title>
+    <title>Cadastrar Administrador</title>
 
     <link rel="stylesheet" href="../CSS/cadastrofunc.css">
     <link rel="stylesheet" href="../CSS/nav.css">
@@ -25,12 +25,12 @@
             </div>
 
             <ul class="menu-list">
-                  <li>
+                  <li  class="active">
                     <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
                     <a href="adm.html" class="text">Administradores</a>
                 </li>
 
-                <li  class="active" >
+                <li >
                     <img src="../icons/empresa.png" class="icon">
                     <a href="adm_conc.html" class="text">Concessionárias</a>
                 </li>
@@ -49,8 +49,8 @@
         <main class="container">
 
             <div class="cadastro-bar">
-                <a href="adm_conc.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
-                <h1>Cadastrar Concessionária</h1>
+                <a href="adm.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
+                <h1>Cadastrar Administrador</h1>
             </div>
 
             <div class="container-de-baixo">
@@ -58,7 +58,7 @@
 
                     <div class="title1-cadastro">
                         <div class="infos">
-                            <h3>Informações do Concessionária</h3>
+                            <h3>Informações do Administrador</h3>
                             <p>Preencha os dados para criar um novo registro</p>
                         </div>
                     </div>
@@ -67,30 +67,21 @@
 
                     <!-- CAMPOS DO CADASTRO -->
                     <form class="campos-cadastro">
-                        <div class="coluna-cadastro">
-                            <label class="label-cadastro">Nome*</label>
-                            <input type="text" class="input-cadastro" id="input_nome" minlength="1" maxlength="45" placeholder="Ex: João Martins" required>
 
-                            <label class="label-cadastro">Complemento</label>
-                            <input type="text" class="input-cadastro" id="input_complemento" maxlength="45" placeholder="EX: Portão Branco" >
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Nome Completo</label>
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="input_nome">
+
+                            <label class="label-cadastro">Email</label>
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
                         </div>
 
                         <div class="coluna-cadastro">
-                            <label class="label-cadastro">CNPJ</label>
-                            <input type="text" class="input-cadastro" id="input_cnpj" minlength="14" maxlength="14" placeholder="XXXXXXXX0001XX" >
-
-                            <label class="label-cadastro">CEP</label>
-                            <input type="text" class="input-cadastro" id="input_cep" minlength="8" maxlength="8" placeholder="00000000">
-                        </div>
-
-                        
-
-                          <div class="coluna-cadastro">
-                            <label class="label-cadastro">Email*</label>
-                            <input type="email" class="input-cadastro" id="input_email" minlength="5" maxlength="45" placeholder="email@gmail.com" required>
-
-                            <label class="label-cadastro">Telefone</label>
-                            <input type="tel" class="input-cadastro" id="input_telefone"  minlength="11" maxlength="11" placeholder="9999999999">
+                            <label class="label-cadastro">Senha</label>
+                            <input type="password" class="input-cadastro" placeholder="********" id="input_senha">
+<!-- // aqui deve ter uma limitação de caracteres e alguma validação se é diferente de 1 ou 2 -->
+                            <label class="label-cadastro">Nivel de acesso</label>
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" id="input_nivel" disabled>
                         </div>
 
                     </form>
@@ -108,7 +99,7 @@
     <div id="modalConfirm" class="modal">
         <div class="modal-content">
             <h3>Confirmar Cadastro?</h3>
-            <p>Deseja realmente cadastrar este Concessionária?</p>
+            <p>Deseja realmente cadastrar este Administrador?</p>
 
             <div class="modal-buttons">
                 <button id="confirmar-edicao" onclick="confirmarCadastro()">Sim</button>
@@ -121,7 +112,7 @@
     <div id="modalSucesso" class="modal">
         <div class="modal-content">
             <h3>Cadastro concluído!</h3>
-            <p>Concessionária cadastrado com sucesso.</p>
+            <p>Funcionário cadastrado com sucesso.</p>
 
             <div class="modal-buttons">
                 <button id="confirmar-edicao" onclick="fecharModalSucesso()">Ok</button>
@@ -137,7 +128,11 @@
     </div>
 
     <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
-    <script src="../js/cadastro_Concessionaria.js">
+     <!-- //aqui vai ter que criar um novo funcionario pegando as informações do inputs. -->
+     <!-- //pegar mesmas informações do cadastro e validar. -->
+     <!-- // ver se dá para usar o cadastro.js (não vai gerar alguma complicação ou vai precisar de informações adicionais). -->
+    <!-- Vou criar a parte só para ver se o processo dá certo -->
+    <script src="../js/cadastro_Administrador.js">
         
     </script>
 

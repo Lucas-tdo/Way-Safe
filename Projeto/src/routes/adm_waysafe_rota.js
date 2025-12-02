@@ -10,4 +10,32 @@ router.get("/pegarFuncAdm",function(req,res){
   TelaAdmWaysafeController.pegarFuncAdm(req,res)
 })
 
+router.post("/editarDados",function(req,res){
+    TelaAdmWaysafeController.editarDados(req,res);
+})
+
+router.post("/cadastrarAdm",(req,res)=>{
+    TelaAdmWaysafeController.cadastrar(req,res);
+})
+
+router.post("/editarADM",function(req,res){
+    TelaAdmWaysafeController.editarADM(req,res);
+})
+
+router.delete("/removerADM",function(req,res){
+    TelaAdmWaysafeController.removerADM(req,res);
+})
+
+router.post("/cadastrarConc",(req,res)=>{
+    TelaAdmWaysafeController.cadastrarConc(req,res);
+})
+
+router.delete("/removerConc",function(req,res){
+    TelaAdmWaysafeController.removerConc(req,res);
+})
+
+router.post("/editarConc",function(req,res){
+    TelaAdmWaysafeController.editarConc(req,res);
+})
+
 module.exports = router;

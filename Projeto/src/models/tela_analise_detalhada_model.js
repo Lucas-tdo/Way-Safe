@@ -1,10 +1,42 @@
 var database = require("../database/config")
 
-<<<<<<< HEAD
-function buscar_rodovias(municipio, ano,fk_empresa) {
-=======
+function listar_anos() {
+    var instrucaoSql = `
+        SELECT DISTINCT YEAR(data_hora) as ano 
+        FROM ACIDENTE; 
+    `;
+    console.log("Buscando anos de acidente...");
+    return database.executar(instrucaoSql);
+}
+
+function listar_rodovias() {
+    var instrucaoSql = `
+        SELECT DISTINCT YEAR(data_hora) as ano 
+        FROM ACIDENTE; 
+    `;
+    console.log("Buscando anos de acidente...");
+    return database.executar(instrucaoSql);
+}
+
+function listar_municipios() {
+    var instrucaoSql = `
+        SELECT DISTINCT municipio 
+        FROM ACIDENTE; 
+    `;
+    console.log("Buscando tipos de acidentes...");
+    return database.executar(instrucaoSql);
+}
+
+function listar_tipos_acidente() {
+    var instrucaoSql = `
+        SELECT DISTINCT YEAR(data_hora) as ano 
+        FROM ACIDENTE; 
+    `;
+    console.log("Buscando anos de acidente...");
+    return database.executar(instrucaoSql);
+}
+
 function buscar_rodovias(municipio, ano, fk_empresa) {
->>>>>>> 5964424de917a7a4d2ccccb6ecb930ef8e9e962d
     var instrucaoSql = '';
     var condicoes = [];
     var filtrosPreenchidos = 0;
@@ -31,18 +63,13 @@ function buscar_rodovias(municipio, ano, fk_empresa) {
                 SELECT 
                     IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                     municipio,
-                    fk_rodovias,
                     classe_acidente.descr as tipoAcidente,
                     COUNT(*) as totalAcidentes
                 FROM ACIDENTE
                 JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
                 JOIN classe_acidente ON fk_classe_acid = idClasse_acid
-<<<<<<< HEAD
-                GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
-=======
                 WHERE ${condicoes.join(' AND ')}
                 GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
->>>>>>> 5964424de917a7a4d2ccccb6ecb930ef8e9e962d
                 ORDER BY totalAcidentes DESC;
         `;
     } else if (filtrosPreenchidos === 1) {
@@ -50,30 +77,27 @@ function buscar_rodovias(municipio, ano, fk_empresa) {
             SELECT 
                 IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
-                fk_rodovias,
                 classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
             JOIN classe_acidente ON fk_classe_acid = idClasse_acid
             WHERE ${condicoes.join(' AND ')}
-            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
             ORDER BY totalAcidentes DESC;
         `;
     } else {
         instrucaoSql = `
             SELECT 
-                IFNULL(rodovia_cod_nume
-                ric, 'Não identificado') as codigoRodovia,
+                IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
-                fk_rodovias,
                 classe_acidente.descr as tipoAcidente,
                 COUNT(*) as totalAcidentes
             FROM ACIDENTE
             JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
             JOIN classe_acidente ON fk_classe_acid = idClasse_acid
             WHERE ${condicoes.join(' AND ')}
-            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
+            GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
             ORDER BY totalAcidentes DESC;
         `;
     }
@@ -84,27 +108,12 @@ function buscar_rodovias(municipio, ano, fk_empresa) {
     return database.executar(instrucaoSql);
 }
 
-function listar_anos() {
-    var instrucaoSql = `
-        SELECT DISTINCT YEAR(data_hora) as ano 
-        FROM ACIDENTE; 
-    `;
-    console.log("Buscando anos de acidente...");
-    return database.executar(instrucaoSql);
-}
 
-
-function listar_municipios() {
-    var instrucaoSql = `
-        SELECT DISTINCT municipio 
-        FROM ACIDENTE; 
-    `;
-    console.log("Buscando tipos de acidentes...");
-    return database.executar(instrucaoSql);
-}
 
 module.exports = {
     buscar_rodovias,
     listar_anos,
-    listar_municipios
+    listar_rodovias,
+    listar_municipios,
+    listar_tipos_acidente
 }
