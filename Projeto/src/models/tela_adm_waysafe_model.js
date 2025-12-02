@@ -39,11 +39,175 @@ function removerADM(id){
     return database.executar(instrucaoSql);
 }
 
+function cadastrarConc(CNPJ,CEP,complemento,NOME,EMAIL,TELEFONE){
+
+    var instrucaoSql = "";
+    if (CNPJ == "vazio" && CEP == "vazio" && complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (NOME, EMAIL)
+            VALUES ('${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (CEP == "vazio" && complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (CNPJ, NOME, EMAIL)
+            VALUES ('${CNPJ}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (CNPJ == "vazio" && complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (CEP, NOME, EMAIL)
+            VALUES ('${CEP}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (CNPJ == "vazio" && CEP == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (complemento, NOME, EMAIL)
+            VALUES ('${complemento}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (CNPJ == "vazio" && CEP == "vazio" && complemento == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (TELEFONE, NOME, EMAIL)
+            VALUES ('${TELEFONE}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (CNPJ, CEP, NOME, EMAIL)
+            VALUES ('${CNPJ}', '${CEP}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (CEP == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (CNPJ, complemento, NOME, EMAIL)
+            VALUES ('${CNPJ}', '${complemento}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else if (CEP == "vazio" && complemento == "vazio") {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (CNPJ, TELEFONE, NOME, EMAIL)
+            VALUES ('${CNPJ}', '${TELEFONE}', '${NOME}', '${EMAIL}');
+        `;
+    }
+    else {
+        instrucaoSql = `
+            INSERT INTO EMPRESA (CNPJ, CEP, complemento, NOME, EMAIL, TELEFONE)
+            VALUES ('${CNPJ}', '${CEP}', '${complemento}', '${NOME}', '${EMAIL}', '${TELEFONE}');
+        `;
+    }
+
+    return database.executar(instrucaoSql);   
+}
+
+function removerConc(id){
+  var instrucaoSql = `
+        DELETE FROM EMPRESA	WHERE idEMPRESA=${id};
+    `;
+    return database.executar(instrucaoSql);
+}
+
+function editarConc(idEMPRESA, CNPJ, CEP, complemento, NOME, EMAIL, TELEFONE) {
+    let instrucaoSql = "";
+    if (CNPJ == "vazio" && CEP == "vazio" && complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (CEP == "vazio" && complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                CNPJ = '${CNPJ}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (CNPJ == "vazio" && complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                CEP = '${CEP}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (CNPJ == "vazio" && CEP == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                complemento = '${complemento}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (CNPJ == "vazio" && CEP == "vazio" && complemento == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                TELEFONE = '${TELEFONE}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (complemento == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                CNPJ = '${CNPJ}',
+                CEP = '${CEP}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (CEP == "vazio" && TELEFONE == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                CNPJ = '${CNPJ}',
+                complemento = '${complemento}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else if (CEP == "vazio" && complemento == "vazio") {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                CNPJ = '${CNPJ}',
+                TELEFONE = '${TELEFONE}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+    else {
+        instrucaoSql = `
+            UPDATE EMPRESA SET
+                CNPJ = '${CNPJ}',
+                CEP = '${CEP}',
+                complemento = '${complemento}',
+                NOME = '${NOME}',
+                EMAIL = '${EMAIL}',
+                TELEFONE = '${TELEFONE}'
+            WHERE idEMPRESA = ${idEMPRESA};
+        `;
+    }
+
+    return database.executar(instrucaoSql);
+}
+
+
 
 module.exports = {
   pegarFuncAdm,
   editarDados,
   cadastrar,
   editarADM,
-  removerADM
+  removerADM,
+  cadastrarConc,
+  removerConc,
+  editarConc
 };

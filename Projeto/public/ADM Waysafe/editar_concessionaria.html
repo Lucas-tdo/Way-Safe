@@ -67,35 +67,36 @@
 
                     <!-- CAMPOS DO CADASTRO -->
                     <form class="campos-cadastro">
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Nome*</label>
+                            <input type="text" class="input-cadastro" id="input_nome" minlength="1" maxlength="45" placeholder="Ex: João Martins" required>
+
+                            <label class="label-cadastro">Complemento</label>
+                            <input type="text" class="input-cadastro" id="input_complemento" maxlength="45" placeholder="EX: Portão Branco" >
+                        </div>
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">CNPJ</label>
-                            <input type="text" class="input-cadastro" placeholder="XX.XXX.XXX/0001-XX">
+                            <input type="text" class="input-cadastro" id="input_cnpj" minlength="14" maxlength="14" placeholder="XXXXXXXX0001XX" >
 
                             <label class="label-cadastro">CEP</label>
-                            <input type="text" class="input-cadastro" placeholder="00000-000">
+                            <input type="text" class="input-cadastro" id="input_cep" minlength="8" maxlength="8" placeholder="00000000">
                         </div>
 
-                        <div class="coluna-cadastro">
-                            <label class="label-cadastro">Complemento</label>
-                            <input type="text" class="input-cadastro"  placeholder="EX: Portão Branco" >
-
-                            <label class="label-cadastro">Nome</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
-                        </div>
+                        
 
                           <div class="coluna-cadastro">
-                            <label class="label-cadastro">Email</label>
-                            <input type="email" class="input-cadastro"  placeholder="email@gmail.com" >
+                            <label class="label-cadastro">Email*</label>
+                            <input type="email" class="input-cadastro" id="input_email" minlength="5" maxlength="45" placeholder="email@gmail.com" required>
 
                             <label class="label-cadastro">Telefone</label>
-                            <input type="text" class="input-cadastro" placeholder="99 9999-9999">
+                            <input type="tel" class="input-cadastro" id="input_telefone"  minlength="11" maxlength="11" placeholder="99 9999-9999">
                         </div>
 
                     </form>
 
                     <!-- BOTÃO -->
-                    <button class="btn-cadastrar-func" onclick="abrirModal()">Editar</button>
+                    <button class="btn-cadastrar-func" onclick="Validar()">Editar</button>
 
                 </div>
             </div>
@@ -110,7 +111,7 @@
             <p>Deseja realmente editar este Concessionária?</p>
 
             <div class="modal-buttons">
-                <button id="confirmar-edicao" onclick="confirmarCadastro()">Sim</button>
+                <button id="confirmar-edicao" onclick="confirmarEditar()">Sim</button>
                 <button id="cancelar-edicao" onclick="fecharModal()">Cancelar</button>
             </div>
         </div>
@@ -128,30 +129,16 @@
         </div>
     </div>
 
+    <div id="modalErro" class="modal">
+        <div class="modal-content">
+            <h3>Erro</h3>
+            <p id="mensagem-Erro"></p>
+        </div>
+    </div>
+
     <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
-    <script>
-        document.querySelector('.toggle-nav')
-            .addEventListener('click', () => {
-                document.querySelector('.nav').classList.toggle('minimizado');
-            });
-
-        function abrirModal() {
-            document.getElementById('modalConfirm').style.display = "flex";
-        }
-
-        function fecharModal() {
-            document.getElementById('modalConfirm').style.display = "none";
-        }
-
-        function confirmarCadastro() {
-            fecharModal();
-            document.getElementById('modalSucesso').style.display = "flex";
-        }
-
-        function fecharModalSucesso() {
-            document.getElementById('modalSucesso').style.display = "none";
- 
-        }
+    <script src="../js/editar_Concessionaria.js">
+        
     </script>
 
 </body>
