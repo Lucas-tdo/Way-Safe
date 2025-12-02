@@ -26,4 +26,16 @@ router.delete("/removerADM",function(req,res){
     TelaAdmWaysafeController.removerADM(req,res);
 })
 
+router.post("/cadastrarConc",(req,res)=>{
+    TelaAdmWaysafeController.cadastrarConc(req,res);
+})
+
+router.delete("/removerConc",function(req,res){
+    TelaAdmWaysafeController.removerConc(req,res);
+})
+
+router.post("/editarConc",function(req,res){
+    TelaAdmWaysafeController.editarConc(req,res);
+})
+
 module.exports = router;

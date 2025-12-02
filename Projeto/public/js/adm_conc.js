@@ -1,47 +1,43 @@
-document.querySelector('.toggle-nav')
-            .addEventListener('click', () => {
-                document.querySelector('.nav').classList.toggle('minimizado');
+        var idExcluir;
+
+            document.querySelector('.toggle-nav')
+                .addEventListener('click', () => {
+                    document.querySelector('.nav').classList.toggle('minimizado');
             });
 
 
-async function pegarEmpresa(){
-    const resp = await fetch(`/conc/pegarEmpresa`)
-    const resp_json = await resp.json();
-    console.log(resp_json)
-    tbConc.innerHTML=""
-    for (const registro of resp_json) {
-        tbConc.innerHTML += `
-        <tr>
-                                    <td>${registro.idEMPRESA}</td>
-                                    <td>${registro.NOME}</td>
-                                    <td>${registro.EMAIL}</td>
-                                    <td>${registro.TELEFONE}</td>
-                                    <td>
-                                        <a href="#"><img class="icon_tabela" src="../icons/editar.png"></a>
-                                        <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
-                                    </td>
-                                </tr>
-        `;
-    }
-}
+        async function pegarEmpresa(){
+            const resp = await fetch(`/conc/pegarEmpresa`)
+            const resp_json = await resp.json();
+            console.log(resp_json)
+            tbConc.innerHTML=""
+            for (const registro of resp_json) {
+                tbConc.innerHTML += `
+                <tr>
+                                            <td>${registro.idEMPRESA}</td>
+                                            <td>${registro.NOME}</td>
+                                            <td>${registro.EMAIL}</td>
+                                            <td>${registro.TELEFONE}</td>
+                                            <td>
+                                                <a href="#" onclick="enviarEditar(${registro.idEMPRESA})"><img class="icon_tabela" src="../icons/editar.png"></a>
+                                                <a href="#" onclick="abrirExcluir(${registro.idEMPRESA})"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                            </td>
+                                        </tr>
+                `;
+            }
+        }
 
-window.addEventListener("load", (event) => {
-    pegarEmpresa()
-});
+        window.addEventListener("load", (event) => {
+            pegarEmpresa()
+        });
 
 
        /* === MODAL JS === */
-        const modal = document.getElementById("modal-confirmar");
+        const modal = document.getElementById("modalexcluir");
         const cancelarBtn = document.getElementById("cancelar-excluir");
         const confirmarBtn = document.getElementById("confirmar-excluir");
 
-        // Abre modal ao clicar na lixeira
-        document.querySelectorAll('.icon_tabela[src="../icons/lixo.png"]').forEach(icon => {
-            icon.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.style.display = "flex";
-            });
-        });
+    
 
         // Cancelar fecha o modal
         cancelarBtn.addEventListener('click', () => {
@@ -58,23 +54,38 @@ window.addEventListener("load", (event) => {
         // Aqui você faz a conexão depois
         confirmarBtn.addEventListener('click', () => {
             alert(" Função de excluir no banco.");
+            fetch(`/adm_waysafe/removerConc`,{
+                    method : "DELETE",
+                    headers :{
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        idServer: idExcluir
+                    })
+                })
+                .then(resposta=>{
+                    console.log(resposta)
+                    pegarEmpresa()
+                })
+                .catch(erro=>{
+                    console.log(erro)
+                })
+
             modal.style.display = "none";
         });
 
 
-        // Escuta todos cliques da página
-        document.addEventListener("click", function (e) {
+        function enviarEditar(id){
+            sessionStorage.setItem("IDADM",id);
+            window.location.href="editar_concessionaria.html";
+        }
 
-            // Se clicou no ícone de editar
-            if (e.target.classList.contains("icon-tabela")) {
+        function abrirExcluir(id){
+            var divExcluir = document.getElementById("modalexcluir")
+            divExcluir.style.display = "flex";
+            idExcluir=id;
+        }
 
-                e.preventDefault();
-
-                // Aqui você coloca a página que vai abrir:
-                window.location.href = "editar_concessionaria.html";
-
-            }
-        });
 
 
 
