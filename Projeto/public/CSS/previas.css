@@ -97,6 +97,15 @@ body {
   padding: 0px 20px 20px 20px;
 }
 
+.select_caixa {
+      height: 36px;
+    padding: 8px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    outline: none;
+    line-height: 1;
+}
+
 .graficos .card {
   display: flex;
   align-items: flex-start;

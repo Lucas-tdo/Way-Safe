@@ -11,10 +11,19 @@
 
       abrePopup.addEventListener("click", () =>{
         popup.classList.add("abrir-popup");
+        input_senha_atual.focus();
       })
       fechaPopup.addEventListener("click", () =>{
         popup.classList.remove("abrir-popup");
+        limpaInputs();
       })
+
+      function limpaInputs(){
+        input_senha_atual.value = '';
+        input_senha_nova.value = '';
+        input_senha_confirmacao.value = '';
+        mensagemSenha('');
+      }
       // FIM: Abertura e fechamento de popup
       
       // INICIO: VALIDAÇÃO PEGAR SENHA 
@@ -22,6 +31,9 @@
   function pegarSenha() {
     var email = sessionStorage.EMAIL_USUARIO;
     var senha = input_senha_atual.value;
+
+    validarInputsSenha();
+    
     fetch(`/usuario/pegarSenha/${email}/${encodeURIComponent(senha)}`, {
         method: "GET"
     })
@@ -29,16 +41,15 @@
             resposta.json().then(resposta => {
               console.log(resposta);
                 if (resposta.length <= 0) {
-                    console.log("Erro ao pegar senha atual")
+                  mensagemSenha("Não é compatível com a senha atual")
+                  input_senha_atual.style.borderColor = "red"
                 } else {
-                    console.log("Deu certo!");
+                    console.log("Certo! Próximo passo: validar Inputs");
                     validarInputsSenha()
                     
                   
                   }
-                
-                  // nova função para validar e inserir a senha atual ao input.
-                  // fazer comparação da senha atual no bd, com a que o usuário inseriu, confirmando que são a mesma.
+
                 
             })
         })
@@ -48,17 +59,30 @@
   }
 
   function validarInputsSenha() {
+    var senhaAtual = input_senha_atual.value;
     var senhaNova = input_senha_nova.value
     var senhaConfirmacao = input_senha_confirmacao.value
     
     var mensagem = ''
 
-    if (senhaNova == "" || senhaConfirmacao == "") {
+    if (senhaAtual == "" || senhaNova == "" || senhaConfirmacao == "") {
+      if(senhaAtual == ""){
+        input_senha_atual.style.borderColor = 'red';
+      }
+      if(senhaNova == ""){
+        input_senha_nova.style.borderColor = 'red';
+      }
+      if(senhaNova == ""){
+        input_senha_confirmacao.style.borderColor = 'red';
+      }
+
       mensagem = "Todos campos devem estar preenchidos"
     }
     else {
-            if (senhaNova.length < 7 || senhaConfirmacao.length < 7) {
+            if (senhaNova.length < 7) {
                 mensagem = "A nova senha tem que ter pelo menos 8 caracteres"
+                input_senha_nova.style.borderColor = 'red';
+
             }
             else {
                 var especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', "'", '"', '\\', '|', ',', '.', '<', '>', '/', '?', '`', '~']
@@ -135,7 +159,7 @@
       }
       else {
         console.log("Erro ao tentar atualizar senha!")
-        console.log(mensagem)
+        mensagemSenha(mensagem)
       }
     }
 
@@ -158,13 +182,27 @@
         }),
     })
         .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            console.log("Senha atualizada!")
+          console.log("resposta: ", resposta);
+          mensagemSenha("");
+          document.getElementById("aviso-sucesso").innerHTML = "Senha atualizada!";
+          setTimeout(() => {
+            document.getElementById("popup").classList.remove("abrir-popup");
+            limpaInputs();
+            document.getElementById("aviso-sucesso").innerHTML = "";
+          }, 5000);
         })
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
     }
+    // método para apresentar avisos
+function mensagemSenha(mensagem){
+  var msg = document.getElementById("avisos-senha");
+          msg.innerHTML=``;
+          msg.innerHTML=`${mensagem}`;
+
+    }
+
 
       // FIM: VALIDAÇÃO PEGAR SENHA 
 
@@ -191,6 +229,7 @@
     // Alternar modo de edição
     const editarBtn = document.getElementById('editarBtn');
     let editando = false;
+    
 
     editarBtn.addEventListener('click', () => {
       if (!editando) {
@@ -198,6 +237,12 @@
         transformarEmInputs();
         editarBtn.innerHTML = '<img src="../icons/check.svg" alt="" height="18px"> Salvar';
         editando = true;
+        document.getElementById("pergunta-popup").style.display = "flex";
+        document.getElementById("abrir-popup").style.display = "flex";
+        document.getElementById("labelSenhaView").style.display = "none";
+        document.getElementById("senhaView").style.display = "none";
+
+        
       } else {
         // Salvar e voltar para visualização
         const msg = document.getElementById("msg");
@@ -211,21 +256,21 @@
         salvarAlteracoes();
         editarBtn.innerHTML = '<img src="../icons/lapisPreto.png" alt="" height="18px"> Editar';
         editando = false;
+        document.getElementById("pergunta-popup").style.display = "none";
+        document.getElementById("abrir-popup").style.display = "none";
+        document.getElementById("labelSenhaView").style.display = "flex";
+        document.getElementById("senhaView").style.display = "flex";
+
       }
     });
 
     function transformarEmInputs() {
-      const campos = ['nome', 'email', 'senha'];
+      const campos = ['nome', 'email'];
       campos.forEach(campo => {
         const p = document.getElementById(`${campo}View`);
-        const valor = p.textContent;
-        if(campo=="senha"){
-          p.outerHTML = `<input style="background-color:#DEDEDE;" class="caixa-de-texto" id="${campo}Input" placeholder="Digite a nova senha" type="${campo === 'senha' ? 'password' : 'text'}" >`;
-        }
-        else{
+      const valor = p.textContent;
+        
           p.outerHTML = `<input style="background-color:#DEDEDE;" class="caixa-de-texto" id="${campo}Input" type="${campo === 'senha' ? 'password' : 'text'}" value="${valor}">`;
-
-        }
       });
     }
 
@@ -248,7 +293,7 @@
     })
         .then(function (resposta) {
             console.log("resposta: ", resposta);
-            alert("Funcionou!")
+            console.log("Funcionou!")
             sessionStorage.EMAIL_USUARIO = email
             sessionStorage.NOME_USUARIO = nome
 
@@ -257,11 +302,7 @@
             const input = document.getElementById(`${campo}Input`);
             const valor = input.value;
         
-        if(campo == 'senha'){
-            input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">**********</p>`;
-        }else{
             input.outerHTML = `<p class="caixa-de-texto" id="${campo}View">${valor}</p>`;
-        }
       });
 
         })
