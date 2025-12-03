@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Administrador</title>
+    <title>Cadastrar Nivel de Acesso</title>
 
     <link rel="stylesheet" href="../CSS/cadastrofunc.css">
     <link rel="stylesheet" href="../CSS/nav.css">
@@ -25,7 +25,7 @@
       </div>
 
             <ul class="menu-list">
-                  <li class="active">
+                  <li >
                     <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
                     <a href="adm.html" class="text">Administradores</a>
                 </li>
@@ -35,7 +35,7 @@
                     <a href="adm_conc.html" class="text">Concessionárias</a>
                 </li>
 
-                <li >
+                <li class="active">
                     <img src="../Imagens/imgNivelDeAcesso.png" class="icon">
                     <a href="nivelAcesso.html" class="text">Niveis de Acesso</a>
                 </li>
@@ -55,7 +55,7 @@
 
             <div class="cadastro-bar">
                 <a href="adm.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
-                <h1>Cadastrar Administrador</h1>
+                <h1>Cadastrar Nível de Acesso</h1>
             </div>
 
             <div class="container-de-baixo">
@@ -63,7 +63,7 @@
 
                     <div class="title1-cadastro">
                         <div class="infos">
-                            <h3>Informações do Administrador</h3>
+                            <h3>Informações de nível de acesso</h3>
                             <p>Preencha os dados para criar um novo registro</p>
                         </div>
                     </div>
@@ -74,29 +74,23 @@
                     <form class="campos-cadastro">
 
                         <div class="coluna-cadastro">
-                            <label class="label-cadastro">Nome Completo</label>
+                            <label class="label-cadastro">Descrição</label>
                             <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="input_nome">
 
-                            <label class="label-cadastro">Email</label>
-                            <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
+                            <label class="label-cadastro">Nome do Nível de acesso</label>
+                            <input type="text" class="input-cadastro" placeholder="Administrador" id="input_email">
+                            <br>
 
                             <div>
-                                <b>Pertence a empresa:</b><br>
-                                <input type="checkbox" id="opcao1"checked  onchange="surgirInput()">
-                                <label for="opcao1">Sim</label>
+                                <button id="cores"></button>
+                                <button id="cores"></button>
+                                
                             </div>
-                            <br>
+                           
+
+                            <br><br>
                         </div>
 
-                        <div class="coluna-cadastro">
-                            <label class="label-cadastro">Senha</label>
-                            <input type="password" class="input-cadastro" placeholder="********" id="input_senha">
-<!-- // aqui deve ter uma limitação de caracteres e alguma validação se é diferente de 1 ou 2 -->
-                            <label class="label-cadastro">Nivel de acesso</label>
-                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" id="input_nivel" disabled>
- 
-                            <input type="text" class="input-cadastro" id="input-checkbox" >
-                        </div>
 
                     </form>
 

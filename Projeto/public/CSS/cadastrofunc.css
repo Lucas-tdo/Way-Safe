@@ -32,8 +32,8 @@
     min-height: 70px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
@@ -122,6 +122,7 @@ hr {
 .input-cadastro:focus {
     border-color: #000;
 }
+
 
 
 

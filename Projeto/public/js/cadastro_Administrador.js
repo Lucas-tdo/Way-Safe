@@ -92,77 +92,85 @@ function Validar() {
         modalErro(mensagem)
     }
 }
-        function checaremail() {
-            var email = input_email.value
-            fetch(`/usuario/checaremail/${email}`, {
-                method: "GET"
+
+//Função para surgir input
+function surgirInput() {
+  var checkbox = document.getElementById('opcao1');
+  var input = document.getElementById('input-checkbox'); 
+
+  if (checkbox && checkbox.checked) { // Adicionamos 'checkbox &&' por segurança
+    console.log('Está marcado');
+    input.style.display = 'block';
+  } else {
+    console.log('Não está marcado');
+    input.style.display = 'none';
+  }
+}
+
+
+    function checaremail() {
+        var email = input_email.value
+        fetch(`/usuario/checaremail/${email}`, {
+            method: "GET"
+        })
+            .then(resposta => {
+                resposta.json().then(resposta => {
+                    if (resposta.length > 0) {
+                        modalErro("Email já está em uso!")
+                    }
+                    else {
+                        abrirModal()
+                    }
+                })
             })
-                .then(resposta => {
-                    resposta.json().then(resposta => {
-                        if (resposta.length > 0) {
-                            modalErro("Email já está em uso!")
-                        }
-                        else {
-                            abrirModal()
-                        }
-                    })
-                })
-                .catch(erro => {
-                    console.log(erro)
-                })
-        }
-
-        function abrirModal() {
-            document.getElementById('modalConfirm').style.display = "flex";
-        }
-
-        function modalErro(mensagem){
-            document.getElementById("modalErro").style.display="flex";
-            document.getElementById("mensagem-Erro").innerHTML=mensagem
-            setTimeout(() => {
-                document.getElementById("modalErro").style.display="none";
-            }, 2000);
-        }
-
-        function fecharModal() {
-            document.getElementById('modalConfirm').style.display = "none";
-        }
-
-        function confirmarCadastro() {
-            var nome = input_nome.value
-            var email = input_email.value
-            var senha = input_senha.value
-            fetch(`/adm_waysafe/cadastrarAdm`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    nomeServer: nome,
-                    emailServer: email,
-                    senhaServer: senha
-                }),
+            .catch(erro => {
+                console.log(erro)
             })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-                console.log("Cadastro realizado")
-                input_nome.value=""
-                input_email.value=""
-                input_senha.value=""
-                fecharModal()
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
+    }
+    function abrirModal() {
+        document.getElementById('modalConfirm').style.display = "flex";
+    }
+    function modalErro(mensagem){
+        document.getElementById("modalErro").style.display="flex";
+        document.getElementById("mensagem-Erro").innerHTML=mensagem
+        setTimeout(() => {
+            document.getElementById("modalErro").style.display="none";
+        }, 2000);
+    }
+    function fecharModal() {
+        document.getElementById('modalConfirm').style.display = "none";
+    }
+    function confirmarCadastro() {
+        var nome = input_nome.value
+        var email = input_email.value
+        var senha = input_senha.value
+        fetch(`/adm_waysafe/cadastrarAdm`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+            console.log("Cadastro realizado")
+            input_nome.value=""
+            input_email.value=""
+            input_senha.value=""
+            fecharModal()
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+    });
+        fecharModal();
+        document.getElementById('modalSucesso').style.display = "flex";
+    }
+    function fecharModalSucesso() {
+        document.getElementById('modalSucesso').style.display = "none";
 
-        });
-
-
-            fecharModal();
-            document.getElementById('modalSucesso').style.display = "flex";
-        }
-
-        function fecharModalSucesso() {
-            document.getElementById('modalSucesso').style.display = "none";
- 
-        }
-        
+    }
+    
