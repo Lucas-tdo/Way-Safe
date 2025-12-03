@@ -10,14 +10,14 @@ function listar_funcionarios(fk_empresa){
 function dados_funcionarios(funcionarioId){
     console.log("to no model")
         var instrucaoSql = `
-        select * from USUARIO where idUSUARIO = ${funcionarioId}; ;
+        select * from USUARIO where idUSUARIO = ${funcionarioId}; 
         `
     return database.executar(instrucaoSql);
 }
-function atualizar_dados(funcionarioId,nome,email){
+function atualizar_dados(funcionarioId,nome,email,nivel_acesso_fk){
     console.log("to no model")
         var instrucaoSql = `
-            update USUARIO set email = "${email}", nome = "${nome}" where idUSUARIO = ${funcionarioId};
+            update USUARIO set email = "${email}", nome = "${nome}", nivel_acesso_fk = ${nivel_acesso_fk} where idUSUARIO = ${funcionarioId};
         `
     return database.executar(instrucaoSql);
 }

@@ -31,9 +31,9 @@ function atualizarSenha(senha,idUSUARIO){
 }
 
 
-function cadastrarFuncionario(nome,email,senha,fk_empresa){
+function cadastrarFuncionario(nome,email,senha,fk_empresa,nivel_acesso){
     var instrucaoSql = `
-        INSERT INTO USUARIO (nome,email,senha,fk_empresa,nivel_acesso_fk) VALUES ('${nome}','${email}',SHA2('${senha}',256),${fk_empresa},3);
+        INSERT INTO USUARIO (nome,email,senha,fk_empresa,nivel_acesso_fk) VALUES ('${nome}','${email}',SHA2('${senha}',256),${fk_empresa},${nivel_acesso});
     `;
     return database.executar(instrucaoSql);
 }

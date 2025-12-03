@@ -140,7 +140,9 @@ function cadastrarFuncionario() {
     var nome = input_nome.value
     var email = input_email.value
     var senha = input_senha.value
+    var nivel_acesso = input_nivel.value
     var fk_empresa = sessionStorage.FK_EMPRESA
+
     console.log(fk_empresa)
     // var nivel_acesso = input_nivel.value
 
@@ -153,8 +155,8 @@ function cadastrarFuncionario() {
             nomeServer: nome,
             emailServer: email,
             senhaServer: senha,
-            fk_empresaServer: fk_empresa
-            // nivelAcessoServer: nivel_acesso:
+            fk_empresaServer: fk_empresa,
+            nivelAcessoServer: nivel_acesso
         }),
     })
         .then(function (resposta) {

@@ -119,6 +119,7 @@ function cadastrarFuncionario(req,res){
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var nivel_acesso = req.body.nivelAcessoServer;
     //esse fk_empresa provávelmente vai dar problema.
     var fk_empresa = req.body.fk_empresaServer;
     // var nivel_acesso = req.body.nivel_acesso
@@ -138,7 +139,7 @@ function cadastrarFuncionario(req,res){
     //     res.status(400).send("Seu nível de acesso está undefined")
     // }
     else{
-        usuarioModel.cadastrarFuncionario(nome,email,senha,fk_empresa)
+        usuarioModel.cadastrarFuncionario(nome,email,senha,fk_empresa,nivel_acesso)
         .then(resposta=>{
             console.log(`Usuário com o email ${email} cadastrado!`);
             res.json(resposta)

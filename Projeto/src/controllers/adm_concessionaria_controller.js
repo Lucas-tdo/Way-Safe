@@ -20,7 +20,7 @@
     }
     function dados_funcionarios(req,res){
         var funcionarioId = req.params.funcionarioId
-
+        
         if(funcionarioId==undefined){
             res.status(400).send('Seu idUsuario está undefined!')
         }
@@ -41,7 +41,7 @@
         var funcionarioId = req.params.funcionarioId
         var nome = req.body.nome;
         var email = req.body.email;
-        var fk_empresa = req.body.fk_empresa;
+        var nivel_acesso_fk = req.body.nivel_acesso_fk;
 
 
         if(funcionarioId==undefined){
@@ -51,7 +51,7 @@
             res.status(400).send('Seu nome e email está undefined!')
         }
         else{
-            administradorModel.atualizar_dados(funcionarioId,nome,email)
+            administradorModel.atualizar_dados(funcionarioId,nome,email,nivel_acesso_fk)
             .then(resposta=>{
                 console.log("Analisando se o fk_empresa");
                 res.json(resposta)

@@ -26,14 +26,11 @@ function municipio_mais_acidentes(req, res) {
 
 function total_de_acidentes(req, res) {
     var fk_empresa = req.params.fk_empresa;
-    var periodo = "";
+    var periodo = req.params.periodo;
 
-    if (req.params.periodo === "") {
+    if (periodo == "") {
         periodo = undefined
-    } else {
-        periodo = req.params.periodo;
     }
-
     console.log("Filtros recebidos:", { fk_empresa, periodo });
 
     tela_acidentes_model.total_de_acidentes(fk_empresa, periodo)

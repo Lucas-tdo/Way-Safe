@@ -53,7 +53,9 @@ function listar_funcionarios(){
         });
 }
 
-
+function Editar_Funcionario(Id){
+    sessionStorage.IDFUNCIONARIO = Id;
+}
 function Excluir_Funcionario(Id) {
     const funcionarioId = Id
 

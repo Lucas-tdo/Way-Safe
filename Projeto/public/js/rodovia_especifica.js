@@ -50,6 +50,10 @@ function mudarAno() {
   anoSelecionado = document.getElementById("selectAnos").value;
   console.log("Ano selecionado:", anoSelecionado);
 
+      if(anoSelecionado == ""){
+        anoSelecionado = null;
+    }
+    
   top5MaisTiposAcidentes();
   municipiosAcidentesQtd();
   total_acidentes();

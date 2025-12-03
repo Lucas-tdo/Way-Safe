@@ -85,6 +85,7 @@ window.addEventListener("load", (event) => {
 });
 
 function mudanca_seletor(ano) {
+
     municipio_mais_acidentes(ano);
     total_de_acidentes(ano);
     total_acidentes_por_tipo(ano)
