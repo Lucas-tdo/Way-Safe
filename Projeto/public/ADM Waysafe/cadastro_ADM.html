@@ -19,10 +19,11 @@
         <aside class="nav">
        <button class="toggle-nav">☰ </button>
 
-         <div class="perfil">
-        <img id="imagem-empresa" class="img_user"> <br>
-        <a href="#"><img src="../icons/engrenagem.png"></a>
-      </div>
+        <div class="perfil">
+                <img id="imagem-empresa" class="img_user"> <br>
+                <a href="#"><img src="../icons/engrenagem.png"></a>
+            
+            </div>
 
             <ul class="menu-list">
                   <li class="active">
@@ -44,11 +45,13 @@
                    <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
                     <a href="perfil.html" class="text">Perfil</a>
                 </li>
-            </ul>
 
-            <a class="sair" href="../previas.html">
+                 <a class="sair" href="../previas.html">
                 <div>Voltar</div>
             </a>
+            </ul>
+
+           
         </aside>
 
         <main class="container">
@@ -80,10 +83,10 @@
                             <label class="label-cadastro">Email</label>
                             <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
 
-                            <div>
-                                <b>Pertence a empresa:</b><br>
-                                <input type="checkbox" id="opcao1"checked  onchange="surgirInput()">
-                                <label for="opcao1">Sim</label>
+                            <div id="campo-verificacao-empresa">
+                                <b>É Administrador de uma empresa:</b>
+                                <input type="checkbox" id="opcao1" onchange="surgirInput()">
+                              
                             </div>
                             <br>
                         </div>
@@ -95,7 +98,8 @@
                             <label class="label-cadastro">Nivel de acesso</label>
                             <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" id="input_nivel" disabled>
  
-                            <input type="text" class="input-cadastro" id="input-checkbox" >
+                            <label style="display: none;" class="label-cadastro" id="label-checkbox">Nome da Empresa</label>
+                            <input type="text" class="input-cadastro" id="input-checkbox" placeholder="Ex: Ecorodovias" style="display: none;">
                         </div>
 
                     </form>

@@ -18,7 +18,6 @@
             <button class="toggle-nav">☰ </button>
 
             <div class="perfil">
-                <img class="img_user" src="../icons/user.png">
                 <a href="../previas.html"><img src="../icons/engrenagem.png"></a>
                 
             </div>
@@ -35,7 +34,7 @@
                     <a href="perfil.html"> <img
                             src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png"
                             class="icon"></a>
-                    <a href="perfil.html" class="text">Perfil</a>
+                    <a href="../ADM concessionaria/perfil.html" class="text">Perfil</a>
                 </li>
 
 
@@ -68,7 +67,7 @@
 
                     <div class="icones-direita">
 
-                        <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar">
+                        <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar" onclick="refresh()">
                     </div>
                 </div>
 
@@ -91,8 +90,8 @@
                                 <td>bruno.almeida@ecorodovias.com.br</td>
                                 <td>Sol!Rápido_73Mar</td>
                                 <td>
-                                    <a href="#"><img class="icon-tabela" src="../icons/editar.png"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                    <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete.png"></a>
                                 </td>
                             </tr>
                             <tr>
@@ -101,8 +100,8 @@
                                 <td>camila.ramos@arteris.com.br</td>
                                 <td>Neve@Doce8Luz</td>
                                 <td>
-                                    <a href="#"><img class="icon-tabela" src="../icons/editar.png"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                    <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete.png"></a>
                                 </td>
                             </tr>
                             <tr>
@@ -111,8 +110,8 @@
                                 <td>eduardo.lopes@ccr.com.br</td>
                                 <td>Lago#Verde_92Sol</td>
                                 <td>
-                                    <a href="#"><img class="icon-tabela" src="../icons/editar.png"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                    <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete.png"></a>
                                 </td>
                             </tr>
                             <tr>
@@ -121,8 +120,8 @@
                                 <td>fernanda.dias@viasul.com.br</td>
                                 <td>Tigre!Doce_54Céu</td>
                                 <td>
-                                    <a href="#"><img class="icon-tabela" src="../icons/editar.png"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                    <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete.png"></a>
                                 </td>
                             </tr>
                             <tr>
@@ -131,8 +130,8 @@
                                 <td>gustavo.martins@triunfo.com.br</td>
                                 <td>Chuva@Branca_81Flor</td>
                                 <td>
-                                    <a href="#"><img class="icon-tabela" src="../icons/editar.png"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                    <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete.png"></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -158,7 +157,15 @@
         </div>
     </div>
 
+    
+
     <script>
+
+         function refresh(){
+            console.log("atualizando a página")
+            window.location.reload();
+        }
+
         document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');
@@ -170,12 +177,13 @@
         const confirmarBtn = document.getElementById("confirmar-excluir");
 
         // Abre modal ao clicar na lixeira
-        document.querySelectorAll('.icon_tabela[src="../icons/lixo.png"]').forEach(icon => {
+        document.querySelectorAll('img.icon_tabela[src="../icons/delete.png"]').forEach(icon => {
             icon.addEventListener('click', (e) => {
                 e.preventDefault();
                 modal.style.display = "flex";
             });
         });
+
 
         // Cancelar fecha o modal
         cancelarBtn.addEventListener('click', () => {
@@ -191,8 +199,8 @@
 
         // Aqui você faz a conexão depois
         confirmarBtn.addEventListener('click', () => {
-            alert(" Função de excluir no banco.");
             modal.style.display = "none";
+            
         });
 
 
@@ -209,6 +217,9 @@
 
             }
         });
+
+
+       
     </script>
 </body>
 

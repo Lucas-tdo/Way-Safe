@@ -97,13 +97,18 @@ function Validar() {
 function surgirInput() {
   var checkbox = document.getElementById('opcao1');
   var input = document.getElementById('input-checkbox'); 
+  var label = document.getElementById('label-checkbox');
 
   if (checkbox && checkbox.checked) { // Adicionamos 'checkbox &&' por segurança
     console.log('Está marcado');
     input.style.display = 'block';
+    label.style.display = 'block';
+
   } else {
     console.log('Não está marcado');
     input.style.display = 'none';
+    label.style.display = 'none';
+
   }
 }
 

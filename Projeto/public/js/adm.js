@@ -7,6 +7,12 @@ document.querySelector('.toggle-nav')
                 document.querySelector('.nav').classList.toggle('minimizado');
             });
 
+
+        function refresh(){
+            console.log("atualizando a página")
+            window.location.reload();
+        }
+
         /* === MODAL JS === */
         var idExcluir;
         const modal = document.getElementById("modalexcluir");
