@@ -22,14 +22,15 @@
 /* Perfil no topo */
 .perfil {
     display: flex;
-    align-items: flex-end;
-    margin-bottom: 30px;
-    padding: 20px;
-    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    flex-direction: column;
+    margin-left: -15px;
 }
 
 .img_user {
-    width: 40px;
+    width: 55px;
+    margin-block: -10px;
 }
 
 
