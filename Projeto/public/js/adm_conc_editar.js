@@ -1,3 +1,4 @@
+chamarDados()
 function chamarDados(){
     
     var funcionarioId = sessionStorage.IDFUNCIONARIO

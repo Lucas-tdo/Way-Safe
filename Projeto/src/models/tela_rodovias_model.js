@@ -1,10 +1,6 @@
 var database = require("../database/config")
 
-<<<<<<< HEAD
 function buscar_rodovias(municipio, ano,fk_empresa) {
-=======
-function buscar_rodovias(municipio, ano, fk_empresa) {
->>>>>>> 5964424de917a7a4d2ccccb6ecb930ef8e9e962d
     var instrucaoSql = '';
     var condicoes = [];
     var filtrosPreenchidos = 0;
@@ -37,12 +33,8 @@ function buscar_rodovias(municipio, ano, fk_empresa) {
                 FROM ACIDENTE
                 JOIN RODOVIAS ON fk_rodovias = idRODOVIAS
                 JOIN classe_acidente ON fk_classe_acid = idClasse_acid
-<<<<<<< HEAD
-                GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
-=======
                 WHERE ${condicoes.join(' AND ')}
-                GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr
->>>>>>> 5964424de917a7a4d2ccccb6ecb930ef8e9e962d
+                GROUP BY rodovia_cod_numeric, municipio, classe_acidente.descr,fk_rodovias
                 ORDER BY totalAcidentes DESC;
         `;
     } else if (filtrosPreenchidos === 1) {

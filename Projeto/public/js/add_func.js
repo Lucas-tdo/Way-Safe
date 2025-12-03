@@ -4,36 +4,7 @@ document.querySelector('.toggle-nav')
         document.querySelector('.nav').classList.toggle('minimizado');
     });
 
-// function cadastrar() {
-//     var nome = input_nome.value
-//     var email = input_email.value
-//     var senha = input_senha.value
-        // var fk_empresa = sessionStorage.FK_EMPRESA
-
-//     fetch(`/usuario/cadastrar`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//             nomeServer: nome,
-//             emailServer: email,
-//             senhaServer: senha,
-//             fk_empresaServer: fk_empresa,
-//         }),
-//     })
-//         .then(function (resposta) {
-//             console.log("resposta: ", resposta);
-//             if (resposta.ok) {
-//                 alert("Cadastro realizado");
-//                 postarSlack(nome, email);
-//             }
-//         })
-//         .catch(function (resposta) {
-//             console.log(`#ERRO: ${resposta}`);
-//         });
-// }
-
+   listar_funcionarios() 
 // function adicionarFuncionario(nome, email) {
 //     fetch(`/usuario/notificar-slack`, {
 //         method: "POST",
@@ -53,28 +24,8 @@ document.querySelector('.toggle-nav')
 // }
 
 
-// function removerFuncionario(nome, email) {
-//     fetch(`/usuario/notificar-slack`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//             text: `Funcionário removido: ${nome} Email: ${email}`,
-//         }),
-//     })
-//         .then(function (resposta) {
-//             console.log("Notificação Slack enviada:", resposta);
-//         })
-//         .catch(function (erro) {
-//             console.log(`#ERRO ao notificar Slack: ${erro}`);
-//         });
-// }
-
-
-
 function listar_funcionarios(){
-    
+       lista_funcs.innerHTML = ""
     var fk_empresa = 12
     
      fetch(`/adm_concessionaria_rota/listar_funcionarios/${fk_empresa}`)
@@ -115,7 +66,7 @@ function Excluir_Funcionario(Id) {
         }
         console.log("Funcionário excluído com sucesso!");
         alert("Funcionário excluído com sucesso!");
-        lista_funcs.innerHTML = ""
+ 
         listar_funcionarios()
 
     })
