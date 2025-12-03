@@ -8,7 +8,8 @@ function chamarFuncoes() {
         total_acidentes(),
         trechoMaisCritico(),
         PiorMes(),
-        anosAcidentes()
+        anosAcidentes(),
+        logoEmpresa()
 }
 function total_acidentes() {
 
@@ -18,7 +19,7 @@ function total_acidentes() {
 
         .then(res => res.json())
         .then(quantidade => {
-
+        
             var qtd = quantidade[0].qtd_Acidente
             document.getElementById("qtd_acidentes_total").innerText = qtd;
         })
@@ -34,7 +35,7 @@ function anosAcidentes() {
 
             const select = document.getElementById("selectAnos");
             select.innerHTML = '<option value="">Selecione um ano</option>';
-
+            
             anos.forEach(item => {
                 // acessa item.ano
                 const option = document.createElement("option");
@@ -42,6 +43,7 @@ function anosAcidentes() {
                 option.textContent = item.ano;
                 select.appendChild(option);
             });
+        
         })
         .catch(err => {
             console.error("Erro ao buscar anos:", err);
@@ -154,7 +156,7 @@ function top5MaisTiposAcidentes() {
 
 }
 function logoEmpresa() {
-    var fk_empresa = 3;
+    var fk_empresa = sessionStorage.FK_EMPRESA;
 
     let caminhoImagem;
 
@@ -194,14 +196,14 @@ function logoEmpresa() {
 function mudarAno() {
     anoSelecionado = document.getElementById("selectAnos").value;
     console.log("Ano selecionado:", anoSelecionado);
-
-    if (anoSelecionado) {
+    if(anoSelecionado == ""){
+        anoSelecionado = null;
+    }
         total_acidentes();
         trechoMaisCritico();
         PiorMes();
         top10();
         top5MaisTiposAcidentes();
-    }
 }
 
 // Alterna a classe "minimizado" no menu + filtro

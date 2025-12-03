@@ -14,6 +14,7 @@ var HOST_APP = process.env.APP_HOST;
 var app = express();
 
 var indexRouter = require("./src/routes/index");
+var admConceRouter = require("./src/routes/adm_concessionaria_rota");
 var usuarioRouter = require  ("./src/routes/usuario")
 var tela_previaRouter = require  ("./src/routes/tela_previa_rota")
 var tela_rodoviasRouter = require  ("./src/routes/tela_rodovias_rota")
@@ -38,6 +39,10 @@ app.use("/tela_acidentes_rota",tela_acidentesRouter);
 app.use("/tela_rodovia_esp_rota",tela_rodovia_espRouter);
 app.use("/tela_analise_detalhada_rota",tela_analise_detalhada_Router);
 app.use("/conc", concessionariaRouter)
+
+app.use("/conc", concessionariaRouter);
+app.use("/adm_concessionaria_rota", admConceRouter);
+app.use("/adm", administradorRouter);
 app.use("/adm_waysafe", administradorRouter);
 app.use("tela_nivel_acesso_rota", nivelAcessoRouter);
     

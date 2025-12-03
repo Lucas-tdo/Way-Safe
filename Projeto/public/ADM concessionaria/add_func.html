@@ -7,7 +7,7 @@
     <title>Administrador</title>
     <link rel="stylesheet" href="../CSS/adm_func.css">
     <link rel="stylesheet" href="../CSS/nav.css">
-     <link rel="icon" href="../Imagens/waysafe-logo.svg">
+    <link rel="icon" href="../Imagens/waysafe-logo.svg">
 </head>
 
 <body id="body">
@@ -19,7 +19,6 @@
 
             <div class="perfil">
                 <a href="../previas.html"><img src="../icons/engrenagem.png"></a>
-                
             </div>
 
 
@@ -67,7 +66,10 @@
 
                     <div class="icones-direita">
 
-                        <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar" onclick="refresh()">
+
+                        <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar"
+                            onclick="listar_funcionarios()">
+
                     </div>
                 </div>
 
@@ -83,6 +85,7 @@
                                 <th id="th-relatorio" style="border-top-right-radius:7px;">Ação</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr>
                                 <td>1</td>
@@ -134,6 +137,9 @@
                                     <a href="#"><img class="icon_tabela" src="../icons/delete.png"></a>
                                 </td>
                             </tr>
+
+                        <tbody id="lista_funcs">
+
                         </tbody>
                     </table>
                 </div>
@@ -157,14 +163,12 @@
         </div>
     </div>
 
+
     
 
     <script>
 
-         function refresh(){
-            console.log("atualizando a página")
-            window.location.reload();
-        }
+
 
         document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
@@ -224,3 +228,5 @@
 </body>
 
 </html>
+<script src="../js/add_func.js"></script>
+<script src="../js/foto_perfil.js" ></script>

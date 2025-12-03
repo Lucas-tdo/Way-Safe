@@ -1,10 +1,6 @@
 drop database if exists waysafe;
 create database if not exists waysafe;
 use waysafe;
-<<<<<<< HEAD
-=======
-SET foreign_key_checks = 0;
->>>>>>> 5964424de917a7a4d2ccccb6ecb930ef8e9e962d
 
       -- =========================================
 -- CRIAÇÃO DAS TABELAS DO BANCO DE ACIDENTES
@@ -17,7 +13,7 @@ CREATE TABLE EMPRESA (
     CEP CHAR(8),
     complemento VARCHAR(45),
     NOME VARCHAR(45) NOT NULL,
-    EMAIL VARCHAR(45) NOT NULL,
+    EMAIL VARCHAR(45),
     TELEFONE CHAR(11)
 );
 
@@ -28,11 +24,7 @@ CREATE TABLE USUARIO (
     senha VARCHAR(256) NOT NULL,
     nome varchar(45) NOT NULL,
     fk_empresa INT,
-<<<<<<< HEAD
     nivel_acesso_fk INT,
-=======
-    nivel_acesso_fk INT NOT NULL,
->>>>>>> 5964424de917a7a4d2ccccb6ecb930ef8e9e962d
     FOREIGN KEY (fk_empresa) REFERENCES EMPRESA(idEMPRESA),
     FOREIGN KEY (nivel_acesso_fk) REFERENCES NIVEL_ACESSO(idNivelAcesso)
 );

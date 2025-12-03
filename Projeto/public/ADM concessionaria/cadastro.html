@@ -68,18 +68,20 @@
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">Nome Completo</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins">
+                            <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="input_nome">
 
                             <label class="label-cadastro">Email</label>
-                            <input type="email" class="input-cadastro" placeholder="email@gmail.com">
+                            <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
                         </div>
 
                         <div class="coluna-cadastro">
                             <label class="label-cadastro">Senha</label>
-                            <input type="password" class="input-cadastro" placeholder="********">
+                            <input type="password" class="input-cadastro" placeholder="********" id="input_senha">
 
-                            <label class="label-cadastro">Código da Empresa</label>
-                            <input type="text" class="input-cadastro" placeholder="Ex: 987654">
+                            <label class="label-cadastro">Nivel de acesso</label>
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="3" id="input_nivel" disabled>
+                        </div>
+
                         </div>
 
                     </form>
@@ -136,6 +138,7 @@
         function confirmarCadastro() {
             fecharModal();
             document.getElementById('modalSucesso').style.display = "flex";
+            Validar()
         }
 
         function fecharModalSucesso() {
@@ -147,3 +150,4 @@
 </body>
 
 </html>
+<script src="../js/cadastro_funcionario.js"></script>

@@ -1,0 +1,145 @@
+
+!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="./CSS/adm.css">
+    <link rel="stylesheet" href="./CSS/nav.css">
+</head>
+
+<body id="body">
+    <div class="fundo">
+
+        <!-- MENU LATERAL -->
+        <aside class="nav">
+            <button class="toggle-nav">☰ </button>
+
+            <div class="perfil">
+                <img class="img_user" src="./icons/user.png"> <img src="./icons/engrenagem.png">
+
+            </div>
+
+
+
+            <ul class="menu-list">
+                <li class="active">
+                    <a href="#"><img src="./icons/funcionarios.png" class="icon"></a>
+                    <a href="#" class="text">Funcionários</a>
+                </li>
+
+
+
+            </ul>
+
+            <a class="sair" href="./previas.html">
+                <div>Voltar</div>
+            </a>
+        </aside>
+        <!--FIM MENU LATERAL-->
+
+        <!--CONTEÚDO-->
+        <main class="container">
+
+            <div class="rodovias-bar">
+                <h1 style="font-weight: 800;">Administração da Concessionária </h1>
+            </div>
+
+            <div class="barra">
+                <button class="cadastrar" onclick="cadastrar()">Cadastrar</button>
+                <p> Funcionários</p>
+            </div>
+            <!-- CARDS + TABELA -->
+            <div class="conteudo-principal">
+                <div class="cards-rodovias"></div>
+
+                <div class="meio">
+                    <span class="tipo">Lista de Funcionários </span>
+
+                    <div class="icones-direita">
+
+                        <img class="icons_meio" src="./icons/atualizar.png" alt="Atualizar">
+                    </div>
+                </div>
+
+
+                <div class="tabela-container">
+                    <table class="tabela-rodovias">
+                        <thead>
+                            <tr>
+                                <th style="border-top-left-radius:7px;">ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Senha</th>
+                                <th id="th-relatorio" style="border-top-right-radius:7px;">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Bruno Almeida</td>
+                                <td>bruno.almeida@ecorodovias.com.br</td>
+                                <td>Sol!Rápido_73Mar</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Camila Ramos</td>
+                                <td>camila.ramos@arteris.com.br</td>
+                                <td>Neve@Doce8Luz</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Eduardo Lopes</td>
+                                <td>eduardo.lopes@ccr.com.br</td>
+                                <td>Lago#Verde_92Sol</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Fernanda Dias</td>
+                                <td>fernanda.dias@viasul.com.br</td>
+                                <td>Tigre!Doce_54Céu</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Gustavo Martins</td>
+                                <td>gustavo.martins@triunfo.com.br</td>
+                                <td>Chuva@Branca_81Flor</td>
+                                <td>
+                                    <a href="#"><img class="icon_tabela" src="./icons/editar.png"></a>
+                                    <a href="#"><img class="icon_tabela" src="./icons/lixo.png"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+    </div>
+
+    </main>
+    </div>
+
+    <script src="js/add_func.js">
+       
+    </script>
+</body>
+
+</html>

@@ -1,19 +1,20 @@
 
 
-let anoSelecionado = null;
-// let rodoviaSelecionada = sessionStorage.FK_RODOVIA;
-let rodoviaSelecionada = sessionStorage.codigoRodovia;
+    var anoSelecionado = null;
+    // let rodoviaSelecionada = sessionStorage.FK_RODOVIA;
+    let rodoviaSelecionada = sessionStorage.codigoRodovia;
 ;
 
 chamarFuncoes()
 
 function chamarFuncoes() {
 
-  anosAcidentes()
-  top5MaisTiposAcidentes(),
-    municipiosAcidentesQtd(),
-    total_acidentes(),
-    rodovia()
+    // document.getElementById("nome").innerText=`Olá, ${sessionStorage.NOME_USUARIO}`
+      anosAcidentes()
+      top5MaisTiposAcidentes(),
+      municipiosAcidentesQtd(),
+      total_acidentes(),
+      rodovia()
 
 }
 
@@ -49,6 +50,10 @@ function mudarAno() {
   anoSelecionado = document.getElementById("selectAnos").value;
   console.log("Ano selecionado:", anoSelecionado);
 
+      if(anoSelecionado == ""){
+        anoSelecionado = null;
+    }
+    
   top5MaisTiposAcidentes();
   municipiosAcidentesQtd();
   total_acidentes();

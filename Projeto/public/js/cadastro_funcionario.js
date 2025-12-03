@@ -6,7 +6,7 @@ function Validar() {
     var fk_empresa = sessionStorage.FK_EMPRESA
 
     // var fk_empresa = input_fk_empresa.value
-    var nivel_acesso = input_nivel.value
+    // var nivel_acesso = input_nivel.value
 
     var mensagem = ''
 
@@ -86,7 +86,7 @@ function Validar() {
 
     if (mensagem == "") {
         alert("oi")
-        checaremail()
+        checaremail(fk_empresa)
     }
     else {
         alert(mensagem)
@@ -105,7 +105,7 @@ function checaremail() {
                     alert("Email já está em uso!")
                 }
                 else {
-
+                    console.log("aqui foi")
                     checarEmpresa()
                 }
             })
@@ -115,9 +115,8 @@ function checaremail() {
         })
 }
 // não acho que vai precisar validar a empresa de novo, mas vou deixar em aguardo aqui por enquanto
-function checarEmpresa() {
-  var fk_empresa = sessionStorage.FK_EMPRESA
-    fetch(`/usuario/checarEmpresa/${empresa}`, {
+function checarEmpresa(fk_empresa) {
+    fetch(`/usuario/checarEmpresa/${fk_empresa}`, {
         method: "GET"
     })
         .then(resposta => {
@@ -141,8 +140,11 @@ function cadastrarFuncionario() {
     var nome = input_nome.value
     var email = input_email.value
     var senha = input_senha.value
-    var fk_empresa = sessionStorage.FK_EMPRESA
     var nivel_acesso = input_nivel.value
+    var fk_empresa = sessionStorage.FK_EMPRESA
+
+    console.log(fk_empresa)
+    // var nivel_acesso = input_nivel.value
 
     fetch(`/usuario/cadastrarFuncionario/`, {
         method: "POST",
