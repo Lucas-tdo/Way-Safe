@@ -18,8 +18,10 @@
         <aside class="nav">
             <button class="toggle-nav">☰ </button>
 
-          <div class="perfil"> 
-                <a href=""></a><img src="../icons/engrenagem.png">  
+          <div class="perfil">
+                <img id="imagem-empresa" class="img_user"> <br>
+                <a href="#"><img src="../icons/engrenagem.png"></a>
+            
             </div>
 
             <ul class="menu-list">
@@ -42,9 +44,12 @@
                    <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
                     <a href="perfil.html" class="text">Perfil</a>
                 </li>
+
+                 <a class="sair" href="../previas.html">
+                <div>Voltar</div>
+            </a>
             </ul>
 
-            <a  class="sair" href="../previas.html"><div>Voltar</div></a>
         </aside>
         <!--FIM MENU LATERAL-->
 
@@ -62,7 +67,22 @@
 
             <div class="conteudo-linha">
                 <!-- BLOCO DE FILTRO -->
-                
+                <div class="filtro-box">
+                    <h3>Filtro</h3>
+                    <label>Município</label>
+                    <input type="text" id="inp_municipio">
+
+                    <label>Tipo acidente</label>
+                    <select id="op_tipo_acidente">
+                        <option value="">Selecione</option>
+                    </select>
+
+                    <label>Rodovia</label>
+                    <input type="text" id="inp_rodovia">
+
+                    <button style="background-color: rgb(36, 36, 36); color: white; height: 2.5rem;"
+                        onclick="buscar_rodovias()">Buscar</button>
+                </div>
                 <!-- CARDS + TABELA -->
                 <div class="conteudo-principal">
                     <div class="cards-rodovias"></div>
@@ -88,7 +108,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody id="tbConc">
+                            <tbody id="tbNivelAcesso">
                                 <tr>
                                     <td id="desc">Lorem ipsum dolor sit amet consectetur adipis</td>
                                     <td style="text-align: center;"><p class="nivelAcesso1">Administrador</p></td>

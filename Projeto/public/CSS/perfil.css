@@ -103,7 +103,9 @@ html, body {
 .config-foto{
     display: flex;
     gap: 30px;
-    align-items: center;
+    padding-top: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .info-text {

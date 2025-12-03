@@ -123,7 +123,46 @@ hr {
     border-color: #000;
 }
 
+#opcao1 {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 45px;
+    height: 22px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+}
 
+/* Bolinha */
+#opcao1::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: .3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+}
+
+
+#opcao1:checked {
+    background: #4ade80;
+}
+
+#opcao1:checked::before {
+    left: 25px;
+}
+
+#campo-verificacao-empresa{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 
 /* Responsivo */
