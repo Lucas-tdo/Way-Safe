@@ -1,4 +1,3 @@
-const { pegarDescricao } = require("../../src/models/tela_nivel_acesso_model");
 
 document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
