@@ -7,7 +7,7 @@
     <title>Administrador</title>
     <link rel="stylesheet" href="../CSS/adm_func.css">
     <link rel="stylesheet" href="../CSS/nav.css">
-     <link rel="icon" href="../Imagens/waysafe-logo.svg">
+    <link rel="icon" href="../Imagens/waysafe-logo.svg">
 </head>
 
 <body id="body">
@@ -18,9 +18,8 @@
             <button class="toggle-nav">☰ </button>
 
             <div class="perfil">
-                <img class="img_user" src="../icons/user.png">
-                <a href="../previas.html"><img src="../icons/engrenagem.png"></a>
-                
+                <img  id="imagem-empresa" class="img_user"> <br>
+                <a href="#"><img src="../icons/engrenagem.png"></a>
             </div>
 
 
@@ -68,7 +67,8 @@
 
                     <div class="icones-direita">
 
-                        <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar" onclick="listar_funcionarios()">
+                        <img class="icons_meio" src="../icons/atualizar.png" alt="Atualizar"
+                            onclick="listar_funcionarios()">
                     </div>
                 </div>
 
@@ -110,6 +110,11 @@
 
 
     <script>
+
+
+
+
+
         document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');
@@ -165,3 +170,4 @@
 
 </html>
 <script src="../js/add_func.js"></script>
+<script src="../js/foto_perfil.js" ></script>
