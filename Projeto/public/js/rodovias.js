@@ -18,6 +18,16 @@ async function carregar_municipios() {
         });
 }
 
+function abrirModal(msg) {
+    document.getElementById("modal-msg").innerText = msg;
+    document.getElementById("modal-erro").style.display = "flex";
+}
+
+document.getElementById("modal-btn").addEventListener("click", () => {
+    document.getElementById("modal-erro").style.display = "none";
+});
+
+
 async function buscar_rodovias(municipio, ano) {
     var fk_empresa = sessionStorage.FK_EMPRESA;
 
@@ -82,7 +92,8 @@ async function buscar_rodovias(municipio, ano) {
         })
         .catch(error => {
             console.error("Erro ao buscar rodovias:", error);
-            alert("Erro ao buscar dados. Verifique o console.");
+            abrirModal("Erro ao buscar dados.");
+
         });
 }
 

@@ -346,6 +346,51 @@ html, body {
     flex-shrink: 0;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  animation: surgir 0.3s ease;
+}
+
+@keyframes surgir {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+#modal-btn {
+  margin-top: 15px;
+  padding: 8px 15px;
+  border: none;
+  background: rgb(16, 147, 95);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#modal-btn:hover {
+  background: rgb(13, 120, 78);
+}
+
+
 /* ===== MEDIA QUERIES PARA RESPONSIVIDADE ===== */
 
 /* Melhorias para dispositivos touch */
