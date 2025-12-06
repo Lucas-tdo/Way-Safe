@@ -39,12 +39,11 @@ app.use("/tela_acidentes_rota",tela_acidentesRouter);
 app.use("/tela_rodovia_esp_rota",tela_rodovia_espRouter);
 app.use("/tela_analise_detalhada_rota",tela_analise_detalhada_Router);
 app.use("/conc", concessionariaRouter)
-
 app.use("/conc", concessionariaRouter);
 app.use("/adm_concessionaria_rota", admConceRouter);
 app.use("/adm", administradorRouter);
 app.use("/adm_waysafe", administradorRouter);
-app.use("tela_nivel_acesso_rota", nivelAcessoRouter);
+app.use("/tela_nivel_acesso_rota", nivelAcessoRouter);
     
 app.listen(PORTA_APP, function () {
     console.log(`

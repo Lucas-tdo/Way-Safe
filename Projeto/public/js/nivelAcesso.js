@@ -65,20 +65,18 @@ function Validar() {
 }
 
 function carregarNiveis() {
-    fetch("../nivelAcessoRouter/pegarDescricao")
+    fetch("/tela_nivel_acesso_rota/pegarDescricao")
         .then(res => res.json())
         .then(pegarDescricao => {
+            console.log(pegarDescricao)
             const tabela = document.getElementById("tbNivelAcesso");
-            const nome = input_nome.value;
-
-
             tabela.innerHTML = "";
 
             pegarDescricao.forEach(item => {
                 tabela.innerHTML += `
                     <tr>
                         <td>${item.descricao}</td>
-                        <td style="text-align:center;"><p class="nivelAcesso1">${nome}</p></td>
+                        <td style="text-align:center;"><p class="nivelAcesso1">Adicionar</p></td>
                         <td>
                             <a href="#"><img src="../icons/lapisedit.png" class="icon-tabela"></a>
                             <a href="#"><img src="../icons/delete2.png" class="icon_tabela"></a>
@@ -95,4 +93,9 @@ function carregarNiveis() {
         document.getElementById('modalSucesso').style.display = "none";
 
     }
+
+window.addEventListener("load", (event) => {
+   carregarNiveis()
+});
+
     

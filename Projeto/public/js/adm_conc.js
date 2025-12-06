@@ -19,8 +19,8 @@
                                             <td>${registro.EMAIL}</td>
                                             <td>${registro.TELEFONE}</td>
                                             <td>
-                                                <a href="#" onclick="enviarEditar(${registro.idEMPRESA})"><img class="icon_tabela" src="../icons/editar.png"></a>
-                                                <a href="#" onclick="abrirExcluir(${registro.idEMPRESA})"><img class="icon_tabela" src="../icons/lixo.png"></a>
+                                                <a href="#" onclick="enviarEditar(${registro.idEMPRESA})"><img class="icon_tabela" src="../icons/lapisedit.png"></a>
+                                                <a href="#" onclick="abrirExcluir(${registro.idEMPRESA})"><img class="icon_tabela" src="../icons/delete.png"></a>
                                             </td>
                                         </tr>
                 `;
