@@ -42,7 +42,12 @@ function Validar() {
                         sessionStorage.FK_EMPRESA = resposta[0].fk_empresa
                         sessionStorage.NIVEL_ACESSO = resposta[0].nivel_acesso_fk
                         setTimeout(() => {
-                            window.location.href = '/previas.html'
+                            if(sessionStorage.NIVEL_ACESSO==1){
+                                window.location.href='/ADM Waysafe/adm.html'
+                            }
+                            else{
+                                window.location.href = '/previas.html'
+                            }
                         }, 2000);
                     }
                     else {
