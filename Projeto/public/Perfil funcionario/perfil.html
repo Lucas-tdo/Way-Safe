@@ -18,11 +18,9 @@
             <button class="toggle-nav">☰ </button>
 
             <div class="perfil">
-        <img id="imagem-empresa" class="img_user"> <br>
+          <img id="imagem-empresa" class="img_user"> <br>
         <a href="../previas.html"><img src="../icons/engrenagem.png"></a>
       </div>
-
-                           
 
             <ul class="menu-list">
               
@@ -46,14 +44,14 @@
 
 
       <div id="msg" class="container-txt">
-          <div class="caixa-de-texto-container" id="caixaTexto">
-            <p id="texto-caixa">Alterações realizadas com sucesso</p>
-          </div>
+        <div class="caixa-de-texto-container" id="caixaTexto">
+          <p id="texto-caixa">Alterações realizadas com sucesso</p>
+        </div>
       </div>
       <div class="container-de-baixo">
 
-        
-        
+
+
 
 
         <div class="pagperfil" style="background-color: rgb(255, 255, 255);">
@@ -63,38 +61,19 @@
               <p style="color: rgb(179, 179, 179); ">Gerencie suas informações pessoais e de contato</p>
             </div>
 
-            <div>
-              <button id="editarBtn" style="background-color: rgb(255, 255, 255);
-                      border: 1px solid rgb(0, 0, 0);
-                      padding: 8px 15px;
-                      border-radius: 5px;
-                      font-weight: 500;
-                      cursor: pointer;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 2px;
-                      color: rgb(0, 0, 0);">
-               <img src="../icons/lapisPreto.png" alt="" height="18px"> Editar
-              </button>
-            </div>
           </div>
 
           <!--Foto de perfil-->
           <div class="config-foto">
-            <div>
-              <label for="input-foto" class="foto-perfil" id="fotoContainer">
-                <span><img
-                    src="../Imagens/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
-                    alt=""></span>
-                <img id="fotoPreview" style="display:none;">
-              </label>
-              <input type="file" id="input-foto" accept="image/*">
-            </div>
+            
+            <div class="perfil">
+              <img id="imagem-perfil" class="img_user"> <br>
+          </div>
+            
 
             <div>
-              <p id="nomeTexto" style="font-weight: 600; font-size: 30px;">João Martins</p>
-              <p id="emailTexto" style="color: rgb(87, 87, 87); font-size: 18px; padding-top: 5px;">Email@gmail.com</p>
+              <p id="nomeTexto" style="font-weight: 600; font-size: 30px;">Carregando...</p>
+              <p id="emailTexto" style="color: rgb(87, 87, 87); font-size: 18px; padding-top: 5px;">Carregando...</p>
             </div>
           </div>
           <!--Fim do cod foto de perfil-->
@@ -106,13 +85,13 @@
 
             <div class="coluna-campos1">
               <label style="font-weight: 600;">Nome Completo</label>
-              <p class="caixa-de-texto" id="nomeView">João Martins</p>
+              <p class="caixa-de-texto" id="nomeView">Carregando...</p>
 
               <label style="font-weight: 600;">Email</label>
-              <p class="caixa-de-texto" id="emailView">email@gmail.com</p>
+              <p class="caixa-de-texto" id="emailView">Carregando...</p>
 
             </div>
-            
+
             <div class="coluna-campos1">
               <label id="labelSenhaView" style="font-weight: 600;">Senha</label>
               <p class="caixa-de-texto" id="senhaView">**********</p>
@@ -128,7 +107,7 @@
                   <label for="input_senha_atual">Insira sua senha atual</label>
                   <input type="password" id="input_senha_atual" class="caixa-de-texto-senha">
 
-                  <label  for="input-senha-nova">Insira sua nova senha</label>
+                  <label for="input-senha-nova">Insira sua nova senha</label>
                   <input type="password" id="input_senha_nova" class="caixa-de-texto-senha">
 
                   <label for="input-senha-confirmacao">Confirme sua nova senha</label>
@@ -136,7 +115,7 @@
 
                   <p id="avisos-senha"></p>
                   <h2 id="aviso-sucesso"></h2>
-                  
+
                   <button onclick="pegarSenha()" class="btn-alterar">Alterar senha</button>
 
                 </div>
@@ -151,8 +130,11 @@
 
     </main>
   </div>
-  
+
 </body>
-<script src="../js/perfil.js">
+<script src="../js/perfil_funcionario.js">
 </script>
+<script src="../js/fotos.js"></script>
+<script src="../js/foto-dos-perfis.js"></script>
+
 </html>

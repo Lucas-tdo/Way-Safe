@@ -90,7 +90,7 @@ x'
                     </form>
 
                     <!-- BOTÃO -->
-                    <button class="btn-cadastrar-func" onclick="abrirModal()">Cadastrar</button>
+                    <button class="btn-cadastrar-func" onclick="Validar()">Cadastrar</button>
 
                 </div>
             </div>
@@ -111,6 +111,13 @@ x'
         </div>
     </div>
 
+    <div id="modalErro" class="modal">
+        <div class="modal-content">
+            <h3>Erro</h3>
+            <p id="mensagem-Erro"></p>
+        </div>
+    </div>
+
     <!-- MODAL SUCESSO -->
     <div id="modalSucesso" class="modal">
         <div class="modal-content">
@@ -124,31 +131,7 @@ x'
     </div>
 
     <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
-    <script>
-        document.querySelector('.toggle-nav')
-            .addEventListener('click', () => {
-                document.querySelector('.nav').classList.toggle('minimizado');
-            });
-
-        function abrirModal() {
-            document.getElementById('modalConfirm').style.display = "flex";
-        }
-
-        function fecharModal() {
-            document.getElementById('modalConfirm').style.display = "none";
-        }
-
-        function confirmarCadastro() {
-            fecharModal();
-            document.getElementById('modalSucesso').style.display = "flex";
-            Validar()
-        }
-
-        function fecharModalSucesso() {
-            document.getElementById('modalSucesso').style.display = "none";
-
-        }
-    </script>
+    
 
 </body>
 

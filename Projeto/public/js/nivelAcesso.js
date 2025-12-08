@@ -118,6 +118,7 @@ carregarNiveis()
     })
     .catch(error => {
         console.error("Erro ao excluir funcionário:", error);
+        
     });
     }
     function fecharModalSucesso() {
