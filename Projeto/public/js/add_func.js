@@ -31,6 +31,7 @@ function listar_funcionarios(){
      fetch(`/adm_concessionaria_rota/listar_funcionarios/${fk_empresa}`)
         .then(res => res.json())
         .then(anos => {
+            lista_funcs.innerHTML=""; 
             console.log(anos)
             anos.forEach(ano => {
                 document.getElementById("lista_funcs").innerHTML += `
@@ -38,7 +39,7 @@ function listar_funcionarios(){
                                 <td>${ano.idUSUARIO}</td>
                                 <td>${ano.nome}</td>
                                 <td>${ano.email}</td>
-                                <td>${ano.senha}</td>
+                                <td>*******</td>
                                 <td>
                                     <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png" onclick="Editar_Funcionario(${ano.idUSUARIO})"></a>
                                     <a href="#"><img class="icon_tabela" src="../icons/delete2.png" onclick="Excluir_Funcionario(${ano.idUSUARIO})"></a>
