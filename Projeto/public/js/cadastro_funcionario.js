@@ -1,5 +1,31 @@
+document.querySelector('.toggle-nav')
+            .addEventListener('click', () => {
+                document.querySelector('.nav').classList.toggle('minimizado');
+            });
+
+        function abrirModal() {
+            document.getElementById('modalConfirm').style.display = "flex";
+        }
+
+        function fecharModal() {
+            document.getElementById('modalConfirm').style.display = "none";
+        }
+
+        function confirmarCadastro() {
+            cadastrarFuncionario()
+            input_nome.value=""
+            input_email.value=""
+            input_senha.value=""
+            fecharModal();
+            document.getElementById('modalSucesso').style.display = "flex";
+        }
+
+        function fecharModalSucesso() {
+            document.getElementById('modalSucesso').style.display = "none";
+        }
+
 function Validar() {
-    var nome = input_nome.value
+    var nome =  input_nome.value
     var email = input_email.value
     var senha = input_senha.value
     // no caso, a fk não vai ser inserida de novo, mas chamada via session Storage
@@ -10,7 +36,7 @@ function Validar() {
 
     var mensagem = ''
 
-    if (nome == "" || email == "" || senha == "" || fk_empresa == "") {
+    if (email == "" || senha == "" || nome =="") {
         mensagem = "Todos campos devem estar preenchidos"
     }
     else {
@@ -85,10 +111,11 @@ function Validar() {
 
 
     if (mensagem == "") {
-        checaremail(fk_empresa)
+        checaremail()
+        
     }
     else {
-        alert(mensagem)
+        modalErro(mensagem)
     }
 }
 
@@ -101,10 +128,9 @@ function checaremail() {
         .then(resposta => {
             resposta.json().then(resposta => {
                 if (resposta.length > 0) {
-                    alert("Email já está em uso!")
+                    modalErro("Email já está em uso!")
                 }
                 else {
-                    console.log("aqui foi")
                     checarEmpresa()
                 }
             })
@@ -121,10 +147,10 @@ function checarEmpresa(fk_empresa) {
         .then(resposta => {
             resposta.json().then(resposta => {
                 if (resposta.length = 0) {
-                    alert("Codigo de empresa inválido")
+                    modalErro("Codigo de empresa inválido")
                 }
                 else {
-                    cadastrarFuncionario()
+                    abrirModal()
                 }
             })
         })
@@ -134,6 +160,13 @@ function checarEmpresa(fk_empresa) {
 
 }
 
+function modalErro(mensagem){
+        document.getElementById("modalErro").style.display="flex";
+        document.getElementById("mensagem-Erro").innerHTML=mensagem
+        setTimeout(() => {
+            document.getElementById("modalErro").style.display="none";
+        }, 2000);
+    }
 
 function cadastrarFuncionario() {
     var nome = input_nome.value

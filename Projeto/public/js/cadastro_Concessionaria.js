@@ -63,6 +63,8 @@ let mensagem = "";
             mensagem += "Telefone inválido (mínimo 13, máximo 15 caracteres)";
         }
     }
+
+    console.log(mensagem)
     
     if (mensagem =="") {
         abrirModal()
