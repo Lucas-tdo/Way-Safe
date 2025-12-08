@@ -85,7 +85,6 @@ function Validar() {
 
 
     if (mensagem == "") {
-        alert("oi")
         checaremail(fk_empresa)
     }
     else {
@@ -95,7 +94,7 @@ function Validar() {
 
 function checaremail() {
     var email = input_email.value
-    alert("aqui")
+   
     fetch(`/usuario/checaremail/${email}`, {
         method: "GET"
     })
