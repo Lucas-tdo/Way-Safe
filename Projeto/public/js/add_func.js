@@ -40,8 +40,8 @@ function listar_funcionarios(){
                                 <td>${ano.email}</td>
                                 <td>${ano.senha}</td>
                                 <td>
-                                    <a href="#"><img class="icon-tabela" src="../icons/editar.png" onclick="Editar_Funcionario(${ano.idUSUARIO})"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/lixo.png" onclick="Excluir_Funcionario(${ano.idUSUARIO})"></a>
+                                    <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png" onclick="Editar_Funcionario(${ano.idUSUARIO})"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete2.png" onclick="Excluir_Funcionario(${ano.idUSUARIO})"></a>
                                 </td>
                             </tr>
                 `
