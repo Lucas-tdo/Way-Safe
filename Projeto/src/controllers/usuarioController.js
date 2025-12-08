@@ -135,9 +135,6 @@ function cadastrarFuncionario(req,res){
     else if(fk_empresa==undefined){
         res.status(400).send("Sua fk_empresa está undefined")
     }
-    // else if(nivel_acesso==undefined){
-    //     res.status(400).send("Seu nível de acesso está undefined")
-    // }
     else{
         usuarioModel.cadastrarFuncionario(nome,email,senha,fk_empresa,nivel_acesso)
         .then(resposta=>{
