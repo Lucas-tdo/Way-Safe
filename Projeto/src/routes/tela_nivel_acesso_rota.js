@@ -10,5 +10,9 @@ router.get("/pegarDescricao", function(req, res){
 router.post("/cadastrar", function (req, res) {
     TelaNivelAcessoController.cadastrar(req, res);
 });
+router.delete("/deletarNivel/:idNivel", function (req, res) {
+    TelaNivelAcessoController.deletarNivel(req, res);
+});
+
 
 module.exports = router;

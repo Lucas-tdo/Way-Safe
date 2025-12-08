@@ -1,4 +1,4 @@
-
+var  idExcluir;
 document.querySelector('.toggle-nav')
             .addEventListener('click', () => {
                 document.querySelector('.nav').classList.toggle('minimizado');
@@ -79,8 +79,8 @@ function carregarNiveis() {
                         <td>${item.descricao}</td>
                         <td style="text-align:center;"><p class="nivelAcesso1">Adicionar</p></td>
                         <td>
-                            <a href="#"><img src="../icons/lapisedit.png" class="icon-tabela"></a>
-                            <a href="#"><img src="../icons/delete2.png" class="icon_tabela"></a>
+                            <a href="#"><img src="../icons/lapisedit.png" class="icon-tabela" ></a>
+                            <a href="#"><img src="../icons/delete2.png" class="icon_tabela" onclick=abrirExcluir(${item.idNivelAcesso})></a>
                         </td>
                     </tr>
                 `;
@@ -89,10 +89,39 @@ function carregarNiveis() {
 }
 
 
+function abrirExcluir(id){
+            var divExcluir = document.getElementById("modalexcluir")
+            divExcluir.style.display = "flex";
+            idExcluir=id;
+}
 
+function fecharExcluir(){
+            var divExcluir = document.getElementById("modalexcluir")
+            divExcluir.style.display = "none";
+        }
+
+    function excluirnivel(){
+        
+
+    fetch(`/tela_nivel_acesso_rota/deletarNivel/${idExcluir}`, {
+        method: "DELETE"
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error(`Erro ao excluir: ${res.status}`);
+        }
+        console.log("Funcionário excluído com sucesso!"); 
+fecharExcluir()
+carregarNiveis()
+
+
+    })
+    .catch(error => {
+        console.error("Erro ao excluir funcionário:", error);
+    });
+    }
     function fecharModalSucesso() {
         document.getElementById('modalSucesso').style.display = "none";
-
     }
 
 window.addEventListener("load", (event) => {

@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function pegarDescricao() {
     return database.executar(`
-        SELECT descricao FROM NIVEL_ACESSO;
+        SELECT * FROM NIVEL_ACESSO;
     `);
 }
 
@@ -14,8 +14,15 @@ function cadastrar(descricao) {
     `);
 }
 
+function deletarNivel(idNivel) {
+    return database.executar(`
+        DELETE FROM NIVEL_ACESSO WHERE idNivelAcesso = ${idNivel};
+    `);
+}
+
 
 module.exports = {
     pegarDescricao,
-    cadastrar
+    cadastrar,
+    deletarNivel
 };
