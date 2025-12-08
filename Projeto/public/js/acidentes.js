@@ -281,7 +281,7 @@ var tiposOptions2 = {
     xaxis: {
         categories: [],
         title: {
-            text: 'TIPOS DE ACIDENTES',
+            text: 'Municípios',
             style: {
                 fontWeight: 700,
                 fontSize: '12px'
@@ -299,7 +299,7 @@ var tiposOptions2 = {
     },
     yaxis: {
         title: {
-            text: 'QUANTIDADE DE ACIDENTES',
+            text: 'QUANTIDADE DE VÍTIMAS',
             style: {
                 fontWeight: 700,
                 fontSize: '12px'
