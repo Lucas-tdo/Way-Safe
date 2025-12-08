@@ -75,7 +75,7 @@ async function buscar_rodovias(municipio, ano) {
               <td>${item.municipio}</td>
               <td>${item.tipoAcidente}</td>
               <td>${item.totalAcidentes}</td>
-              <td><button class="btn-relatorio" onclick="guardarSessionStorage('${item.codigoRodovia}')">Visualizar</button></td>
+              <td><a href="sp150.html"><button class="btn-relatorio" onclick="guardarSessionStorage('${item.codigoRodovia}')">Visualizar</button></a></td>
             `;
                 tabela.appendChild(linha);
             });
