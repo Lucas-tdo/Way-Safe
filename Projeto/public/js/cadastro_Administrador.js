@@ -94,15 +94,27 @@ function Validar() {
 }
 
 //Função para surgir input
-function surgirInput() {
+async function surgirInput() {
   var checkbox = document.getElementById('opcao1');
-  var input = document.getElementById('input-checkbox'); 
+  var input = document.getElementById('inputcheckbox'); 
   var label = document.getElementById('label-checkbox');
 
-  if (checkbox && checkbox.checked) { // Adicionamos 'checkbox &&' por segurança
+  if (checkbox && checkbox.checked) {
+    const resp = await fetch(`/conc/pegarEmpresa`)
+            const resp_json = await resp.json();
+            console.log(resp_json)
+            input.innerHTML=""
+            for (const registro of resp_json) {
+                input.innerHTML += `
+                    <option value="${registro.idEMPRESA}">${registro.NOME}</option>
+                `;
+        }
+    
+    // Adicionamos 'checkbox &&' por segurança
     console.log('Está marcado');
     input.style.display = 'block';
     label.style.display = 'block';
+
 
   } else {
     console.log('Não está marcado');
@@ -149,6 +161,12 @@ function surgirInput() {
         var nome = input_nome.value
         var email = input_email.value
         var senha = input_senha.value
+        var checkbox = document.getElementById('opcao1');
+        var input = document.getElementById('inputcheckbox'); 
+        var empresa = -1;
+        if(checkbox.checked){
+            empresa=input.value
+        }
         fetch(`/adm_waysafe/cadastrarAdm`, {
             method: "POST",
             headers: {
@@ -157,7 +175,8 @@ function surgirInput() {
             body: JSON.stringify({
                 nomeServer: nome,
                 emailServer: email,
-                senhaServer: senha
+                senhaServer: senha,
+                empresaServer : empresa
             }),
         })
             .then(function (resposta) {
@@ -166,6 +185,7 @@ function surgirInput() {
             input_nome.value=""
             input_email.value=""
             input_senha.value=""
+            checkbox.checked=false
             fecharModal()
             })
             .catch(function (resposta) {
