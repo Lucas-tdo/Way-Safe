@@ -165,7 +165,10 @@ html, body {
   margin: 0 20px;
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.07);
-  overflow-x: auto;
+  overflow-x: auto;       /* Responsividade */
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  max-width: 100%;
 }
 
 .tabela-rodovias,
@@ -186,12 +189,14 @@ html, body {
   text-align: left;
   border-bottom: 2px solid #ccc;
   font-weight: 700;
+  white-space: nowrap;    /* Responsivo */
 }
 
 .tabela-rodovias td,
 .tabela-analise td {
   padding: 12px;
   border-bottom: 1px solid #e0e0e0;
+  white-space: nowrap;    /* Responsivo */
 }
 
 .tabela-rodovias tr:hover,
@@ -261,4 +266,26 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* ====== RESPONSIVIDADE MOBILE ====== */
+@media (max-width: 650px) {
+  .inputs-padrao {
+    flex-direction: column;
+  }
+  .expansivel {
+    padding: 20px;
+  }
+  .inputs-dia {
+    flex-direction: column;
+  }
+}
+
+/* Ajustes da tabela no celular */
+@media (max-width: 600px) {
+  .tabela-rodovias th,
+  .tabela-rodovias td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
 }
