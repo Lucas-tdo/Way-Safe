@@ -22,7 +22,7 @@ function cadastrar(req,res){
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    
+    var empresa = req.body.empresaServer;
     if(nome==undefined){
         res.status(400).send("Seu nome está undefined")
     }
@@ -32,8 +32,11 @@ function cadastrar(req,res){
     else if(senha==undefined){
         res.status(400).send("Sua senha está undefined")
     }
+    else if(empresa==undefined){
+        res.status(400).send("Sua empresa está undefined")
+    }
     else{
-        tela_adm_waysafe_model.cadastrar(nome,email,senha)
+        tela_adm_waysafe_model.cadastrar(nome,email,senha,empresa)
         .then(resposta=>{
             console.log(`Administrador com o email ${email} cadastrado!`);
             res.json(resposta)

@@ -64,18 +64,36 @@ async function pegarAdm(){
   console.log(resp_json)
   tbAdm.innerHTML=""
   for (const registro of resp_json) {
-    tbAdm.innerHTML += `
-      <tr>
-                                  <td>${registro.idUSUARIO}</td>
-                                  <td>${registro.nome}</td>
-                                  <td>${registro.email}</td>
-                                  <td>*********</td>
-                                  <td>
-                                      <a href="#" onclick="enviarEditar(${registro.idUSUARIO})"> <img class="icon-tabela" src="../icons/editar.png"></a>
-                                      <a href="#" onclick="abrirExcluir(${registro.idUSUARIO})" ><img class="icon_tabela" src="../icons/lixo.png"></a>
-                                  </td>
-                              </tr>
-      `;
+    if(registro.fk_empresa==null){
+        tbAdm.innerHTML += `
+          <tr>
+                                      <td>${registro.idUSUARIO}</td>
+                                      <td>${registro.nome}</td>
+                                      <td>${registro.email}</td>
+                                      <td>*********</td>
+                                      <td>-</td>
+                                      <td>
+                                          <a href="#" onclick="enviarEditar(${registro.idUSUARIO})"> <img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                          <a href="#" onclick="abrirExcluir(${registro.idUSUARIO})" ><img class="icon_tabela" src="../icons/delete2.png"></a>
+                                      </td>
+                                  </tr>
+          `;
+    }
+    else{
+        tbAdm.innerHTML += `
+          <tr>
+                                      <td>${registro.idUSUARIO}</td>
+                                      <td>${registro.nome}</td>
+                                      <td>${registro.email}</td>
+                                      <td>*********</td>
+                                      <td>${registro.fk_empresa}</td>
+                                      <td>
+                                          <a href="#" onclick="enviarEditar(${registro.idUSUARIO})"> <img class="icon-tabela" src="../icons/lapisedit.png"></a>
+                                          <a href="#" onclick="abrirExcluir(${registro.idUSUARIO})" ><img class="icon_tabela" src="../icons/delete2.png"></a>
+                                      </td>
+                                  </tr>
+          `;
+    }
   }
 }
 
