@@ -160,10 +160,6 @@ function cadastrarFuncionario() {
     })
         .then(function (resposta) {
             console.log("resposta: ", resposta);
-            alert("Cadastro realizado")
-            setTimeout(() => {
-                window.location.href = '/login.html'
-            }, 2000);
         })
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
