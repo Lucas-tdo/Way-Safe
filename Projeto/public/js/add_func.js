@@ -26,7 +26,7 @@ document.querySelector('.toggle-nav')
 
 function listar_funcionarios(){
        lista_funcs.innerHTML = ""
-    var fk_empresa = 12
+    var fk_empresa = sessionStorage.FK_EMPRESA
     
      fetch(`/adm_concessionaria_rota/listar_funcionarios/${fk_empresa}`)
         .then(res => res.json())

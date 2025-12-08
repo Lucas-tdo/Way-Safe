@@ -7,10 +7,10 @@ function pegarDescricao() {
 }
 
 
-function cadastrar(idNivel, descricao) {
+function cadastrar(descricao) {
     return database.executar(`
-        INSERT INTO nivelAcesso (nome, descricao)
-        VALUES ('${idNivel}','${descricao}');
+        INSERT INTO NIVEL_ACESSO(descricao)
+        VALUES ('${descricao}');
     `);
 }
 

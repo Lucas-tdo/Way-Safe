@@ -18,7 +18,7 @@ function cadastrar(req, res) {
     const idNivel = req.body.idNivelServer
     const descricao = req.body.descricaoServer;
 
-    tela_nivel_acesso_model.cadastrar(idNivel, descricao)
+    tela_nivel_acesso_model.cadastrar(descricao)
         .then(() => {
              res.status(200).json("OK")
         })

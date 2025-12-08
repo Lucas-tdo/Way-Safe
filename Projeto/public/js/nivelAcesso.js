@@ -6,11 +6,11 @@ document.querySelector('.toggle-nav')
 
 
 function Validar() {
-    var nome = input_nome.value
+    // var nome = input_nivel_acesso.value
     var descricao = input_descricao.value
     var mensagem = ''
 
-    if (nome == "" || descricao == "" ) {
+    if (descricao == "" ) {
         mensagem = "Todos campos devem estar preenchidos"
     }
    
@@ -44,14 +44,15 @@ function Validar() {
     }
 
     function confirmarCadastro() {
-    const nome = input_nome.value;
+    // const nome = input_nome.value;
     const descricao = input_descricao.value;
-
-    fetch("../nivelAcessoRouter/cadastrar", {
+    // const NivelServer = 3;
+    fetch("/tela_nivel_acesso_rota/cadastrar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            descricaoServer: descricao
+            descricaoServer: descricao,
+            // idNivelServer : NivelServer
         })
     })
     .then(res => {

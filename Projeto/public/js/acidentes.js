@@ -1,5 +1,8 @@
 async function municipio_mais_acidentes(ano) {
     var fk_empresa = sessionStorage.FK_EMPRESA
+    
+        ano = (ano == null || ano == "undefined" || ano === "") ? "erro" : ano
+
 
     const resp = await fetch(`/tela_acidentes_rota/municipio_mais_acidentes/${fk_empresa}/${ano}`)
     if (resp.ok) {
@@ -26,6 +29,8 @@ async function municipio_mais_acidentes(ano) {
 
 async function total_de_acidentes(ano) {
     var fk_empresa = sessionStorage.FK_EMPRESA
+    ano = (ano == null || ano == "undefined" || ano === "") ? "erro" : ano
+
 
     const resp = await fetch(`/tela_acidentes_rota/total_de_acidentes/${fk_empresa}/${ano}`)
     if (resp.ok) {
@@ -43,7 +48,9 @@ async function total_de_acidentes(ano) {
 
 async function total_acidentes_por_tipo(ano) {
     var fk_empresa = sessionStorage.FK_EMPRESA;
+    ano = (ano == null || ano == "undefined" || ano === "") ? "erro" : ano
 
+    
     const resp = await fetch(`/tela_acidentes_rota/total_acidentes_por_tipo/${fk_empresa}/${ano}`)
     if (resp.ok) {
         const resp_municipio_tipo = await resp.json();

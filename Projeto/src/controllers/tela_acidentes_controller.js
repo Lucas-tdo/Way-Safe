@@ -5,7 +5,7 @@ function municipio_mais_acidentes(req, res) {
     var fk_empresa = req.params.fk_empresa;
     var periodo = ""
 
-    if (req.params.periodo === "") {
+    if (req.params.periodo === "erro") {
         periodo = undefined
     } else {
         periodo = req.params.periodo;
@@ -28,7 +28,7 @@ function total_de_acidentes(req, res) {
     var fk_empresa = req.params.fk_empresa;
     var periodo = req.params.periodo;
 
-    if (periodo == "") {
+    if (periodo == "erro") {
         periodo = undefined
     }
     console.log("Filtros recebidos:", { fk_empresa, periodo });
@@ -49,7 +49,7 @@ function quantiaPorTipoAcidente(req, res) {
     var periodo = "";
     var mes = "";
 
-    if (req.params.periodo === "") {
+    if (req.params.periodo == "erro") {
         periodo = undefined
     } else {
         periodo = req.params.periodo;

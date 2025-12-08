@@ -8,7 +8,7 @@ function chamarDados(){
             console.log(dados)
                  document.getElementById("nome_func").value = dados[0].nome
                  document.getElementById("email_func").value = dados[0].email
-                 document.getElementById("empresa_func").value = dados[0].fk_empresa
+                //  document.getElementById("empresa_func").value = dados[0].fk_empresa
                   document.getElementById("nivel_func").value = dados[0].nivel_acesso_fk
         })
         .catch(error => {
@@ -24,7 +24,7 @@ function editarDados(){
             body: JSON.stringify({
                 nome: nome_func.value,
                 email: email_func.value,
-                fk_empresa: empresa_func.value,
+                // fk_empresa: empresa_func.value,
                 nivel_acesso_fk: nivel_func.value
             })
         })
@@ -33,7 +33,7 @@ function editarDados(){
             console.log(dados)
                  document.getElementById("nome_func").value = dados[0].nome
                  document.getElementById("email_func").value = dados[0].email
-                 document.getElementById("empresa_func").value = dados[0].fk_empresa
+                //  document.getElementById("empresa_func").value = dados[0].fk_empresa
                  chamarDados()
         })
         .catch(error => {

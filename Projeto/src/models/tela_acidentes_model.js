@@ -14,7 +14,7 @@ function municipio_mais_acidentes(fk_empresa, ano) {
         SUM(v.vitima_ilesa)
     ) as total_vitima from ACIDENTE as a
     JOIN VITIMAS as v on a.idACIDENTE=v.fk_acidente 
-    WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
+    WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} ${(!ano || ano === 'undefined') ? '' : `and year(a.data_hora)=${ano}`}
     group by a.municipio
     order by total_vitima desc
     limit 10;
@@ -39,7 +39,7 @@ function quantiaPorTipoAcidente(fk_empresa, ano) {
     JOIN VITIMAS as v on a.idACIDENTE=v.fk_acidente 
     JOIN classe_acidente as c on a.fk_classe_acid=c.idClasse_acid
     WHERE a.municipio is not null and a.fk_empresa=${fk_empresa} 
-    ${ano == "undefined" ? '' : `and year(a.data_hora)=${ano}`}
+    ${(!ano || ano === 'undefined') ? '' : `and year(a.data_hora)=${ano}`}
     group by c.descr
     order by total_vitima_fatais desc;
     `
@@ -51,13 +51,14 @@ function quantiaPorTipoAcidente(fk_empresa, ano) {
 function total_de_acidentes(fk_empresa, ano) {
     console.log("Executando totalDeAcidentes para empresa:", fk_empresa, ano);
 
-    var instrucaoSql = `
-        select 
-            count(*) as total
-        from acidente 
-        where fk_empresa = ${fk_empresa} ${ano == "undefined" ? '' : `and year(data_hora)=${ano}`};
-        ;
-    `
+var instrucaoSql = `
+    select 
+        count(*) as total
+    from acidente 
+    where fk_empresa = ${fk_empresa} 
+    ${(!ano || ano === 'undefined') ? '' : `and year(data_hora)="${ano}"`}
+`;
+
 
     console.log("SQL total de acidentes:", instrucaoSql);
     return database.executar(instrucaoSql);
