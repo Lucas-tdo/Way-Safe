@@ -28,9 +28,29 @@ function cadastrar(req, res) {
         });
 }  
 
+    function deletarNivel(req,res){
+
+        var idNivel = req.params.idNivel
+
+
+        if(idNivel==undefined){
+            res.status(400).send('Seu idUsuario está undefined!')
+        }
+        else{
+            tela_nivel_acesso_model.deletarNivel(idNivel)
+            .then(resposta=>{
+                res.json(resposta)
+            })
+            .catch(erro=>{
+                console.log(erro)
+                res.status(500).json(erro.sqlMessage)
+            })
+        }
+    }
 
 
 module.exports = {
     pegarDescricao,
-    cadastrar
+    cadastrar,
+     deletarNivel
 };
