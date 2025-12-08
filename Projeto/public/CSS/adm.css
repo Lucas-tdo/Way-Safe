@@ -423,7 +423,6 @@ html, body {
   }
   
   .meio {
-    flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
@@ -456,6 +455,8 @@ html, body {
   }
   
   .barra {
+    display: flex;
+    flex-direction: row;
     padding: 0 10px;
   }
   
