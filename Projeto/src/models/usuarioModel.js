@@ -38,6 +38,13 @@ function cadastrarFuncionario(nome,email,senha,fk_empresa,nivel_acesso){
     return database.executar(instrucaoSql);
 }
 
+function cadastrar(nome,email,senha,fk_empresa){
+    var instrucaoSql = `
+        INSERT INTO USUARIO (nome,email,senha,fk_empresa,nivel_acesso_fk) VALUES ('${nome}','${email}',SHA2('${senha}',256),${fk_empresa},3);
+    `;
+    return database.executar(instrucaoSql);
+}
+
 function autenticar(email,senha){
     var instrucaoSql = `
         SELECT * FROM USUARIO WHERE email="${email}" and senha =SHA2('${senha}', 256);
@@ -50,5 +57,6 @@ module.exports = {
     checarEmpresa,
     pegarSenha,
     atualizarSenha,
-    cadastrarFuncionario
+    cadastrarFuncionario,
+    cadastrar
 }
