@@ -54,7 +54,7 @@ function total_de_acidentes(fk_empresa, ano) {
     var instrucaoSql = `
         select 
             count(*) as total
-        from acidente 
+        from ACIDENTE 
         where fk_empresa = ${fk_empresa} ${ano == "undefined" ? '' : `and year(data_hora)=${ano}`};
         ;
     `
