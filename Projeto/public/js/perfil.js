@@ -207,24 +207,7 @@ function mensagemSenha(mensagem){
       // FIM: VALIDAÇÃO PEGAR SENHA 
 
 
-    // Foto de perfil
-    const inputFoto = document.getElementById('input-foto');
-    const fotoPreview = document.getElementById('fotoPreview');
-    const fotoContainer = document.getElementById('fotoContainer');
 
-    inputFoto.addEventListener('change', function () {
-      const arquivo = this.files[0];
-      if (arquivo) {
-        const leitor = new FileReader();
-        leitor.onload = function (e) {
-          fotoPreview.src = e.target.result;
-          fotoPreview.style.display = 'block';
-          fotoContainer.querySelector('span').style.display = 'none';
-        }
-        leitor.readAsDataURL(arquivo);
-      }
-    });
-    //Fim da lógica para colocar a foto de perfil
 
     // Alternar modo de edição
     const editarBtn = document.getElementById('editarBtn');
