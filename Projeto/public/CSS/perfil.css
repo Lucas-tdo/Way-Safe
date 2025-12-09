@@ -508,6 +508,46 @@ input[type="file"] {
   }
 }
 
+
+/* Dispositivos muito pequenos */
+@media (max-width: 900px) { 
+ .container-de-baixo {
+  padding: 30px 40px;
+ }
+
+}
+
+@media (max-width: 600px) { 
+ .title1-perfil {
+  flex-direction: column;
+  gap: 20px;
+ }
+  .config-foto {
+    flex-direction: column;
+    align-items: center;
+  } .campos-perfil {
+    flex-direction: column;
+  } .popup.abrir-popup {
+    display: flex;
+    align-items: center;
+  }
+
+}
+@media (max-width: 450px) { 
+
+  .container-de-baixo {
+     padding: 30px 5px;
+ 
+  }
+
+ }
+
+
+
+
+
+
+
  /* ALTERAÇÃO DE SENHA */
 .popup {
   background-color: rgb(0, 0, 0, 0.3);

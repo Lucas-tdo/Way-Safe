@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/* Fundo geral */
+.fundo {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Cabeçalho superior */
+.infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+}
+
+.cadastro-bar {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
+    background: #ffffff;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cadastro-bar h1 {
+    font-size: clamp(18px, 4vw, 25px);
+    font-weight: 800;
+}
+
+/* Botão */
+.btn-cadastrar-func {
+    background-color: #427939;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    height: 48px;
+}
+
+.btn-cadastrar-func:hover {
+    background-color: #2c5429;
+    transition: 0.2s;
+}
+
+/* Container inferior */
+.container-de-baixo {
+    padding: 20px;
+}
+
+.pagcadastro {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* Título */
+.title1-cadastro h3 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.title1-cadastro p {
+    color: #888;
+    margin-top: 5px;
+}
+
+hr {
+    border: 0.5px solid #e6e6e6;
+    margin: 15px 0;
+}
+
+/* Campos do formulário */
+.campos-cadastro {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.coluna-cadastro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.label-cadastro {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+.input-cadastro {
+    padding: 12px 15px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
+    transition: 0.2s;
+    height: 48px;
+}
+
+.input-cadastro:focus {
+    border-color: #000;
+}
+
+/* Responsivo */
+@media (max-width: 780px) {
+
+    .campos-cadastro {
+        flex-direction: column;
+    }
+
+    .btn-cadastrar-func {
+        width: 100%;
+    }
+}

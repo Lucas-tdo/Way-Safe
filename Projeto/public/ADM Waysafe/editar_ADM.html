@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Funcionário</title>
 
-     <link rel="icon" href="../Imagens/waysafe-logo.svg">
-    <link rel="stylesheet" href="../CSS/cadastrofunc.css">
+    <link rel="icon" href="../Imagens/waysafe-logo.svg">
+    <link rel="stylesheet" href="../CSS/editar_ADM.css">
     <link rel="stylesheet" href="../CSS/nav.css">
     <link rel="stylesheet" href="../CSS/modais.css"> <!-- CSS dos modais -->
 </head>
@@ -16,42 +16,40 @@
 
     <div class="fundo">
 
-         <aside class="nav">
-       <button class="toggle-nav">☰ </button>
+        <aside class="nav">
+            <button class="toggle-nav">☰ </button>
 
-        <div class="perfil">
-            <img src="../Imagens/waysafe-logo.svg" class="img_user"> <br>
-                <a href="#"><img src="../icons/engrenagem.png"></a>
-            
+            <div class="perfil">
+                <img src="../Imagens/waysafe-logo.svg" class="img_user" alt="logo"> <br>
+                <a href="#"><img src="../icons/engrenagem.png" alt="config"></a>
             </div>
 
             <ul class="menu-list">
-                  <li class="active">
-                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
+                <li class="active">
+                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon" alt=""></a>
                     <a href="adm.html" class="text">Administradores</a>
                 </li>
 
-                <li >
-                    <img src="../Imagens/apartamento.png" class="icon">
+                <li>
+                    <img src="../Imagens/apartamento.png" class="icon" alt="">
                     <a href="adm_conc.html" class="text">Concessionárias</a>
                 </li>
 
-                <li >
-                    <img src="../Imagens/imgNivelDeAcesso.png" class="icon">
+                <li>
+                    <img src="../Imagens/imgNivelDeAcesso.png" class="icon" alt="">
                     <a href="nivelAcesso.html" class="text">Niveis de Acesso</a>
                 </li>
 
                 <li>
-                   <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
+                    <a href="perfil.html"><img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" alt=""></a>
                     <a href="perfil.html" class="text">Perfil</a>
                 </li>
 
-                 <a class="sair" href="../index.html">
-                <div>Voltar</div>
-            </a>
+                <a class="sair" href="../index.html">
+                    <div>Voltar</div>
+                </a>
             </ul>
 
-          
         </aside>
 
         <main class="container">
@@ -73,24 +71,27 @@
 
                     <hr>
 
-                    <form class="campos-cadastro">
+                    <!-- FORMULARIO: mantive IDs para compatibilidade com seu JS -->
+                    <form class="campos-cadastro" id="formEditar" onsubmit="event.preventDefault(); Validar();">
 
                         <div class="coluna-cadastro">
-                            <label class="label-cadastro">Nome Completo</label>
+                            <label class="label-cadastro" for="input_nome">Nome Completo</label>
                             <input type="text" class="input-cadastro" placeholder="Ex: João Martins" id="input_nome">
 
-                            <label class="label-cadastro">Email</label>
+                            <label class="label-cadastro" for="input_email">Email</label>
                             <input type="email" class="input-cadastro" placeholder="email@gmail.com" id="input_email">
                         </div>
 
                         <div class="coluna-cadastro">
-                           <label class="label-cadastro">Nivel de acesso</label>
-                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" disabled>
+                            <label class="label-cadastro" for="input_nivel">Nível de acesso</label>
+                            <input type="text" class="input-cadastro" placeholder="1 ou 2" value="1" id="input_nivel" disabled>
                         </div>
 
                     </form>
 
-                    <button id="btn-editar" onclick="Validar()" class="btn-cadastrar-func">Editar</button>
+                    <div class="acao-rodape">
+                        <button id="btn-editar" onclick="Validar()" class="btn-cadastrar-func">Editar</button>
+                    </div>
 
                 </div>
             </div>
@@ -111,6 +112,7 @@
         </div>
     </div>
 
+    <!-- MODAL ERRO -->
     <div id="modalErro" class="modal">
         <div class="modal-content">
             <h3>Erro</h3>
@@ -129,11 +131,9 @@
             </div>
         </div>
     </div>
-<!-- // perfil.js há uma configuração semelhante ao que seria usado em editar, mas não é citado aqui.
-// CHECAR possibilidade de reciclar informações para esse ponto. -->
-    <script src="../js/editar_Administrador.js">
-        
-    </script>
+
+    <!-- Script (mantive caminho e não alterei funções) -->
+    <script src="../js/editar_Administrador.js"></script>
 
 </body>
 

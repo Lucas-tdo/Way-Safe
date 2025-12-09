@@ -1,0 +1,208 @@
+/* editar_ADM.css */
+
+/* Reset / tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/* Fundo geral */
+.fundo {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Área conteúdo */
+.container {
+    flex: 1;
+}
+
+/* Informações do título */
+.infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+/* Barra superior */
+.cadastro-bar {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
+    background: #ffffff;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cadastro-bar h1 {
+    font-size: clamp(18px, 3.6vw, 26px);
+    font-weight: 800;
+    margin: 0;
+}
+
+/* Container inferior */
+.container-de-baixo {
+    padding: 20px;
+}
+
+.pagcadastro {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* Título da seção */
+.title1-cadastro h3 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.title1-cadastro p {
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Separador */
+hr {
+    border: 0.5px solid #e6e6e6;
+    margin: 15px 0 18px 0;
+}
+
+/* FORM: layout em colunas responsivas */
+.campos-cadastro {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Cada coluna */
+.coluna-cadastro {
+    flex: 1;
+    min-width: 220px; /* previne ficar muito estreito */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Labels */
+.label-cadastro {
+    font-weight: 600;
+    font-size: 14px;
+    color: #222;
+}
+
+/* Inputs padrão */
+.input-cadastro {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    outline: none;
+    font-size: 15px;
+    height: 44px;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.input-cadastro::placeholder {
+    color: #bdbdbd;
+}
+
+.input-cadastro:focus {
+    border-color: #4a4a4a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* Botão */
+.btn-cadastrar-func {
+    background-color: #427939;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    cursor: pointer;
+    font-weight: 700;
+    height: 48px;
+    box-shadow: 0 4px 12px rgba(66,121,57,0.12);
+    transition: transform .08s ease, background-color .12s ease;
+}
+
+.btn-cadastrar-func:hover {
+    background-color: #31592a;
+    transform: translateY(-1px);
+}
+
+/* Alinhamento do botão */
+.acao-rodape {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Responsivo */
+@media (max-width: 880px) {
+    .coluna-cadastro {
+        min-width: 100%;
+    }
+
+    .acao-rodape {
+        justify-content: stretch;
+    }
+
+    .btn-cadastrar-func {
+        width: 100%;
+    }
+}
+
+/* Regras básicas para modais (caso modais.css não contenha) */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal .modal-content {
+    background: #fff;
+    padding: 20px 22px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.modal .modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+.modal button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#confirmar-edicao {
+    background: #427939;
+    color: #fff;
+}
+
+#cancelar-edicao {
+    background: #eee;
+    color: #333;
+}
