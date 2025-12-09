@@ -99,8 +99,9 @@ async function surgirInput() {
   var input = document.getElementById('inputcheckbox'); 
   var label = document.getElementById('label-checkbox');
 
-  if (checkbox && checkbox.checked) {
-    const resp = await fetch(`/conc/pegarEmpresa`)
+    if (checkbox && checkbox.checked) {
+        input_nivel.value=2;
+        const resp = await fetch(`/conc/pegarEmpresa`)
             const resp_json = await resp.json();
             console.log(resp_json)
             input.innerHTML=""
@@ -120,7 +121,7 @@ async function surgirInput() {
     console.log('Não está marcado');
     input.style.display = 'none';
     label.style.display = 'none';
-
+    input_nivel.value=1;
   }
 }
 
