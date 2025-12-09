@@ -20,9 +20,17 @@ function deletarNivel(idNivel) {
     `);
 }
 
+function editarNivel(idNivel, descricao){
+    return database.executar(`
+            UPDATE NIVEL_ACESSO SET descricao = '${descricao}'
+            WHERE idNivelAcesso = ${idNivel};
+    `);
+}
+
 
 module.exports = {
     pegarDescricao,
     cadastrar,
-    deletarNivel
+    deletarNivel,
+    editarNivel
 };

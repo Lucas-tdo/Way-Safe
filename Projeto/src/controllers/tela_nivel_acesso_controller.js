@@ -49,8 +49,24 @@ function cadastrar(req, res) {
     }
 
 
+    function editarNivel(req, res){
+         const idNivel =  req.params.id;
+        const descricao = req.body.descricaoServer;
+
+        console.log('estou dentro do controler editarNivel')
+        tela_nivel_acesso_model.editarNivel(idNivel, descricao)
+        .then(() => res.status(200).json("OK"))
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json("Falha ao editar");
+        });
+}  
+    
+
+
 module.exports = {
     pegarDescricao,
     cadastrar,
-     deletarNivel
+     deletarNivel,
+     editarNivel
 };
