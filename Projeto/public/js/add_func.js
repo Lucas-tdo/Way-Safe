@@ -1,28 +1,46 @@
 // Alterna menu lateral
+var idExcluir;
+
+
+        document.querySelector('.toggle-nav')
+            .addEventListener('click', () => {
+                document.querySelector('.nav').classList.toggle('minimizado');
+            });
+
+        /* === MODAL JS === */
+        const cancelarBtn = document.getElementById("cancelar-excluir");
+        const confirmarBtn = document.getElementById("confirmar-excluir");
+
+        // Abre modal ao clicar na lixeira
+
+
+
+
+
+        // Escuta todos cliques da página
+        document.addEventListener("click", function (e) {
+
+            // Se clicou no ícone de editar
+            if (e.target.classList.contains("icon-tabela")) {
+
+                e.preventDefault();
+
+                // Aqui você coloca a página que vai abrir:
+                window.location.href = "editar.html";
+
+            }
+        });
+
+
+
 document.querySelector('.toggle-nav')
     .addEventListener('click', () => {
         document.querySelector('.nav').classList.toggle('minimizado');
     });
 
-   listar_funcionarios() 
-// function adicionarFuncionario(nome, email) {
-//     fetch(`/usuario/notificar-slack`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//             text: `Novo funcionário cadastrado: ${nome} Email: ${email}`,
-//         }),
-//     })
-//         .then(function (resposta) {
-//             console.log("Notificação Slack enviada:", resposta);
-//         })
-//         .catch(function (erro) {
-//             console.log(`#ERRO ao notificar Slack: ${erro}`);
-//         });
-// }
 
+   
+   
 
 function listar_funcionarios(){
        lista_funcs.innerHTML = ""
@@ -42,7 +60,7 @@ function listar_funcionarios(){
                                 <td>*******</td>
                                 <td>
                                     <a href="#"><img class="icon-tabela" src="../icons/lapisedit.png" onclick="Editar_Funcionario(${ano.idUSUARIO})"></a>
-                                    <a href="#"><img class="icon_tabela" src="../icons/delete2.png" onclick="Excluir_Funcionario(${ano.idUSUARIO})"></a>
+                                    <a href="#"><img class="icon_tabela" src="../icons/delete2.png" onclick="abrirExcluir(${ano.idUSUARIO})"></a>
                                 </td>
                             </tr>
                 `
@@ -57,10 +75,9 @@ function listar_funcionarios(){
 function Editar_Funcionario(Id){
     sessionStorage.IDFUNCIONARIO = Id;
 }
-function Excluir_Funcionario(Id) {
-    const funcionarioId = Id
+function Excluir_Funcionario() {
 
-    fetch(`/adm_concessionaria_rota/excluir_funf/${funcionarioId}`, {
+    fetch(`/adm_concessionaria_rota/excluir_funf/${idExcluir}`, {
         method: "DELETE"
     })
     .then(res => {
@@ -68,8 +85,7 @@ function Excluir_Funcionario(Id) {
             throw new Error(`Erro ao excluir: ${res.status}`);
         }
         console.log("Funcionário excluído com sucesso!");
-        alert("Funcionário excluído com sucesso!");
- 
+        fecharExcluir()
         listar_funcionarios()
 
     })
@@ -78,3 +94,19 @@ function Excluir_Funcionario(Id) {
         alert("Falha ao excluir funcionário. Verifique o console.");
     });
 }
+
+
+function abrirExcluir(id){
+            var divExcluir = document.getElementById("modalexcluir")
+            divExcluir.style.display = "flex";
+            idExcluir=id;
+}
+
+function fecharExcluir(){
+            var divExcluir = document.getElementById("modalexcluir")
+            divExcluir.style.display = "none";
+}
+
+ window.addEventListener("load", (event) => {
+               listar_funcionarios() 
+        });

@@ -57,6 +57,7 @@ function Validar() {
     })
     .then(res => {
         if (res.ok) {
+            input_descricao.value=""
             fecharModal();
             document.getElementById('modalSucesso').style.display = "flex";
         } else {
@@ -76,8 +77,8 @@ function carregarNiveis() {
             pegarDescricao.forEach(item => {
                 tabela.innerHTML += `
                     <tr>
+                        <td style="text-align:center;"><p class="nivelAcesso1">${item.idNivelAcesso}</p></td>
                         <td>${item.descricao}</td>
-                        <td style="text-align:center;"><p class="nivelAcesso1">Adicionar</p></td>
                         <td>
                             <a href="#"><img src="../icons/lapisedit.png" class="icon-tabela" ></a>
                             <a href="#"><img src="../icons/delete2.png" class="icon_tabela" onclick=abrirExcluir(${item.idNivelAcesso})></a>
