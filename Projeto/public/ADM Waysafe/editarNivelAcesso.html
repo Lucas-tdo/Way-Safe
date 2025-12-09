@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Nivel de Acesso</title>
+
+    <link rel="stylesheet" href="../CSS/cadastrofunc.css">
+    <link rel="stylesheet" href="../CSS/nav.css">
+     <link rel="icon" href="../Imagens/waysafe-logo.svg">
+    <link rel="stylesheet" href="../CSS/modais.css">
+</head>
+
+<body id="body">
+
+    <div class="fundo">
+
+        <aside class="nav">
+       <button class="toggle-nav">☰ </button>
+
+        <div class="perfil">
+            <img src="../Imagens/waysafe-logo.svg" class="img_user"> <br>
+                <a href="#"><img src="../icons/engrenagem.png"></a>
+            
+            </div>
+
+            <ul class="menu-list">
+                  <li>
+                    <a href="adm.html"><img src="../icons/funcionarios.png" class="icon"></a>
+                    <a href="adm.html" class="text">Administradores</a>
+                </li>
+
+                <li >
+                    <a href="adm_conc.html"><img src="../Imagens/apartamento.png" class="icon"></a>
+                    <a href="adm_conc.html" class="text">Concessionárias</a>
+                </li>
+
+                <li class="active">
+                    <img src="../Imagens/imgNivelDeAcesso.png" class="icon">
+                    <a href="nivelAcesso.html" class="text">Niveis de Acesso</a>
+                </li>
+
+                <li>
+                   <a href="perfil.html"> <img src="../Imagens/user_attributes_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 (1).png" class="icon" > </a>
+                    <a href="perfil.html" class="text">Perfil</a>
+                </li>
+
+                 <a class="sair" href="../index.html">
+                <div>Voltar</div>
+            </a>
+            </ul>
+
+        </aside>
+
+        <main class="container">
+
+            <div class="cadastro-bar">
+                <a href="nivelAcesso.html"><img src="../icons/seta-esquerda.png" alt="Voltar"></a>
+                <h1>Editar Nivel de Acesso</h1>
+            </div>
+
+            <div class="container-de-baixo">
+                <div class="pagcadastro">
+
+                    <div class="title1-cadastro">
+                        <div class="infos">
+                            <h3>Informações do Concessionária</h3>
+                            <p>Preencha os dados para criar um novo registro</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- CAMPOS DO CADASTRO -->
+                    <form class="campos-cadastro">
+                        <div class="coluna-cadastro">
+                            <label class="label-cadastro">Descrição</label>
+                            <input type="text" class="input-cadastro" id="input_descricao" placeholder="descrição" required>
+                        </div>
+
+                    </form>
+
+                    <!-- BOTÃO -->
+                    <button class="btn-cadastrar-func" onclick="Validar()">Editar</button>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- MODAL CONFIRMAÇÃO -->
+    <div id="modalConfirm" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Edição?</h3>
+            <p>Deseja realmente editar está descrição?</p>
+
+            <div class="modal-buttons">
+                <button id="confirmar-edicao" onclick="confirmarEditar()">Sim</button>
+                <button id="cancelar-edicao" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SUCESSO -->
+    <div id="modalSucesso" class="modal">
+        <div class="modal-content">
+            <h3>Alterações concluída!</h3>
+            <p>Descrição alterada com sucesso.</p>
+
+            <div class="modal-buttons">
+                <button id="confirmar-modal-sucesso" onclick="fecharModalSucesso()">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalErro" class="modal">
+        <div class="modal-content">
+            <h3>Erro</h3>
+            <p id="mensagem-Erro"></p>
+        </div>
+    </div>
+
+    <!-- SCRIPT ORIGINAL + FUNÇÕES NOVAS -->
+    <script src="../js/nivelAcesso.js">
+        
+    </script>
+
+</body>
+
+</html>
+<script>
+    chamarDesc()
+    function chamarDesc(){
+    document.getElementById("input_descricao").value= `${sessionStorage.NIVELDESCRICAO}`
+}
+</script>

@@ -14,5 +14,9 @@ router.delete("/deletarNivel/:idNivel", function (req, res) {
     TelaNivelAcessoController.deletarNivel(req, res);
 });
 
+router.put("/editarNivel/:id", function(req, res){
+    TelaNivelAcessoController.editarNivel(req, res);
+});
+
 
 module.exports = router;

@@ -40,7 +40,11 @@ function Validar() {
     }
 
     function fecharModal() {
-        document.getElementById('modalConfirm').style.display = "none";
+        console.log('fechar modal')
+    
+        window.location.href = "nivelAcesso.html";
+
+
     }
 
     function confirmarCadastro() {
@@ -80,7 +84,7 @@ function carregarNiveis() {
                         <td style="text-align:center;"><p class="nivelAcesso1">${item.idNivelAcesso}</p></td>
                         <td>${item.descricao}</td>
                         <td>
-                            <a href="#"><img src="../icons/lapisedit.png" class="icon-tabela" ></a>
+                            <a href="#"><img src="../icons/lapisedit.png" class="icon-tabela" onclick="abrirEditar(${item.idNivelAcesso}, '${item.descricao}')"></a>
                             <a href="#"><img src="../icons/delete2.png" class="icon_tabela" onclick=abrirExcluir(${item.idNivelAcesso})></a>
                         </td>
                     </tr>
@@ -99,9 +103,9 @@ function abrirExcluir(id){
 function fecharExcluir(){
             var divExcluir = document.getElementById("modalexcluir")
             divExcluir.style.display = "none";
-        }
+}
 
-    function excluirnivel(){
+function excluirnivel(){
         
 
     fetch(`/tela_nivel_acesso_rota/deletarNivel/${idExcluir}`, {
@@ -112,22 +116,62 @@ function fecharExcluir(){
             throw new Error(`Erro ao excluir: ${res.status}`);
         }
         console.log("Funcionário excluído com sucesso!"); 
-fecharExcluir()
-carregarNiveis()
-
-
+        fecharExcluir()
+        carregarNiveis()
     })
     .catch(error => {
         console.error("Erro ao excluir funcionário:", error);
         
     });
-    }
-    function fecharModalSucesso() {
+}
+
+function fecharModalSucesso() {
         document.getElementById('modalSucesso').style.display = "none";
-    }
+}
 
 window.addEventListener("load", (event) => {
    carregarNiveis()
 });
 
-    
+function abrirEditar(id, descricao) {
+    sessionStorage.NIVELID = id;
+    sessionStorage.NIVELDESCRICAO = descricao;
+
+    window.location.href = "editarNivelAcesso.html";
+}
+
+function confirmarEditar(id, descricao) {
+    console.log("confirmar Editar funcionando");
+
+    id =sessionStorage.NIVELID 
+    descricao =input_descricao.value
+
+    fetch(`/tela_nivel_acesso_rota/editarNivel/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            descricaoServer: descricao
+        })
+    })
+    .then(res => {
+        if (res.ok) {
+            // limpa memória e volta
+           sessionStorage.NIVELID = null ;
+            sessionStorage.NIVELDESCRICAO = null;
+
+            window.location.href = "nivelAcesso.html";
+        } else {
+            modalErro("Erro ao editar o nível de acesso");
+        }
+    })
+    .catch(err => {
+        modalErro("Falha na requisição");
+        console.error(err);
+    });
+}
+
+
+
+
+
+
