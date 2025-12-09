@@ -5,7 +5,7 @@ var database = require("../database/config");
 // Não vai ficar 100% funcional pois não tem definição de usuário adm e comum...
 function pegarFuncAdm(){
     var instrucaoSql = `
-    SELECT * FROM USUARIO WHERE nivel_acesso_fk=1 OR 2 ;
+    SELECT * FROM USUARIO WHERE nivel_acesso_fk=1 OR nivel_acesso_fk=2 ;
     `;
 
     return database.executar(instrucaoSql);

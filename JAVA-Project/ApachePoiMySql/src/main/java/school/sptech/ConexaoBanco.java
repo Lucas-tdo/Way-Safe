@@ -11,10 +11,8 @@ public class ConexaoBanco {
     public ConexaoBanco(){
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl("jdbc:mysql://localhost:3306/waysafe");
-        //String user = System.getenv("USERSQL");
-        //String senha = System.getenv("SENHASQL");
-        String user = "Way_Safe";
-        String senha = "Urubu100";
+        String user = System.getenv("USERSQL");
+        String senha = System.getenv("SENHASQL");
         basicDataSource.setUsername(user);
         basicDataSource.setPassword(senha);
 
