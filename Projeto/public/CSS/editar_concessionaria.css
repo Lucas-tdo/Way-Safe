@@ -13,7 +13,6 @@
     background-color: #f5f5f5;
 }
 
-/* Área do conteúdo */
 .container {
     flex: 1;
 }
@@ -28,7 +27,6 @@
 .cadastro-bar {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.071);
     background: #ffffff;
-    height: auto;
     min-height: 70px;
     display: flex;
     align-items: center;
@@ -43,14 +41,16 @@
     margin: 0;
 }
 
+/* Botão */
 .btn-cadastrar-func {
     background-color: #427939;
     color: white;
     border: none;
     border-radius: 7px;
-    padding: 10px 18px;
+    padding: 12px 20px;
     cursor: pointer;
     font-weight: 600;
+    height: 48px;
 }
 
 .btn-cadastrar-func:hover {
@@ -58,15 +58,11 @@
     transition: 0.2s;
 }
 
-
-
-
 /* Container inferior */
 .container-de-baixo {
     padding: 20px;
 }
 
-/* Caixa principal */
 .pagcadastro {
     background-color: #fff;
     padding: 25px;
@@ -89,86 +85,53 @@ hr {
     margin: 15px 0;
 }
 
-/* Campos */
+/* Campos do formulário */
 .campos-cadastro {
-    display: flex;
-    gap: 30px;
     margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
+/* Cada coluna */
 .coluna-cadastro {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-width: 250px;
 }
 
-/* Labels */
 .label-cadastro {
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-/* Inputs */
 .input-cadastro {
     padding: 12px 15px;
     border-radius: 7px;
     border: 1px solid #ccc;
     outline: none;
     font-size: 15px;
-    margin-bottom: 20px;
     transition: 0.2s;
+    height: 48px;
 }
 
 .input-cadastro:focus {
     border-color: #000;
 }
 
-#opcao1 {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 45px;
-    height: 22px;
-    background: #ccc;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: .3s;
-}
-
-/* Bolinha */
-#opcao1::before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    background: #fff;
-    position: absolute;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: .3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,.2);
-}
-
-
-#opcao1:checked {
-    background: #4ade80;
-}
-
-#opcao1:checked::before {
-    left: 25px;
-}
-
-#campo-verificacao-empresa{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
 /* Responsivo */
 @media (max-width: 780px) {
     .campos-cadastro {
         flex-direction: column;
-        display: block;
+    }
+
+    .coluna-cadastro {
+        width: 100%;
+    }
+
+    .btn-cadastrar-func {
+        width: 100%;
     }
 }
