@@ -57,7 +57,6 @@ function buscar_rodovias() {
               <td>${item.municipio}</td>
               <td>${item.tipoAcidente}</td>
               <td>${item.totalAcidentes}</td>
-              <td><button class="btn-relatorio" onclick="guardarSessionStorage('${item.codigoRodovia}')">Visualizar</button></td>
             `;
                 tabela.appendChild(linha);
             });
