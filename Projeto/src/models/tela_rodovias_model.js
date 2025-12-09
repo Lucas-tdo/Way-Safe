@@ -6,12 +6,12 @@ function buscar_rodovias(municipio, ano,fk_empresa) {
     var filtrosPreenchidos = 0;
 
     if (municipio != undefined && municipio != '') {
-        condicoes.push(`municipio LIKE '%${municipio}%'`);
+        condicoes.push(`municipio LIKE '${municipio}'`);
         filtrosPreenchidos++;
     }
 
     if (ano != undefined && ano != '') {
-        condicoes.push(`YEAR(data_hora) LIKE '%${ano}%'`);
+        condicoes.push(`YEAR(data_hora) LIKE '${ano}'`);
         filtrosPreenchidos++;
     }
 
@@ -25,7 +25,7 @@ function buscar_rodovias(municipio, ano,fk_empresa) {
         // SEM FILTRO: Mostra todas as rodovias com todos os tipos de acidente
         instrucaoSql = `
                 SELECT 
-                    IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
+                    IFNULL(rodovia_cod_numeric, 'Não identificado') AS codigoRodovia,
                     municipio,
                     fk_rodovias,
                     classe_acidente.descr as tipoAcidente,
@@ -55,8 +55,7 @@ function buscar_rodovias(municipio, ano,fk_empresa) {
     } else {
         instrucaoSql = `
             SELECT 
-                IFNULL(rodovia_cod_nume
-                ric, 'Não identificado') as codigoRodovia,
+                IFNULL(rodovia_cod_numeric, 'Não identificado') as codigoRodovia,
                 municipio,
                 fk_rodovias,
                 classe_acidente.descr as tipoAcidente,
